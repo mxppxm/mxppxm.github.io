@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} — 九日</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-title">☀️ 九日</a>
+      <nav class="site-nav">
+        <a href="/">首页</a>
+        <a href="/#blog">文章</a>
+        <a href="/#projects">项目</a>
+        <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="/">首页</a>
+    <a href="/#blog">文章</a>
+    <a href="/#projects">项目</a>
+    <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <main class="container">
+    <div class="article-layout">
+      <div class="article-main">
+        <article>
+          <div class="article-header">
+            <h1>{{TITLE}}</h1>
+            <div class="article-meta">{{META}}</div>
+          </div>
+
+          <div class="article-content">
+{{CONTENT}}
+          </div>
+        </article>
+      </div>
+
+      <aside class="article-sidebar">
+        {{TOC}}
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>☀️ 九日 · 用创意和代码探索世界</p>
+      <p class="footer-meta">Built with ❤️ · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
