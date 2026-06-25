@@ -7,42 +7,62 @@
   <meta name="description" content="每日黄金趋势分析归档，跟踪金价行情、多空博弈与投行观点。">
   <link rel="stylesheet" href="/css/style.css">
   <style>
+    /* ====== Gold Header ====== */
     .gold-header {
       text-align: center;
-      padding: 60px 20px 40px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: #f0c040;
-      border-radius: 12px;
+      padding: 48px 24px 36px;
+      background: linear-gradient(135deg, #FFF8E7 0%, #FFFDF5 50%, #F5F0E0 100%);
+      border: 1px solid #f0e6c8;
+      border-radius: 16px;
       margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(210, 180, 90, 0.08);
     }
     .gold-header h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 8px;
-      color: #f0c040;
+      color: var(--text, #1A1A2E);
     }
     .gold-header .subtitle {
-      color: #a0b4c8;
-      font-size: 1rem;
+      color: var(--text-muted, #888);
+      font-size: 0.95rem;
     }
+
+    /* ====== Gold Stats ====== */
     .gold-stats {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 24px;
       margin-top: 24px;
     }
     .gold-stats .stat {
       text-align: center;
+      padding: 16px 28px;
+      background: var(--card, #fff);
+      border: 1px solid var(--border, #E8ECF0);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
+      min-width: 100px;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .gold-stats .stat:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow, 0 4px 16px rgba(0,0,0,0.06));
+      border-color: #D4A84B;
     }
     .gold-stats .stat-num {
       display: block;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #f0c040;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #C8962E;
+      line-height: 1.2;
     }
     .gold-stats .stat-label {
-      font-size: 0.85rem;
-      color: #8899aa;
+      font-size: 0.8rem;
+      color: var(--text-muted, #888);
+      margin-top: 4px;
     }
+
+    /* ====== Archive List ====== */
     .archive-list {
       list-style: none;
       padding: 0;
@@ -50,19 +70,24 @@
     .archive-item {
       display: flex;
       align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid #eee;
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border, #E8ECF0);
       gap: 16px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .archive-item:hover {
+      background: #FFFBEF;
     }
     .archive-item:last-child {
       border-bottom: none;
     }
     .archive-date {
-      min-width: 100px;
-      font-size: 0.9rem;
-      color: #8899aa;
+      min-width: 90px;
+      font-size: 0.85rem;
+      color: var(--text-muted, #888);
       font-family: monospace;
-      padding-top: 2px;
+      padding-top: 3px;
     }
     .archive-content {
       flex: 1;
@@ -72,35 +97,42 @@
       font-size: 1.1rem;
     }
     .archive-content h3 a {
-      color: var(--text-color, #333);
+      color: var(--text, #1A1A2E);
       text-decoration: none;
+      transition: color 0.2s;
     }
     .archive-content h3 a:hover {
-      color: var(--green, #2ecc71);
+      color: var(--green, #07C160);
     }
     .archive-content p {
       margin: 0;
       font-size: 0.9rem;
-      color: #666;
-      line-height: 1.5;
+      color: var(--text-secondary, #555);
+      line-height: 1.6;
     }
     .archive-content .meta {
       font-size: 0.8rem;
-      color: #999;
-      margin-top: 4px;
+      color: var(--text-muted, #888);
+      margin-top: 6px;
     }
+    .gold-divider {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #D4A84B, #F0D080);
+      border-radius: 2px;
+      margin: 16px auto;
+    }
+
+    /* ====== Empty State ====== */
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: #999;
+      color: var(--text-muted, #999);
     }
     .empty-state .big-emoji {
       font-size: 3rem;
       display: block;
       margin-bottom: 16px;
-    }
-    .empty-state p {
-      font-size: 1rem;
     }
   </style>
 </head>
@@ -128,6 +160,7 @@
   <main class="container" style="padding-top: 100px;">
     <div class="gold-header">
       <h1>🏆 黄金趋势分析</h1>
+      <div class="gold-divider"></div>
       <p class="subtitle">每日追踪 · 多空博弈 · 投行观点 · 人民币/克换算</p>
       <div class="gold-stats" id="stats">
         <div class="stat">
