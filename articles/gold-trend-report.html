@@ -10,35 +10,34 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="site-title">📋 九日</a>
+      <a href="/" class="site-title">☀️ 九日</a>
       <nav class="site-nav">
         <a href="/">首页</a>
-        <a href="https://github.com/mico" target="_blank">GitHub</a>
+        <a href="/#blog">文章</a>
+        <a href="/#projects">项目</a>
+        <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
     </div>
   </header>
 
+  <div class="mobile-nav">
+    <a href="/">首页</a>
+    <a href="/#blog">文章</a>
+    <a href="/#projects">项目</a>
+    <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
   <main class="container">
-    <article>
-      <div class="article-header">
-        <h1>黄金趋势深度分析：跌破 $4,000 后何去何从？</h1>
-        <div class="article-meta">📅 2026 年 6 月 25 日 · 含人民币/克换算 · 汇率 1 USD = 6.8209 CNY</div>
-      </div>
+    <div class="article-layout">
+      <div class="article-main">
+        <article>
+          <div class="article-header">
+            <h1>黄金趋势深度分析：跌破 $4,000 后何去何从？</h1>
+            <div class="article-meta">📅 2026 年 6 月 25 日 · 含人民币/克换算 · 汇率 1 USD = 6.8209 CNY</div>
+          </div>
 
-      <nav class="toc"><div class="toc-title">📑 目录</div><ol><li style="margin-left:0px"><a href="#_1">📊 核心数据一览</a></li>
-<li style="margin-left:0px"><a href="#_2">🔴 下跌四大推手</a></li>
-<li style="margin-left:16px"><a href="#1">1. 🏛️ 美联储鹰派转向</a></li>
-<li style="margin-left:16px"><a href="#2">2. 💵 美元强势拉升</a></li>
-<li style="margin-left:16px"><a href="#3">3. 🕊️ 中东局势缓和</a></li>
-<li style="margin-left:16px"><a href="#4">4. 🔄 流动性挤压</a></li>
-<li style="margin-left:0px"><a href="#vs">🥊 多空博弈：短期承压 vs 长期未死</a></li>
-<li style="margin-left:16px"><a href="#_3">🔴 空头逻辑（当前主导）</a></li>
-<li style="margin-left:16px"><a href="#_4">🟢 多头逻辑（结构未破）</a></li>
-<li style="margin-left:0px"><a href="#_5">📋 各大投行最新预测（集体下调但长期看多）</a></li>
-<li style="margin-left:0px"><a href="#_6">📅 后市关键节点</a></li>
-<li style="margin-left:0px"><a href="#_7">🔮 总结与趋势判断</a></li></ol></nav>
-
-      <div class="article-content">
+          <div class="article-content">
 <h1 id="4000">🏆 黄金趋势深度分析：跌破 $4,000 后何去何从？</h1>
 <blockquote>
 <p><strong>当前金价：$3,976/oz（约 872 元/克）| 2026 年 6 月 25 日</strong></p>
@@ -228,15 +227,38 @@
 <hr/>
 <p><em>数据来源：Trading Economics / 各大投行报告 / World Gold Council / 新浪财经</em>
 <em>汇率参考：1 USD = 6.8209 CNY（2026.06.25 中间价）</em></p>
+          </div>
+        </article>
       </div>
-    </article>
+
+      <aside class="article-sidebar">
+        <nav class="toc"><div class="toc-title">📑 目录</div><ol><li style="margin-left:0px"><a href="#_1">📊 核心数据一览</a></li>
+<li style="margin-left:0px"><a href="#_2">🔴 下跌四大推手</a></li>
+<li style="margin-left:16px"><a href="#1">1. 🏛️ 美联储鹰派转向</a></li>
+<li style="margin-left:16px"><a href="#2">2. 💵 美元强势拉升</a></li>
+<li style="margin-left:16px"><a href="#3">3. 🕊️ 中东局势缓和</a></li>
+<li style="margin-left:16px"><a href="#4">4. 🔄 流动性挤压</a></li>
+<li style="margin-left:0px"><a href="#vs">🥊 多空博弈</a></li>
+<li style="margin-left:16px"><a href="#_3">🔴 空头逻辑</a></li>
+<li style="margin-left:16px"><a href="#_4">🟢 多头逻辑</a></li>
+<li style="margin-left:0px"><a href="#_5">📋 投行预测</a></li>
+<li style="margin-left:0px"><a href="#_6">📅 后市关键节点</a></li>
+<li style="margin-left:0px"><a href="#_7">🔮 总结</a></li></ol></nav>
+      </aside>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <p>九日 · 用创意和代码探索世界</p>
-    <p style="margin-top:8px;font-size:12px;color:#aaa">
-      <a href="/" style="color:var(--green);text-decoration:none">← 返回首页</a>
-    </p>
+    <div class="footer-inner">
+      <p>☀️ 九日 · 用创意和代码探索世界</p>
+      <p class="footer-meta">Built with ❤️ · 2026</p>
+    </div>
   </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

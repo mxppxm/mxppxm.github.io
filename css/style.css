@@ -883,6 +883,126 @@ body {
 }
 
 /* ============================================================
+   Article Page — Two-Column Layout (TOC at right)
+   ============================================================ */
+.article-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.article-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.article-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 84px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+/* TOC inside sidebar — tighter compact style */
+.article-sidebar .toc {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.article-sidebar .toc .toc-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.article-sidebar .toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding: 0;
+}
+.article-sidebar .toc ol li {
+  counter-increment: toc-counter;
+  margin: 3px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.article-sidebar .toc ol li::before {
+  content: counter(toc-counter) ". ";
+  color: var(--green);
+  font-weight: 500;
+  font-size: 12px;
+}
+.article-sidebar .toc a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.article-sidebar .toc a:hover {
+  color: var(--green);
+}
+.article-sidebar .toc ol ol {
+  padding-left: 16px;
+  margin-top: 2px;
+}
+.article-sidebar .toc ol ol li::before {
+  content: counter(toc-counter, lower-alpha) ". ";
+}
+.article-sidebar .toc ol ol ol li::before {
+  content: counter(toc-counter, lower-roman) ". ";
+}
+
+/* Highlight current section in TOC */
+.article-sidebar .toc a.active {
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* TOC scrollbar */
+.article-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.article-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ====== Responsive: collapse TOC on mobile ====== */
+@media (max-width: 900px) {
+  .article-layout {
+    flex-direction: column;
+  }
+  .article-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 24px;
+  }
+  .article-sidebar .toc {
+    padding: 14px 16px;
+  }
+  .article-sidebar .toc ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .article-sidebar .toc ol li {
+    display: inline;
+    margin: 0;
+  }
+  .article-sidebar .toc ol li::before {
+    content: counter(toc-counter) ". ";
+  }
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 768px) {
