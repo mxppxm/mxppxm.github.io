@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黄金趋势分析 — 九日</title>
+  <meta name="description" content="每日黄金趋势分析归档，跟踪金价行情、多空博弈与投行观点。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .gold-header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #f0c040;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+    .gold-header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      color: #f0c040;
+    }
+    .gold-header .subtitle {
+      color: #a0b4c8;
+      font-size: 1rem;
+    }
+    .gold-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 24px;
+    }
+    .gold-stats .stat {
+      text-align: center;
+    }
+    .gold-stats .stat-num {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f0c040;
+    }
+    .gold-stats .stat-label {
+      font-size: 0.85rem;
+      color: #8899aa;
+    }
+    .archive-list {
+      list-style: none;
+      padding: 0;
+    }
+    .archive-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+      gap: 16px;
+    }
+    .archive-item:last-child {
+      border-bottom: none;
+    }
+    .archive-date {
+      min-width: 100px;
+      font-size: 0.9rem;
+      color: #8899aa;
+      font-family: monospace;
+      padding-top: 2px;
+    }
+    .archive-content {
+      flex: 1;
+    }
+    .archive-content h3 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+    }
+    .archive-content h3 a {
+      color: var(--text-color, #333);
+      text-decoration: none;
+    }
+    .archive-content h3 a:hover {
+      color: var(--green, #2ecc71);
+    }
+    .archive-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .archive-content .meta {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 4px;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+    .empty-state .big-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .empty-state p {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-title">☀️ 九日</a>
+      <nav class="site-nav">
+        <a href="/">首页</a>
+        <a href="/#blog">文章</a>
+        <a href="/#projects">项目</a>
+        <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="/">首页</a>
+    <a href="/#blog">文章</a>
+    <a href="/#projects">项目</a>
+    <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <main class="container" style="padding-top: 100px;">
+    <div class="gold-header">
+      <h1>🏆 黄金趋势分析</h1>
+      <p class="subtitle">每日追踪 · 多空博弈 · 投行观点 · 人民币/克换算</p>
+      <div class="gold-stats" id="stats">
+        <div class="stat">
+          <span class="stat-num" id="article-count">1</span>
+          <span class="stat-label">篇分析</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="tracking-since">6.25</span>
+          <span class="stat-label">开始追踪</span>
+        </div>
+      </div>
+    </div>
+
+    <ul class="archive-list" id="archive-list">
+      <!-- 文章条目按日期倒序排列 -->
+      <li class="archive-item">
+        <div class="archive-date">2026-06-25</div>
+        <div class="archive-content">
+          <h3><a href="/articles/gold-trend-report.html">黄金趋势深度分析：跌破 $4,000 后何去何从？</a></h3>
+          <p>黄金跌破 $4,000 心理关口，距历史高点已回落 29%。深度分析下跌四大推手、多空博弈格局、各大投行最新预测（含人民币/克换算）以及后市关键节点。</p>
+          <div class="meta">📊 投资分析 · 约 3000 字 · 含人民币/克换算</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="section-cta" style="margin-top:40px;text-align:center;padding:20px;">
+      <a href="/" class="btn btn-secondary">← 返回首页</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>☀️ 九日 · 用创意和代码探索世界</p>
+      <p class="footer-meta">每日黄金分析自动更新 · Built with ❤️ · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    // 移动端菜单
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelector('.mobile-nav').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
