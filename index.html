@@ -143,73 +143,8 @@
     <div class="container">
       <h2 class="section-title">项目精选</h2>
       <p class="section-subtitle">一些我觉得好玩的 side project</p>
-      <div class="projects-grid">
-        <a href="https://github.com/mxppxm/budget" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #3178C6">TypeScript</span>
-          </div>
-          <h3>📊 Budget</h3>
-          <p>个人预算管理工具，用 TypeScript 构建，记录每一笔收支</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
-        <a href="https://github.com/mxppxm/firework" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #E34F26">HTML</span>
-          </div>
-          <h3>🎆 Firework</h3>
-          <p>纯前端烟花特效，部署在 Vercel，点开就能放烟花</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
-        <a href="https://github.com/mxppxm/chatp2p" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #E34F26">HTML</span>
-          </div>
-          <h3>💬 ChatP2P</h3>
-          <p>点对点聊天工具，不经过服务器，隐私拉满</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
-        <a href="https://github.com/mxppxm/prompt-optimizer" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #3178C6">TypeScript</span>
-          </div>
-          <h3>🤖 Prompt Optimizer</h3>
-          <p>提示词优化工具，让 AI 更懂你想要什么</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
-        <a href="https://github.com/mxppxm/habit" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #F7DF1E">JavaScript</span>
-          </div>
-          <h3>✅ Habit</h3>
-          <p>习惯追踪工具，帮你把好习惯坚持下来</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
-        <a href="https://github.com/mxppxm/birthday-mxo" target="_blank" rel="noopener" class="project-card">
-          <div class="project-card-top">
-            <span class="project-lang" style="--lang-color: #E34F26">HTML</span>
-          </div>
-          <h3>🎂 Birthday Mxo</h3>
-          <p>生日祝福页面，给特别的人一份特别的惊喜</p>
-          <div class="project-card-footer">
-            <span>⭐ 0</span>
-            <span>🔗 GitHub</span>
-          </div>
-        </a>
+      <div class="projects-grid" id="projects-grid">
+        <div class="projects-loading">加载中...</div>
       </div>
       <div class="section-cta">
         <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="btn btn-primary">查看全部项目 →</a>
@@ -282,6 +217,7 @@
     </div>
   </footer>
 
+  <script src="/js/github-projects.js"></script>
   <script>
     // 移动端菜单
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
