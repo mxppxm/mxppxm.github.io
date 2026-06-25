@@ -761,6 +761,7 @@ body {
   margin: 40px 0 16px 0;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--green);
+  scroll-margin-top: 80px;
 }
 
 .article-content h3 {
@@ -770,6 +771,7 @@ body {
   margin: 28px 0 12px 0;
   padding-left: 12px;
   border-left: 3px solid var(--green);
+  scroll-margin-top: 80px;
 }
 
 .article-content h4 {
@@ -889,6 +891,7 @@ body {
   display: flex;
   gap: 48px;
   align-items: flex-start;
+  padding-top: 80px; /* offset fixed header */
 }
 
 .article-main {
