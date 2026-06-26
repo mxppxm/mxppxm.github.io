@@ -788,6 +788,8 @@ body {
   font-size: 15px;
   line-height: 1.9;
   letter-spacing: 0.3px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .article-content h2 {
@@ -886,6 +888,9 @@ body {
   border-collapse: collapse;
   margin: 16px 0 20px 0;
   font-size: 14px;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .article-content th {
@@ -1017,12 +1022,16 @@ body {
   .article-layout {
     flex-direction: column;
   }
+  .article-main {
+    order: 0;
+  }
   .article-sidebar {
     width: 100%;
     position: static;
     max-height: none;
     overflow: visible;
     margin-bottom: 24px;
+    order: -1;
   }
   .article-sidebar .toc {
     padding: 14px 16px;
