@@ -1045,6 +1045,8 @@ body {
    Responsive
    ============================================================ */
 @media (max-width: 768px) {
+  .container { padding: 0 20px; }
+
   .site-nav a { display: none; }
   .mobile-menu-btn { display: block; }
   .mobile-nav { display: block; }
