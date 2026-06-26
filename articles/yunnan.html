@@ -1,597 +1,182 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>丽江 · 大理 · 昆明 旅行手记</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f7f4ef;
-      --paper: #fffcf7;
-      --ink: #2c2825;
-      --muted: #6b6560;
-      --accent: #c45c3a;
-      --accent-soft: rgba(196, 92, 58, 0.12);
-      --highlight: linear-gradient(120deg, #fff4d6 0%, #ffe8a8 100%);
-      --border: #e8e0d5;
-      --shadow: 0 12px 40px rgba(44, 40, 37, 0.08);
-      --section-bg: rgba(255, 252, 247, 0.65);
-      --rec-bg: rgba(46, 125, 50, 0.1);
-      --rec-border: rgba(46, 125, 50, 0.35);
-      --rec-ink: #1b4d1f;
-      --avoid-bg: rgba(183, 28, 28, 0.09);
-      --avoid-border: rgba(183, 28, 28, 0.32);
-      --avoid-ink: #7f1d1d;
-      --tip-bg: rgba(25, 118, 210, 0.08);
-      --tip-border: rgba(25, 118, 210, 0.28);
-      --tip-ink: #0d3a66;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Noto Sans SC", system-ui, sans-serif;
-      font-size: 17px;
-      line-height: 1.85;
-      color: var(--ink);
-      background: var(--bg);
-      background-image:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(196, 92, 58, 0.06), transparent),
-        linear-gradient(180deg, #ebe6de 0%, var(--bg) 280px);
-    }
-
-    .wrap {
-      max-width: 46rem;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
-    }
-
-    @media (min-width: 720px) {
-      .wrap {
-        padding-left: 1.75rem;
-        padding-right: 1.75rem;
-      }
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2.25rem;
-      padding: 2rem 1.5rem 2rem;
-      background: var(--paper);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    header h1 {
-      font-family: "Noto Serif SC", serif;
-      font-weight: 700;
-      font-size: clamp(1.75rem, 4vw, 2.35rem);
-      letter-spacing: 0.08em;
-      margin: 0 0 0.5rem;
-      color: var(--ink);
-    }
-
-    header .sub {
-      font-size: 0.95rem;
-      color: var(--muted);
-      font-weight: 400;
-      margin: 0;
-    }
-
-    article {
-      background: var(--paper);
-      border-radius: 14px;
-      padding: 1.75rem 1.35rem 2rem;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-
-    @media (min-width: 640px) {
-      article {
-        padding: 2rem 2.25rem 2.5rem;
-      }
-    }
-
-    h2 {
-      font-family: "Noto Serif SC", serif;
-      font-weight: 600;
-      font-size: 1.4rem;
-      margin: 0 0 1.25rem;
-      padding: 0.65rem 1rem;
-      border-radius: 8px;
-      background: var(--accent-soft);
-      border-left: 4px solid var(--accent);
-      color: var(--ink);
-    }
-
-    .chapter {
-      margin-bottom: 2.5rem;
-    }
-
-    .chapter:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .chapter > h2 {
-      margin-bottom: 1.35rem;
-    }
-
-    .block {
-      margin-bottom: 1.75rem;
-      padding: 1.35rem 1.15rem 1.25rem;
-      background: var(--section-bg);
-      border-radius: 10px;
-      border: 1px solid rgba(232, 224, 213, 0.85);
-    }
-
-    @media (min-width: 640px) {
-      .block {
-        padding: 1.5rem 1.35rem 1.4rem;
-      }
-    }
-
-    .block:last-child {
-      margin-bottom: 0;
-    }
-
-    .block p:last-child {
-      margin-bottom: 0;
-    }
-
-    p {
-      margin: 0 0 0.85em;
-      text-align: justify;
-      hyphens: auto;
-    }
-
-    article code {
-      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
-      font-size: 0.9em;
-      background: var(--accent-soft);
-      padding: 0.12em 0.4em;
-      border-radius: 4px;
-    }
-
-    mark.key {
-      font-weight: 500;
-      background: var(--highlight);
-      color: inherit;
-      padding: 0.08em 0.28em;
-      border-radius: 3px;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-
-    .hl-rec,
-    .hl-avoid,
-    .hl-tip {
-      font-weight: 500;
-      padding: 0.1em 0.38em;
-      border-radius: 4px;
-      border: 1px solid transparent;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-
-    .hl-rec {
-      background: var(--rec-bg);
-      border-color: var(--rec-border);
-      color: var(--rec-ink);
-    }
-
-    .hl-avoid {
-      background: var(--avoid-bg);
-      border-color: var(--avoid-border);
-      color: var(--avoid-ink);
-    }
-
-    .hl-tip {
-      background: var(--tip-bg);
-      border-color: var(--tip-border);
-      color: var(--tip-ink);
-    }
-
-    footer {
-      margin-top: 2.25rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* 旅途相册：多列瀑布流，高度随照片比例变化 */
-    .photo-gallery {
-      column-width: 9.5rem;
-      column-gap: 1.1rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    @media (min-width: 520px) {
-      .photo-gallery {
-        column-width: 11rem;
-      }
-    }
-
-    .photo-card {
-      margin: 0 0 1rem;
-      padding: 0;
-      break-inside: avoid;
-      page-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--section-bg);
-      border: 1px solid rgba(232, 224, 213, 0.85);
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    .photo-card:focus-within,
-    .photo-card:hover {
-      box-shadow: 0 8px 24px rgba(44, 40, 37, 0.1);
-    }
-
-    .photo-card button {
-      display: block;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      border: none;
-      background: transparent;
-      cursor: zoom-in;
-      font: inherit;
-      color: inherit;
-      text-align: left;
-    }
-
-    .photo-card button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .photo-card .thumb-wrap {
-      position: relative;
-      display: block;
-      background: #e8e2da;
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: auto;
-      vertical-align: middle;
-      display: block;
-    }
-
-    .photo-card figcaption {
-      padding: 0.55rem 0.65rem 0.65rem;
-      font-size: 0.82rem;
-      line-height: 1.45;
-      color: var(--muted);
-      border-top: 1px solid rgba(232, 224, 213, 0.7);
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background: rgba(28, 26, 24, 0.88);
-      backdrop-filter: blur(6px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.22s ease, visibility 0.22s ease;
-    }
-
-    .lightbox.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .lightbox-inner {
-      position: relative;
-      max-width: min(96vw, 56rem);
-      max-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .lightbox-img-stage {
-      position: relative;
-      display: inline-block;
-      max-width: 100%;
-      line-height: 0;
-    }
-
-    .lightbox-img-stage img {
-      max-width: 100%;
-      max-height: min(78vh, 820px);
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      display: block;
-      position: relative;
-      z-index: 0;
-    }
-
-    .lightbox-half {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 50%;
-      padding: 0;
-      margin: 0;
-      border: none;
-      z-index: 1;
-      background: transparent;
-      cursor: w-resize;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .lightbox-half:hover {
-      background: rgba(255, 252, 247, 0.04);
-    }
-
-    .lightbox-half:focus-visible {
-      outline: 2px solid rgba(255, 252, 247, 0.65);
-      outline-offset: -2px;
-    }
-
-    .lightbox-half:disabled {
-      cursor: default;
-      background: transparent;
-    }
-
-    .lightbox-half--prev {
-      left: 0;
-      border-radius: 8px 0 0 8px;
-    }
-
-    .lightbox-half--next {
-      right: 0;
-      border-radius: 0 8px 8px 0;
-      cursor: e-resize;
-    }
-
-    .lightbox-caption {
-      margin: 0;
-      max-width: 42rem;
-      text-align: center;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: #f0ebe4;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -0.25rem;
-      right: -0.25rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      border: none;
-      border-radius: 50%;
-      background: rgba(255, 252, 247, 0.15);
-      color: #fff;
-      font-size: 1.5rem;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s ease;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(255, 252, 247, 0.28);
-    }
-
-    .lightbox-close:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 2px;
-    }
-
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2.75rem;
-      height: 2.75rem;
-      border: none;
-      border-radius: 50%;
-      background: rgba(255, 252, 247, 0.12);
-      color: #fff;
-      font-size: 1.35rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s ease;
-    }
-
-    .lightbox-nav:hover {
-      background: rgba(255, 252, 247, 0.22);
-    }
-
-    .lightbox-nav:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 2px;
-    }
-
-    .lightbox-nav:disabled {
-      opacity: 0.25;
-      cursor: not-allowed;
-    }
-
-    .lightbox-nav--prev {
-      left: 0.25rem;
-    }
-
-    .lightbox-nav--next {
-      right: 0.25rem;
-    }
-
-    @media (min-width: 720px) {
-      .lightbox-nav--prev {
-        left: -3rem;
-      }
-
-      .lightbox-nav--next {
-        right: -3rem;
-      }
-    }
-
-    .lightbox-hint {
-      margin: 0;
-      font-size: 0.75rem;
-      color: rgba(240, 235, 228, 0.55);
-    }
-
-    body.lightbox-open {
-      overflow: hidden;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏔️ 丽江 · 大理 · 昆明 旅行手记 — 九日</title>
+  <meta name="description" content="云南旅行手记：丽江古城、忠义市场、玉湖龙女湖、白沙古镇、大理洱海廊道、喜洲双廊、巍山古镇、昆明捞鱼河… 一次平实记录的云南之旅。">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>丽江 · 大理 · 昆明</h1>
-      <p class="sub">旅行手记 · 平实记录</p>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-title">☀️ 九日</a>
+      <nav class="site-nav">
+        <a href="/">首页</a>
+        <a href="/#blog">文章</a>
+        <a href="/#projects">项目</a>
+        <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
 
-    <article>
-      <div class="chapter">
-        <h2>丽江</h2>
-
-        <section class="block" aria-label="概览与住宿">
-          <p>这次丽江之行，逛了<mark class="key">丽江古城</mark>、<mark class="key">束河古镇</mark>等景点，也吃了当地特色、去了些小众地方，整体挺充实，简单记一下感受。</p>
-          <p>住宿我们是随便找的民宿或酒店，不图窗外景色，主要是能住就行。当时一晚一百块左右，干净，也还行。</p>
-          <p>感觉各家差别不大，刚去也不讲究这些。</p>
-        </section>
-
-        <section class="block" aria-label="咖啡与观景">
-          <p>在丽江的山上，我们一开始没进古镇，只在附近转。山上有家<mark class="key">印象庄园咖啡</mark>，咖啡种类多，还有不错的观景台，还有咖啡体验课。</p>
-          <p>感觉在丽江、大理，各种咖啡店都可以看看，体验都不错，<span class="hl-rec">值得去一趟</span>。</p>
-        </section>
-
-        <section class="block" aria-label="丽江古城与忠义市场">
-          <p>骑电动车就能到丽江古城,<span class="hl-tip">丽江古城区的路况不好，不建议打车</span>，骑车或者走路都很方便。</p>
-          <p><mark class="key">丽江古城</mark><span class="hl-rec">建议晚上去</span>。<mark class="key">酒吧街</mark>人气旺，但比较吵，多是热闹的互动演唱，我逛了一圈没进去。</p>
-          <p>古城里多是特色商铺、小吃店，卖云南本地小吃、手工艺品、文创，晚上逛氛围好，夜景也舒服。</p>
-          <p>古城里还有家茶铺，<span class="hl-rec">性价比高，18 块能尝六种特色茶</span>，店员很热情，会讲茶叶知识。坐在街边茶摊，听着溪水流动、看花灯，隔壁酒吧有人唱歌，吹晚风、看花草夜景，喝茶挺放松。</p>
-          <p><span class="hl-avoid">不建议在这买茶叶</span>：虽然好喝又便宜，但总担心买到手后货不对板；茶叶能喝出那么多风味，只怕也有些门道在里面。茶铺在《理想三旬2店》隔壁，<span class="hl-tip">尝尝就够了</span>。</p>
-          <p>在古城买了件扎染衬衫，店里砍价后八十块，后来在外围小摊看到同款只要三四十，差价不小。</p>
-          <p>想买手作可以多对比街边摊，不用急着下手，在云南到处能买到，<span class="hl-rec">小摊往往更划算</span>。</p>
-          <p>离古城不远是<mark class="key">忠义市场</mark>，本地市集，生鲜、小吃种类多。听说晚上还有夜市，我们没等到。</p>
-          <p>晚上小吃车进场时场面挺壮观，长长一排慢慢进市场。市场和丽江古城连通，可以一路逛过去，沿途不少装修精致的民宿，拍照也好看。</p>
-        </section>
-
-        <section class="block" aria-label="日照金山与玉湖龙女湖">
-          <p>我们晚上租了车，准备第二天早上去看<mark class="key">日照金山</mark>。去的是<mark class="key">东巴谷</mark>对面一片区域里的四号湖（地图上能搜到，也是小红书等常推的位置；<span class="hl-tip">强调一下，不在东巴谷景区内</span>）。</p>
-          <p>天冷，我们把车开到湖边在车里等，也舒服——这时候有车的好处就明显了，暖和又避雨。</p>
-          <p>我们等到八点多没看到，天气太差，多云又下雨。<span class="hl-tip">其实日出时间一过就可以换地方了，再等也难</span>。<span class="hl-tip">各种软件也有预测日照金山的概率，可以提前看一下</span>。</p>
-          <p>之后去了山里的<mark class="key">玉湖村</mark>，下着小雨，路上不冷不热。村子依山而建，车能开到半山腰，村子中间有观光车停车场。我们停好车先徒步在村里逛；早上不热，阴雨绵绵，很舒服，<span class="hl-rec">推荐七八点去</span>。</p>
-          <p>我们顺着指示牌一路走到<mark class="key">龙女湖</mark>。湖边有马场，适合拍照打卡，我没骑马，贵也不太有兴趣。龙女湖不大，但去了有种那拉提、瑞士那种青山绿水加蓝天的感觉，氛围不错。</p>
-          <p>马场对面有咖啡厅，可以上楼顶或到草坪里拍照。我们不到九点到的，还没营业，直接进去拍了。<span class="hl-tip">想去的也可以早点去，人少更有感觉</span>。</p>
-        </section>
-
-        <section class="block" aria-label="白沙与束河">
-          <p>还去了<mark class="key">白沙古镇</mark>，我们没进古镇里面，直接去了咖啡店。在白沙村里——注意不是古镇里，是村子里。</p>
-          <p>村里有很多民宿，基本上躺在床上就能看到雪山，就是有些贵，可以自己权衡。</p>
-          <p>去了网红店<mark class="key">且野茶叙咖啡店</mark>店员很热情，人很好可以点杯咖啡或者一壶茶慢慢喝。环境好，有露台、围炉小景和观景天台，适合拍照。店员热情，还能下棋聊天，放松不错。<span class="hl-rec">建议下午去，待到傍晚看夜景更好</span>。</p>
-          <p>借了店里的相机拍了很满意的照片；店里可能没有读卡器，需要自己解决怎么传到手机的问题。也是排出了人生照片！</p>
-          <p>行程里还去了<mark class="key">束河古镇</mark>，<span class="hl-tip">风景中规中矩，内容比较单一，本质还是商业街</span>。</p>
-          <p>我们中途换民宿住进束河，古镇里民宿装修多有古风。<span class="hl-tip">订民宿要看清宣传，有的夸大，比如写能看雪山其实基本看不到，最好实地看过再订</span>。</p>
-          <p>我们还自驾去了<mark class="key">龙门镖局</mark>取景地，<span class="hl-tip">现在比较荒废，没太多可玩，打卡拍照即可，不感兴趣可以不去</span>。</p>
-        </section>
-
-        <section class="block" aria-label="丽江吃喝">
-          <p>在丽江古城，我们吃饭是在古城外找到一家不错的本地菜馆-清真园。隔壁有家网红家常菜（叫昌什么的）排队很长，隔壁就是是<mark class="key">清真园</mark>，两家开了快二十年，口味接近，<span class="hl-rec">清真园性价比更高还不用排队，推荐！</span>。</p>
-          <p>地道的云南味，<mark class="key">老奶洋芋</mark><span class="hl-rec">必点</span>，软糯、酸辣下饭。我们去了两次，几道特色菜配米饭，地道，几乎没踩雷。但是云南的<span class="hl-avoid">牛干巴慎点</span>，可能吃不惯。<span class="hl-tip">云南菜整体偏酸辣，吃多了有些腻</span>。</p>
-          <p>还有到处能见到的<mark class="key">昭通小肉串</mark>（清真的），云南很多地方都有，我们在去束河的路上吃的，好吃，<span class="hl-rec">那个牛肉小串儿非常不错</span>，其他的看着点，主要是肉很新鲜，云南的牛肉都很不错。<span class="hl-avoid">当地 V8 啤酒、风花雪月啤酒我觉得都一般</span>；有个<mark class="key">见手青啤酒</mark><span class="hl-rec">味道特别，可以尝一下</span>。</p>
-        </section>
-
-        <section class="block" aria-label="前往大理">
-          <p>丽江各处逛完，我们就动身去大理了。</p>
-        </section>
-      </div>
-
-      <div class="chapter">
-        <h2>大理</h2>
-
-        <section class="block" aria-label="交通与住宿">
-          <p>坐高铁到大理。听说丽江到大理有一趟<mark class="key">观景小火车</mark>，全程大约三小时，沿途风景好。我们时间紧没坐，<span class="hl-rec">时间宽裕可以试试</span>，网上实拍不少，确实漂亮。</p>
-          <p>到大理后我们直接住在洱海边的<mark class="key">小关邑</mark>。这边有不少性价比高的海景酒店，淡季一晚一百元左右，<span class="hl-tip">好像美团会贵一些，线下会便宜一些</span>。</p>
-          <p>一开始住的附近<mark class="key">滇美吾安酒店</mark>，还可以，能洗衣服，离洱海很近，步行几十米到一百米能到海边，看日出日落都方便。</p>
-          <p><span class="hl-rec">我更推荐这边的海景民宿</span>，后来住的 <mark class="key">joyLand</mark> 就很好。店名里的 joy 是店家小狗的名字，环境温馨。</p>
-          <p>正经海景房，标价二百五一晚，房间带<mark class="key">180 度全景落地窗</mark>，离洱海十几米，躺床上能等日出。</p>
-          <p><span class="hl-tip">老板说他们价格不会变，美团价格会乱动</span>，大概一晚 250 左右。我住了一周多，配置全，大浴缸、卫生间也宽敞，整体满意。</p>
-        </section>
-
-        <section class="block" aria-label="大理吃喝">
-          <p>我住的是回民村一带，周边餐饮多是清真。当地<mark class="key">罐罐米线</mark>、<mark class="key">饵丝</mark>，烧烤都很多，饵丝是米做的特色小吃，<span class="hl-tip">我个人不太吃得惯，花十几块尝一次就行</span>。</p>
-          <p>还有酸汤牛肉火锅、柴火鸡，随便找家小店味道多半不差。大理古城巷子里有家<mark class="key">回味柴坊柴火鸡</mark><span class="hl-rec">我觉得非常好吃</span>，偏西北口味。我们晚上去的，人非常多，生意很火爆。位置在大理古镇巷子里哦，需要绕一绕。还有一些傣味儿手抓饭，我感觉大差不差，我们去的一家大理古镇附近的<span class="hl-rec">金米粒，还不错，烤鸡很入味儿，相比吃过的另一家要好很多</span>。</p>
-          <p>还有小关邑附近的陶味思罐罐米线店，我们没吃米线，买了炒菜的团购，<span class="hl-rec">炒菜很正宗，值得推荐</span>。<span class="hl-avoid">小关邑附近漾濞傣味烧烤：亲测踩雷，吃完全员拉肚子，千万不要去！</span></p>
-        </section>
-
-        <section class="block" aria-label="古镇与洱海廊道">
-          <p>大理周边古镇多，<mark class="key">双廊</mark>、<mark class="key">喜洲</mark>、<mark class="key">巍山</mark>和最有名的<mark class="key">大理古城</mark>我们都开车去了。</p>
-          <p>结合体验，路线等可以这样做：<span class="hl-rec">住海西<mark class="key">小关邑村</mark>一带，紧挨<mark class="key">洱海生态廊道</mark>起点，早上出门，不出门看日出都方便</span>。</p>
-          <p>其中生态廊道全长四十多公里，管得严，<span class="hl-tip">外来电动车、摩托车不能进，只能租园区里的电动车，限速十五公里；自行车可以自由骑</span>。</p>
-          <p><span class="hl-rec">结伴的话我建议租<mark class="key">双人观光电动车</mark>，沿廊道走，一步一景，累了街边小店歇脚。找个咖啡店坐坐，看看人，看看景，体验很棒。</span><span class="hl-rec">推荐mowa莫瓦咖啡，免费坐二楼、三楼观景位，无需消费就能俯瞰洱海，傍晚时分在这里看日落，视野绝佳。</span></p>
-          <p><span class="hl-rec">如果天气不好，可以去龙尾关遗址，大理本地居民生活聚居地，有烟火气，安静舒适。可以逛逛。</span></p>
-          <p>廊道能一路到喜洲古镇，喜洲的稻田和麦田很出名，但是进去拍照要花钱。。就是个打卡的地方。但是环境非常不错，靠水的地方，很舒服！！。生态廊道前半段网红打卡地多、景精致；后半段更生活化，市井烟火足，但要骑二十多公里才到。</p>
-          <p><mark class="key">洱海公园</mark><span class="hl-rec">也值得去</span>，在廊道反方向，依山而建。我骑电动车上山，在山顶看了日落，<span class="hl-rec">值得一看</span>。不过他不是正面看日落的位置，如果想要正面看日落，需要到海东的某个位置。我是本来要去的，结果导航找不到路了。<span class="hl-tip">街上的共享电动车不能骑到滨海大道，切记！</span></p>
-          <p>洱海<mark class="key">海东</mark>风景也好，双廊古镇在海东。说实话<span class="hl-tip">大理周边古镇商业化都重，基本是商业街，别期望太高</span>。各古镇差别不大，主要是看洱海的角度不同。</p>
-          <p>大理古城比较特殊，不靠洱海，商业街加酒吧街，热闹，也算地标。各古镇卖的东西大同小异，体验差距不大，差在自然景色各自不同。</p>
-          <p><span class="hl-rec">古镇里我格外推荐<mark class="key">巍山古镇</mark>。</span>不靠洱海，但古朴，街巷老，不少旅居的人开小店。我们下午饭点儿去的，正好看到很多旅居的人在吃饭，很惬意。</p>
-          <p>傍晚能看到本地人在门口吃饭、慢生活，氛围好。入口有格调的咖啡厅、酒吧，夕阳、古树、院子，景致舒服。</p>
-        </section>
-
-        <section class="block" aria-label="饮品与酒吧">
-          <p>云南的网红奶茶店<mark class="key">象子茶铺</mark>。其中的牛油果酸奶巴旦木我喝过几次，口感不错，<span class="hl-rec">可以试试</span>，<span class="hl-tip">店里点会便宜，外卖好像要贵一些</span>。</p>
-          <p>大理古城里的<mark class="key">大理公社</mark>是网红酒吧，抖音上很火，我路过觉得里面吵，没进，感兴趣的自己去看。</p>
-        </section>
-
-        <section class="block" aria-label="备忘与环湖">
-          <p>丽江方面：<mark class="key">氧气瓶</mark><span class="hl-tip">看身体情况买，轻微高反一般不用太紧张</span>，我全程没用。当时玉龙雪山天气不好、雪化得厉害，我就没去。</p>
-          <p>洱海分海东、海西，<span class="hl-rec">我更建议环湖玩一圈</span>。<span class="hl-tip">海东适合租续航百公里以上的长途电动车；海西以生态廊道为主，只能租园内电动车或自行车慢慢玩</span>。</p>
-          <p><mark class="key">丽江千古情</mark>我没看，这类演出风格差不多，<span class="hl-tip">看过同类的可以不去</span>；<span class="hl-rec">没接触过实景演出又感兴趣的可以去。去了不会亏</span>，<span class="hl-tip">可以买个中级（为什么是中级呢，因为他的座位分区名称起步就是 vip，我晕）的价位，抖音什么的也会便宜一些吧</span>。</p>
-        </section>
-      </div>
-
-      <div class="chapter">
-        <h2>昆明</h2>
-
-        <section class="block" aria-label="昆明随笔">
-          <p>昆明没怎么转悠。<span class="hl-rec"><mark class="key">捞鱼河公园</mark>看日落很不错，值得去</span>，如果去的话还可以去斗南花卉市场，基本上一个方向。蓝花楹城里到处都能碰见，<span class="hl-tip">不必为打卡专门跑<mark class="key">教场路</mark></span>；五月底还有没有，要看当年花期。<span class="hl-tip">教场路一带也有涂装特别的公交、路边小摊</span>，<span class="hl-rec">顺路逛逛也行</span>。但是要注意，路很堵哦。我们当时住在顺城清真寺旁边的民宿里，离市中心很近。云南博物馆可以一去，美团上找讲解预约团。两个多小时，性价比很高，体验很不错！</p>
-        </section>
-      </div>
-
-      <div class="chapter">
-        <h2>旅途相册</h2>
-        <section class="block" aria-label="照片集">
-          <p style="margin-top: 0; margin-bottom: 1.1rem; font-size: 0.95rem; color: var(--muted);">点击下方照片可放大预览</p>
-          <ul class="photo-gallery" id="photo-gallery"></ul>
-        </section>
-      </div>
-    </article>
-
-    <footer>手记整理 · 仅供分享</footer>
+  <div class="mobile-nav">
+    <a href="/">首页</a>
+    <a href="/#blog">文章</a>
+    <a href="/#projects">项目</a>
+    <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
   </div>
+
+  <main class="container">
+    <div class="article-layout">
+      <div class="article-main">
+        <article>
+          <div class="article-header">
+            <h1>🏔️ 丽江 · 大理 · 昆明 旅行手记</h1>
+            <div class="article-meta">📅 2024 年 5 月 · 云南之旅 · 全文约 8,000 字 · 37 张照片</div>
+          </div>
+
+          <div class="article-content">
+
+<!-- ============================================================
+     丽江
+     ============================================================ -->
+<h2 id="lijiang">丽江</h2>
+
+<h3 id="lijiang-overview">概览与住宿</h3>
+<p>这次丽江之行，逛了<strong>丽江古城</strong>、<strong>束河古镇</strong>等景点，也吃了当地特色、去了些小众地方，整体挺充实，简单记一下感受。</p>
+<p>住宿我们是随便找的民宿或酒店，不图窗外景色，主要是能住就行。当时一晚一百块左右，干净，也还行。感觉各家差别不大，刚去也不讲究这些。</p>
+
+<h3 id="lijiang-coffee">咖啡与观景</h3>
+<p>在丽江的山上，我们一开始没进古镇，只在附近转。山上有家<strong>印象庄园咖啡</strong>，咖啡种类多，还有不错的观景台，还有咖啡体验课。</p>
+<p>感觉在丽江、大理，各种咖啡店都可以看看，体验都不错，<span class="tag-rec">值得去一趟</span>。</p>
+
+<h3 id="lijiang-old-town">丽江古城与忠义市场</h3>
+<p>骑电动车就能到丽江古城，<span class="tag-tip">丽江古城区的路况不好，不建议打车</span>，骑车或者走路都很方便。</p>
+<p><strong>丽江古城</strong><span class="tag-rec">建议晚上去</span>。<strong>酒吧街</strong>人气旺，但比较吵，多是热闹的互动演唱，我逛了一圈没进去。</p>
+<p>古城里多是特色商铺、小吃店，卖云南本地小吃、手工艺品、文创，晚上逛氛围好，夜景也舒服。</p>
+<p>古城里还有家茶铺，<span class="tag-rec">性价比高，18 块能尝六种特色茶</span>，店员很热情，会讲茶叶知识。坐在街边茶摊，听着溪水流动、看花灯，隔壁酒吧有人唱歌，吹晚风、看花草夜景，喝茶挺放松。</p>
+<p><span class="tag-avoid">不建议在这买茶叶</span>：虽然好喝又便宜，但总担心买到手后货不对板；茶叶能喝出那么多风味，只怕也有些门道在里面。茶铺在《理想三旬2店》隔壁，<span class="tag-tip">尝尝就够了</span>。</p>
+<p>在古城买了件扎染衬衫，店里砍价后八十块，后来在外围小摊看到同款只要三四十，差价不小。想买手作可以多对比街边摊，不用急着下手，在云南到处能买到，<span class="tag-rec">小摊往往更划算</span>。</p>
+<p>离古城不远是<strong>忠义市场</strong>，本地市集，生鲜、小吃种类多。听说晚上还有夜市，我们没等到。晚上小吃车进场时场面挺壮观，长长一排慢慢进市场。市场和丽江古城连通，可以一路逛过去，沿途不少装修精致的民宿，拍照也好看。</p>
+
+<h3 id="lijiang-jinshan">日照金山与玉湖龙女湖</h3>
+<p>我们晚上租了车，准备第二天早上去看<strong>日照金山</strong>。去的是<strong>东巴谷</strong>对面一片区域里的四号湖（地图上能搜到，也是小红书等常推的位置；<span class="tag-tip">强调一下，不在东巴谷景区内</span>）。</p>
+<p>天冷，我们把车开到湖边在车里等，也舒服——这时候有车的好处就明显了，暖和又避雨。</p>
+<p>我们等到八点多没看到，天气太差，多云又下雨。<span class="tag-tip">其实日出时间一过就可以换地方了，再等也难</span>。<span class="tag-tip">各种软件也有预测日照金山的概率，可以提前看一下</span>。</p>
+<p>之后去了山里的<strong>玉湖村</strong>，下着小雨，路上不冷不热。村子依山而建，车能开到半山腰，村子中间有观光车停车场。我们停好车先徒步在村里逛；早上不热，阴雨绵绵，很舒服，<span class="tag-rec">推荐七八点去</span>。</p>
+<p>我们顺着指示牌一路走到<strong>龙女湖</strong>。湖边有马场，适合拍照打卡，我没骑马，贵也不太有兴趣。龙女湖不大，但去了有种那拉提、瑞士那种青山绿水加蓝天的感觉，氛围不错。</p>
+<p>马场对面有咖啡厅，可以上楼顶或到草坪里拍照。我们不到九点到的，还没营业，直接进去拍了。<span class="tag-tip">想去的也可以早点去，人少更有感觉</span>。</p>
+
+<h3 id="lijiang-baisha">白沙与束河</h3>
+<p>还去了<strong>白沙古镇</strong>，我们没进古镇里面，直接去了咖啡店。在白沙村里——注意不是古镇里，是村子里。村里有很多民宿，基本上躺在床上就能看到雪山，就是有些贵，可以自己权衡。</p>
+<p>去了网红店<strong>且野茶叙咖啡店</strong>，店员很热情，人很好。可以点杯咖啡或者一壶茶慢慢喝。环境好，有露台、围炉小景和观景天台，适合拍照。店员热情，还能下棋聊天，放松不错。<span class="tag-rec">建议下午去，待到傍晚看夜景更好</span>。</p>
+<p>借了店里的相机拍了很满意的照片；店里可能没有读卡器，需要自己解决怎么传到手机的问题。也是排出了人生照片！</p>
+<p>行程里还去了<strong>束河古镇</strong>，<span class="tag-tip">风景中规中矩，内容比较单一，本质还是商业街</span>。</p>
+<p>我们中途换民宿住进束河，古镇里民宿装修多有古风。<span class="tag-tip">订民宿要看清宣传，有的夸大，比如写能看雪山其实基本看不到，最好实地看过再订</span>。</p>
+<p>我们还自驾去了<strong>龙门镖局</strong>取景地，<span class="tag-tip">现在比较荒废，没太多可玩，打卡拍照即可，不感兴趣可以不去</span>。</p>
+
+<h3 id="lijiang-food">丽江吃喝</h3>
+<p>在丽江古城，我们吃饭是在古城外找到一家不错的本地菜馆——<strong>清真园</strong>。隔壁有家网红家常菜（叫昌什么的）排队很长，<span class="tag-rec">清真园性价比更高还不用排队，推荐！</span></p>
+<p>地道的云南味，<strong>老奶洋芋</strong><span class="tag-rec">必点</span>，软糯、酸辣下饭。我们去了两次，几道特色菜配米饭，地道，几乎没踩雷。但是云南的<span class="tag-avoid">牛干巴慎点</span>，可能吃不惯。<span class="tag-tip">云南菜整体偏酸辣，吃多了有些腻</span>。</p>
+<p>还有到处能见到的<strong>昭通小肉串</strong>（清真的），云南很多地方都有，我们在去束河的路上吃的，好吃，<span class="tag-rec">那个牛肉小串儿非常不错</span>，其他的看着点，主要是肉很新鲜，云南的牛肉都很不错。<span class="tag-avoid">当地 V8 啤酒、风花雪月啤酒我觉得都一般</span>；有个<strong>见手青啤酒</strong><span class="tag-rec">味道特别，可以尝一下</span>。</p>
+
+<hr />
+
+<!-- ============================================================
+     大理
+     ============================================================ -->
+<h2 id="dali">大理</h2>
+
+<h3 id="dali-transport">交通与住宿</h3>
+<p>坐高铁到大理。听说丽江到大理有一趟<strong>观景小火车</strong>，全程大约三小时，沿途风景好。我们时间紧没坐，<span class="tag-rec">时间宽裕可以试试</span>，网上实拍不少，确实漂亮。</p>
+<p>到大理后我们直接住在洱海边的<strong>小关邑</strong>。这边有不少性价比高的海景酒店，淡季一晚一百元左右，<span class="tag-tip">好像美团会贵一些，线下会便宜一些</span>。</p>
+<p>一开始住的附近<strong>滇美吾安酒店</strong>，还可以，能洗衣服，离洱海很近，步行几十米到一百米能到海边，看日出日落都方便。</p>
+<p><span class="tag-rec">我更推荐这边的海景民宿</span>，后来住的 <strong>joyLand</strong> 就很好。店名里的 joy 是店家小狗的名字，环境温馨。正经海景房，标价二百五一晚，房间带<strong>180 度全景落地窗</strong>，离洱海十几米，躺床上能等日出。</p>
+<p><span class="tag-tip">老板说他们价格不会变，美团价格会乱动</span>，大概一晚 250 左右。我住了一周多，配置全，大浴缸、卫生间也宽敞，整体满意。</p>
+
+<h3 id="dali-food">大理吃喝</h3>
+<p>我住的是回民村一带，周边餐饮多是清真。当地<strong>罐罐米线</strong>、<strong>饵丝</strong>，烧烤都很多，饵丝是米做的特色小吃，<span class="tag-tip">我个人不太吃得惯，花十几块尝一次就行</span>。</p>
+<p>还有酸汤牛肉火锅、柴火鸡，随便找家小店味道多半不差。大理古城巷子里有家<strong>回味柴坊柴火鸡</strong><span class="tag-rec">我觉得非常好吃</span>，偏西北口味。我们晚上去的，人非常多，生意很火爆。位置在大理古镇巷子里哦，需要绕一绕。</p>
+<p>还有一些傣味儿手抓饭，我感觉大差不差，我们去的一家大理古镇附近的<strong>金米粒</strong><span class="tag-rec">还不错，烤鸡很入味儿，相比吃过的另一家要好很多</span>。</p>
+<p>还有小关邑附近的陶味思罐罐米线店，我们没吃米线，买了炒菜的团购，<span class="tag-rec">炒菜很正宗，值得推荐</span>。<span class="tag-avoid">小关邑附近漾濞傣味烧烤：亲测踩雷，吃完全员拉肚子，千万不要去！</span></p>
+
+<h3 id="dali-towns">古镇与洱海廊道</h3>
+<p>大理周边古镇多，<strong>双廊</strong>、<strong>喜洲</strong>、<strong>巍山</strong>和最有名的<strong>大理古城</strong>我们都开车去了。</p>
+<p>结合体验，路线等可以这样做：<span class="tag-rec">住海西<strong>小关邑村</strong>一带，紧挨<strong>洱海生态廊道</strong>起点，早上出门，不出门看日出都方便</span>。</p>
+<p>其中生态廊道全长四十多公里，管得严，<span class="tag-tip">外来电动车、摩托车不能进，只能租园区里的电动车，限速十五公里；自行车可以自由骑</span>。</p>
+<p><span class="tag-rec">结伴的话我建议租<strong>双人观光电动车</strong>，沿廊道走，一步一景，累了街边小店歇脚。找个咖啡店坐坐，看看人，看看景，体验很棒。</span><span class="tag-rec">推荐mowa莫瓦咖啡，免费坐二楼、三楼观景位，无需消费就能俯瞰洱海，傍晚时分在这里看日落，视野绝佳。</span></p>
+<p><span class="tag-rec">如果天气不好，可以去龙尾关遗址，大理本地居民生活聚居地，有烟火气，安静舒适。</span></p>
+<p>廊道能一路到喜洲古镇，喜洲的稻田和麦田很出名，但是进去拍照要花钱……就是个打卡的地方。但是环境非常不错，靠水的地方，很舒服！生态廊道前半段网红打卡地多、景精致；后半段更生活化，市井烟火足，但要骑二十多公里才到。</p>
+<p><strong>洱海公园</strong><span class="tag-rec">也值得去</span>，在廊道反方向，依山而建。我骑电动车上山，在山顶看了日落，<span class="tag-rec">值得一看</span>。不过他并不是正面看日落的位置，如果想要正面看日落，需要到海东的某个位置。我是本来要去的，结果导航找不到路了。<span class="tag-tip">街上的共享电动车不能骑到滨海大道，切记！</span></p>
+<p>洱海<strong>海东</strong>风景也好，双廊古镇在海东。说实话<span class="tag-tip">大理周边古镇商业化都重，基本是商业街，别期望太高</span>。各古镇差别不大，主要是看洱海的角度不同。</p>
+<p>大理古城比较特殊，不靠洱海，商业街加酒吧街，热闹，也算地标。各古镇卖的东西大同小异，体验差距不大，差在自然景色各自不同。</p>
+<p><span class="tag-rec">古镇里我格外推荐<strong>巍山古镇</strong>。</span>不靠洱海，但古朴，街巷老，不少旅居的人开小店。我们下午饭点儿去的，正好看到很多旅居的人在吃饭，很惬意。傍晚能看到本地人在门口吃饭、慢生活，氛围好。入口有格调的咖啡厅、酒吧，夕阳、古树、院子，景致舒服。</p>
+
+<h3 id="dali-drinks">饮品与酒吧</h3>
+<p>云南的网红奶茶店<strong>象子茶铺</strong>，其中的牛油果酸奶巴旦木我喝过几次，口感不错，<span class="tag-rec">可以试试</span>，<span class="tag-tip">店里点会便宜，外卖好像要贵一些</span>。</p>
+<p>大理古城里的<strong>大理公社</strong>是网红酒吧，抖音上很火，我路过觉得里面吵，没进，感兴趣的自己去看。</p>
+
+<h3 id="dali-tips">备忘与环湖</h3>
+<p>丽江方面：<strong>氧气瓶</strong><span class="tag-tip">看身体情况买，轻微高反一般不用太紧张</span>，我全程没用。当时玉龙雪山天气不好、雪化得厉害，我就没去。</p>
+<p>洱海分海东、海西，<span class="tag-rec">我更建议环湖玩一圈</span>。<span class="tag-tip">海东适合租续航百公里以上的长途电动车；海西以生态廊道为主，只能租园内电动车或自行车慢慢玩</span>。</p>
+<p><strong>丽江千古情</strong>我没看，这类演出风格差不多，<span class="tag-tip">看过同类的可以不去</span>；<span class="tag-rec">没接触过实景演出又感兴趣的可以一去，去了不会亏</span>。<span class="tag-tip">可以买个中级（为什么是中级呢，因为他的座位分区名称起步就是 vip……）的价位，抖音什么的也会便宜一些</span>。</p>
+
+<hr />
+
+<!-- ============================================================
+     昆明
+     ============================================================ -->
+<h2 id="kunming">昆明</h2>
+<p>昆明没怎么转悠。<span class="tag-rec"><strong>捞鱼河公园</strong>看日落很不错，值得去</span>，如果去的话还可以去斗南花卉市场，基本上一个方向。蓝花楹城里到处都能碰见，<span class="tag-tip">不必为打卡专门跑<strong>教场路</strong></span>；五月底还有没有，要看当年花期。<span class="tag-tip">教场路一带也有涂装特别的公交、路边小摊</span>，<span class="tag-rec">顺路逛逛也行</span>。但是要注意，路很堵哦。我们当时住在顺城清真寺旁边的民宿里，离市中心很近。云南博物馆可以一去，美团上找讲解预约团。两个多小时，性价比很高，体验很不错！</p>
+
+<hr />
+
+<!-- ============================================================
+     旅途相册
+     ============================================================ -->
+<h2 id="gallery">旅途相册</h2>
+<p style="margin-bottom: 1rem; color: var(--text-muted);">37 张照片记录这一路的风景与日常，点击可放大预览。</p>
+
+<div class="yunnan-gallery">
+  <ul class="photo-gallery" id="photo-gallery"></ul>
+</div>
+
+          </div>
+        </article>
+      </div>
+
+      <aside class="article-sidebar">
+        <nav class="toc">
+          <div class="toc-title">📖 目录</div>
+          <ol>
+            <li><a href="#lijiang">丽江</a>
+              <ol>
+                <li><a href="#lijiang-overview">概览与住宿</a></li>
+                <li><a href="#lijiang-coffee">咖啡与观景</a></li>
+                <li><a href="#lijiang-old-town">丽江古城与忠义市场</a></li>
+                <li><a href="#lijiang-jinshan">日照金山与玉湖龙女湖</a></li>
+                <li><a href="#lijiang-baisha">白沙与束河</a></li>
+                <li><a href="#lijiang-food">丽江吃喝</a></li>
+              </ol>
+            </li>
+            <li><a href="#dali">大理</a>
+              <ol>
+                <li><a href="#dali-transport">交通与住宿</a></li>
+                <li><a href="#dali-food">大理吃喝</a></li>
+                <li><a href="#dali-towns">古镇与洱海廊道</a></li>
+                <li><a href="#dali-drinks">饮品与酒吧</a></li>
+                <li><a href="#dali-tips">备忘与环湖</a></li>
+              </ol>
+            </li>
+            <li><a href="#kunming">昆明</a></li>
+            <li><a href="#gallery">旅途相册</a></li>
+          </ol>
+        </nav>
+      </aside>
+    </div>
+  </main>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片预览" hidden>
     <button type="button" class="lightbox-close" id="lightbox-close" aria-label="关闭预览">×</button>
@@ -604,14 +189,240 @@
         <button type="button" class="lightbox-half lightbox-half--next" id="lightbox-half-next" aria-label="下一张（点击大图右侧）"></button>
       </div>
       <p class="lightbox-caption" id="lightbox-caption"></p>
-      <p class="lightbox-hint">按 Esc 关闭 · 左右键或点击大图左/右半边切换</p>
+      <p class="lightbox-hint">按 Esc 关闭 · 左右键或点击图片左/右半边切换</p>
     </div>
   </div>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>☀️ 九日 · 用创意和代码探索世界</p>
+      <p class="footer-meta">Built with ❤️ · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+
+  <style>
+    /* 高亮标记 */
+    .tag-rec {
+      display: inline;
+      font-weight: 500;
+      background: rgba(7, 193, 96, 0.12);
+      border: 1px solid rgba(7, 193, 96, 0.35);
+      color: #1b5e20;
+      padding: 0.08em 0.35em;
+      border-radius: 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .tag-avoid {
+      display: inline;
+      font-weight: 500;
+      background: rgba(211, 47, 47, 0.09);
+      border: 1px solid rgba(211, 47, 47, 0.3);
+      color: #7f1d1d;
+      padding: 0.08em 0.35em;
+      border-radius: 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .tag-tip {
+      display: inline;
+      font-weight: 500;
+      background: rgba(25, 118, 210, 0.08);
+      border: 1px solid rgba(25, 118, 210, 0.28);
+      color: #0d3a66;
+      padding: 0.08em 0.35em;
+      border-radius: 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    /* 照片瀑布流 */
+    .yunnan-gallery {
+      margin: 1.5rem 0;
+    }
+    .photo-gallery {
+      column-width: 10rem;
+      column-gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    @media (min-width: 520px) {
+      .photo-gallery { column-width: 11.5rem; }
+    }
+    .photo-card {
+      margin: 0 0 0.9rem;
+      padding: 0;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e8ecf0;
+      transition: box-shadow 0.2s ease;
+    }
+    .photo-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .photo-card button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: transparent;
+      cursor: zoom-in;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+    }
+    .photo-card .thumb-wrap {
+      display: block;
+      background: #f0f0f0;
+      line-height: 0;
+    }
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      display: block;
+    }
+    .photo-card figcaption {
+      padding: 0.5rem 0.6rem 0.6rem;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #666;
+      border-top: 1px solid #eee;
+    }
+
+    /* 灯箱 */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(20, 18, 16, 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+    }
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-inner {
+      position: relative;
+      max-width: min(94vw, 54rem);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .lightbox-img-stage {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      line-height: 0;
+    }
+    .lightbox-img-stage img {
+      max-width: 100%;
+      max-height: min(76vh, 800px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      display: block;
+    }
+    .lightbox-half {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      border: none;
+      background: transparent;
+      cursor: w-resize;
+      z-index: 1;
+    }
+    .lightbox-half--prev { left: 0; border-radius: 8px 0 0 8px; }
+    .lightbox-half--next { right: 0; border-radius: 0 8px 8px 0; cursor: e-resize; }
+    .lightbox-half:disabled { cursor: default; }
+    .lightbox-caption {
+      margin: 0;
+      max-width: 40rem;
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #e8e4de;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,252,247,0.15);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      z-index: 2;
+    }
+    .lightbox-close:hover { background: rgba(255,252,247,0.3); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.6rem;
+      height: 2.6rem;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,252,247,0.12);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      z-index: 2;
+    }
+    .lightbox-nav:hover { background: rgba(255,252,247,0.22); }
+    .lightbox-nav:disabled { opacity: 0.25; cursor: not-allowed; }
+    .lightbox-nav--prev { left: 0.25rem; }
+    .lightbox-nav--next { right: 0.25rem; }
+    @media (min-width: 720px) {
+      .lightbox-nav--prev { left: -3rem; }
+      .lightbox-nav--next { right: -3rem; }
+    }
+    .lightbox-hint {
+      margin: 0;
+      font-size: 0.7rem;
+      color: rgba(232,228,222,0.5);
+    }
+    body.lightbox-open { overflow: hidden; }
+  </style>
+
   <script>
     (function () {
-      /** 在此编辑每张照片的说明；src 需与 img 文件夹内文件名一致（注意大小写） */
-      var PLACEHOLDER = "云南旅行随手拍";
       var PHOTOS = [
         { src: "/img/IMG_4246.JPG", caption: "丽江古城里的 18 元茶铺" },
         { src: "/img/IMG_7203.jpg", caption: "白沙古镇附近的且野茶叙咖啡店里的一角" },
@@ -631,24 +442,24 @@
         { src: "/img/IMG_7822.jpg", caption: "双廊古镇的海边拍照点" },
         { src: "/img/IMG_7844.jpg", caption: "双廊古镇的海边景色" },
         { src: "/img/IMG_7893.jpg", caption: "洱海日常" },
-        { src: "/img/IMG_7967.jpg", caption: "风花雪月啤酒（很一般的啤酒）配洱海海东看日落" },
-        { src: "/img/IMG_7994.jpg", caption: "洱海日出，就在小关邑的海边一棵大树旁"},
+        { src: "/img/IMG_7967.jpg", caption: "风花雪月啤酒配洱海海东看日落" },
+        { src: "/img/IMG_7994.jpg", caption: "洱海日出，小关邑海边一棵大树旁" },
         { src: "/img/IMG_8004.jpg", caption: "傣味儿手抓饭（味道一般）" },
         { src: "/img/IMG_8026.jpg", caption: "巍山古镇街景" },
-        { src: "/img/IMG_8082.jpg", caption: "三月街，大理的一个大大大集市，每周一次还是怎么样来着，反正有时间限制，不是每天都有哦" },
-        { src: "/img/IMG_8088.jpg", caption: "喜洲古镇海边的一家咖啡店内的景色" },
+        { src: "/img/IMG_8082.jpg", caption: "三月街——大理的超级大集市，每周一次，有时间限制" },
+        { src: "/img/IMG_8088.jpg", caption: "喜洲古镇海边一家咖啡店内的景色" },
         { src: "/img/IMG_8129.jpg", caption: "大理古镇的回味柴氏柴火鸡" },
         { src: "/img/IMG_8151.jpg", caption: "洱海日常" },
         { src: "/img/IMG_8229.jpg", caption: "小关邑内的柴火鸡" },
         { src: "/img/IMG_8233.jpg", caption: "洱海日常丁达尔效应" },
         { src: "/img/IMG_8269.jpg", caption: "另一家手抓饭" },
-        { src: "/img/IMG_8303.jpg", caption: "昆明顺城清真寺旁边的一家马帮吃鸡的店" },
+        { src: "/img/IMG_8303.jpg", caption: "昆明顺城清真寺旁边的马帮吃鸡" },
         { src: "/img/IMG_8323.jpg", caption: "昆明捞鱼河湿地公园一角" },
         { src: "/img/IMG_8395.jpg", caption: "昆明捞鱼河湿地公园日落" },
         { src: "/img/IMG_8446.jpg", caption: "昆明的花" },
         { src: "/img/IMG_8457.jpg", caption: "昆明的花" },
-        { src: "/img/IMG_8481.jpg", caption: "昆明的牌坊和月亮，主街的" },
-        { src: "/img/IMG_8487.jpg", caption: "昆明的春暖花开（酒吧，牌子好看就拍了）" },
+        { src: "/img/IMG_8481.jpg", caption: "昆明的牌坊和月亮" },
+        { src: "/img/IMG_8487.jpg", caption: "昆明的春暖花开（酒吧，牌子好看）" },
         { src: "/img/IMG_8493.jpg", caption: "昆明的花" }
       ];
 
@@ -677,20 +488,12 @@
           html +=
             '<li class="photo-card">' +
             '<figure>' +
-            '<button type="button" class="js-photo-open" data-index="' +
-            i +
-            '" aria-label="预览：照片 ' +
-            (i + 1) +
-            '">' +
-            '<span class="thumb-wrap"><img src="' +
-            escapeHtml(item.src) +
-            '" alt="" loading="lazy" decoding="async" /></span>' +
-            "</button>" +
-            "<figcaption>" +
-            escapeHtml(item.caption) +
-            "</figcaption>" +
-            "</figure>" +
-            "</li>";
+            '<button type="button" class="js-photo-open" data-index="' + i + '" aria-label="预览：照片 ' + (i + 1) + '">' +
+            '<span class="thumb-wrap"><img src="' + escapeHtml(item.src) + '" alt="" loading="lazy" decoding="async" /></span>' +
+            '</button>' +
+            '<figcaption>' + escapeHtml(item.caption) + '</figcaption>' +
+            '</figure>' +
+            '</li>';
         }
         galleryEl.innerHTML = html;
       }
@@ -740,46 +543,26 @@
       });
 
       btnClose.addEventListener("click", closeLightbox);
-      btnPrev.addEventListener("click", function () {
-        showAdjacent(-1);
-      });
-      btnNext.addEventListener("click", function () {
-        showAdjacent(1);
-      });
-
-      btnHalfPrev.addEventListener("click", function (e) {
-        e.stopPropagation();
-        showAdjacent(-1);
-      });
-      btnHalfNext.addEventListener("click", function (e) {
-        e.stopPropagation();
-        showAdjacent(1);
-      });
+      btnPrev.addEventListener("click", function () { showAdjacent(-1); });
+      btnNext.addEventListener("click", function () { showAdjacent(1); });
+      btnHalfPrev.addEventListener("click", function (e) { e.stopPropagation(); showAdjacent(-1); });
+      btnHalfNext.addEventListener("click", function (e) { e.stopPropagation(); showAdjacent(1); });
 
       lightbox.addEventListener("click", function (e) {
         if (e.target === lightbox) closeLightbox();
       });
-
-      lightboxInner.addEventListener("click", function (e) {
-        e.stopPropagation();
-      });
+      lightboxInner.addEventListener("click", function (e) { e.stopPropagation(); });
 
       document.addEventListener("keydown", function (e) {
         if (!lightbox.classList.contains("is-open")) return;
-        if (e.key === "Escape") {
-          e.preventDefault();
-          closeLightbox();
-        } else if (e.key === "ArrowLeft") {
-          e.preventDefault();
-          showAdjacent(-1);
-        } else if (e.key === "ArrowRight") {
-          e.preventDefault();
-          showAdjacent(1);
-        }
+        if (e.key === "Escape") { e.preventDefault(); closeLightbox(); }
+        else if (e.key === "ArrowLeft") { e.preventDefault(); showAdjacent(-1); }
+        else if (e.key === "ArrowRight") { e.preventDefault(); showAdjacent(1); }
       });
 
       renderGallery();
     })();
   </script>
+
 </body>
 </html>
