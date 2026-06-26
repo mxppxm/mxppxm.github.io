@@ -845,6 +845,7 @@ body {
   background: #F8FFF9;
   color: #555;
   border-radius: 0 6px 6px 0;
+  max-width: 100%;
 }
 .article-content blockquote p {
   margin: 4px 0;
@@ -866,6 +867,7 @@ body {
   padding: 16px;
   margin: 16px 0 20px 0;
   overflow-x: auto;
+  max-width: 100%;
 }
 .article-content pre code {
   background: none;
