@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -888,9 +889,12 @@ body {
   border-collapse: collapse;
   margin: 16px 0 20px 0;
   font-size: 14px;
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+}
+
+.article-content th,
+.article-content td {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .article-content th {
