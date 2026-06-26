@@ -1063,6 +1063,15 @@ body {
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
 
+  .article-content > * {
+    max-width: 100%;
+  }
+
+  .article-content pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
   .site-nav a { display: none; }
   .mobile-menu-btn { display: block; }
   .mobile-nav { display: block; }
