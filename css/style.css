@@ -1037,16 +1037,17 @@ body {
     padding: 14px 16px;
   }
   .article-sidebar .toc ol {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 12px;
+    padding: 0;
+    display: block;
   }
   .article-sidebar .toc ol li {
-    display: inline;
-    margin: 0;
+    display: list-item;
+    margin: 4px 0;
+    font-size: 13px;
   }
-  .article-sidebar .toc ol li::before {
-    content: counter(toc-counter) ". ";
+  .article-sidebar .toc ol ol {
+    padding-left: 16px;
+    margin-top: 2px;
   }
 }
 
