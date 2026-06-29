@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 我给自己写了个 AI 记账助手 — 从灵感到踩坑再到上线 — 九日</title>
+  <meta name="description" content="一个前端工程师的 AI Skill 开发实录：如何用 Python 给自己的 AI 搭档注入记账灵魂，从正则翻车到预算自动跨月的踩坑全记录。">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-title">☀️ 九日</a>
+      <nav class="site-nav">
+        <a href="/">首页</a>
+        <a href="/#blog">文章</a>
+        <a href="/#projects">项目</a>
+        <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="/">首页</a>
+    <a href="/#blog">文章</a>
+    <a href="/#projects">项目</a>
+    <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <main class="container">
+    <div class="article-layout">
+      <div class="article-main">
+        <article>
+          <div class="article-header">
+            <h1>🤖 我给自己写了个 AI 记账助手 — 从灵感到踩坑再到上线</h1>
+            <div class="article-meta">📅 2026 年 6 月 29 日 · 🛠️ Skill 开发 · 约 3000 字</div>
+          </div>
+
+          <div class="article-content">
+<h1 id="ai">🤖 我给自己写了个 AI 记账助手 — 从灵感到踩坑再到上线</h1>
+<blockquote>
+<p>一个前端工程师的 AI Skill 开发实录：如何用 Python 给自己的 AI 搭档「注入灵魂」，让它学会帮你管钱。</p>
+</blockquote>
+<h2 id="_1">为什么会有这个想法？</h2>
+<p>事情要从某天深夜说起。</p>
+<p>我盯着银行 App 里一笔笔消费记录，陷入了沉思——这笔 30 块的「餐饮」到底是午饭还是咖啡？这笔「交通」是打车还是地铁？更关键的是，<strong>我明明设了每月 4000 的预算，每次都是在超支的边缘才后知后觉。</strong></p>
+<p>我需要一个记账工具，但我不想下载新 App，不想注册新账号，不想每次消费完还要打开另一个界面点半天。我想要的是——<strong>像跟朋友说「今天花了30买咖啡」一样自然地记账。</strong></p>
+<p>恰好在折腾 <a href="https://github.com/openclacky/clacky">Clacky</a> 这个 AI 平台，它支持自定义 Skill（技能），于是我想：<strong>为什么不给我的 AI 搭档装个「财务大脑」呢？</strong></p>
+<h2 id="_2">第一版：开干</h2>
+<p>思路很简单：解析自然语言 → 写入 CSV → 汇总统计。</p>
+<pre><code>用户说：今天支出30元买咖啡
+→ AI 解析出：日期=今天、类型=支出、金额=30、类别=餐饮
+→ 写入 ~/.clacky/skills/记账助手/记账本.csv
+→ 回复：已记录 ✅ 本月已支出 XXX 元
+</code></pre>
+<p>听起来很美好，对吧？结果一上手就翻车了。</p>
+<h2 id="_3">踩坑实录</h2>
+<h3 id="5000">🕳️ 坑一：「工资到账5000」到底算什么？</h3>
+<p>我的第一版用了三条正则依次匹配：</p>
+<pre><code class="language-python"># 🚫 错误的做法
+income_patterns = [
+    r'收入\s*(\d+(?:\.\d+)?)\s*元?\s*(.+)',
+    r'到账\s*(\d+(?:\.\d+)?)\s*元?\s*(.+)',
+    r'工资\s*(\d+(?:\.\d+)?)\s*元?\s*(.+)',
+]
+</code></pre>
+<p>结果「工资到账5000元」一进来，第三条匹配上了，<code>(.+)</code> 把「到账」吞进了类别字段。我收到的数据变成了：</p>
+<blockquote>
+<p>收入 5000元 — 类别：到账（❌）</p>
+</blockquote>
+<p>更离谱的是「工资5000到账」——匹配后类别变成了「到账」，好好的工资记录被打上了「到账」标签。</p>
+<p><strong>解决方案</strong>：抛弃顺序匹配，改用<strong>关键词加权法</strong>。数一数消息里收入关键词和支出关键词各出现几次，哪个多就归哪类。同时预设类别映射，出现「工资」自动归工资类、「打车」自动归交通类。</p>
+<pre><code class="language-python"># ✅ 正确的做法
+income_score = sum(1 for kw in INCOME_KEYWORDS if kw in message)
+expense_score = sum(1 for kw in EXPENSE_KEYWORDS if kw in message)
+type_ = '收入' if income_score &gt;= expense_score else '支出'
+</code></pre>
+<h3 id="50100">🕳️ 坑二：昨天花了50和前天花了100</h3>
+<p>用户说话是有时间感的。他们会说「昨天打车花了50」「前天吃饭花了120」「3月5号交房租」。</p>
+<p>但第一版只认 <code>datetime.now()</code>——<strong>所有记录都被打上当天的日期。</strong></p>
+<p>听起来是小问题？想想月末对账时的场景：</p>
+<blockquote>
+<p>「我明明记得25号交的房租啊，怎么账本上写着29号？」</p>
+</blockquote>
+<p><strong>解决方案</strong>：加了个 <code>parse_date()</code> 函数，支持昨天/前天/N天前/月日/标准日期格式的智能解析。</p>
+<pre><code class="language-python">昨天 → 2026-06-28
+前天 → 2026-06-27
+3月5号 → 2026-03-05
+5天前 → 2026-06-24
+2024-01-15 → 2024-01-15
+（不写日期）→ 今天
+</code></pre>
+<h3 id="30">🕳️ 坑三：「打车」是交通还是「花了30打车」</h3>
+<p>另一个有意思的问题：用户说「打车30元」，金额后面没有任何文字了，那备注怎么办？</p>
+<p>一开始备注是空的，用户一脸问号：「我花了30块，但备注是空的？」</p>
+<p><strong>解决方案</strong>：如果金额后面没文字，就把整条消息当备注。保留了原始语境，对账时一目了然。</p>
+<h3 id="_4">🕳️ 坑四：预算的「跨月革命」</h3>
+<p>设「下月预算 5000元」这个需求听起来简单，但实现起来有点绕：</p>
+<ul>
+<li>1月设了预算 4000</li>
+<li>1月又设了「下月预算 5000」</li>
+<li>2月来的时候，系统应该自动用 5000</li>
+<li>3月呢？回到 4000 还是保持 5000？</li>
+</ul>
+<p><strong>解决方案</strong>：在预算 JSON 文件里存一个 <code>budget_month</code> 字段，跨月自动应用 <code>next_month_budget</code>，并把它提升为新的 <code>monthly_budget</code>。这样用户只需要设一次下月预算，后续自动接管。</p>
+<h3 id="01-02-03">🕳️ 坑五：0.1 + 0.2 ≠ 0.3</h3>
+<p>经典的浮点数陷阱。如果用 <code>float</code> 记账，一个月下来可能有几分钱的对不上。</p>
+<p><strong>解决方案</strong>：全部改用 Python 的 <code>Decimal</code> 类型，金额存储为 <code>"30.00"</code> 字符串，计算时用 <code>Decimal</code> 保证精度。</p>
+<h2 id="_5">最终成果</h2>
+<p>折腾了一圈，最终得到的记账助手长这样：</p>
+<h3 id="_6">📝 怎么用</h3>
+<table>
+<thead>
+<tr>
+<th>你说</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>今天支出30元买咖啡</code></td>
+<td>→ 餐饮 30元 ✅</td>
+</tr>
+<tr>
+<td><code>工资到账5000</code></td>
+<td>→ 工资 5000元 ✅</td>
+</tr>
+<tr>
+<td><code>昨天打车花了50元</code></td>
+<td>→ 交通 50元，日期自动为昨天 ✅</td>
+</tr>
+<tr>
+<td><code>预算 5000元</code></td>
+<td>→ 本月预算设为 5000 ✅</td>
+</tr>
+<tr>
+<td><code>预算 6000元 下个月</code></td>
+<td>→ 下月自动切换 ✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">🧠 技术架构</h3>
+<pre><code>用户消息 → parse_message()
+           ├── 关键词加权 → 判断收支类型
+           ├── 提取金额（Decimal 精度）
+           ├── parse_date() → 解析日期
+           └── 关键词匹配 → 自动归类
+
+记账本（CSV） ← add_entry()
+     ↓
+月度统计 → 收入/支出/结余
+     ↓
+预算检查 → 70%提醒 / 90%告警 / 超支告警
+     ↓
+结构化响应 → handle() 返回 dict
+</code></pre>
+<h3 id="_8">⚙️ 一些设计决策</h3>
+<p><strong>为什么用 CSV 而不是 SQLite？</strong></p>
+<p>因为我需要<strong>人类可读</strong>。CSV 可以用 Excel 打开、可以 <code>cat</code> 查看、可以用 <code>grep</code> 搜索。对于个人记账来说，简单就是最好的。</p>
+<p><strong>7 类支出 + 4 类收入</strong></p>
+<table>
+<thead>
+<tr>
+<th>支出</th>
+<th>关键词举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>餐饮</td>
+<td>吃、饭、咖啡、奶茶、外卖、火锅…</td>
+</tr>
+<tr>
+<td>交通</td>
+<td>打车、地铁、公交、滴滴、加油…</td>
+</tr>
+<tr>
+<td>购物</td>
+<td>衣服、淘宝、京东、超市…</td>
+</tr>
+<tr>
+<td>娱乐</td>
+<td>电影、游戏、KTV、旅游…</td>
+</tr>
+<tr>
+<td>医疗</td>
+<td>看病、药、医院、体检…</td>
+</tr>
+<tr>
+<td>学习</td>
+<td>书、课程、培训…</td>
+</tr>
+<tr>
+<td>居住</td>
+<td>房租、水电、物业、网费…</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>收入</th>
+<th>关键词举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工资</td>
+<td>工资、薪水、月薪</td>
+</tr>
+<tr>
+<td>奖金</td>
+<td>奖金、年终、绩效</td>
+</tr>
+<tr>
+<td>兼职</td>
+<td>兼职、接单、外包</td>
+</tr>
+<tr>
+<td>投资</td>
+<td>理财、基金、股票、利息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">一点感悟</h2>
+<p>写这个 Skill 的过程，其实就是一个<strong>把模糊需求翻译成精确逻辑</strong>的过程。</p>
+<p>用户说「花了30」，背后藏着「支出」「今天」「30元」「不确定什么类别」四层信息。每一步解析都是一个小选择——猜对了用户爽，猜错了用户骂。</p>
+<p>但正是这些「猜」的过程，让我重新思考了一个问题：<strong>好的 AI 工具，不是让用户去适应机器的规则，而是让机器去适应人类的语言。</strong></p>
+<p>记账这个场景尤其如此。没人会在消费完的那一刻说「我要发起一笔金额为30.00元、类型为支出、类别为餐饮的交易」。人们说的是「哦对，今天买咖啡花了30」。</p>
+<p><strong>把「人话」翻译成「机话」，就是我这个 Skill 存在的意义。</strong></p>
+<blockquote>
+<p>附：<a href="https://github.com/mxppxm">记账助手.zip</a> 下载源码，开箱即用，配 Clacky 食用更佳 🍳</p>
+</blockquote>
+          </div>
+        </article>
+      </div>
+
+      <aside class="article-sidebar">
+        <nav class="toc"><div class="toc-title">📑 目录</div><ol><li style="margin-left:0px"><a href="#_1">为什么会有这个想法？</a></li>
+<li style="margin-left:0px"><a href="#_2">第一版：开干</a></li>
+<li style="margin-left:0px"><a href="#_3">踩坑实录</a></li>
+<li style="margin-left:16px"><a href="#5000">🕳️ 坑一：「工资到账5000」到底算什么？</a></li>
+<li style="margin-left:16px"><a href="#50100">🕳️ 坑二：昨天花了50和前天花了100</a></li>
+<li style="margin-left:16px"><a href="#30">🕳️ 坑三：「打车」是交通还是「花了30打车」</a></li>
+<li style="margin-left:16px"><a href="#_4">🕳️ 坑四：预算的「跨月革命」</a></li>
+<li style="margin-left:16px"><a href="#01-02-03">🕳️ 坑五：0.1 + 0.2 ≠ 0.3</a></li>
+<li style="margin-left:0px"><a href="#_5">最终成果</a></li>
+<li style="margin-left:16px"><a href="#_6">📝 怎么用</a></li>
+<li style="margin-left:16px"><a href="#_7">🧠 技术架构</a></li>
+<li style="margin-left:16px"><a href="#_8">⚙️ 一些设计决策</a></li>
+<li style="margin-left:0px"><a href="#_9">一点感悟</a></li></ol></nav>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>☀️ 九日 · 用创意和代码探索世界</p>
+      <p class="footer-meta">Built with ❤️ · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
