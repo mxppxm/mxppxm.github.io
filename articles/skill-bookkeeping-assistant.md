@@ -1,10 +1,10 @@
 # 🤖 记账助手 Skill：给你的 AI 搭档装个「财务大脑」
 
-> 一款为 Clacky AI 平台打造的记账技能——说人话就能记账，自动归类、月度统计、预算告警一条龙。
+> 一款 AI 记账技能——说人话就能记账，自动归类、月度统计、预算告警一条龙。
 
 ## 这是什么？
 
-**记账助手**是一个 Clacky AI Skill，让你的 AI 搭档学会管钱。
+一个 AI 技能，让你的 AI 搭档学会管钱。
 
 和它说话就像跟朋友聊天一样自然：
 
@@ -103,23 +103,18 @@ AI → ✅ 已记录：支出 30.00元 – 餐饮
 
 ## 快速开始
 
-### 1. 下载源码
+### 下载源码
 
 ```
-git clone https://github.com/mxppxm/clacky-skills.git
-cd clacky-skills/记账助手
+git clone https://github.com/mxppxm/ai-skills.git
+cd ai-skills/记账助手
 ```
 
-### 或者直接在网页上浏览
+### 安装
 
-👉 [github.com/mxppxm/clacky-skills](https://github.com/mxppxm/clacky-skills)
-```
+将 `记账助手.md` 和 `记账助手.py` 放入 AI 平台的技能目录，重启即可生效。
 
-### 2. 安装 Skill
-
-在 Clacky 中通过 `/skill-add` 或手动将 `记账助手.md` 和 `记账助手.py` 放入 `~/.clacky/skills/记账助手/`。
-
-### 3. 开记
+### 开记
 
 直接对你的 AI 搭档说人话：
 
@@ -139,14 +134,11 @@ cd clacky-skills/记账助手
 
 ## 技术栈
 
-- **语言**: Python 3
+- **语言**: Python 3（仅标准库，零第三方依赖）
 - **存储**: CSV（账本）+ JSON（预算配置）
 - **精度**: `decimal.Decimal` 防浮点误差
-- **依赖**: 仅 Python 标准库，零第三方依赖
 
 ---
 
-> 项目地址：[github.com/mxppxm/clacky-skills](https://github.com/mxppxm/clacky-skills) → [`记账助手/`](https://github.com/mxppxm/clacky-skills/tree/main/记账助手)  
-> 开箱即用，配 Clacky 食用更佳 🍳
->
-> 如果觉得有用，欢迎 Star ⭐ 支持～
+> 项目地址：[github.com/mxppxm/ai-skills](https://github.com/mxppxm/ai-skills) → [`记账助手/`](https://github.com/mxppxm/ai-skills/tree/main/记账助手)  
+> 开箱即用 🍳
