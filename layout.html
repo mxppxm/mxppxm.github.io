@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}} — 九日</title>
   <meta name="description" content="{{DESCRIPTION}}">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="{{OG_TITLE|default:TITLE}} — 九日">
+  <meta property="og:description" content="{{OG_DESCRIPTION|default:DESCRIPTION}}">
+  <meta property="og:url" content="{{OG_URL}}">
+  <meta property="og:type" content="{{PAGE_TYPE|default:article}}">
+  <meta property="og:image" content="{{OG_IMAGE|default:https://mxppxm.github.io/og-default.png}}">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{OG_TITLE|default:TITLE}} — 九日">
+  <meta name="twitter:description" content="{{OG_DESCRIPTION|default:DESCRIPTION}}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{OG_URL}}">
+
+  <!-- JSON-LD Article Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{DESCRIPTION}}",
+    "url": "{{OG_URL}}",
+    "datePublished": "{{PUBLISH_DATE_ISO}}",
+    "dateModified": "{{PUBLISH_DATE_ISO}}",
+    "author": {
+      "@type": "Person",
+      "name": "九日",
+      "url": "https://mxppxm.github.io"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "九日"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
