@@ -106,12 +106,13 @@ AI → ✅ 已记录：支出 30.00元 – 餐饮
 ### 1. 下载源码
 
 ```
-git clone https://github.com/mxppxm/clacky-bookkeeping.git
+git clone https://github.com/mxppxm/clacky-skills.git
+cd clacky-skills/记账助手
 ```
 
-### 或者下载 ZIP
+### 或者直接在网页上浏览
 
-[下载最新版](https://github.com/mxppxm/clacky-bookkeeping/archive/refs/heads/main.zip)
+👉 [github.com/mxppxm/clacky-skills](https://github.com/mxppxm/clacky-skills)
 ```
 
 ### 2. 安装 Skill
@@ -145,7 +146,7 @@ git clone https://github.com/mxppxm/clacky-bookkeeping.git
 
 ---
 
-> 项目地址：[github.com/mxppxm/clacky-bookkeeping](https://github.com/mxppxm/clacky-bookkeeping)  
+> 项目地址：[github.com/mxppxm/clacky-skills](https://github.com/mxppxm/clacky-skills) → [`记账助手/`](https://github.com/mxppxm/clacky-skills/tree/main/记账助手)  
 > 开箱即用，配 Clacky 食用更佳 🍳
 >
 > 如果觉得有用，欢迎 Star ⭐ 支持～
