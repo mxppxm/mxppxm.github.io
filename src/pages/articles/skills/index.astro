@@ -11,28 +11,29 @@ const articles = (await getCollection("articles"))
   title="🧰 Skill 工具箱"
   description="Clacky AI Skill 开发 — 九日"
 >
-  <section class="padding">
-    <h1 class="center-align">🧰 Skill 工具箱</h1>
-    <p class="center-align">Clacky AI Skill 开发笔记</p>
-
-    <div class="max" style="max-width: 800px; margin: 0 auto;">
-      {articles.map((article) => {
-        const slug = article.id.replace(/\.md$/, "");
-        const url = `/articles/${slug}/`;
-        return (
-          <article class="round fill margin bottom" style="cursor: pointer;" onclick={`location.href='${url}'`}>
-            <div class="padding">
-              <h5><a href={url}>{article.data.title}</a></h5>
-              <div class="small-text">
-                {article.data.date.toLocaleDateString("zh-CN", {
-                  year: "numeric", month: "long", day: "numeric",
-                })}
+  <div class="listing-page">
+    <div class="listing-inner">
+      <div class="listing-header">
+        <h1>🧰 Skill 工具箱</h1>
+        <p>Clacky AI Skill 开发笔记</p>
+      </div>
+      <div class="listing-grid">
+        {articles.map((article) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          return (
+            <article class="listing-card" onclick={`location.href='${url}'`}>
+              <div class="listing-card-date">
+                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
               </div>
-              <p class="small-text">{article.data.description}</p>
-            </div>
-          </article>
-        );
-      })}
+              <div class="listing-card-body">
+                <h3><a href={url}>{article.data.title}</a></h3>
+                <p>{article.data.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
-  </section>
+  </div>
 </BaseLayout>

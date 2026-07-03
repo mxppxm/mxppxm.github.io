@@ -6,26 +6,6 @@
   const container = document.getElementById('projects-grid');
   if (!container) return;
 
-  const LANG_COLORS = {
-    TypeScript: '#3178C6',
-    JavaScript: '#F7DF1E',
-    HTML: '#E34F26',
-    CSS: '#563D7C',
-    Python: '#3572A5',
-    Go: '#00ADD8',
-    Rust: '#DEA584',
-    Java: '#b07219',
-    Ruby: '#701516',
-    Swift: '#F05138',
-    Kotlin: '#A97BFF',
-    Vue: '#4FC08D',
-    Dart: '#00B4AB',
-    Shell: '#89E051',
-    C: '#555555',
-    'C++': '#f34b7d',
-    Lua: '#000080',
-  };
-
   // 尝试 sessionStorage 缓存（5 分钟）
   const CACHE_KEY = 'gh_projects';
   const cached = (() => {
@@ -97,19 +77,18 @@
   container.innerHTML = top6
     .map((repo) => {
       const lang = repo.language || '';
-      const color = LANG_COLORS[lang] || '#6e7681';
       const desc = repo.description || '暂无描述';
       const stars = repo.stargazers_count ?? 0;
       const emoji = emojiFor(repo.name);
 
       return `
     <a href="${repo.html_url}" target="_blank" rel="noopener" class="project-card">
-      <div class="project-card-top">
-        ${lang ? `<span class="project-lang" style="--lang-color: ${color}">${lang}</span>` : ''}
+      <div class="project-top">
+        ${lang ? `<span class="project-lang">${lang}</span>` : ''}
       </div>
       <h3>${emoji} ${repo.name}</h3>
       <p>${escHtml(desc)}</p>
-      <div class="project-card-footer">
+      <div class="project-meta">
         <span>⭐ ${stars}</span>
         <span>🔗 GitHub</span>
       </div>
