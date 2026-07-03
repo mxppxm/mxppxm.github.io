@@ -5,10 +5,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 const articles = (await getCollection("articles"))
   .filter((a) => a.data.tags.some((t) => t.includes("小说")))
   .sort((a, b) => {
-    // Sort by chapter number ascending (1→2→3...)
+    // Sort by chapter number descending (latest first: 7→6→5...)
     const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
     const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
-    return numA - numB;
+    return numB - numA;
   });
 ---
 
@@ -37,15 +37,14 @@ const articles = (await getCollection("articles"))
 
     <div class="listing-body">
       <div class="listing-grid">
-        {articles.map((article) => {
+        {articles.map((article, idx) => {
           const slug = article.id.replace(/\.md$/, "");
           const url = `/articles/${slug}/`;
           const chNum = parseInt(article.id.match(/chapter-(\d+)/)?.[1] || "0");
-          const isLast = chNum === articles.length;
           return (
             <article class="listing-card" onclick={`location.href='${url}'`}>
               <div class="listing-card-date">
-                {isLast ? <span style="color:var(--accent);font-weight:700;">最新</span> : `第${chNum}章`}
+                {idx === 0 ? <span style="color:var(--accent);font-weight:700;">最新</span> : `第${chNum}章`}
               </div>
               <div class="listing-card-body">
                 <h3><a href={url}>{article.data.title}</a></h3>
