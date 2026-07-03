@@ -45,28 +45,34 @@
   <link rel="stylesheet" href="/css/style.css">
   <style>
     /* Novel specific styles */
+    /* 页面顶部留出 fixed header 空间 */
+    .novel-page {
+      padding-top: 80px;
+    }
     .novel-header {
       text-align: center;
-      padding: 48px 24px 36px;
-      background: linear-gradient(135deg, #F0F4F8 0%, #FAFBFC 50%, #E8EDF2 100%);
-      border: 1px solid #d0d8e0;
+      padding: 56px 32px 44px;
+      background: linear-gradient(180deg, #FFF8F0 0%, #FFFBF7 40%, #FDF5EB 100%);
+      border: 1.5px solid #E8D5B7;
       border-radius: 16px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(60, 80, 100, 0.06);
+      box-shadow: 0 4px 24px rgba(139, 109, 69, 0.08);
     }
     .novel-header h1 {
       font-size: 2rem;
       margin-bottom: 8px;
-      color: var(--text, #1A1A2E);
+      color: #3D2E1E;
+      font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', serif;
     }
     .novel-header .subtitle {
-      color: var(--text-muted, #888);
-      font-size: 0.95rem;
+      color: #8B6D45;
+      font-size: 1rem;
+      font-weight: 500;
     }
     .novel-header .chapter-meta {
-      margin-top: 12px;
+      margin-top: 14px;
       font-size: 0.9rem;
-      color: var(--text-secondary, #555);
+      color: #A0896E;
     }
     .novel-body {
       max-width: 680px;
@@ -76,13 +82,14 @@
     .novel-body h1, .novel-body h2 {
       font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', serif;
       text-align: center;
-      color: var(--text, #1A1A2E);
+      color: #3D2E1E;
       margin: 48px 0 24px;
       font-weight: 500;
     }
     .novel-body h2 {
       font-size: 1.4rem;
       letter-spacing: 4px;
+      color: #6B4E2B;
     }
     .novel-body p {
       font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', serif;
@@ -90,15 +97,15 @@
       line-height: 2;
       text-indent: 2em;
       margin: 0;
-      color: var(--text, #1A1A2E);
+      color: #2C2416;
       letter-spacing: 0.02em;
     }
     .novel-body .chapter-end {
       text-align: center;
       margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid var(--border, #E8ECF0);
-      color: var(--text-muted, #888);
+      border-top: 1px solid #E8D5B7;
+      color: #A0896E;
       font-size: 0.9rem;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -107,13 +114,14 @@
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
     .novel-body .next-preview {
-      background: var(--bg, #F8F9FB);
+      background: #FFFBF4;
+      border: 1px solid #F0E0C8;
       border-radius: 12px;
       padding: 20px 24px;
       margin-top: 24px;
       text-align: center;
       font-style: italic;
-      color: var(--text-secondary, #555);
+      color: #8B6D45;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
     .novel-body .next-preview p {
@@ -149,7 +157,7 @@
     <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
   </div>
 
-  <main>
+  <main class="novel-page">
     <div class="container" style="max-width: 800px;">
       <div class="novel-header">
         <h1>📖 塞上初雪</h1>
@@ -280,10 +288,10 @@
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" style="border-top-color: #E8D5B7; background: #FFFBF7;">
     <div class="footer-inner">
-      <p>📖 《小宇的一生》 · AI 共创小说 · 每日更新</p>
-      <p class="footer-meta"><a href="/articles/novel/">查看全部章节 →</a></p>
+      <p style="color: #6B4E2B;">📖 《小宇的一生》 · AI 共创小说 · 每日更新</p>
+      <p class="footer-meta"><a href="/articles/novel/" style="color: #8B6D45;">查看全部章节 →</a></p>
     </div>
   </footer>
 </body>
