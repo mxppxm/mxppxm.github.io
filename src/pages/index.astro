@@ -7,7 +7,15 @@ const allArticles = (await getCollection("articles"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Always include the latest from each series, plus standalone articles
-const latestNovel = allArticles.find((a) => a.id.includes("novel-chapter"));
+// Sort novel by chapter number desc to get real latest
+const novelChapters = allArticles
+  .filter((a) => a.id.includes("novel-chapter"))
+  .sort((a, b) => {
+    const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
+    const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
+    return numB - numA;
+  });
+const latestNovel = novelChapters[0];
 const latestGold = allArticles.find((a) => a.id.includes("gold-daily"));
 const seriesIds = new Set([latestNovel?.id, latestGold?.id].filter(Boolean));
 
