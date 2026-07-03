@@ -13,18 +13,11 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content, headings } = await article.render();
 
-// Build TOC from headings (h2 + h3)
-interface TocItem {
-  depth: number;
-  text: string;
-  slug: string;
-}
+interface TocItem { depth: number; text: string; slug: string; }
 const toc: TocItem[] = headings
   .filter((h: { depth: number }) => h.depth <= 3)
   .map((h: { depth: number; text: string; slug: string }) => ({
-    depth: h.depth,
-    text: h.text,
-    slug: h.slug,
+    depth: h.depth, text: h.text, slug: h.slug,
   }));
 ---
 
@@ -34,15 +27,12 @@ const toc: TocItem[] = headings
 >
   <div class="article-page">
     <div class="article-layout">
-      <!-- Main content -->
       <div class="article-main">
         <header class="article-header">
           <h1>{article.data.title}</h1>
           <div class="article-meta">
             {article.data.date.toLocaleDateString("zh-CN", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
+              year: "numeric", month: "long", day: "numeric",
             })}
           </div>
           {article.data.tags.length > 0 && (
@@ -58,14 +48,13 @@ const toc: TocItem[] = headings
         </div>
       </div>
 
-      <!-- TOC sidebar -->
       {toc.length > 1 && (
         <aside class="article-sidebar">
           <nav class="toc" aria-label="目录">
             <div class="toc-title">目录</div>
             <ol>
               {toc.map((item) => (
-                <li style={item.depth === 3 ? "padding-left: 16px;" : ""}>
+                <li style={item.depth === 3 ? "padding-left: 18px;" : ""}>
                   <a href={`#${item.slug}`}>{item.text}</a>
                 </li>
               ))}
@@ -76,21 +65,3 @@ const toc: TocItem[] = headings
     </div>
   </div>
 </BaseLayout>
-
-<style>
-  /* Article-specific overrides that don't belong in global style.css */
-  .article-content :global(pre) {
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: #F4F5F7;
-  }
-  .article-content :global(img) {
-    border-radius: 10px;
-  }
-  .article-content :global(table) {
-    font-size: 14px;
-  }
-  .article-content :global(th) {
-    background: #F4F5F7;
-  }
-</style>
