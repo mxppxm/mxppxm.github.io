@@ -128,6 +128,42 @@
       text-indent: 0;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 680px;
+      margin: 0 auto 40px;
+      padding: 20px 24px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .chapter-nav a {
+      text-decoration: none;
+      color: #8B6D45;
+      font-size: 0.95rem;
+      padding: 10px 18px;
+      border: 1px solid #E8D5B7;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .chapter-nav a:hover {
+      background: #FFFBF4;
+      border-color: #C4A46C;
+      color: #6B4E2B;
+    }
+    .chapter-nav .nav-toc {
+      font-weight: 600;
+      background: #FFF8F0;
+    }
+    .chapter-nav .nav-disabled {
+      color: #C4B99A;
+      font-size: 0.9rem;
+      padding: 10px 18px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -285,6 +321,11 @@
           </div>
         </div>
       </article>
+        <nav class="chapter-nav">
+          <span class="nav-prev nav-disabled">已经是第一章</span>
+          <a href="/articles/novel/" class="nav-toc">📖 目录</a>
+          <a href="/articles/novel-chapter-002.html" class="nav-next">第二章：槐树下的声音 →</a>
+        </nav>
     </div>
   </main>
 

@@ -38,18 +38,20 @@
   <style>
     .novel-header {
       text-align: center;
-      padding: 48px 24px 36px;
-      background: linear-gradient(135deg, #F0F4F8 0%, #FAFBFC 50%, #E8EDF2 100%);
-      border: 1px solid #d0d8e0;
+      padding: 56px 32px 44px;
+      background: linear-gradient(180deg, #FFF8F0 0%, #FFFBF7 40%, #FDF5EB 100%);
+      border: 1.5px solid #E8D5B7;
       border-radius: 16px;
       margin-bottom: 40px;
+      box-shadow: 0 4px 24px rgba(139, 109, 69, 0.08);
     }
     .novel-header h1 {
       font-size: 2rem;
       margin-bottom: 12px;
+      color: #3D2E1E;
     }
     .novel-header .subtitle {
-      color: var(--text-muted, #888);
+      color: #8B6D45;
       font-size: 0.95rem;
       max-width: 480px;
       margin: 0 auto;
@@ -67,21 +69,22 @@
       align-items: center;
       gap: 12px;
       padding: 16px 20px;
-      background: var(--card, #FFF);
-      border: 1px solid var(--border, #E8ECF0);
-      border-radius: var(--radius, 12px);
+      background: #FFFBF7;
+      border: 1px solid #E8D5B7;
+      border-radius: 12px;
       text-decoration: none;
-      color: var(--text, #1A1A2E);
+      color: #3D2E1E;
       transition: all 0.2s;
     }
     .novel-chapter-list a:hover {
-      border-color: var(--text-muted, #888);
-      box-shadow: var(--shadow, 0 4px 16px rgba(0,0,0,0.06));
+      border-color: #C4A46C;
+      box-shadow: 0 4px 16px rgba(139, 109, 69, 0.1);
+      background: #FFF8F0;
     }
     .chapter-num {
       font-size: 1.3rem;
       font-weight: 600;
-      color: var(--text-muted, #888);
+      color: #8B6D45;
       min-width: 48px;
     }
     .chapter-info {
@@ -94,22 +97,27 @@
     }
     .chapter-meta {
       font-size: 0.85rem;
-      color: var(--text-muted, #888);
+      color: #A0896E;
     }
     .chapter-badge {
       font-size: 0.75rem;
       padding: 2px 10px;
       border-radius: 99px;
-      background: var(--green-light, #E8F8EE);
-      color: var(--green-dark, #06AD56);
+      background: #F0E0C8;
+      color: #8B6D45;
       font-weight: 500;
+    }
+    .chapter-badge.new {
+      background: #E8D5B7;
+      color: #6B4E2B;
+      font-weight: 600;
     }
     .novel-footer {
       text-align: center;
       margin-top: 48px;
       padding: 24px;
-      border-top: 1px solid var(--border, #E8ECF0);
-      color: var(--text-muted, #888);
+      border-top: 1px solid #E8D5B7;
+      color: #A0896E;
       font-size: 0.9rem;
     }
   </style>
@@ -159,21 +167,66 @@
               <div class="chapter-title">塞上初雪</div>
               <div class="chapter-meta">1996年冬 · 约3000字 · 小宇出生</div>
             </div>
-            <span class="chapter-badge">最新</span>
+          </a>
+        </li>
+        <li>
+          <a href="/articles/novel-chapter-002.html">
+            <span class="chapter-num">#2</span>
+            <div class="chapter-info">
+              <div class="chapter-title">槐树下的声音</div>
+              <div class="chapter-meta">1997年夏—冬 · 约3000字 · 爬行·抓周·乔阿姨登场</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/articles/novel-chapter-003.html">
+            <span class="chapter-num">#3</span>
+            <div class="chapter-info">
+              <div class="chapter-title">山那边的海</div>
+              <div class="chapter-meta">1998年春—秋 · 约3000字 · 图画书·海螺壳·"海"的种子</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/articles/novel-chapter-004.html">
+            <span class="chapter-num">#4</span>
+            <div class="chapter-info">
+              <div class="chapter-title">拼音表与地图册</div>
+              <div class="chapter-meta">1999年春—冬 · 约3000字 · 识字·地图册·乔阿姨要离开</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/articles/novel-chapter-005.html">
+            <span class="chapter-num">#5</span>
+            <div class="chapter-info">
+              <div class="chapter-title">指南针与银河</div>
+              <div class="chapter-meta">2000年春—夏 · 约3000字 · 乔阿姨告别·停电·银河</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/articles/novel-chapter-006.html">
+            <span class="chapter-num">#6</span>
+            <div class="chapter-info">
+              <div class="chapter-title">积木角的重逢</div>
+              <div class="chapter-meta">2001年秋 · 约3000字 · 幼儿园·苏明娟·老鼠啃钱</div>
+            </div>
+            <span class="chapter-badge new">最新</span>
           </a>
         </li>
       </ul>
 
       <div class="novel-footer">
-        <p>🤖 由 AI 与九日共同创作 · 每日凌晨 2:00 更新</p>
+        <p>🤖 由 AI 与九日共同创作 · 每日 8:00 / 13:00 / 19:00 / 0:00 更新</p>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" style="border-top-color: #E8D5B7; background: #FFFBF7;">
     <div class="footer-inner">
-      <p>📖 《小宇的一生》 · AI 共创小说</p>
-      <p class="footer-meta"><a href="/">返回首页</a></p>
+      <p style="color: #6B4E2B;">📖 《小宇的一生》 · AI 共创小说</p>
+      <p class="footer-meta"><a href="/" style="color: #8B6D45;">返回首页</a></p>
     </div>
   </footer>
 </body>
