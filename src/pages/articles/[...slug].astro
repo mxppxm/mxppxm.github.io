@@ -19,6 +19,17 @@ const toc: TocItem[] = headings
   .map((h: { depth: number; text: string; slug: string }) => ({
     depth: h.depth, text: h.text, slug: h.slug,
   }));
+
+// Check if this is a novel chapter or gold daily
+const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
+const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
+const isSkill = article.data.tags.some((t: string) => t.includes("Skill"));
+
+let backUrl = "/#blog";
+let backLabel = "← 返回首页";
+if (isNovel) { backUrl = "/articles/novel/"; backLabel = "← 小说目录"; }
+if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
+if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
 ---
 
 <BaseLayout
@@ -28,6 +39,7 @@ const toc: TocItem[] = headings
   <div class="article-page">
     <div class="article-layout">
       <div class="article-main">
+        <a href={backUrl} class="article-back">{backLabel}</a>
         <header class="article-header">
           <h1>{article.data.title}</h1>
           <div class="article-meta">
@@ -65,3 +77,14 @@ const toc: TocItem[] = headings
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .article-back {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--text-muted); text-decoration: none;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+  }
+  .article-back:hover { color: var(--accent); }
+</style>

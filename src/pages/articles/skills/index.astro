@@ -12,28 +12,50 @@ const articles = (await getCollection("articles"))
   description="Clacky AI Skill 开发 — 九日"
 >
   <div class="listing-page">
-    <div class="listing-inner">
-      <div class="listing-header">
-        <h1>🧰 Skill 工具箱</h1>
-        <p>Clacky AI Skill 开发笔记</p>
+    <!-- Hero banner -->
+    <div class="listing-hero listing-hero-skill">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">🧰</span>
+        <h1>Skill 工具箱</h1>
+        <p>Clacky AI Skill 开发笔记。记录每个 Skill 的设计思路、技术方案和使用方法。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">篇笔记</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">🛠️</span>
+            <span class="listing-stat-label">AI 开发实践</span>
+          </div>
+        </div>
       </div>
-      <div class="listing-grid">
-        {articles.map((article) => {
-          const slug = article.id.replace(/\.md$/, "");
-          const url = `/articles/${slug}/`;
-          return (
-            <article class="listing-card" onclick={`location.href='${url}'`}>
-              <div class="listing-card-date">
-                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
-              </div>
-              <div class="listing-card-body">
-                <h3><a href={url}>{article.data.title}</a></h3>
-                <p>{article.data.description}</p>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+    </div>
+
+    <!-- Article list -->
+    <div class="listing-body">
+      {articles.length > 0 ? (
+        <div class="listing-grid">
+          {articles.map((article) => {
+            const slug = article.id.replace(/\.md$/, "");
+            const url = `/articles/${slug}/`;
+            return (
+              <article class="listing-card" onclick={`location.href='${url}'`}>
+                <div class="listing-card-date">
+                  {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
+                </div>
+                <div class="listing-card-body">
+                  <h3><a href={url}>{article.data.title}</a></h3>
+                  <p>{article.data.description}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="listing-empty">
+          <p>📝 还没有笔记，正在路上……</p>
+        </div>
+      )}
     </div>
   </div>
 </BaseLayout>

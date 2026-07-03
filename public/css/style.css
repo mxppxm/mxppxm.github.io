@@ -501,14 +501,57 @@ body {
 .article-content td { padding: 9px 16px; border: 1px solid var(--border-light); }
 
 /* ============================================================
-   LISTING PAGES (gold, novel, skills)
+   LISTING PAGES — hero banners + cards
    ============================================================ */
-.listing-page { padding-top: 64px; }
-.listing-inner { max-width: 1200px; margin: 0 auto; padding: 48px 28px 80px; }
+.listing-page {
+  padding-top: 64px;
+  min-height: calc(100vh - 120px); /* prevent footer floating */
+}
 
-.listing-header { margin-bottom: 36px; }
-.listing-header h1 { font-size: 32px; font-weight: 750; letter-spacing: -0.8px; margin-bottom: 8px; }
-.listing-header p { font-size: 16px; color: var(--text-muted); }
+/* Listing hero banner */
+.listing-hero {
+  padding: 64px 28px 48px;
+  position: relative; overflow: hidden;
+}
+.listing-hero-gold {
+  background: linear-gradient(160deg, #FFF9ED 0%, #FFF3DC 30%, var(--bg) 100%);
+}
+.listing-hero-novel {
+  background: linear-gradient(160deg, #F5F0EB 0%, #EDE4D8 30%, var(--bg) 100%);
+}
+.listing-hero-skill {
+  background: linear-gradient(160deg, #F0F9F4 0%, #E0F5E8 30%, var(--bg) 100%);
+}
+.listing-hero-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+
+.listing-hero-icon {
+  font-size: 48px; margin-bottom: 16px; display: block;
+}
+.listing-hero h1 {
+  font-size: 40px; font-weight: 800; letter-spacing: -1.5px;
+  margin-bottom: 10px; color: var(--text);
+}
+.listing-hero p {
+  font-size: 17px; color: var(--text-secondary); max-width: 500px;
+  line-height: 1.7;
+}
+
+/* Stats bar */
+.listing-stats {
+  display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+}
+.listing-stat {
+  display: flex; flex-direction: column;
+}
+.listing-stat-num {
+  font-size: 28px; font-weight: 800; color: var(--accent); line-height: 1.1;
+}
+.listing-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+/* Listing grid area */
+.listing-body { max-width: 1200px; margin: 0 auto; padding: 0 28px 80px; }
 
 .listing-grid { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 800px; }
 .listing-card {
@@ -522,6 +565,11 @@ body {
   border-color: transparent; box-shadow: var(--shadow);
   transform: translateX(6px);
 }
+.listing-card:nth-child(1) {
+  border-left: 3px solid var(--accent);
+  box-shadow: var(--shadow-xs);
+}
+
 .listing-card-date {
   font-size: 13px; font-weight: 600; color: var(--text-muted);
   padding-top: 3px; text-align: right; white-space: nowrap;
@@ -530,6 +578,12 @@ body {
 .listing-card-body h3 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
 .listing-card-body h3 a:hover { color: var(--accent); }
 .listing-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+/* Listing empty state */
+.listing-empty {
+  text-align: center; padding: 48px 0; color: var(--text-muted);
+}
+.listing-empty p { font-size: 15px; }
 
 /* ============================================================
    RESPONSIVE

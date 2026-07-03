@@ -12,11 +12,27 @@ const articles = (await getCollection("articles"))
   description="黄金市场日报、趋势分析、投资洞察 — 九日"
 >
   <div class="listing-page">
-    <div class="listing-inner">
-      <div class="listing-header">
-        <h1>🏆 黄金专区</h1>
-        <p>黄金市场日报 · 趋势分析 · 投资洞察</p>
+    <!-- Hero banner -->
+    <div class="listing-hero listing-hero-gold">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">🏆</span>
+        <h1>黄金专区</h1>
+        <p>每日黄金市场日报，覆盖国际金价、人民币换算、多空分析、投资建议。追踪黄金，从这里开始。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">篇分析报告</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">📊</span>
+            <span class="listing-stat-label">持续更新中</span>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Article list -->
+    <div class="listing-body">
       <div class="listing-grid">
         {articles.map((article) => {
           const slug = article.id.replace(/\.md$/, "");

@@ -12,19 +12,35 @@ const articles = (await getCollection("articles"))
   description="AI 共创现实主义小说《槐树下》 — 九日"
 >
   <div class="listing-page">
-    <div class="listing-inner">
-      <div class="listing-header">
-        <h1>📖 《槐树下》</h1>
-        <p>AI 共创 · 现实主义小说</p>
+    <!-- Hero banner -->
+    <div class="listing-hero listing-hero-novel">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">📖</span>
+        <h1>《槐树下》</h1>
+        <p>AI 共创现实主义小说。1996 年宁夏小镇，一个 INFP 男孩的成长故事。从贺兰山下的平房到山那边的海，用文字记录一个时代的温度。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">章节</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">🌾</span>
+            <span class="listing-stat-label">现实主义 · AI 共创</span>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Chapter list -->
+    <div class="listing-body">
       <div class="listing-grid">
-        {articles.map((article) => {
+        {articles.map((article, idx) => {
           const slug = article.id.replace(/\.md$/, "");
           const url = `/articles/${slug}/`;
           return (
             <article class="listing-card" onclick={`location.href='${url}'`}>
               <div class="listing-card-date">
-                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
+                {idx === 0 ? '最新' : `第${articles.length - idx}章`}
               </div>
               <div class="listing-card-body">
                 <h3><a href={url}>{article.data.title}</a></h3>
