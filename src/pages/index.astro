@@ -1,0 +1,189 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allArticles = (await getCollection("articles"))
+  .filter((a) => !a.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Latest articles for blog section（去重：小说/黄金日报只显示最新一篇）
+const seenSeries = new Set<string>();
+const latestArticles = allArticles.filter((a) => {
+  const slug = a.id;
+  // 小说系列只保留最新一章
+  if (slug.includes("novel-chapter")) {
+    if (seenSeries.has("novel")) return false;
+    seenSeries.add("novel");
+    return true;
+  }
+  // 黄金日报只保留最新一篇
+  if (slug.includes("gold-daily")) {
+    if (seenSeries.has("gold-daily")) return false;
+    seenSeries.add("gold-daily");
+    return true;
+  }
+  return true;
+}).slice(0, 7);
+---
+
+<BaseLayout
+  title="九日 — 前端工程师 · 创意工作者"
+  description="九日的个人博客，分享前端技术、创意项目与深度思考。用创意和代码探索世界。"
+>
+
+  <!-- ====== Hero ====== -->
+  <section class="center-align padding" style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
+    <div>
+      <span class="small-text" style="cursor:pointer; font-size: 4rem;" title="点击放烟花 🎆" onclick="window.open('https://mxppxm.github.io/firework','_blank')">☀️</span>
+    </div>
+    <h1 style="font-size: 3rem; margin: 0.5rem 0;">九日</h1>
+    <p class="large-text">前端工程师 · 创意工作者</p>
+    <p>用创意和代码探索世界，在技术与艺术的交界处游走</p>
+    <nav class="margin top">
+      <a href="#projects" class="button round large">看看我的项目 🚀</a>
+      <a href="#blog" class="button round border large">阅读文章 📖</a>
+    </nav>
+    <div class="margin top">
+      <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="circle">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+    <div class="margin top">
+      <small>向下滚动 ↓</small>
+    </div>
+  </section>
+
+  <!-- ====== About ====== -->
+  <section id="about" class="padding">
+    <h2 class="center-align">关于我</h2>
+    <div class="max" style="max-width: 600px; margin: 0 auto;">
+      <p>我是 <strong>九日</strong>，一名前端工程师，也是一个热爱折腾的创意工作者。</p>
+      <p>我喜欢把脑洞大开的想法变成看得见摸得着的网页和交互体验——从 P2P 聊天到烟花特效，从提示词优化到习惯追踪，每个项目都是我和代码的一次碰撞实验。</p>
+      <p>相信技术应该是好玩的、有温度的，而最好的代码往往诞生于好奇心和一点点的强迫症。</p>
+      <div class="grid margin top">
+        <div class="s4 center-align">
+          <span class="large-text">8+</span>
+          <div class="small-text">开源项目</div>
+        </div>
+        <div class="s4 center-align">
+          <span class="large-text">{allArticles.length}</span>
+          <div class="small-text">篇文章</div>
+        </div>
+        <div class="s4 center-align">
+          <span class="large-text">5</span>
+          <div class="small-text">技术栈</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Skills ====== -->
+  <section id="skills" class="padding surface-container">
+    <h2 class="center-align">技能栈</h2>
+    <div class="grid max" style="max-width: 900px; margin: 0 auto;">
+      <div class="s12 m6 l4 padding">
+        <article class="round fill">
+          <div class="large-text">⚛️</div>
+          <h5>前端</h5>
+          <p class="small-text">React / Vue / TypeScript<br/>HTML / CSS / JavaScript</p>
+        </article>
+      </div>
+      <div class="s12 m6 l4 padding">
+        <article class="round fill">
+          <div class="large-text">🛠️</div>
+          <h5>工具链</h5>
+          <p class="small-text">Vite / Webpack / Git<br/>Node.js / npm</p>
+        </article>
+      </div>
+      <div class="s12 m6 l4 padding">
+        <article class="round fill">
+          <div class="large-text">🎨</div>
+          <h5>创意</h5>
+          <p class="small-text">交互设计 / 动画 / Canvas<br/>创意编程 / 可视化</p>
+        </article>
+      </div>
+      <div class="s12 m6 l4 padding">
+        <article class="round fill">
+          <div class="large-text">🤖</div>
+          <h5>AI</h5>
+          <p class="small-text">Prompt Engineering<br/>LLM 应用开发</p>
+        </article>
+      </div>
+      <div class="s12 m6 l4 padding">
+        <article class="round fill">
+          <div class="large-text">🌐</div>
+          <h5>全栈</h5>
+          <p class="small-text">Node.js / 数据库基础<br/>部署运维</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Projects ====== -->
+  <section id="projects" class="padding">
+    <h2 class="center-align">项目精选</h2>
+    <p class="center-align">一些我觉得好玩的 side project</p>
+    <div id="projects-grid" class="grid max" style="max-width: 1000px; margin: 0 auto;">
+      <div class="s12 center-align padding">加载中...</div>
+    </div>
+    <div class="center-align margin top">
+      <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="button round border">查看全部项目 →</a>
+    </div>
+  </section>
+
+  <!-- ====== Blog ====== -->
+  <section id="blog" class="padding surface-container">
+    <h2 class="center-align">最近文章</h2>
+    <p class="center-align">偶尔写点东西，记录思考</p>
+
+    <div class="max" style="max-width: 800px; margin: 0 auto;">
+      {
+        latestArticles.map((article) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          return (
+            <article class="round fill margin bottom" style="cursor: pointer;" onclick={`location.href='${url}'`}>
+              <div class="padding">
+                <h5>
+                  <a href={url}>{article.data.title}</a>
+                </h5>
+                <div class="small-text">
+                  {article.data.date.toLocaleDateString("zh-CN", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
+                <p class="small-text">{article.data.description}</p>
+                <nav>
+                  {article.data.tags.map((tag) => (
+                    <span class="chip small-text">{tag}</span>
+                  ))}
+                </nav>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <div class="center-align margin top">
+      <p class="small-text">更多文章正在路上……</p>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact" class="padding center-align">
+    <h2>找到我</h2>
+    <p>如果有好玩的想法想聊聊，或者发现了什么有趣的 bug，欢迎来 GitHub 找我～</p>
+    <nav>
+      <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="button round border">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span>mxppxm</span>
+      </a>
+    </nav>
+  </section>
+
+</BaseLayout>
+
+<script is:inline src="/js/github-projects.js"></script>

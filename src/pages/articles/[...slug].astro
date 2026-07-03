@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { slug: article.id.replace(/\.md$/, "") },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+
+<BaseLayout
+  title={article.data.title}
+  description={article.data.description}
+>
+  <article class="padding">
+    <header class="center-align">
+      <h1>{article.data.title}</h1>
+      <div class="small-text">
+        📅 {article.data.date.toLocaleDateString("zh-CN", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+        {article.data.tags.length > 0 && (
+          <> · {article.data.tags.join(" · ")}</>
+        )}
+      </div>
+    </header>
+    <div class="article-content max">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+  .article-content :global(img) {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 1.5em 0;
+  }
+  .article-content :global(h2) {
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+  }
+  .article-content :global(h3) {
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+  }
+  .article-content :global(pre) {
+    border-radius: 12px;
+    padding: 1em;
+    overflow-x: auto;
+  }
+  .article-content :global(blockquote) {
+    border-left: 4px solid var(--primary);
+    padding-left: 1em;
+    margin: 1.5em 0;
+    opacity: 0.85;
+  }
+</style>

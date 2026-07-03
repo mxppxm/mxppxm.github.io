@@ -1,0 +1,23 @@
+# 九日 — 前端工程师 · 创意工作者
+> 用创意和代码探索世界。
+
+## 关于本站
+九日的个人博客，分享前端技术、旅行游记、黄金市场分析和创意项目。
+
+## 核心文章
+
+- https://mxppxm.github.io: 首页 — 九日个人简介与最新文章
+- https://mxppxm.github.io/articles/yunnan.html: 🏔️ 丽江 · 大理 · 昆明 旅行手记 — 云南旅行攻略与实记
+- https://mxppxm.github.io/articles/beijing-july-travel-guide.html: 🏛️ 北京七月旅行攻略 — 夏季北京旅游指南
+- https://mxppxm.github.io/articles/gold-trend-report.html: 📈 全球黄金市场趋势深度报告 — 金价行情分析
+- https://mxppxm.github.io/articles/gold/index.html: 🏆 黄金趋势分析归档 — 每日黄金日报汇总
+- https://mxppxm.github.io/articles/skills/index.html: 🧰 Skill 项目归档 — 创意与技术工具集
+- https://mxppxm.github.io/articles/skill-bookkeeping-assistant.html: 📊 记账助手 Skill — AI 驱动的记账工具
+- https://mxppxm.github.io/articles/sex-consent-age-global-report.html: 🌍 全球性同意年龄法律报告 — 各国法律对比
+- https://mxppxm.github.io/articles/gold-daily-2026-07-01.html: 📆 黄金日报 07-01 — 最新金价行情
+- https://mxppxm.github.io/articles/gold-daily-2026-06-30.html: 📆 黄金日报 06-30
+- https://mxppxm.github.io/articles/gold-daily-2026-06-29.html: 📆 黄金日报 06-29
+- https://mxppxm.github.io/articles/gold-daily-2026-06-28.html: 📆 黄金日报 06-28
+- https://mxppxm.github.io/articles/gold-daily-2026-06-27.html: 📆 黄金日报 06-27
+- https://mxppxm.github.io/articles/gold-daily-2026-06-26.html: 📆 黄金日报 06-26
+- https://mxppxm.github.io/articles/gold-daily-2026-06-25.html: 📆 黄金日报 06-25
