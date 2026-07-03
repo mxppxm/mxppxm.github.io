@@ -1101,3 +1101,28 @@ body {
   .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .skill-card { padding: 20px 14px; }
 }
+
+/* ============================================================
+   BeerCSS Overrides — neutralize BeerCSS conflicts
+   ============================================================ */
+
+/* Let custom header styles take over */
+body > header.fixed,
+.site-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: auto;
+  min-height: unset;
+}
+
+/* BeerCSS adds padding-top to body for fixed header — override */
+body { padding-top: 0 !important; }
+
+/* Prevent BeerCSS nav from overriding custom nav styles */
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+}

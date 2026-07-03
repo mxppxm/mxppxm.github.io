@@ -1,52 +1,29 @@
 ---
-// Header component — BeerCSS semantic nav
+// Header component — custom CSS style (green theme)
 ---
 
-<header class="fixed">
-  <nav>
-    <a href="/" class="max">
-      <span class="large-text">☀️ 九日</span>
-    </a>
-    <button class="circle transparent" data-ui="#mobile-menu">
-      <i>menu</i>
-    </button>
-  </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-title">☀️ 九日</a>
+    <nav class="site-nav">
+      <a href="/#about">关于</a>
+      <a href="/#projects">项目</a>
+      <a href="/#blog">文章</a>
+      <a href="/articles/gold/">黄金</a>
+      <a href="/articles/novel/">小说</a>
+      <a href="/articles/skills/">Skill</a>
+      <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">☰</button>
+  </div>
 </header>
 
-<!-- Mobile drawer -->
-<nav id="mobile-menu" class="left drawer">
-  <header>
-    <a href="/">
-      <span class="large-text">☀️ 九日</span>
-    </a>
-  </header>
-  <a href="/#about">
-    <i>person</i>
-    <span>关于</span>
-  </a>
-  <a href="/#projects">
-    <i>code</i>
-    <span>项目</span>
-  </a>
-  <a href="/#blog">
-    <i>article</i>
-    <span>文章</span>
-  </a>
-  <a href="/articles/gold/">
-    <i>trophy</i>
-    <span>🏆 黄金</span>
-  </a>
-  <a href="/articles/novel/">
-    <i>book</i>
-    <span>📖 小说</span>
-  </a>
-  <a href="/articles/skills/">
-    <i>build</i>
-    <span>🧰 Skill</span>
-  </a>
-  <div class="divider"></div>
-  <a href="https://github.com/mxppxm" target="_blank" rel="noopener">
-    <i>link</i>
-    <span>GitHub</span>
-  </a>
+<nav class="mobile-nav">
+  <a href="/#about">关于</a>
+  <a href="/#projects">项目</a>
+  <a href="/#blog">文章</a>
+  <a href="/articles/gold/">🏆 黄金</a>
+  <a href="/articles/novel/">📖 小说</a>
+  <a href="/articles/skills/">🧰 Skill</a>
+  <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
 </nav>
