@@ -34,7 +34,11 @@ body {
   color: var(--text);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  display: flex; flex-direction: column;
+  min-height: 100vh;
 }
+
+main { flex: 1; }
 
 /* ============================================================
    HEADER
@@ -477,15 +481,23 @@ body {
 .article-content blockquote p { margin: 4px 0; }
 .article-content code {
   font-family: "SF Mono","Fira Code",Menlo,Consolas,monospace;
-  font-size: 13.5px; background: #F1F3F5; color: #D6336C;
+  font-size: 13.5px; background: #E8ECF1; color: #D6336C;
   padding: 2px 7px; border-radius: 5px;
 }
-.article-content pre {
-  background: #F4F6F8; border: 1px solid var(--border);
+.article-content pre,
+.article-content pre.astro-code,
+.article-content :global(pre) {
+  background: #F4F6F8 !important; border: 1px solid var(--border);
   border-radius: 12px; padding: 20px; margin: 22px 0;
   overflow-x: auto; font-size: 13.5px; line-height: 1.7;
+  color: #1A1A2E;
 }
-.article-content pre code { background: none; color: var(--text); padding: 0; font-size: inherit; }
+.article-content pre code,
+.article-content pre.astro-code code,
+.article-content pre span {
+  background: transparent !important; color: #1A1A2E !important;
+  padding: 0; font-size: inherit;
+}
 .article-content ul,.article-content ol { margin: 10px 0 22px; padding-left: 24px; }
 .article-content li { margin: 5px 0; }
 .article-content img { max-width: 100%; height: auto; display: block; margin: 24px auto; border-radius: 12px; }

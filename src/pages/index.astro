@@ -6,21 +6,19 @@ const allArticles = (await getCollection("articles"))
   .filter((a) => !a.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const seenSeries = new Set<string>();
-const latestArticles = allArticles.filter((a) => {
-  const slug = a.id;
-  if (slug.includes("novel-chapter")) {
-    if (seenSeries.has("novel")) return false;
-    seenSeries.add("novel");
+// Always include the latest from each series, plus standalone articles
+const latestNovel = allArticles.find((a) => a.id.includes("novel-chapter"));
+const latestGold = allArticles.find((a) => a.id.includes("gold-daily"));
+const seriesIds = new Set([latestNovel?.id, latestGold?.id].filter(Boolean));
+
+const latestArticles = [
+  // Always-pinned latest from each series + all standalone articles
+  ...allArticles.filter((a) => {
+    if (seriesIds.has(a.id)) return true;
+    if (a.id.includes("novel-chapter") || a.id.includes("gold-daily")) return false;
     return true;
-  }
-  if (slug.includes("gold-daily")) {
-    if (seenSeries.has("gold-daily")) return false;
-    seenSeries.add("gold-daily");
-    return true;
-  }
-  return true;
-}).slice(0, 8);
+  }),
+].sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 8);
 ---
 
 <BaseLayout

@@ -20,7 +20,6 @@ const toc: TocItem[] = headings
     depth: h.depth, text: h.text, slug: h.slug,
   }));
 
-// Check if this is a novel chapter or gold daily
 const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
 const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
 const isSkill = article.data.tags.some((t: string) => t.includes("Skill"));
@@ -30,6 +29,30 @@ let backLabel = "← 返回首页";
 if (isNovel) { backUrl = "/articles/novel/"; backLabel = "← 小说目录"; }
 if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
 if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
+
+// Novel prev/next chapter navigation
+let prevChapter: { title: string; url: string } | null = null;
+let nextChapter: { title: string; url: string } | null = null;
+
+if (isNovel) {
+  const allChapters = (await getCollection("articles"))
+    .filter((a) => a.data.tags.some((t: string) => t.includes("小说")))
+    .sort((a, b) => {
+      const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
+      const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
+      return numA - numB;
+    });
+
+  const currentIdx = allChapters.findIndex((a) => a.id === article.id);
+  if (currentIdx > 0) {
+    const prev = allChapters[currentIdx - 1];
+    prevChapter = { title: prev.data.title, url: `/articles/${prev.id.replace(/\.md$/, "")}/` };
+  }
+  if (currentIdx < allChapters.length - 1) {
+    const next = allChapters[currentIdx + 1];
+    nextChapter = { title: next.data.title, url: `/articles/${next.id.replace(/\.md$/, "")}/` };
+  }
+}
 ---
 
 <BaseLayout
@@ -58,6 +81,24 @@ if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱";
         <div class="article-content">
           <Content />
         </div>
+
+        {/* Novel chapter navigation */}
+        {isNovel && (prevChapter || nextChapter) && (
+          <nav class="chapter-nav">
+            {prevChapter ? (
+              <a href={prevChapter.url} class="chapter-nav-link chapter-nav-prev">
+                <span class="chapter-nav-label">← 上一章</span>
+                <span class="chapter-nav-title">{prevChapter.title}</span>
+              </a>
+            ) : <div></div>}
+            {nextChapter ? (
+              <a href={nextChapter.url} class="chapter-nav-link chapter-nav-next">
+                <span class="chapter-nav-label">下一章 →</span>
+                <span class="chapter-nav-title">{nextChapter.title}</span>
+              </a>
+            ) : <div></div>}
+          </nav>
+        )}
       </div>
 
       {toc.length > 1 && (
@@ -87,4 +128,34 @@ if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱";
     transition: color 0.2s;
   }
   .article-back:hover { color: var(--accent); }
+
+  .chapter-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .chapter-nav-link {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.25s var(--ease);
+  }
+  .chapter-nav-link:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  .chapter-nav-next { text-align: right; }
+  .chapter-nav-label {
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .chapter-nav-title {
+    font-size: 14px; font-weight: 500; color: var(--text-secondary);
+    line-height: 1.4;
+  }
 </style>
