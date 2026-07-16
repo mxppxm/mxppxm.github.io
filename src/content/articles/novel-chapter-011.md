@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![求](/images/novel-chapter-011.png)
+
 # 第十一章：求
 
 ## 一
