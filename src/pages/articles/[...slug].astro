@@ -23,12 +23,14 @@ const toc: TocItem[] = headings
 const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
 const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
 const isSkill = article.data.tags.some((t: string) => t.includes("Skill"));
+const isPoetry = article.data.tags.some((t: string) => t.includes("毛泽东诗词"));
 
 let backUrl = "/#blog";
 let backLabel = "← 返回首页";
 if (isNovel) { backUrl = "/articles/novel/"; backLabel = "← 槐树下"; }
 if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
 if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
+if (isPoetry) { backUrl = "/articles/poetry/"; backLabel = "← 诗词专区"; }
 
 // Novel prev/next chapter navigation
 let prevChapter: { title: string; url: string } | null = null;
@@ -94,7 +96,7 @@ if (isNovel) {
             </div>
           )}
         </header>
-        <div class="article-content">
+        <div class={`article-content${isPoetry ? " poem-content" : ""}`}>
           <Content />
         </div>
 
