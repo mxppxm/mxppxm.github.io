@@ -9,6 +9,9 @@ const articles = defineCollection({
     draft: z.boolean().default(false),
     image: z.string().optional(),
     audio: z.boolean().optional(),
+    poem_type: z.enum(["ci", "shi", "guti"]).optional(),
+    cipai: z.string().optional(),
+    period: z.enum(["早期", "革命时期", "建国后"]).optional(),
   }),
 });
 

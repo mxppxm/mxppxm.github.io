@@ -626,3 +626,105 @@ main { flex: 1; }
   .skills-cloud { gap: 8px; }
   .skill-pill { font-size: 13px; padding: 8px 15px; }
 }
+
+/* ============================================================
+   POETRY — 诗词专用样式
+   ============================================================ */
+
+/* 诗词专区 Hero */
+.listing-hero-poetry {
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(7,193,96,0.06) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* 诗词详情页 — 正文排版 */
+.article-content.poem-content {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.article-content.poem-content h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.article-content.poem-content .poem-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.article-content.poem-content .poem-body {
+  font-size: 18px;
+  line-height: 2.2;
+  letter-spacing: 0.02em;
+  margin: 32px 0;
+  white-space: pre-line;
+}
+
+.article-content.poem-content .poem-body p {
+  margin: 0;
+  display: inline;
+}
+
+.article-content.poem-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px auto;
+  max-width: 200px;
+}
+
+.article-content.poem-content h2 {
+  font-size: 20px;
+  font-weight: 650;
+  margin: 40px 0 16px;
+  text-align: left;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.article-content.poem-content h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 28px 0 12px;
+  text-align: left;
+  border-left: none;
+  padding-left: 0;
+  color: var(--text-secondary);
+}
+
+.article-content.poem-content p {
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* 诗词列表卡片 — 词牌名/时期标签 */
+.poem-cipai {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.poem-period {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--border-light);
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}

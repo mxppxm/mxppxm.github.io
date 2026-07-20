@@ -1,0 +1,97 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles"))
+  .filter((a) => a.data.tags.some((t) => t.includes("毛泽东诗词")))
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const periodCounts = {
+  "早期": articles.filter(a => a.data.period === "早期").length,
+  "革命时期": articles.filter(a => a.data.period === "革命时期").length,
+  "建国后": articles.filter(a => a.data.period === "建国后").length,
+};
+---
+
+<BaseLayout
+  title="📜 毛泽东诗词"
+  description="毛泽东诗词全集 — 九日"
+>
+  <div class="listing-page">
+    <div class="listing-hero listing-hero-poetry">
+      <div class="listing-hero-inner">
+        <h1>毛泽东诗词</h1>
+        <p>1915—1976，从"问苍茫大地，谁主沉浮"到"环球同此凉热"，一位诗人的革命史诗。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">首诗词</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">{periodCounts["早期"]}</span>
+            <span class="listing-stat-label">早期</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">{periodCounts["革命时期"]}</span>
+            <span class="listing-stat-label">革命时期</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">{periodCounts["建国后"]}</span>
+            <span class="listing-stat-label">建国后</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="listing-body">
+      <div class="listing-grid">
+        {articles.map((article) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          const typeLabel = article.data.poem_type === "ci" ? "词" : article.data.poem_type === "shi" ? "诗" : "古体";
+          const dateStr = article.data.date.toLocaleDateString("zh-CN", { year: "numeric" });
+          return (
+            <article class="listing-card" onclick={`location.href='${url}'`}>
+              <div class="listing-card-date">
+                {dateStr}
+              </div>
+              <div class="listing-card-body">
+                <h3>
+                  <a href={url}>{article.data.title}</a>
+                  {article.data.cipai && <span class="poem-cipai">{article.data.cipai}</span>}
+                  {article.data.period && <span class="poem-period">{article.data.period}</span>}
+                </h3>
+                <p>{article.data.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .poem-cipai {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .poem-period {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--border-light);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+</style>
