@@ -17,81 +17,293 @@ const periodCounts = {
   title="📜 毛泽东诗词"
   description="毛泽东诗词全集 — 九日"
 >
-  <div class="listing-page">
-    <div class="listing-hero listing-hero-poetry">
-      <div class="listing-hero-inner">
-        <h1>毛泽东诗词</h1>
-        <p>1915—1976，从"问苍茫大地，谁主沉浮"到"环球同此凉热"，一位诗人的革命史诗。</p>
-        <div class="listing-stats">
-          <div class="listing-stat">
-            <span class="listing-stat-num">{articles.length}</span>
-            <span class="listing-stat-label">首诗词</span>
+  <div class="poetry-page">
+    <!-- Hero -->
+    <section class="poetry-hero">
+      <div class="poetry-hero-bg"></div>
+      <div class="poetry-hero-inner">
+        <blockquote class="poetry-hero-quote">
+          <span class="poetry-hero-line">数风流人物，</span>
+          <span class="poetry-hero-line">还看今朝。</span>
+        </blockquote>
+        <cite class="poetry-hero-cite">— 沁园春·雪，1936</cite>
+        <div class="poetry-hero-stats">
+          <div class="poetry-hero-stat">
+            <span class="poetry-hero-stat-num">{articles.length}</span>
+            <span class="poetry-hero-stat-label">首</span>
           </div>
-          <div class="listing-stat">
-            <span class="listing-stat-num">{periodCounts["早期"]}</span>
-            <span class="listing-stat-label">早期</span>
-          </div>
-          <div class="listing-stat">
-            <span class="listing-stat-num">{periodCounts["革命时期"]}</span>
-            <span class="listing-stat-label">革命时期</span>
-          </div>
-          <div class="listing-stat">
-            <span class="listing-stat-num">{periodCounts["建国后"]}</span>
-            <span class="listing-stat-label">建国后</span>
-          </div>
+          <span class="poetry-hero-stat-divider">·</span>
+          {Object.entries(periodCounts).map(([k, v]) => (
+            <div class="poetry-hero-stat">
+              <span class="poetry-hero-stat-num">{v}</span>
+              <span class="poetry-hero-stat-label">{k}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="listing-body">
-      <div class="listing-grid">
-        {articles.map((article) => {
-          const slug = article.id.replace(/\.md$/, "");
-          const url = `/articles/${slug}/`;
-          const typeLabel = article.data.poem_type === "ci" ? "词" : article.data.poem_type === "shi" ? "诗" : "古体";
-          const dateStr = article.data.date.toLocaleDateString("zh-CN", { year: "numeric" });
-          return (
-            <article class="listing-card" onclick={`location.href='${url}'`}>
-              <div class="listing-card-date">
-                {dateStr}
-              </div>
-              <div class="listing-card-body">
-                <h3>
-                  <a href={url}>{article.data.title}</a>
-                  {article.data.cipai && <span class="poem-cipai">{article.data.cipai}</span>}
-                  {article.data.period && <span class="poem-period">{article.data.period}</span>}
-                </h3>
-                <p>{article.data.description}</p>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </div>
+    <!-- Poem cards -->
+    <section class="poetry-list">
+      {articles.map((article) => {
+        const slug = article.id.replace(/\.md$/, "");
+        const url = `/articles/${slug}/`;
+        const dateStr = article.data.date.toLocaleDateString("zh-CN", { year: "numeric", month: "long" });
+        const periodLabel = article.data.period || "";
+        const cipaiLabel = article.data.cipai || "";
+        return (
+          <a href={url} class="poetry-card">
+            <div class="poetry-card-meta">
+              {cipaiLabel && <span class="poetry-card-cipai">{cipaiLabel}</span>}
+              <span class="poetry-card-date">{dateStr}</span>
+              {periodLabel && <span class="poetry-card-period">{periodLabel}</span>}
+            </div>
+            <h2 class="poetry-card-title">{article.data.title}</h2>
+            <p class="poetry-card-excerpt">{article.data.description}</p>
+          </a>
+        );
+      })}
+    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .poem-cipai {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 500;
+  /* ============================================================
+     POETRY PAGE — 沉浸式诗词专区
+     ============================================================ */
+
+  .poetry-page {
+    padding-top: 64px;
+    min-height: 100vh;
+    background: #F7F5F0;
+  }
+
+  /* --- Hero --- */
+  .poetry-hero {
+    position: relative;
+    padding: 80px 28px 72px;
+    overflow: hidden;
+    background: linear-gradient(175deg, #1A1D24 0%, #2A2D35 40%, #3A3D45 100%);
+  }
+
+  .poetry-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 20%, rgba(7,193,96,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 75% 80%, rgba(7,193,96,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .poetry-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .poetry-hero-quote {
+    margin: 0 0 16px;
+    padding: 0;
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .poetry-hero-line {
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    display: block;
+  }
+
+  .poetry-hero-cite {
+    font-size: 14px;
+    font-style: normal;
+    color: rgba(255,255,255,0.45);
+    display: block;
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+  }
+
+  .poetry-hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 40px;
+    padding: 10px 28px;
+  }
+
+  .poetry-hero-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .poetry-hero-stat-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .poetry-hero-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .poetry-hero-stat-divider {
+    color: rgba(255,255,255,0.2);
+    font-size: 14px;
+  }
+
+  /* --- Cards --- */
+  .poetry-list {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .poetry-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #FFFFFF;
+    border-radius: 18px;
+    padding: 36px 38px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+    transition: all 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poetry-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transform: scaleY(0.6);
+    transition: all 0.4s var(--ease);
+  }
+
+  .poetry-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+
+  .poetry-card:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .poetry-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .poetry-card-cipai {
+    font-size: 11px;
+    font-weight: 600;
     color: var(--accent);
     background: var(--accent-light);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    vertical-align: middle;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.03em;
   }
-  .poem-period {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
+
+  .poetry-card-date {
+    font-size: 13px;
     color: var(--text-muted);
-    background: var(--border-light);
-    padding: 2px 6px;
-    border-radius: 3px;
-    margin-left: 6px;
-    vertical-align: middle;
+    letter-spacing: 0.03em;
+  }
+
+  .poetry-card-period {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: #F0EDE8;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .poetry-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+    transition: color 0.3s;
+  }
+
+  .poetry-card:hover .poetry-card-title {
+    color: var(--accent);
+  }
+
+  .poetry-card-excerpt {
+    font-size: 17px;
+    line-height: 2;
+    color: var(--text-secondary);
+    letter-spacing: 0.03em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .poetry-hero {
+      padding: 56px 18px 48px;
+    }
+
+    .poetry-hero-line {
+      font-size: 32px;
+    }
+
+    .poetry-hero-stats {
+      gap: 8px;
+      padding: 8px 18px;
+    }
+
+    .poetry-hero-stat-num {
+      font-size: 17px;
+    }
+
+    .poetry-list {
+      padding: 32px 16px 60px;
+      gap: 20px;
+    }
+
+    .poetry-card {
+      padding: 26px 24px;
+      border-radius: 14px;
+    }
+
+    .poetry-card-title {
+      font-size: 19px;
+    }
+
+    .poetry-card-excerpt {
+      font-size: 15px;
+      line-height: 1.9;
+    }
   }
 </style>
