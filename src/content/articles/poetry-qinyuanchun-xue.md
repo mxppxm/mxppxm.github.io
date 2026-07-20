@@ -4,6 +4,7 @@ description: "北国风光，千里冰封，万里雪飘。望长城内外，惟
 date: 1936-02-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qinyuanchun-xue.jpg"
 poem_type: "ci"
 cipai: "沁园春"
 period: "革命时期"

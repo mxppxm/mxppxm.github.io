@@ -4,6 +4,7 @@ description: "红军不怕远征难，万水千山只等闲。五岭逶迤腾细
 date: 1935-10-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qilu-changzheng.jpg"
 poem_type: "shi"
 period: "革命时期"
 ---

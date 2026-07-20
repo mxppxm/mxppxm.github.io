@@ -680,13 +680,13 @@ main { flex: 1; }
   margin-bottom: 36px;
 }
 
-/* Poem card — white card on cream background */
+/* Poem card */
 .article-content.poem-content {
   max-width: 700px;
   margin: 0 auto;
-  background: #FFFFFF;
+  background: #FDFAF3;
   border-radius: 20px;
-  padding: 56px 52px;
+  padding: 48px 52px 44px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.04);
 }
 
@@ -718,33 +718,48 @@ main { flex: 1; }
   margin-bottom: 24px;
 }
 
-/* Separator between poem and analysis */
+/* Decorative separator between poem and analysis */
 .article-content.poem-content hr {
   border: none;
-  border-top: 1px solid var(--border);
+  height: 0;
   margin: 48px auto 36px;
-  max-width: 72px;
+  width: 100px;
+  border-top: 1px solid #d5cdb8;
+  position: relative;
+}
+.article-content.poem-content hr::after {
+  content: "❖";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  background: #FDFAF3;
+  padding: 0 16px;
+  color: #c9a96e;
+  font-size: 12px;
+  line-height: 1;
 }
 
 /* Section headers (创作背景 / 赏析) */
 .article-content.poem-content h2 {
-  font-size: 17px;
-  font-weight: 650;
-  margin: 44px 0 14px;
-  text-align: left;
-  border-bottom: none;
-  padding-bottom: 0;
-  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  color: #5a4e3c;
+  border-bottom: 1px solid #e8e0d0;
 }
 
-/* Analysis paragraphs — only those after an h2 (创作背景 / 赏析 body) */
+/* Analysis paragraphs — white cards on cream background */
 .article-content.poem-content h2 ~ p {
   text-align: left;
   font-size: 15px;
   line-height: 1.9;
   letter-spacing: 0.02em;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--text-secondary);
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 16px 22px;
 }
 
 .article-content.poem-content blockquote {
@@ -769,7 +784,7 @@ main { flex: 1; }
   }
 
   .article-content.poem-content {
-    padding: 36px 22px;
+    padding: 32px 18px 32px;
     border-radius: 14px;
     margin: 0 12px;
   }
@@ -787,6 +802,17 @@ main { flex: 1; }
   .article-content.poem-content h2 ~ p {
     font-size: 14px;
     line-height: 1.8;
+    padding: 12px 16px;
+  }
+
+  .article-content.poem-content hr {
+    margin: 36px auto 28px;
+    width: 80px;
+  }
+
+  .article-hero-image {
+    margin: 0 0 20px;
+    border-radius: 10px;
   }
 }
 

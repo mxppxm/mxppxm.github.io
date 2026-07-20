@@ -4,6 +4,7 @@ description: "茫茫九派流中国，沉沉一线穿南北。烟雨莽苍苍，
 date: 1927-04-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/pusaman-huanghelou.jpg"
 poem_type: "ci"
 cipai: "菩萨蛮"
 period: "早期"

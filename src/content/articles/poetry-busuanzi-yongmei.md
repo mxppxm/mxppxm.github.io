@@ -4,6 +4,7 @@ description: "风雨送春归，飞雪迎春到。已是悬崖百丈冰，犹有
 date: 1961-12-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/busuanzi-yongmei.jpg"
 poem_type: "ci"
 cipai: "卜算子"
 period: "建国后"

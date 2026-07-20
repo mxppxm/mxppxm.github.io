@@ -32,10 +32,11 @@ if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
 if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
 if (isPoetry) { backUrl = "/articles/poetry/"; backLabel = "← 诗词专区"; }
 
-// Novel prev/next chapter navigation
-let prevChapter: { title: string; url: string } | null = null;
-let nextChapter: { title: string; url: string } | null = null;
+// Navigation helpers
+let prevNav: { title: string; url: string } | null = null;
+let nextNav: { title: string; url: string } | null = null;
 
+// Novel prev/next chapter
 if (isNovel) {
   const allChapters = (await getCollection("articles"))
     .filter((a) => a.data.tags.some((t: string) => t.includes("小说")))
@@ -48,11 +49,28 @@ if (isNovel) {
   const currentIdx = allChapters.findIndex((a) => a.id === article.id);
   if (currentIdx > 0) {
     const prev = allChapters[currentIdx - 1];
-    prevChapter = { title: prev.data.title, url: `/articles/${prev.id.replace(/\.md$/, "")}/` };
+    prevNav = { title: prev.data.title, url: `/articles/${prev.id.replace(/\.md$/, "")}/` };
   }
   if (currentIdx < allChapters.length - 1) {
     const next = allChapters[currentIdx + 1];
-    nextChapter = { title: next.data.title, url: `/articles/${next.id.replace(/\.md$/, "")}/` };
+    nextNav = { title: next.data.title, url: `/articles/${next.id.replace(/\.md$/, "")}/` };
+  }
+}
+
+// Poetry prev/next poem (sorted by date)
+if (isPoetry) {
+  const allPoems = (await getCollection("articles"))
+    .filter((a) => a.data.tags.some((t: string) => t.includes("毛泽东诗词")))
+    .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+  const currentIdx = allPoems.findIndex((a) => a.id === article.id);
+  if (currentIdx > 0) {
+    const prev = allPoems[currentIdx - 1];
+    prevNav = { title: prev.data.title, url: `/articles/${prev.id.replace(/\.md$/, "")}/` };
+  }
+  if (currentIdx < allPoems.length - 1) {
+    const next = allPoems[currentIdx + 1];
+    nextNav = { title: next.data.title, url: `/articles/${next.id.replace(/\.md$/, "")}/` };
   }
 }
 ---
@@ -65,6 +83,11 @@ if (isNovel) {
     <div class="article-layout">
       <div class="article-main">
         <a href={backUrl} class="article-back">{backLabel}</a>
+        {isPoetry && article.data.image && (
+          <div class="article-hero-image">
+            <img src={article.data.image} alt={article.data.title} loading="eager" />
+          </div>
+        )}
         <header class="article-header">
           <h1>{article.data.title}</h1>
           {article.data.audio === true ? (
@@ -100,19 +123,19 @@ if (isNovel) {
           <Content />
         </div>
 
-        {/* Novel chapter navigation */}
-        {isNovel && (prevChapter || nextChapter) && (
+        {/* Prev/Next chapter navigation */}
+        {(isNovel || isPoetry) && (prevNav || nextNav) && (
           <nav class="chapter-nav">
-            {prevChapter ? (
-              <a href={prevChapter.url} class="chapter-nav-link chapter-nav-prev">
-                <span class="chapter-nav-label">← 上一章</span>
-                <span class="chapter-nav-title">{prevChapter.title}</span>
+            {prevNav ? (
+              <a href={prevNav.url} class="chapter-nav-link chapter-nav-prev">
+                <span class="chapter-nav-label">← {isNovel ? "上一章" : "上一首"}</span>
+                <span class="chapter-nav-title">{prevNav.title}</span>
               </a>
             ) : <div></div>}
-            {nextChapter ? (
-              <a href={nextChapter.url} class="chapter-nav-link chapter-nav-next">
-                <span class="chapter-nav-label">下一章 →</span>
-                <span class="chapter-nav-title">{nextChapter.title}</span>
+            {nextNav ? (
+              <a href={nextNav.url} class="chapter-nav-link chapter-nav-next">
+                <span class="chapter-nav-label">{isNovel ? "下一章" : "下一首"} →</span>
+                <span class="chapter-nav-title">{nextNav.title}</span>
               </a>
             ) : <div></div>}
           </nav>
@@ -278,6 +301,19 @@ if (isNovel) {
     transition: color 0.2s;
   }
   .article-back:hover { color: var(--accent); }
+
+  .article-hero-image {
+    margin: 0 0 32px;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  .article-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   .chapter-nav {
     display: grid;

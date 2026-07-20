@@ -4,6 +4,7 @@ description: "久有凌云志，重上井冈山。千里来寻故地，旧貌变
 date: 1965-05-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/shuidiaogetou-jinggangshan.jpg"
 poem_type: "ci"
 cipai: "水调歌头"
 period: "建国后"

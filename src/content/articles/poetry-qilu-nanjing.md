@@ -4,6 +4,7 @@ description: "钟山风雨起苍黄，百万雄师过大江。虎踞龙盘今胜
 date: 1949-04-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qilu-nanjing.jpg"
 poem_type: "shi"
 period: "革命时期"
 ---

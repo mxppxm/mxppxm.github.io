@@ -4,6 +4,7 @@ description: "独立寒秋，湘江北去，橘子洲头。看万山红遍，层
 date: 1925-10-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qinyuanchun-changsha.jpg"
 poem_type: "ci"
 cipai: "沁园春"
 period: "早期"

@@ -4,6 +4,7 @@ description: "西风烈，长空雁叫霜晨月。霜晨月，马蹄声碎，喇
 date: 1935-02-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/yiqine-loushanguan.jpg"
 poem_type: "ci"
 cipai: "忆秦娥"
 period: "革命时期"
