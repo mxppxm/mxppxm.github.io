@@ -700,14 +700,15 @@ main { flex: 1; }
   letter-spacing: 0.04em;
 }
 
-/* Verse paragraphs — large, centered, elegant */
+/* Verse paragraphs — paragraph-style, elegant */
 .article-content.poem-content p {
-  text-align: center;
-  font-size: 22px;
-  line-height: 2.6;
-  letter-spacing: 0.06em;
+  text-align: left;
+  font-size: 18px;
+  line-height: 2.2;
+  letter-spacing: 0.04em;
   margin: 0 0 10px;
   color: var(--text);
+  text-indent: 0;
 }
 
 /* Date / subtitle line (first paragraph after h1) */
