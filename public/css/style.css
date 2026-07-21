@@ -791,82 +791,18 @@ main { flex: 1; }
 }
 
 /* ============================================================
-   【律诗】shi — 对联式展示
-   两句一组（联），对联左右并排，中间竖线分隔
+   【律诗】shi — 一句一行，简洁排列
    ============================================================ */
 .verse-shi {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   padding: 12px 0;
 }
 
-.verse-shi .couplet {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  align-items: center;
-  gap: 0;
-  padding: 10px 0;
-  border-radius: 8px;
-  transition: background 0.3s;
-}
-
-.verse-shi .couplet:hover {
-  background: rgba(180,150,100,0.06);
-}
-
-/* 左句 */
-.verse-shi .couplet .line:first-child {
-  text-align: right;
-  padding-right: 20px;
-  position: relative;
-}
-/* 右句 */
-.verse-shi .couplet .line:last-child {
-  text-align: left;
-  padding-left: 20px;
-}
-
-/* 联中间的分隔线 */
-.verse-shi .couplet .line:first-child::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 12%;
-  height: 76%;
-  width: 1px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    #d5cdb8 20%,
-    #c9a96e 50%,
-    #d5cdb8 80%,
-    transparent 100%
-  );
-  border-radius: 1px;
-}
-
-/* 颔联和颈联特殊标记（对仗联）*/
-.verse-shi .couplet:nth-child(2),
-.verse-shi .couplet:nth-child(3) {
-  background: linear-gradient(90deg,
-    rgba(180,150,100,0.02) 0%,
-    rgba(180,150,100,0.06) 50%,
-    rgba(180,150,100,0.02) 100%
-  );
-}
-.verse-shi .couplet:nth-child(2):hover,
-.verse-shi .couplet:nth-child(3):hover {
-  background: linear-gradient(90deg,
-    rgba(180,150,100,0.04) 0%,
-    rgba(180,150,100,0.1) 50%,
-    rgba(180,150,100,0.04) 100%
-  );
-}
-
-/* 首联 + 尾联弱化 */
-.verse-shi .couplet:first-child,
-.verse-shi .couplet:last-child {
-  opacity: 0.92;
+.verse-shi .line {
+  padding: 6px 0;
+  text-align: center;
 }
 
 /* ============================================================
@@ -978,23 +914,7 @@ main { flex: 1; }
     width: 80px;
   }
 
-  /* 移动端律诗：对联改为上下排列 */
-  .verse-shi .couplet {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    padding: 12px 8px;
-  }
-  .verse-shi .couplet .line:first-child {
-    text-align: center;
-    padding-right: 0;
-  }
-  .verse-shi .couplet .line:first-child::after {
-    display: none;
-  }
-  .verse-shi .couplet .line:last-child {
-    text-align: center;
-    padding-left: 0;
-  }
+  /* 移动端律诗 */
   .verse-shi .line {
     font-size: 18px;
     line-height: 1.9;
@@ -1013,15 +933,6 @@ main { flex: 1; }
   .article-hero-image {
     margin: 0 0 20px;
     border-radius: 10px;
-  }
-
-  .verse-shi .couplet:nth-child(2),
-  .verse-shi .couplet:nth-child(3) {
-    background: linear-gradient(180deg,
-      rgba(180,150,100,0.02) 0%,
-      rgba(180,150,100,0.05) 50%,
-      rgba(180,150,100,0.02) 100%
-    );
   }
 }
 
@@ -1043,5 +954,3 @@ main { flex: 1; }
     line-height: 2.1;
   }
 }
-
-

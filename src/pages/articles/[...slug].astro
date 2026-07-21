@@ -265,27 +265,16 @@ if (isPoetry) {
     if (poemType) verseWrap.classList.add('verse-' + poemType);
 
     if (poemType === 'shi') {
-      // ── 七律/七绝：两句一组（联） ──
+      // ── 律诗/绝句：一句一行 ──
       bodyParagraphs.forEach(p => {
         const lines = p.innerHTML.split(/<br\s*\/?>/i);
-        // If only one line (no <br>), treat as single line
         const cleanedLines = lines.map(l => l.trim()).filter(Boolean);
-        // Group into couplets: 2 lines each
-        for (let i = 0; i < cleanedLines.length; i += 2) {
-          const couplet = document.createElement('div');
-          couplet.className = 'couplet';
-          const line1 = document.createElement('span');
-          line1.className = 'line';
-          line1.innerHTML = cleanedLines[i];
-          couplet.appendChild(line1);
-          if (cleanedLines[i + 1] !== undefined) {
-            const line2 = document.createElement('span');
-            line2.className = 'line';
-            line2.innerHTML = cleanedLines[i + 1];
-            couplet.appendChild(line2);
-          }
-          verseWrap.appendChild(couplet);
-        }
+        cleanedLines.forEach(line => {
+          const div = document.createElement('div');
+          div.className = 'line';
+          div.innerHTML = line;
+          verseWrap.appendChild(div);
+        });
       });
     } else if (poemType === 'ci') {
       // ── 词牌：每个 <p> 就是一阕 ──
