@@ -119,7 +119,11 @@ if (isPoetry) {
             </div>
           )}
         </header>
-        <div class={`article-content${isPoetry ? " poem-content" : ""}`}>
+        <div
+          class={`article-content${isPoetry ? " poem-content" : ""}`}
+          data-poem-type={isPoetry ? article.data.poem_type || "" : undefined}
+          data-cipai={isPoetry && article.data.cipai ? article.data.cipai : undefined}
+        >
           <Content />
         </div>
 
@@ -228,6 +232,119 @@ if (isPoetry) {
 
   initAudioPlayers();
   document.addEventListener('astro:page-load', initAudioPlayers);
+
+  // ── Poetry DOM enhancement ──
+  function enhancePoetry() {
+    const poem = document.querySelector('.poem-content');
+    if (!poem) return;
+
+    const poemType = poem.dataset.poemType;
+    const hr = poem.querySelector('hr');
+    if (!hr) return;
+
+    // Collect all <p> before <hr> — skip the first one (date/subtitle line)
+    const bodyParagraphs = [];
+    let el = poem.firstElementChild;
+    let isFirstP = true;
+    while (el && el !== hr) {
+      if (el.tagName === 'P') {
+        if (isFirstP) {
+          isFirstP = false;
+          // Keep the date line as-is, add class for styling
+          el.classList.add('poem-date');
+        } else {
+          bodyParagraphs.push(el);
+        }
+      }
+      el = el.nextElementSibling;
+    }
+
+    // Create wrapper for poem body
+    const verseWrap = document.createElement('div');
+    verseWrap.className = 'verse-body';
+    if (poemType) verseWrap.classList.add('verse-' + poemType);
+
+    if (poemType === 'shi') {
+      // ── 七律/七绝：两句一组（联） ──
+      bodyParagraphs.forEach(p => {
+        const lines = p.innerHTML.split(/<br\s*\/?>/i);
+        // If only one line (no <br>), treat as single line
+        const cleanedLines = lines.map(l => l.trim()).filter(Boolean);
+        // Group into couplets: 2 lines each
+        for (let i = 0; i < cleanedLines.length; i += 2) {
+          const couplet = document.createElement('div');
+          couplet.className = 'couplet';
+          const line1 = document.createElement('span');
+          line1.className = 'line';
+          line1.innerHTML = cleanedLines[i];
+          couplet.appendChild(line1);
+          if (cleanedLines[i + 1] !== undefined) {
+            const line2 = document.createElement('span');
+            line2.className = 'line';
+            line2.innerHTML = cleanedLines[i + 1];
+            couplet.appendChild(line2);
+          }
+          verseWrap.appendChild(couplet);
+        }
+      });
+    } else if (poemType === 'ci') {
+      // ── 词牌：每个 <p> 就是一阕 ──
+      bodyParagraphs.forEach((p, idx) => {
+        const stanza = document.createElement('div');
+        stanza.className = 'stanza';
+        stanza.innerHTML = p.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+        // Split by newlines for individual line styling
+        const lines = stanza.innerHTML.split('\n').map(l => l.trim()).filter(Boolean);
+        stanza.innerHTML = lines.map(l => `<span class="line">${l}</span>`).join('');
+        if (idx === 0) stanza.classList.add('stanza-upper');
+        if (idx === 1) stanza.classList.add('stanza-lower');
+        verseWrap.appendChild(stanza);
+      });
+
+      // If only one stanza (no blank line in markdown), split at 3-char line (三字句)
+      // e.g., "风樯动，龟蛇静，起宏图。" — short lines often mark 下阕 start
+      if (bodyParagraphs.length === 1) {
+        const lines = bodyParagraphs[0].innerHTML.split(/<br\s*\/?>/i).map(l => l.trim()).filter(Boolean);
+        // Find split point: first line ≤ 7 chars (like "风樯动，龟蛇静，起宏图。")
+        let splitIdx = -1;
+        for (let i = 0; i < lines.length; i++) {
+          const text = lines[i].replace(/<[^>]*>/g, '');
+          if (text.length <= 9 && i > 0) { splitIdx = i; break; }
+        }
+        if (splitIdx > 0) {
+          verseWrap.innerHTML = '';
+          const upper = document.createElement('div');
+          upper.className = 'stanza stanza-upper';
+          upper.innerHTML = lines.slice(0, splitIdx).map(l => `<span class="line">${l}</span>`).join('');
+          verseWrap.appendChild(upper);
+
+          const divider = document.createElement('div');
+          divider.className = 'stanza-divider';
+          verseWrap.appendChild(divider);
+
+          const lower = document.createElement('div');
+          lower.className = 'stanza stanza-lower';
+          lower.innerHTML = lines.slice(splitIdx).map(l => `<span class="line">${l}</span>`).join('');
+          verseWrap.appendChild(lower);
+        }
+      }
+    } else {
+      // ── 古体诗 / 默认：保留原格式 ──
+      bodyParagraphs.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'verse-line';
+        div.innerHTML = p.innerHTML;
+        verseWrap.appendChild(div);
+      });
+    }
+
+    // Insert verse body before hr, remove original paragraphs
+    bodyParagraphs.forEach(p => p.remove());
+    hr.parentNode.insertBefore(verseWrap, hr);
+  }
+
+  enhancePoetry();
+  document.addEventListener('astro:page-load', enhancePoetry);
 </script>
 
 <style>

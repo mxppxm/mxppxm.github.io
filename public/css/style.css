@@ -629,11 +629,14 @@ main { flex: 1; }
 
 /* ============================================================
    POETRY — 诗词专用样式
+   三种模式：律诗(shi) · 词牌(ci) · 古体(guti)
    ============================================================ */
 
-/* 诗词详情页 — 沉浸式阅读 */
+/* ── 诗词详情页 · 沉浸式氛围 ── */
 .article-page:has(.poem-content) {
-  background: #F7F5F0;
+  background:
+    radial-gradient(ellipse 50% 30% at 50% 0%, rgba(180,160,120,0.06) 0%, transparent 60%),
+    #F7F5F0;
 }
 
 .article-page:has(.poem-content) .article-layout {
@@ -680,7 +683,7 @@ main { flex: 1; }
   margin-bottom: 36px;
 }
 
-/* Poem card */
+/* ── 诗词卡片容器 ── */
 .article-content.poem-content {
   max-width: 700px;
   margin: 0 auto;
@@ -690,7 +693,7 @@ main { flex: 1; }
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.04);
 }
 
-/* In-content title (词牌名) */
+/* Markdown 里的 h1（诗词标题如"水调歌头·游泳"）*/
 .article-content.poem-content h1 {
   font-size: 17px;
   font-weight: 500;
@@ -700,26 +703,17 @@ main { flex: 1; }
   letter-spacing: 0.04em;
 }
 
-/* Verse paragraphs — paragraph-style, elegant */
-.article-content.poem-content p {
-  text-align: left;
-  font-size: 18px;
-  line-height: 2.2;
-  letter-spacing: 0.04em;
-  margin: 0 0 10px;
-  color: var(--text);
-  text-indent: 0;
-}
-
-/* Date / subtitle line (first paragraph after h1) */
-.article-content.poem-content > p:first-of-type {
+/* 创作时间（如"一九三五年十月"）*/
+.article-content.poem-content > p:first-of-type,
+.article-content.poem-content .poem-date {
   font-size: 15px;
   line-height: 1.8;
   color: var(--text-muted);
   margin-bottom: 24px;
+  text-align: center;
 }
 
-/* Decorative separator between poem and analysis */
+/* ── 分割线（诗词正文 ↔ 赏析）── */
 .article-content.poem-content hr {
   border: none;
   height: 0;
@@ -740,7 +734,7 @@ main { flex: 1; }
   line-height: 1;
 }
 
-/* Section headers (创作背景 / 赏析) */
+/* ── 赏析区域 ── */
 .article-content.poem-content h2 {
   font-size: 16px;
   font-weight: 700;
@@ -750,7 +744,6 @@ main { flex: 1; }
   border-bottom: 1px solid #e8e0d0;
 }
 
-/* Analysis paragraphs — white cards on cream background */
 .article-content.poem-content h2 ~ p {
   text-align: left;
   font-size: 15px;
@@ -779,6 +772,185 @@ main { flex: 1; }
   color: var(--text-secondary);
 }
 
+/* ============================================================
+   VERSE BODY — JS 重构后的诗词正文容器
+   ============================================================ */
+
+.verse-body {
+  margin-bottom: 0;
+}
+
+/* ── 通用诗行 ── */
+.verse-body .line {
+  display: block;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", "STSong", "SimSun", "Songti SC", "KaiTi", "STKaiti", serif;
+  font-size: 20px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: #2a2218;
+}
+
+/* ============================================================
+   【律诗】shi — 对联式展示
+   两句一组（联），对联左右并排，中间竖线分隔
+   ============================================================ */
+.verse-shi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+}
+
+.verse-shi .couplet {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 10px 0;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.verse-shi .couplet:hover {
+  background: rgba(180,150,100,0.06);
+}
+
+/* 左句 */
+.verse-shi .couplet .line:first-child {
+  text-align: right;
+  padding-right: 20px;
+  position: relative;
+}
+/* 右句 */
+.verse-shi .couplet .line:last-child {
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* 联中间的分隔线 */
+.verse-shi .couplet .line:first-child::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 12%;
+  height: 76%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    #d5cdb8 20%,
+    #c9a96e 50%,
+    #d5cdb8 80%,
+    transparent 100%
+  );
+  border-radius: 1px;
+}
+
+/* 颔联和颈联特殊标记（对仗联）*/
+.verse-shi .couplet:nth-child(2),
+.verse-shi .couplet:nth-child(3) {
+  background: linear-gradient(90deg,
+    rgba(180,150,100,0.02) 0%,
+    rgba(180,150,100,0.06) 50%,
+    rgba(180,150,100,0.02) 100%
+  );
+}
+.verse-shi .couplet:nth-child(2):hover,
+.verse-shi .couplet:nth-child(3):hover {
+  background: linear-gradient(90deg,
+    rgba(180,150,100,0.04) 0%,
+    rgba(180,150,100,0.1) 50%,
+    rgba(180,150,100,0.04) 100%
+  );
+}
+
+/* 首联 + 尾联弱化 */
+.verse-shi .couplet:first-child,
+.verse-shi .couplet:last-child {
+  opacity: 0.92;
+}
+
+/* ============================================================
+   【词牌】ci — 上下阕展示
+   ============================================================ */
+.verse-ci {
+  padding: 8px 0;
+}
+
+.verse-ci .stanza {
+  padding: 16px 12px;
+  position: relative;
+}
+
+/* 上阕 */
+.verse-ci .stanza-upper {
+  padding-bottom: 8px;
+}
+
+/* 下阕 */
+.verse-ci .stanza-lower {
+  padding-top: 8px;
+}
+
+/* 上下阕之间的装饰分隔 */
+.verse-ci .stanza-upper + .stanza-lower {
+  position: relative;
+}
+.verse-ci .stanza-upper + .stanza-lower::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: -4px auto 12px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  border-radius: 1px;
+}
+
+/* JS 自动分割时的分隔符 */
+.verse-ci .stanza-divider {
+  width: 60px;
+  height: 1px;
+  margin: 4px auto 12px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  border-radius: 1px;
+}
+
+.verse-ci .line {
+  font-size: 18px;
+  line-height: 2.3;
+  /* 词牌的长短句节奏感 */
+  transition: color 0.3s;
+}
+
+/* 短句（三字句、四字句）稍加突出 */
+.verse-ci .stanza-lower .line:first-child {
+  font-weight: 600;
+  color: #4a3a20;
+}
+
+/* 词牌名装饰 — 如果 data-cipai 存在 */
+.poem-content[data-cipai] .verse-ci::before {
+  display: none; /* 词牌名已在标题中显示，此处不重复 */
+}
+
+/* ============================================================
+   【古体诗】guti — 自由流畅
+   ============================================================ */
+.verse-guti {
+  padding: 8px 0;
+}
+
+.verse-guti .verse-line {
+  padding: 6px 0;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", "STSong", "KaiTi", serif;
+  font-size: 20px;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
+  color: #2a2218;
+}
+
+/* ============================================================
+   移动端适配
+   ============================================================ */
 @media (max-width: 768px) {
   .article-page:has(.poem-content) .article-layout {
     padding: 32px 0 60px;
@@ -788,11 +960,6 @@ main { flex: 1; }
     padding: 32px 18px 32px;
     border-radius: 14px;
     margin: 0 12px;
-  }
-
-  .article-content.poem-content p {
-    font-size: 18px;
-    line-height: 2.3;
   }
 
   .article-content.poem-content > p:first-of-type {
@@ -811,9 +978,69 @@ main { flex: 1; }
     width: 80px;
   }
 
+  /* 移动端律诗：对联改为上下排列 */
+  .verse-shi .couplet {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 8px;
+  }
+  .verse-shi .couplet .line:first-child {
+    text-align: center;
+    padding-right: 0;
+  }
+  .verse-shi .couplet .line:first-child::after {
+    display: none;
+  }
+  .verse-shi .couplet .line:last-child {
+    text-align: center;
+    padding-left: 0;
+  }
+  .verse-shi .line {
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  /* 移动端词牌 */
+  .verse-ci .line {
+    font-size: 17px;
+    line-height: 2.2;
+  }
+
+  .verse-guti .verse-line {
+    font-size: 18px;
+  }
+
   .article-hero-image {
     margin: 0 0 20px;
     border-radius: 10px;
+  }
+
+  .verse-shi .couplet:nth-child(2),
+  .verse-shi .couplet:nth-child(3) {
+    background: linear-gradient(180deg,
+      rgba(180,150,100,0.02) 0%,
+      rgba(180,150,100,0.05) 50%,
+      rgba(180,150,100,0.02) 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .article-content.poem-content {
+    padding: 24px 12px 28px;
+    border-radius: 12px;
+    margin: 0 6px;
+  }
+
+  .verse-shi .line,
+  .verse-guti .verse-line {
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  .verse-ci .line {
+    font-size: 16px;
+    line-height: 2.1;
   }
 }
 
