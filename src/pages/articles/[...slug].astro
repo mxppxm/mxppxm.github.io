@@ -11,14 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { Content, headings } = await article.render();
-
-interface TocItem { depth: number; text: string; slug: string; }
-const toc: TocItem[] = headings
-  .filter((h: { depth: number }) => h.depth <= 3)
-  .map((h: { depth: number; text: string; slug: string }) => ({
-    depth: h.depth, text: h.text, slug: h.slug,
-  }));
+const { Content } = await article.render();
 
 const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
 const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
@@ -145,21 +138,6 @@ if (isPoetry) {
           </nav>
         )}
       </div>
-
-      {toc.length > 1 && (
-        <aside class="article-sidebar">
-          <nav class="toc" aria-label="目录">
-            <div class="toc-title">目录</div>
-            <ol>
-              {toc.map((item) => (
-                <li style={item.depth === 3 ? "padding-left: 18px;" : ""}>
-                  <a href={`#${item.slug}`}>{item.text}</a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </aside>
-      )}
     </div>
   </div>
 </BaseLayout>

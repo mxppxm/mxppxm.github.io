@@ -34,25 +34,30 @@ const latestArticles = [
   description="九日的个人博客，分享前端技术、创意项目与深度思考。用创意和代码探索世界。"
 >
 
-  <!-- ====== HERO ====== -->
+  <!-- ====== HERO — asymmetric split ====== -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span> 开放合作中
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span> 开放合作中
+        </div>
+        <h1 class="hero-title">
+          用创意和代码<br/><em>探索世界</em>
+        </h1>
+        <p class="hero-sub">
+          前端工程师 · 创意工作者。在技术与艺术的交界处游走，把脑洞变成看得见摸得着的交互体验。
+        </p>
+        <div class="hero-links">
+          <a href="#projects" class="btn btn-primary">看看我的项目</a>
+          <a href="#blog" class="btn btn-outline">阅读文章</a>
+          <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
       </div>
-      <h1 class="hero-title">
-        用创意和代码<br/><em>探索世界</em>
-      </h1>
-      <p class="hero-sub">
-        前端工程师 · 创意工作者。在技术与艺术的交界处游走，把脑洞变成看得见摸得着的交互体验。
-      </p>
-      <div class="hero-links">
-        <a href="#projects" class="btn btn-primary">看看我的项目</a>
-        <a href="#blog" class="btn btn-outline">阅读文章</a>
-        <a href="https://github.com/mxppxm" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
+      <div class="hero-visual" aria-hidden="true">
+        <span class="hero-glyph">九</span>
       </div>
     </div>
   </section>
@@ -60,7 +65,6 @@ const latestArticles = [
   <!-- ====== ABOUT ====== -->
   <section id="about" class="section section-dark">
     <div class="section-inner">
-      <div class="section-label">About</div>
       <h2 class="section-title">关于我</h2>
       <div class="about-grid">
         <div class="about-text">
@@ -92,7 +96,6 @@ const latestArticles = [
   <!-- ====== SKILLS ====== -->
   <section id="skills" class="section section-accent">
     <div class="section-inner">
-      <div class="section-label">Stack</div>
       <h2 class="section-title">技能栈</h2>
       <div class="skills-cloud">
         <span class="skill-pill"><span class="skill-pill-icon">⚛️</span>React</span>
@@ -112,7 +115,6 @@ const latestArticles = [
   <!-- ====== PROJECTS ====== -->
   <section id="projects" class="section">
     <div class="section-inner">
-      <div class="section-label">Work</div>
       <h2 class="section-title">项目精选</h2>
       <div id="projects-grid" class="projects-grid">
         <div class="projects-loading">加载中...</div>
@@ -160,7 +162,6 @@ const latestArticles = [
   <!-- ====== CONTACT ====== -->
   <section id="contact" class="section">
     <div class="section-inner">
-      <div class="section-label">Connect</div>
       <h2 class="section-title-sm">找到我</h2>
       <div class="contact-row">
         <p style="font-size:15px;color:var(--text-secondary);margin-right:8px;">
