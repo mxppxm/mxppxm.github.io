@@ -93,7 +93,7 @@ main { flex: 1; position: relative; z-index: 1; }
 }
 .site-title:hover { color: var(--accent); }
 
-.site-nav { display: flex; gap: 4px; }
+.site-nav { display: flex; gap: 4px; align-items: center; }
 .site-nav a,
 .nav-link {
   font-size: 14px; font-weight: 520; color: var(--text-secondary);
