@@ -11,9 +11,9 @@
       <a href="/articles/essays/">杂文</a>
       <a href="/articles/skills/">Skill</a>
       <a href="/articles/poetry/">诗词</a>
-      <div class="nav-dropdown" id="nav-dropdown">
-        <span class="nav-dropdown-trigger" id="nav-dropdown-trigger">项目 ▾</span>
-        <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-trigger">项目 ▾</span>
+        <div class="nav-dropdown-menu">
           <a href="https://skin-doctor.netlify.app/" target="_blank" rel="noopener" class="dropdown-project">
             <span class="dropdown-project-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -47,24 +47,3 @@
   <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
 </nav>
 
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.getElementById('nav-dropdown');
-    var menu = document.getElementById('nav-dropdown-menu');
-    var trigger = document.getElementById('nav-dropdown-trigger');
-    if (!dropdown || !menu) return;
-
-    trigger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdown.classList.toggle('open');
-    });
-
-    document.addEventListener('click', function() {
-      dropdown.classList.remove('open');
-    });
-
-    menu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  });
-</script>
