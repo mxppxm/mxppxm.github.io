@@ -11,8 +11,8 @@
       <a href="/articles/essays/">杂文</a>
       <a href="/articles/skills/">Skill</a>
       <a href="/articles/poetry/">诗词</a>
-      <div class="nav-dropdown" id="nav-dropdown">
-        <span class="nav-link nav-dropdown-trigger" id="nav-dropdown-trigger">项目 ▾</span>
+      <a href="javascript:void(0)" class="nav-dropdown-trigger" id="nav-dropdown-trigger">
+        项目 ▾
         <div class="nav-dropdown-menu" id="nav-dropdown-menu">
           <a href="https://skin-doctor.netlify.app/" target="_blank" rel="noopener" class="dropdown-project">
             <span class="dropdown-project-icon">
@@ -30,7 +30,7 @@
             <span class="dropdown-project-arrow">↗</span>
           </a>
         </div>
-      </div>
+      </a>
       <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
     </nav>
     <button class="mobile-menu-btn" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">☰</button>
@@ -51,18 +51,16 @@
   (function() {
     var trigger = document.getElementById('nav-dropdown-trigger');
     var menu = document.getElementById('nav-dropdown-menu');
-    var dropdown = document.getElementById('nav-dropdown');
     if (!trigger || !menu) return;
 
     trigger.addEventListener('click', function(e) {
+      e.preventDefault();
       e.stopPropagation();
-      var open = dropdown.classList.toggle('open');
-      trigger.classList.toggle('active', open);
+      var open = trigger.classList.toggle('open');
     });
 
     document.addEventListener('click', function() {
-      dropdown.classList.remove('open');
-      trigger.classList.remove('active');
+      trigger.classList.remove('open');
     });
 
     menu.addEventListener('click', function(e) {

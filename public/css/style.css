@@ -94,20 +94,16 @@ main { flex: 1; position: relative; z-index: 1; }
 .site-title:hover { color: var(--accent); }
 
 .site-nav { display: flex; gap: 4px; align-items: center; }
-.site-nav a,
-.nav-link {
+.site-nav a {
   font-size: 14px; font-weight: 520; color: var(--text-secondary);
   text-decoration: none; padding: 7px 16px; border-radius: 8px;
   transition: all 0.25s var(--ease-out);
-  cursor: pointer;
 }
-.site-nav a:hover,
-.nav-link:hover,
-.nav-link.active { color: var(--accent); background: var(--accent-light); }
+.site-nav a:hover { color: var(--accent); background: var(--accent-light); }
 
 /* --- Nav dropdown --- */
-.nav-dropdown { position: relative; display: inline-flex; }
-.nav-dropdown-trigger { user-select: none; }
+.nav-dropdown-trigger { position: relative; }
+.nav-dropdown-trigger.open { color: var(--accent); background: var(--accent-light); }
 .nav-dropdown-menu {
   display: none;
   position: absolute; top: calc(100% + 6px); right: 0;
@@ -119,7 +115,7 @@ main { flex: 1; position: relative; z-index: 1; }
   padding: 8px;
   z-index: 200;
 }
-.nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-trigger.open .nav-dropdown-menu { display: block; }
 
 .dropdown-project {
   display: flex; align-items: center; gap: 12px;
