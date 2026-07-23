@@ -106,7 +106,7 @@ main { flex: 1; position: relative; z-index: 1; }
 .nav-link.active { color: var(--accent); background: var(--accent-light); }
 
 /* --- Nav dropdown --- */
-.nav-dropdown { position: relative; }
+.nav-dropdown { position: relative; display: inline-flex; }
 .nav-dropdown-trigger { user-select: none; }
 .nav-dropdown-menu {
   display: none;
