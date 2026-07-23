@@ -113,7 +113,7 @@ main { flex: 1; position: relative; z-index: 1; }
 .nav-dropdown-menu {
   opacity: 0;
   pointer-events: none;
-  position: absolute; top: calc(100% + 4px); right: 0;
+  position: absolute; top: 100%; right: 0;
   min-width: 300px;
   background: var(--surface);
   border: 1px solid var(--border-light);
@@ -123,6 +123,13 @@ main { flex: 1; position: relative; z-index: 1; }
   z-index: 200;
   transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
   transform: translateY(-6px);
+}
+/* 透明桥接 — 填补 trigger 和 menu 之间的空隙，防止 hover 断开 */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: 0; right: 0;
+  height: 12px;
 }
 .nav-dropdown:hover .nav-dropdown-menu {
   opacity: 1; pointer-events: auto; transform: translateY(0);
