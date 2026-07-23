@@ -47,8 +47,8 @@
   <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
 </nav>
 
-<script>
-  (function() {
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
     var trigger = document.getElementById('nav-dropdown-trigger');
     var menu = document.getElementById('nav-dropdown-menu');
     if (!trigger || !menu) return;
@@ -56,7 +56,7 @@
     trigger.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      var open = trigger.classList.toggle('open');
+      trigger.classList.toggle('open');
     });
 
     document.addEventListener('click', function() {
@@ -66,5 +66,5 @@
     menu.addEventListener('click', function(e) {
       e.stopPropagation();
     });
-  })();
+  });
 </script>
