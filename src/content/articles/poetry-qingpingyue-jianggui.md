@@ -4,6 +4,7 @@ description: "风云突变，军阀重开战。洒向人间都是怨，一枕黄
 date: 1929-10-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qingpingyue-jianggui.jpg"
 poem_type: "ci"
 cipai: "清平乐"
 period: "革命时期"

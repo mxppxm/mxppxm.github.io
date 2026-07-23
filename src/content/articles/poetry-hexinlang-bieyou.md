@@ -4,6 +4,7 @@ description: "挥手从兹去。更那堪凄然相向，苦情重诉。眼角眉
 date: 1923-12-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/hexinlang-bieyou.jpg"
 poem_type: "ci"
 cipai: "贺新郎"
 period: "早期"

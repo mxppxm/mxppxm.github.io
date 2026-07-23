@@ -4,6 +4,7 @@ description: "孩儿立志出乡关，学不成名誓不还。埋骨何须桑梓
 date: 1910-01-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qijue-zengfuqin.jpg"
 poem_type: "shi"
 period: "早期"
 ---

@@ -4,6 +4,7 @@ description: "白云山头云欲立，白云山下呼声急。枯木朽株齐努
 date: 1931-05-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/yujiaao-wei-jiao2.jpg"
 poem_type: "ci"
 cipai: "渔家傲"
 period: "革命时期"

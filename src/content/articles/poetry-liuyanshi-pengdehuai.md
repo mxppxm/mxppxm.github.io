@@ -4,6 +4,7 @@ description: "山高路远坑深，大军纵横驰奔。谁敢横刀立马？唯
 date: 1935-10-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/liuyanshi-pengdehuai.jpg"
 poem_type: "shi"
 period: "革命时期"
 ---

@@ -4,6 +4,7 @@ description: "东方欲晓，莫道君行早。踏遍青山人未老，风景这
 date: 1934-07-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qingpingyue-huichang.jpg"
 poem_type: "ci"
 cipai: "清平乐"
 period: "革命时期"

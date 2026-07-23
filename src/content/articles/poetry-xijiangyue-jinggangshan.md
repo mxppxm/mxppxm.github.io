@@ -4,6 +4,7 @@ description: "山下旌旗在望，山头鼓角相闻。敌军围困万千重，
 date: 1928-09-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/xijiangyue-jinggangshan.jpg"
 poem_type: "ci"
 cipai: "西江月"
 period: "革命时期"

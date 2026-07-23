@@ -4,6 +4,7 @@ description: "六月天兵征腐恶，万丈长缨要把鲲鹏缚。赣水那边
 date: 1930-07-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/dielianhua-changsha.jpg"
 poem_type: "ci"
 cipai: "蝶恋花"
 period: "革命时期"

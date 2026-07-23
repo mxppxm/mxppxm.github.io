@@ -4,6 +4,7 @@ description: "天高云淡，望断南飞雁。不到长城非好汉，屈指行
 date: 1935-10-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/qingpingyue-liupanshan.jpg"
 poem_type: "ci"
 cipai: "清平乐"
 period: "革命时期"

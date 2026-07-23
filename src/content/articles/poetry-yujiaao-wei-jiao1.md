@@ -4,6 +4,7 @@ description: "万木霜天红烂漫，天兵怒气冲霄汉。雾满龙冈千嶂
 date: 1931-01-01
 tags:
   - "📜 毛泽东诗词"
+image: "/images/poetry/yujiaao-wei-jiao1.jpg"
 poem_type: "ci"
 cipai: "渔家傲"
 period: "革命时期"
