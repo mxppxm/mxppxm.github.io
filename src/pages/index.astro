@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BookmarkWall from "../components/BookmarkWall.astro";
 
 const allArticles = (await getCollection("articles"))
   .filter((a) => !a.data.draft)
@@ -132,6 +133,9 @@ const latestArticles = [
       </div>
     </div>
   </section>
+
+  <!-- ====== BOOKMARK WALL ====== -->
+  <BookmarkWall />
 
   <!-- ====== BLOG ====== -->
   <section id="blog" class="section section-dark">
