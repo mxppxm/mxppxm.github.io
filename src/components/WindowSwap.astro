@@ -1,0 +1,293 @@
+---
+export interface Props {}
+---
+<div class="windowswap-hero" id="ws-hero">
+  <div class="ws-video-wrapper">
+    <iframe
+      id="ws-player"
+      src="about:blank"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+      class="ws-iframe"
+    ></iframe>
+  </div>
+
+  <div class="ws-fallback-bg"></div>
+
+  <slot />
+
+  <div class="ws-immersive-hint" id="ws-immersive-hint">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+    </svg>
+    <span>视频就绪后点击任意位置沉浸观看</span>
+  </div>
+</div>
+
+<style is:global>
+  .windowswap-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .windowswap-hero.can-immersive {
+    cursor: pointer;
+  }
+
+  .ws-video-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .windowswap-hero.video-ready .ws-video-wrapper {
+    opacity: 1;
+  }
+
+  .ws-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 56.25vw;
+    min-width: 100vw;
+    min-height: 100vh;
+    transform: translate(-50%, -50%);
+    border: none;
+  }
+
+  /* 页面原色兜底 — 永远在底下，视频渐入后自然覆盖 */
+  .ws-fallback-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 45% at 75% 20%, rgba(7,193,96,0.06) 0%, transparent 55%),
+      linear-gradient(180deg, var(--surface, #fcfaf7) 0%, var(--bg, #f7f5f0) 100%);
+  }
+
+  /* Video-ready: text turns white */
+  .windowswap-hero.video-ready .hero-float .hero-text,
+  .windowswap-hero.video-ready .hero-float .hero-title,
+  .windowswap-hero.video-ready .hero-float .hero-sub {
+    color: rgba(255,255,255,0.9);
+  }
+  .windowswap-hero.video-ready .hero-float .hero-title em {
+    color: var(--accent, #07c160);
+  }
+  .windowswap-hero.video-ready .hero-float .hero-badge {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.16);
+    backdrop-filter: blur(8px);
+  }
+  .windowswap-hero.video-ready .hero-float .hero-badge-dot {
+    background: var(--accent, #07c160);
+  }
+  .windowswap-hero.video-ready .hero-float .hero-sub {
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+  .windowswap-hero.video-ready .hero-float .hero-glyph {
+    color: rgba(255,255,255,0.04);
+  }
+
+  /* Buttons invert */
+  .windowswap-hero .hero-float .ws-btn {
+    transition: background 0.5s ease 0.3s, color 0.5s ease 0.3s, border-color 0.5s ease 0.3s;
+  }
+  .windowswap-hero.video-ready .hero-float .ws-btn {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border-color: rgba(255,255,255,0.22);
+    backdrop-filter: blur(8px);
+  }
+  .windowswap-hero.video-ready .hero-float .ws-btn:hover {
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.45);
+    color: #fff;
+  }
+
+  .windowswap-hero:not(.video-ready) .hero-float .hero-glyph {
+    animation: glyphBounce 2.5s ease-in-out infinite;
+  }
+
+  .windowswap-hero .hero-float .hero-glyph {
+    transition: color 0.5s ease 0.6s, transform 0.5s ease-out;
+  }
+
+  @keyframes glyphBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  .windowswap-hero .hero-float .ws-btn {
+    transition: background 0.5s ease 0.6s, color 0.5s ease 0.6s, border-color 0.5s ease 0.6s;
+  }
+
+  .windowswap-hero .hero-float .hero-text {
+    transition: transform 0.7s ease;
+  }
+  .windowswap-hero .hero-float .hero-visual {
+    transition: transform 0.7s ease;
+  }
+
+  /* Immersive */
+  .windowswap-hero.immersive .hero-text {
+    transform: translateX(-120vw) !important;
+    pointer-events: none !important;
+  }
+  .windowswap-hero.immersive .hero-visual {
+    transform: translateX(120vw) !important;
+  }
+  .windowswap-hero.immersive .ws-immersive-hint {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .windowswap-hero.immersive {
+    cursor: default;
+  }
+
+  /* Hint */
+  .ws-immersive-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .windowswap-hero.video-ready .ws-immersive-hint {
+    opacity: 1;
+    animation: wsHintPulse 3s ease-in-out infinite;
+  }
+  @keyframes wsHintPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.65; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-float {
+      padding: 70px 20px 40px;
+      align-items: flex-end;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .hero-float .hero-visual { display: none; }
+  }
+</style>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<script>
+  const FEEDS_URL = '/data/windowswap-feeds.json';
+  let feeds: Array<{ u: string; h: string }> = [];
+
+  const hero = document.getElementById('ws-hero')!;
+  const iframe = document.getElementById('ws-player') as HTMLIFrameElement;
+  const header = document.querySelector('.site-header') as HTMLElement;
+
+  let isImmersive = false;
+  let isVideoReady = false;
+
+  async function loadFeeds() {
+    try {
+      const res = await fetch(FEEDS_URL);
+      feeds = await res.json();
+    } catch { feeds = []; }
+  }
+
+  function buildUrl(feed: { u: string; h: string }) {
+    let url = `https://player.vimeo.com/video/${feed.u}?autoplay=1&muted=1&loop=1&background=1`;
+    if (feed.h) url += `&h=${feed.h}`;
+    return url;
+  }
+
+  function pickRandom() {
+    if (!feeds.length) return;
+    iframe.src = buildUrl(feeds[Math.floor(Math.random() * feeds.length)]);
+  }
+
+  function markVideoReady() {
+    if (isVideoReady) return;
+    isVideoReady = true;
+    hero.classList.add('video-ready', 'can-immersive');
+  }
+
+  function enterImmersive() {
+    if (!isVideoReady) return;
+    isImmersive = true;
+    hero.classList.add('immersive');
+    header?.classList.add('header-hidden');
+    iframe.style.pointerEvents = 'none';
+  }
+
+  function exitImmersive() {
+    if (!isImmersive) return;
+    isImmersive = false;
+    hero.classList.remove('immersive');
+    header?.classList.remove('header-hidden');
+    iframe.style.pointerEvents = '';
+  }
+
+  // Use Vimeo Player SDK — 'playing' event fires when video actually renders
+  iframe.addEventListener('load', () => {
+    try {
+      const player = new (window as any).Vimeo.Player(iframe);
+      player.on('playing', async () => {
+        // Wait, then verify frames are actually rendering
+        await new Promise(r => setTimeout(r, 600));
+        try {
+          const t = await player.getCurrentTime();
+          if (t > 0) { markVideoReady(); return; }
+        } catch {}
+        // fallback
+        setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 2000);
+      });
+      // Fallback: if SDK fails or 'playing' never fires
+      setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 5000);
+    } catch {
+      // SDK load failed, fallback
+      setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 4000);
+    }
+  });
+
+  // Click
+  hero.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('a') || target.closest('button')) return;
+    if (isImmersive) exitImmersive();
+    else enterImmersive();
+  });
+
+  // Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isImmersive) exitImmersive();
+  });
+
+  // Scroll exits immersive
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    if (isImmersive && Math.abs(window.scrollY - lastScrollY) > 5) exitImmersive();
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
+  (async () => {
+    await loadFeeds();
+    pickRandom();
+  })();
+</script>
