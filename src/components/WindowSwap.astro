@@ -47,7 +47,8 @@ export interface Props {}
     opacity: 0;
     transition: opacity 0.8s ease;
   }
-  .windowswap-hero.video-ready .ws-video-wrapper {
+  /* 阶段1：视频开始播放 → 显示画面（文字保持深色，不变） */
+  .windowswap-hero.video-loaded .ws-video-wrapper {
     opacity: 1;
   }
 
@@ -74,48 +75,48 @@ export interface Props {}
       linear-gradient(180deg, var(--surface, #fcfaf7) 0%, var(--bg, #f7f5f0) 100%);
   }
 
-  /* Video-ready: text turns white */
-  .windowswap-hero.video-ready .hero-float .hero-text,
-  .windowswap-hero.video-ready .hero-float .hero-title,
-  .windowswap-hero.video-ready .hero-float .hero-sub {
+  /* 阶段2：视频确认可见后，文字切换为白色 */
+  .windowswap-hero.video-visible .hero-float .hero-text,
+  .windowswap-hero.video-visible .hero-float .hero-title,
+  .windowswap-hero.video-visible .hero-float .hero-sub {
     color: rgba(255,255,255,0.9);
   }
-  .windowswap-hero.video-ready .hero-float .hero-title em {
+  .windowswap-hero.video-visible .hero-float .hero-title em {
     color: var(--accent, #07c160);
   }
-  .windowswap-hero.video-ready .hero-float .hero-badge {
+  .windowswap-hero.video-visible .hero-float .hero-badge {
     color: #fff;
     background: rgba(255,255,255,0.1);
     border-color: rgba(255,255,255,0.16);
     backdrop-filter: blur(8px);
+    transition: color 0.5s ease, background 0.5s ease, border-color 0.5s ease;
   }
-  .windowswap-hero.video-ready .hero-float .hero-badge-dot {
+  .windowswap-hero.video-visible .hero-float .hero-badge-dot {
     background: var(--accent, #07c160);
   }
-  .windowswap-hero.video-ready .hero-float .hero-sub {
+  .windowswap-hero.video-visible .hero-float .hero-sub {
     text-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
-  .windowswap-hero.video-ready .hero-float .hero-glyph {
+  .windowswap-hero.video-visible .hero-float .hero-glyph {
     color: rgba(255,255,255,0.04);
+    transition: color 0.5s ease;
   }
 
-  /* Buttons invert */
-  .windowswap-hero .hero-float .ws-btn {
-    transition: background 0.5s ease 0.3s, color 0.5s ease 0.3s, border-color 0.5s ease 0.3s;
-  }
-  .windowswap-hero.video-ready .hero-float .ws-btn {
+  /* 按钮反色 — 阶段2 */
+  .windowswap-hero.video-visible .hero-float .ws-btn {
     background: rgba(255,255,255,0.08);
     color: #fff;
     border-color: rgba(255,255,255,0.22);
     backdrop-filter: blur(8px);
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
   }
-  .windowswap-hero.video-ready .hero-float .ws-btn:hover {
+  .windowswap-hero.video-visible .hero-float .ws-btn:hover {
     background: rgba(255,255,255,0.16);
     border-color: rgba(255,255,255,0.45);
     color: #fff;
   }
 
-  .windowswap-hero:not(.video-ready) .hero-float .hero-glyph {
+  .windowswap-hero:not(.video-visible) .hero-float .hero-glyph {
     animation: glyphBounce 2.5s ease-in-out infinite;
   }
 
@@ -128,12 +129,8 @@ export interface Props {}
     50% { transform: translateY(-16px); }
   }
 
-  .windowswap-hero .hero-float .ws-btn {
-    transition: background 0.5s ease 0.6s, color 0.5s ease 0.6s, border-color 0.5s ease 0.6s;
-  }
-
   .windowswap-hero .hero-float .hero-text {
-    transition: transform 0.7s ease;
+    transition: transform 0.7s ease, color 0.5s ease;
   }
   .windowswap-hero .hero-float .hero-visual {
     transition: transform 0.7s ease;
@@ -171,7 +168,7 @@ export interface Props {}
     opacity: 0;
     transition: opacity 0.5s ease;
   }
-  .windowswap-hero.video-ready .ws-immersive-hint {
+  .windowswap-hero.video-visible .ws-immersive-hint {
     opacity: 1;
     animation: wsHintPulse 3s ease-in-out infinite;
   }
@@ -202,7 +199,8 @@ export interface Props {}
   const header = document.querySelector('.site-header') as HTMLElement;
 
   let isImmersive = false;
-  let isVideoReady = false;
+  let isVideoLoaded = false;
+  let isVideoVisible = false;
 
   async function loadFeeds() {
     try {
@@ -222,14 +220,22 @@ export interface Props {}
     iframe.src = buildUrl(feeds[Math.floor(Math.random() * feeds.length)]);
   }
 
-  function markVideoReady() {
-    if (isVideoReady) return;
-    isVideoReady = true;
-    hero.classList.add('video-ready', 'can-immersive');
+  // 阶段1：视频开始播放 → 显示 video wrapper + 暗色 scrim（文字仍深色）
+  function markVideoLoaded() {
+    if (isVideoLoaded) return;
+    isVideoLoaded = true;
+    hero.classList.add('video-loaded');
+  }
+
+  // 阶段2：视频首帧已可见 → 切换文字为白色
+  function markVideoVisible() {
+    if (isVideoVisible) return;
+    isVideoVisible = true;
+    hero.classList.add('video-visible', 'can-immersive');
   }
 
   function enterImmersive() {
-    if (!isVideoReady) return;
+    if (!isVideoVisible) return;
     isImmersive = true;
     hero.classList.add('immersive');
     header?.classList.add('header-hidden');
@@ -244,25 +250,41 @@ export interface Props {}
     iframe.style.pointerEvents = '';
   }
 
-  // Use Vimeo Player SDK — 'playing' event fires when video actually renders
+  // 两阶段就绪：
+  //   阶段1 (video-loaded)：Vimeo 'playing' 事件 → 显示视频 wrapper + scrim
+  //   阶段2 (video-visible)：wrapper opacity transition 完成 + 确认播放 → 文字变白
   iframe.addEventListener('load', () => {
     try {
       const player = new (window as any).Vimeo.Player(iframe);
       player.on('playing', async () => {
-        // Wait, then verify frames are actually rendering
+        // 阶段1：视频开始播放，立刻显示画面
+        markVideoLoaded();
+
+        // 阶段2：等 wrapper opacity transition (0.8s) 完成 + 确认首帧渲染
         await new Promise(r => setTimeout(r, 600));
         try {
           const t = await player.getCurrentTime();
-          if (t > 0) { markVideoReady(); return; }
+          if (t > 0) {
+            // 再等 0.3s 确保 opacity transition 基本完成
+            await new Promise(r => setTimeout(r, 300));
+            markVideoVisible();
+            return;
+          }
         } catch {}
-        // fallback
-        setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 2000);
+        // fallback：总延迟 1.8s 后切换文字
+        setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 1200);
       });
-      // Fallback: if SDK fails or 'playing' never fires
-      setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 5000);
+      // 兜底：5s 内无论如何都要完成两阶段
+      setTimeout(() => {
+        markVideoLoaded();
+        setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 900);
+      }, 5000);
     } catch {
-      // SDK load failed, fallback
-      setTimeout(() => { if (!isVideoReady) markVideoReady(); }, 4000);
+      // SDK 加载失败兜底
+      setTimeout(() => {
+        markVideoLoaded();
+        setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 900);
+      }, 4000);
     }
   });
 

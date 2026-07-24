@@ -27,6 +27,9 @@
         </div>
       </div>
       <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      <button class="nav-cooperate-btn" id="cooperate-btn">
+        <span class="cooperate-dot"></span> 开放合作
+      </button>
     </nav>
     <button class="mobile-menu-btn" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">☰</button>
   </div>
@@ -40,5 +43,210 @@
   <a href="/articles/poetry/">📜 诗词</a>
   <a href="https://skin-doctor.netlify.app/" target="_blank" rel="noopener">🔬 皮肤检测器</a>
   <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  <button class="nav-cooperate-btn mobile" id="cooperate-btn-mobile">
+    <span class="cooperate-dot"></span> 开放合作
+  </button>
 </nav>
 
+<!-- 合作弹窗 -->
+<div class="cooperate-overlay" id="cooperate-overlay">
+  <div class="cooperate-modal">
+    <button class="cooperate-close" id="cooperate-close">&times;</button>
+    <span class="cooperate-dot large"></span>
+    <h3>开放合作中</h3>
+    <p>有想法就聊聊，别客气 👋</p>
+    <div class="cooperate-email-row">
+      <code id="cooperate-email">2695409102@qq.com</code>
+      <button class="cooperate-copy-btn" id="cooperate-copy-btn">复制</button>
+    </div>
+    <span class="cooperate-copied" id="cooperate-copied">已复制 ✓</span>
+  </div>
+</div>
+
+<style is:global>
+  .nav-cooperate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 620;
+    color: var(--accent-dark);
+    background: var(--accent-light);
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(7,193,96,0.14);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cooperate-btn:hover {
+    background: rgba(7,193,96,0.18);
+    transform: translateY(-1px);
+  }
+
+  .nav-cooperate-btn.mobile {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+  .mobile-nav .nav-cooperate-btn.mobile {
+    background: var(--accent-light);
+    border: 1px solid rgba(7,193,96,0.14);
+    color: var(--accent-dark);
+  }
+
+  .cooperate-dot {
+    width: 6px; height: 6px;
+    background: var(--accent, #07c160);
+    border-radius: 50%;
+    animation: cooperateDotPulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .cooperate-dot.large {
+    width: 10px; height: 10px;
+    margin-bottom: 12px;
+  }
+  @keyframes cooperateDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+  }
+
+  /* Modal */
+  .cooperate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .cooperate-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cooperate-modal {
+    background: var(--surface, #fff);
+    border-radius: 20px;
+    padding: 40px 36px 32px;
+    text-align: center;
+    max-width: 380px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    transform: translateY(12px);
+    transition: transform 0.25s ease;
+  }
+  .cooperate-overlay.open .cooperate-modal {
+    transform: translateY(0);
+  }
+
+  .cooperate-close {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none; border: none;
+    font-size: 24px; color: var(--text-secondary);
+    cursor: pointer; line-height: 1;
+    padding: 4px 8px; border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .cooperate-close:hover { background: var(--accent-light); }
+
+  .cooperate-modal h3 {
+    font-size: 20px; font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+  }
+  .cooperate-modal p {
+    font-size: 14px; color: var(--text-secondary);
+    margin: 0 0 20px;
+  }
+
+  .cooperate-email-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg, #f7f5f0);
+    border-radius: 12px;
+    padding: 6px 6px 6px 16px;
+  }
+  .cooperate-email-row code {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-family: 'SF Mono', 'Menlo', monospace;
+    word-break: break-all;
+    flex: 1;
+    background: none;
+    padding: 0;
+  }
+
+  .cooperate-copy-btn {
+    flex-shrink: 0;
+    background: var(--accent, #07c160);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .cooperate-copy-btn:hover {
+    background: #06a050;
+  }
+  .cooperate-copy-btn:active {
+    transform: scale(0.96);
+  }
+
+  .cooperate-copied {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cooperate-copied.show {
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+const overlay = document.getElementById('cooperate-overlay');
+const emailEl = document.getElementById('cooperate-email');
+const copyBtn = document.getElementById('cooperate-copy-btn');
+const copiedHint = document.getElementById('cooperate-copied');
+
+function openCooperate() {
+  overlay.classList.add('open');
+}
+function closeCooperate() {
+  overlay.classList.remove('open');
+}
+
+document.getElementById('cooperate-btn').addEventListener('click', openCooperate);
+document.getElementById('cooperate-btn-mobile').addEventListener('click', openCooperate);
+document.getElementById('cooperate-close').addEventListener('click', closeCooperate);
+overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) closeCooperate();
+});
+
+copyBtn.addEventListener('click', function() {
+  navigator.clipboard.writeText(emailEl.textContent).then(function() {
+    copiedHint.classList.add('show');
+    copyBtn.textContent = '已复制';
+    setTimeout(function() {
+      copiedHint.classList.remove('show');
+      copyBtn.textContent = '复制';
+    }, 2000);
+  });
+});
+</script>

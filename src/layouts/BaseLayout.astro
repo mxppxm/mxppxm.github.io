@@ -13,6 +13,12 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+
+    <!-- 预热 Vimeo：DNS + TLS 提前握手，视频加载快 300-600ms -->
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="preconnect" href="https://i.vimeocdn.com" />
+    <link rel="dns-prefetch" href="https://f.vimeocdn.com" />
+    <link rel="preload" href="https://player.vimeo.com/api/player.js" as="script" />
     <title>{title} — 九日</title>
     <meta name="description" content={description} />
 
