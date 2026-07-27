@@ -76,7 +76,7 @@ if (isPoetry) {
     <div class="article-layout">
       <div class="article-main">
         <a href={backUrl} class="article-back">{backLabel}</a>
-        {isPoetry && article.data.image && (
+        {article.data.image && (
           <div class="article-hero-image">
             <img src={article.data.image} alt={article.data.title} loading="eager" />
           </div>
