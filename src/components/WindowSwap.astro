@@ -17,10 +17,10 @@ export interface Props {}
   <slot />
 
   <div class="ws-immersive-hint" id="ws-immersive-hint">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg id="ws-hint-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
     </svg>
-    <span>视频就绪后点击任意位置沉浸观看</span>
+    <span id="ws-hint-text">视频就绪后点击任意位置沉浸观看</span>
   </div>
 </div>
 
@@ -136,7 +136,9 @@ export interface Props {}
     transition: transform 0.7s ease;
   }
 
-  /* Immersive */
+  /* ====== 三级沉浸模式 ====== */
+
+  /* 第二级：铺满屏幕 — 文字飞出 */
   .windowswap-hero.immersive .hero-text {
     transform: translateX(-120vw) !important;
     pointer-events: none !important;
@@ -145,11 +147,22 @@ export interface Props {}
     transform: translateX(120vw) !important;
   }
   .windowswap-hero.immersive .ws-immersive-hint {
+    opacity: 1 !important;
+    animation: wsHintPulse 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* 第三级：浏览器全屏 */
+  .windowswap-hero.fullscreen-mode .ws-immersive-hint {
     opacity: 0 !important;
     pointer-events: none !important;
   }
-  .windowswap-hero.immersive {
-    cursor: default;
+  .windowswap-hero:fullscreen {
+    background: #000;
+  }
+  .windowswap-hero:fullscreen .ws-video-wrapper {
+    /* 全屏时视频铺满整个屏幕 */
+    inset: 0;
   }
 
   /* Hint */
@@ -162,7 +175,7 @@ export interface Props {}
     display: flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.4);
     font-size: 12px;
     pointer-events: none;
     opacity: 0;
@@ -173,8 +186,8 @@ export interface Props {}
     animation: wsHintPulse 3s ease-in-out infinite;
   }
   @keyframes wsHintPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.65; }
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.7; }
   }
 
   @media (max-width: 768px) {
@@ -197,10 +210,13 @@ export interface Props {}
   const hero = document.getElementById('ws-hero')!;
   const iframe = document.getElementById('ws-player') as HTMLIFrameElement;
   const header = document.querySelector('.site-header') as HTMLElement;
+  const hintText = document.getElementById('ws-hint-text')!;
 
-  let isImmersive = false;
+  // 三级状态机: 'default' | 'immersive' | 'fullscreen'
+  let mode: 'default' | 'immersive' | 'fullscreen' = 'default';
   let isVideoLoaded = false;
   let isVideoVisible = false;
+  let supportsFullscreen = false;
 
   async function loadFeeds() {
     try {
@@ -220,93 +236,157 @@ export interface Props {}
     iframe.src = buildUrl(feeds[Math.floor(Math.random() * feeds.length)]);
   }
 
-  // 阶段1：视频开始播放 → 显示 video wrapper + 暗色 scrim（文字仍深色）
   function markVideoLoaded() {
     if (isVideoLoaded) return;
     isVideoLoaded = true;
     hero.classList.add('video-loaded');
   }
 
-  // 阶段2：视频首帧已可见 → 切换文字为白色
   function markVideoVisible() {
     if (isVideoVisible) return;
     isVideoVisible = true;
     hero.classList.add('video-visible', 'can-immersive');
+    // 检测全屏能力
+    supportsFullscreen = !!(document.fullscreenEnabled || (document as any).webkitFullscreenEnabled);
+    updateHint();
   }
 
+  // ====== 三级状态切换 ======
+
+  function updateHint() {
+    if (mode === 'default' && isVideoVisible) {
+      hintText.textContent = '点击任意位置沉浸观看';
+      hero.style.cursor = 'pointer';
+    } else if (mode === 'immersive') {
+      if (supportsFullscreen) {
+        hintText.textContent = '再次点击进入全屏 | Esc 退出';
+      } else {
+        hintText.textContent = '点击任意位置退出 | Esc 退出';
+      }
+      hero.style.cursor = 'pointer';
+    } else if (mode === 'fullscreen') {
+      hintText.textContent = '';
+      hero.style.cursor = 'default';
+    } else {
+      hero.style.cursor = '';
+    }
+  }
+
+  // 第二级：铺满屏幕
   function enterImmersive() {
     if (!isVideoVisible) return;
-    isImmersive = true;
+    mode = 'immersive';
     hero.classList.add('immersive');
     header?.classList.add('header-hidden');
     iframe.style.pointerEvents = 'none';
+    updateHint();
   }
 
   function exitImmersive() {
-    if (!isImmersive) return;
-    isImmersive = false;
+    if (mode !== 'immersive') return;
+    mode = 'default';
     hero.classList.remove('immersive');
     header?.classList.remove('header-hidden');
     iframe.style.pointerEvents = '';
+    updateHint();
   }
 
-  // 两阶段就绪：
-  //   阶段1 (video-loaded)：Vimeo 'playing' 事件 → 显示视频 wrapper + scrim
-  //   阶段2 (video-visible)：wrapper opacity transition 完成 + 确认播放 → 文字变白
+  // 第三级：浏览器全屏
+  async function enterFullscreen() {
+    if (mode !== 'immersive') return;
+    mode = 'fullscreen';
+    hero.classList.add('fullscreen-mode');
+    updateHint();
+    try {
+      await hero.requestFullscreen();
+    } catch {
+      // 不支持全屏，退回第二级
+      mode = 'immersive';
+      hero.classList.remove('fullscreen-mode');
+      updateHint();
+    }
+  }
+
+  function exitFullscreen() {
+    mode = 'immersive';
+    hero.classList.remove('fullscreen-mode');
+    updateHint();
+  }
+
+  // ====== 点击：逐级深入 ======
+  hero.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('a') || target.closest('button')) return;
+
+    if (mode === 'default') enterImmersive();
+    else if (mode === 'immersive') {
+      if (supportsFullscreen) enterFullscreen();
+      else exitImmersive();
+    }
+    // fullscreen 模式下不处理点击（用户用 Esc 退出）
+  });
+
+  // ====== Esc：逐级退出 ======
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mode === 'fullscreen') {
+        // 浏览器会自动退出全屏，fullscreenchange 接管
+        return;
+      }
+      if (mode === 'immersive') {
+        exitImmersive();
+      }
+    }
+  });
+
+  // ====== 全屏变化监听：退出全屏 → 回到铺满 ======
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && mode === 'fullscreen') {
+      exitFullscreen();
+    }
+  });
+  // webkit 兼容
+  document.addEventListener('webkitfullscreenchange', () => {
+    if (!(document as any).webkitFullscreenElement && mode === 'fullscreen') {
+      exitFullscreen();
+    }
+  });
+
+  // ====== 滚动退出铺满模式 ======
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    if (mode === 'immersive' && Math.abs(window.scrollY - lastScrollY) > 5) exitImmersive();
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+
+  // ====== 视频加载 ======
   iframe.addEventListener('load', () => {
     try {
       const player = new (window as any).Vimeo.Player(iframe);
       player.on('playing', async () => {
-        // 阶段1：视频开始播放，立刻显示画面
         markVideoLoaded();
-
-        // 阶段2：等 wrapper opacity transition (0.8s) 完成 + 确认首帧渲染
         await new Promise(r => setTimeout(r, 600));
         try {
           const t = await player.getCurrentTime();
           if (t > 0) {
-            // 再等 0.3s 确保 opacity transition 基本完成
             await new Promise(r => setTimeout(r, 300));
             markVideoVisible();
             return;
           }
         } catch {}
-        // fallback：总延迟 1.8s 后切换文字
         setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 1200);
       });
-      // 兜底：5s 内无论如何都要完成两阶段
       setTimeout(() => {
         markVideoLoaded();
         setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 900);
       }, 5000);
     } catch {
-      // SDK 加载失败兜底
       setTimeout(() => {
         markVideoLoaded();
         setTimeout(() => { if (!isVideoVisible) markVideoVisible(); }, 900);
       }, 4000);
     }
   });
-
-  // Click
-  hero.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('a') || target.closest('button')) return;
-    if (isImmersive) exitImmersive();
-    else enterImmersive();
-  });
-
-  // Esc
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isImmersive) exitImmersive();
-  });
-
-  // Scroll exits immersive
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    if (isImmersive && Math.abs(window.scrollY - lastScrollY) > 5) exitImmersive();
-    lastScrollY = window.scrollY;
-  }, { passive: true });
 
   (async () => {
     await loadFeeds();
