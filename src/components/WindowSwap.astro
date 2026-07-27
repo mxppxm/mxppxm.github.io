@@ -265,8 +265,8 @@ export interface Props {}
       }
       hero.style.cursor = 'pointer';
     } else if (mode === 'fullscreen') {
-      hintText.textContent = '';
-      hero.style.cursor = 'default';
+      hintText.textContent = '点击退出全屏';
+      hero.style.cursor = 'pointer';
     } else {
       hero.style.cursor = '';
     }
@@ -308,8 +308,10 @@ export interface Props {}
   }
 
   function exitFullscreen() {
-    mode = 'immersive';
-    hero.classList.remove('fullscreen-mode');
+    mode = 'default';
+    hero.classList.remove('immersive', 'fullscreen-mode');
+    header?.classList.remove('header-hidden');
+    iframe.style.pointerEvents = '';
     updateHint();
   }
 
@@ -322,8 +324,9 @@ export interface Props {}
     else if (mode === 'immersive') {
       if (supportsFullscreen) enterFullscreen();
       else exitImmersive();
+    } else if (mode === 'fullscreen') {
+      document.exitFullscreen();
     }
-    // fullscreen 模式下不处理点击（用户用 Esc 退出）
   });
 
   // ====== Esc：逐级退出 ======
