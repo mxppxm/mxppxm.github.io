@@ -150,6 +150,46 @@ tags:
   .sleep-report .verdict-box .verdict-task .vt-label {
     font-size: 14px; color: rgba(255,255,255,0.7);
   }
+
+  /* 居中段落 */
+  .sleep-report .section-intro {
+    text-align: center; max-width: 600px; margin: 0 auto 32px;
+    font-size: 16px; line-height: 1.8; color: #666;
+  }
+  .sleep-report .section-intro strong { color: #1a1a1a; }
+
+  /* 参考文献 */
+  .sleep-report .refs-box {
+    background: #fafaf8;
+    border: 1px solid #e8e5df;
+    border-radius: 14px;
+    padding: 28px 30px 22px;
+    margin: 48px 0 0;
+  }
+  .sleep-report .refs-box .refs-title {
+    font-size: 13px; font-weight: 700; color: #999;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 16px; text-align: center;
+  }
+  .sleep-report .refs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 8px 24px;
+  }
+  .sleep-report .refs-list .ref-item {
+    display: flex; align-items: baseline; gap: 8px;
+    font-size: 13px; line-height: 1.6; color: #777;
+    padding: 6px 0;
+  }
+  .sleep-report .refs-list .ref-num {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    background: #e8e5df; color: #999;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sleep-report .refs-list .ref-item em { font-style: italic; color: #555; }
 </style>
 
 <div class="sleep-report">
@@ -160,13 +200,15 @@ tags:
   <p class="hero-sub">Nature · Cell · Nature Neuroscience 三大顶刊，2024-2025 最新突破</p>
 </div>
 
+<div class="section-intro">
 你躺在床上，意识渐渐模糊，然后——啪，8 小时过去了。你每天把生命的三分之一"浪费"在无意识状态中。为什么进化没有淘汰掉这个"bug"？
 
-2024-2025 年，三篇里程碑论文从截然不同的角度给出同一个结论：**睡眠是你那台"肉身电脑"的强制系统维护——不修就会崩。**
+2024-2025 年，三篇里程碑论文从截然不同的角度给出同一个结论：<strong>睡眠是你那台"肉身电脑"的强制系统维护——不修就会崩。</strong>
+</div>
 
 ---
 
-## 三大核心理论突破
+<h2 style="text-align:center;border:none;padding:0;margin:24px 0 32px;">三大核心理论突破</h2>
 
 <div class="theory-grid">
 
@@ -261,7 +303,7 @@ tags:
 
 ---
 
-## 不睡觉会怎样？
+<h2 style="text-align:center;border:none;padding:0;margin:48px 0 24px;">不睡觉会怎样？</h2>
 
 | 剥夺程度 | 身体反馈 |
 |----------|----------|
@@ -273,7 +315,7 @@ tags:
 
 ---
 
-## 其他前沿发现（2024-2025）
+<h2 style="text-align:center;border:none;padding:0;margin:48px 0 24px;">其他前沿发现（2024-2025）</h2>
 
 | 方向 | 关键结论 | 出处 |
 |------|----------|------|
@@ -283,7 +325,7 @@ tags:
 
 ---
 
-## 未解之谜
+<h2 style="text-align:center;border:none;padding:0;margin:48px 0 24px;">未解之谜</h2>
 
 - 🐘 大象睡 3 小时，考拉睡 22 小时——为什么物种差异这么大？
 - 💭 做梦到底有什么用？REM 睡眠仍是最大谜团。
@@ -320,6 +362,15 @@ tags:
 
 ---
 
-**参考文献**：Sarnataro et al., *Nature* (2025) · Xu, Hengen, Wessel et al., *Nature Neuroscience* (2024) · Nedergaard et al., *Cell* (2025) · *The Lancet Neurology* (2024) · *Nature Scientific Reports* (2025)
+<div class="refs-box">
+  <div class="refs-title">📚 参考文献</div>
+  <div class="refs-list">
+    <div class="ref-item"><span class="ref-num">1</span> Sarnataro et al. <em>Mitochondrial origins of the pressure to sleep.</em> <strong>Nature</strong>, 2025.7</div>
+    <div class="ref-item"><span class="ref-num">2</span> Xu, Schneider, Wessel, Hengen et al. <em>Sleep restores the brain's operating system to a critical state.</em> <strong>Nature Neuroscience</strong>, 2024.1</div>
+    <div class="ref-item"><span class="ref-num">3</span> Nedergaard et al. <em>Norepinephrine-mediated slow vasomotion drives glymphatic clearance during sleep.</em> <strong>Cell</strong>, 2025.1</div>
+    <div class="ref-item"><span class="ref-num">4</span> <em>Advances in sleep research in 2024.</em> <strong>The Lancet Neurology</strong>, 2024</div>
+    <div class="ref-item"><span class="ref-num">5</span> Arora & Moreno. <em>Sleep and sleep disorders.</em> <strong>Nature Scientific Reports</strong>, 2025.10</div>
+  </div>
+</div>
 
 </div>
