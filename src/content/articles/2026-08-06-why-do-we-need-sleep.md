@@ -208,7 +208,7 @@ tags:
 <div class="hero-banner">
   <span class="hero-emoji">🛌</span>
   <h2>你为什么每天必须"宕机"8 小时？</h2>
-  <p class="hero-sub">Nature · Cell · Nature Neuroscience 三大顶刊，2024-2025 最新突破</p>
+  <p class="hero-sub" style="text-align:center;margin:0;max-width:100%;">Nature · Cell · Nature Neuroscience 三大顶刊，2024-2025 最新突破</p>
 </div>
 
 <div class="section-intro">
