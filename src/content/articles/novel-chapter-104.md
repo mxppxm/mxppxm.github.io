@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![物理课](/images/novel-chapter-104.png)
+![物理课](/images/novel-chapter-104.jpg)
 
 ## 一
 

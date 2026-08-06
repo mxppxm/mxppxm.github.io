@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![春学期](/images/novel-chapter-116.png)
+![春学期](/images/novel-chapter-116.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![银川的十月](/images/novel-chapter-109.png)
+![银川的十月](/images/novel-chapter-109.jpg)
 
 ## 一
 

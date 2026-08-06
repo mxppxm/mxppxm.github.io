@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![雨前](/images/novel-chapter-160.png)
+![雨前](/images/novel-chapter-160.jpg)
 
 ## 一
 

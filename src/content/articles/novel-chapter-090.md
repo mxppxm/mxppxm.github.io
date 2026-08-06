@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![暑假](/images/novel-chapter-090.png)
+![暑假](/images/novel-chapter-090.jpg)
 
 ## 一
 

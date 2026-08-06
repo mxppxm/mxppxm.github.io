@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![她的回信](/images/novel-chapter-124.png)
+![她的回信](/images/novel-chapter-124.jpg)
 
 ## 一
 

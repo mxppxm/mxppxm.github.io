@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![腊月的雪](/images/novel-chapter-142.png)
+![腊月的雪](/images/novel-chapter-142.jpg)
 
 ## 一
 

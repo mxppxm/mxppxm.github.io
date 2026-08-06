@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![深秋](/images/novel-chapter-093.png)
+![深秋](/images/novel-chapter-093.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![拼音表与地图册](/images/novel-chapter-004.png)
+![拼音表与地图册](/images/novel-chapter-004.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![收音机里的海](/images/novel-chapter-065.png)
+![收音机里的海](/images/novel-chapter-065.jpg)
 
 ## 一
 

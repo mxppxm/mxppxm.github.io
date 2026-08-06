@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![别卖了](/images/novel-chapter-041.png)
+![别卖了](/images/novel-chapter-041.jpg)
 
 ## 一
 

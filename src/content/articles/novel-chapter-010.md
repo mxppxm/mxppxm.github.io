@@ -10,7 +10,7 @@ tags:
 
 # 第十章：贺兰山缺
 
-![贺兰山缺](/images/novel-chapter-010.png)
+![贺兰山缺](/images/novel-chapter-010.jpg)
 
 ## 一
 

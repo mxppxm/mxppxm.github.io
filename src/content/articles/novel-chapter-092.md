@@ -8,7 +8,7 @@ tags:
   - "�� 现实主义"
 ---
 
-![初二](/images/novel-chapter-092.png)
+![初二](/images/novel-chapter-092.jpg)
 
 ## 一
 

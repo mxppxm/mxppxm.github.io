@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![窗台海鸥](/images/novel-chapter-023.png)
+![窗台海鸥](/images/novel-chapter-023.jpg)
 
 ## 一
 

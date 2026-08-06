@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树底下的星期四](/images/novel-chapter-154.png)
+![槐树底下的星期四](/images/novel-chapter-154.jpg)
 
 ## 一
 

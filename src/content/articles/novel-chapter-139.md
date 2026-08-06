@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![惠农的雪](/images/novel-chapter-139.png)
+![惠农的雪](/images/novel-chapter-139.jpg)
 
 ## 一
 

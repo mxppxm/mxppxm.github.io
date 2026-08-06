@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![收信与晚风](/images/novel-chapter-123.png)
+![收信与晚风](/images/novel-chapter-123.jpg)
 
 ## 一
 

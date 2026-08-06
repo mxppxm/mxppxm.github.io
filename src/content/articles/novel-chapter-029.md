@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![千与千寻](/images/novel-chapter-029.png)
+![千与千寻](/images/novel-chapter-029.jpg)
 
 ## 一
 

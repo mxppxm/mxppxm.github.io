@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![画上的两棵树](/images/novel-chapter-064.png)
+![画上的两棵树](/images/novel-chapter-064.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![唐徕渠的照片](/images/novel-chapter-156.png)
+![唐徕渠的照片](/images/novel-chapter-156.jpg)
 
 ## 一
 

@@ -122,7 +122,7 @@ tags:
 
 ---
 
-![上学](/images/novel-chapter-020.png)
+![上学](/images/novel-chapter-020.jpg)
 
 *第二十章完*
 

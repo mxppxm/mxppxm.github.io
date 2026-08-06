@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![图书馆的周末](/images/novel-chapter-110.png)
+![图书馆的周末](/images/novel-chapter-110.jpg)
 
 ## 一
 

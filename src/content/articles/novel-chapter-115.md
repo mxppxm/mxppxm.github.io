@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树下的寒假](/images/novel-chapter-115.png)
+![槐树下的寒假](/images/novel-chapter-115.jpg)
 
 ## 一
 

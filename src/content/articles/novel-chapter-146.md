@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![破五](/images/novel-chapter-146.png)
+![破五](/images/novel-chapter-146.jpg)
 
 ## 一
 

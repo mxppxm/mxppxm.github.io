@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![山那边的海](/images/novel-chapter-003.png)
+![山那边的海](/images/novel-chapter-003.jpg)
 
 ## 一
 

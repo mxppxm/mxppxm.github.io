@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树下的声音](/images/novel-chapter-002.png)
+![槐树下的声音](/images/novel-chapter-002.jpg)
 
 ## 一
 

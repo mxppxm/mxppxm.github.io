@@ -179,7 +179,7 @@ tags:
 
 ---
 
-![十月](/images/novel-chapter-021.png)
+![十月](/images/novel-chapter-021.jpg)
 
 *第二十一章完*
 

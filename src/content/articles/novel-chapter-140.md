@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![北](/images/novel-chapter-140.png)
+![北](/images/novel-chapter-140.jpg)
 
 ## 一
 

@@ -9,7 +9,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![塞上初雪](/images/novel-chapter-001.png)
+![塞上初雪](/images/novel-chapter-001.jpg)
 
 ## 一
 

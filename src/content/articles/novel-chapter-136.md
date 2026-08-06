@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![物理课的苹果](/images/novel-chapter-136.png)
+![物理课的苹果](/images/novel-chapter-136.jpg)
 
 ## 一
 

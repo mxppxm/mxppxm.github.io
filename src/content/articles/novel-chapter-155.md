@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![渠](/images/novel-chapter-155.png)
+![渠](/images/novel-chapter-155.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![大雪满弓刀](/images/novel-chapter-026.png)
+![大雪满弓刀](/images/novel-chapter-026.jpg)
 
 ## 一
 

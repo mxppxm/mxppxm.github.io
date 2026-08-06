@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![归来](/images/novel-chapter-060.png)
+![归来](/images/novel-chapter-060.jpg)
 
 ## 一
 

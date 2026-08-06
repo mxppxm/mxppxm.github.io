@@ -179,7 +179,7 @@ tags:
 
 ---
 
-![照片](/images/novel-chapter-013.png)
+![照片](/images/novel-chapter-013.jpg)
 
 *第十三章完*
 

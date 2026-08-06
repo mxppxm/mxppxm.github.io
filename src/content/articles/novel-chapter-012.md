@@ -204,6 +204,6 @@ tags:
 
 ---
 
-![看看](/images/novel-chapter-012.png)
+![看看](/images/novel-chapter-012.jpg)
 
 *第十二章完*

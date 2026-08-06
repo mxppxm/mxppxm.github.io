@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![春醒](/images/novel-chapter-053.png)
+![春醒](/images/novel-chapter-053.jpg)
 
 ## 一
 

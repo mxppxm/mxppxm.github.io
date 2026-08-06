@@ -462,7 +462,7 @@ tags:
 
 ---
 
-![沙尘暴](/images/novel-chapter-009.png)
+![沙尘暴](/images/novel-chapter-009.jpg)
 
 *第九章完*
 

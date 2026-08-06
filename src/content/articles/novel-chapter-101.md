@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![新操场](/images/novel-chapter-101.png)
+![新操场](/images/novel-chapter-101.jpg)
 
 ## 一
 

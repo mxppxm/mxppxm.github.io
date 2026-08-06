@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![中山公园湖边](/images/novel-chapter-022.png)
+![中山公园湖边](/images/novel-chapter-022.jpg)
 
 # 第二十二章：银川
 

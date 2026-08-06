@@ -191,7 +191,7 @@ tags:
 
 ---
 
-![毕业](/images/novel-chapter-017.png)
+![毕业](/images/novel-chapter-017.jpg)
 
 *第十七章完*
 

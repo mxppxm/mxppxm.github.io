@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![县城](/images/novel-chapter-073.png)
+![县城](/images/novel-chapter-073.jpg)
 
 ## 一
 

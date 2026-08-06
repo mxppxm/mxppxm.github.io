@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![五月来信](/images/novel-chapter-120.png)
+![五月来信](/images/novel-chapter-120.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐花谢了](/images/novel-chapter-039.png)
+![槐花谢了](/images/novel-chapter-039.jpg)
 
 ## 一
 

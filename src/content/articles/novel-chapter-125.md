@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![三天](/images/novel-chapter-125.png)
+![三天](/images/novel-chapter-125.jpg)
 
 ## 一
 

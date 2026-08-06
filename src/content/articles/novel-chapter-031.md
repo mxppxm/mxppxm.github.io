@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![试卷背面的字](/images/novel-chapter-031.png)
+![试卷背面的字](/images/novel-chapter-031.jpg)
 
 ## 一
 

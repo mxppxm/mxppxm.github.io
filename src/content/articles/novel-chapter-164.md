@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![雨和铁皮](/images/novel-chapter-164.png)
+![雨和铁皮](/images/novel-chapter-164.jpg)
 
 ## 一
 

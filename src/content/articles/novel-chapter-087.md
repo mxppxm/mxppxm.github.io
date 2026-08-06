@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![各自长大](/images/novel-chapter-087.png)
+![各自长大](/images/novel-chapter-087.jpg)
 
 ## 一
 

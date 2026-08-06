@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![初一的拜年](/images/novel-chapter-145.png)
+![初一的拜年](/images/novel-chapter-145.jpg)
 
 ## 一
 

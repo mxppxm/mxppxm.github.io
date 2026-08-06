@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![天气预报](/images/novel-chapter-043.png)
+![天气预报](/images/novel-chapter-043.jpg)
 
 ## 一
 

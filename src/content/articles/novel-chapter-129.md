@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![七月最后一天](/images/novel-chapter-129.png)
+![七月最后一天](/images/novel-chapter-129.jpg)
 
 ## 一
 

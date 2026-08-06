@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![夏至](/images/novel-chapter-121.png)
+![夏至](/images/novel-chapter-121.jpg)
 
 ## 一
 

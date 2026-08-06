@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树下的麻雀](/images/novel-chapter-024.png)
+![槐树下的麻雀](/images/novel-chapter-024.jpg)
 
 ## 一
 

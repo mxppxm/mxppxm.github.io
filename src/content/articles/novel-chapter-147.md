@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![花灯](/images/novel-chapter-147.png)
+![花灯](/images/novel-chapter-147.jpg)
 
 ## 一
 

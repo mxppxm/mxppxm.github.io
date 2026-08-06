@@ -10,7 +10,7 @@ tags:
 
 # 第八章：槐树上的雪
 
-![槐树上的雪](/images/novel-chapter-008.png)
+![槐树上的雪](/images/novel-chapter-008.jpg)
 
 ## 一
 

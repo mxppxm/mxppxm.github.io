@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![信纸上的铜绿](/images/novel-chapter-132.png)
+![信纸上的铜绿](/images/novel-chapter-132.jpg)
 
 ## 一
 

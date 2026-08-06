@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![考试之后的下午](/images/novel-chapter-152.png)
+![考试之后的下午](/images/novel-chapter-152.jpg)
 
 ## 一
 

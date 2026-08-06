@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐花开了](/images/novel-chapter-149.png)
+![槐花开了](/images/novel-chapter-149.jpg)
 
 ## 一
 

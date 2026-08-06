@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![砚台里的海](/images/novel-chapter-036.png)
+![砚台里的海](/images/novel-chapter-036.jpg)
 
 ## 一
 

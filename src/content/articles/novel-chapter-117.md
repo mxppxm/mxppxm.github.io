@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![柳絮](/images/novel-chapter-117.png)
+![柳絮](/images/novel-chapter-117.jpg)
 
 ## 一
 

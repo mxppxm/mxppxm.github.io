@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![第一封信](/images/novel-chapter-075.png)
+![第一封信](/images/novel-chapter-075.jpg)
 
 ## 一
 

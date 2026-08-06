@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![太阳偏了一丝](/images/novel-chapter-045.png)
+![太阳偏了一丝](/images/novel-chapter-045.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![告别初中](/images/novel-chapter-097.png)
+![告别初中](/images/novel-chapter-097.jpg)
 
 ## 一
 

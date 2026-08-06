@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![寒字与油饼](/images/novel-chapter-025.png)
+![寒字与油饼](/images/novel-chapter-025.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![她回头的时候](/images/novel-chapter-027.png)
+![她回头的时候](/images/novel-chapter-027.jpg)
 
 ## 一
 

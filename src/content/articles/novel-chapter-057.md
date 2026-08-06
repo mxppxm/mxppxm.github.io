@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![枣树下](/images/novel-chapter-057.png)
+![枣树下](/images/novel-chapter-057.jpg)
 
 ## 一
 

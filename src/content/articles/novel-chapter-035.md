@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![半块贺兰石做的砚台](/images/novel-chapter-035.png)
+![半块贺兰石做的砚台](/images/novel-chapter-035.jpg)
 
 ## 一
 

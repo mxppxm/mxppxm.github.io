@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![预赛日](/images/novel-chapter-118.png)
+![预赛日](/images/novel-chapter-118.jpg)
 
 ## 一
 

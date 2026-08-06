@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![城市来的女生](/images/novel-chapter-085.png)
+![城市来的女生](/images/novel-chapter-085.jpg)
 
 ## 一
 

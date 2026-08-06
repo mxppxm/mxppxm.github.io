@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![倒春寒](/images/novel-chapter-032.png)
+![倒春寒](/images/novel-chapter-032.jpg)
 
 ## 一
 

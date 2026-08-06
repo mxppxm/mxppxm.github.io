@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![旧报纸折的信封](/images/novel-chapter-034.png)
+![旧报纸折的信封](/images/novel-chapter-034.jpg)
 
 ## 一
 

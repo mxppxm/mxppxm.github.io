@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![煤烟味](/images/novel-chapter-148.png)
+![煤烟味](/images/novel-chapter-148.jpg)
 
 ## 一
 

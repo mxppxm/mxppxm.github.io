@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![墓碑上的名字](/images/novel-chapter-038.png)
+![墓碑上的名字](/images/novel-chapter-038.jpg)
 
 ## 一
 

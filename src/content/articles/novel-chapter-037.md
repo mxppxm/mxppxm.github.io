@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐花糕的滋味](/images/novel-chapter-037.png)
+![槐花糕的滋味](/images/novel-chapter-037.jpg)
 
 ## 一
 

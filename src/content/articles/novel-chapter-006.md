@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![积木角的重逢](/images/novel-chapter-006.png)
+![积木角的重逢](/images/novel-chapter-006.jpg)
 
 ## 一
 

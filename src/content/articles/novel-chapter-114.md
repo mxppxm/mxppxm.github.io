@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![期末](/images/novel-chapter-114.png)
+![期末](/images/novel-chapter-114.jpg)
 
 ## 一
 

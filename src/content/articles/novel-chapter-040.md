@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![麦子熟了](/images/novel-chapter-040.png)
+![麦子熟了](/images/novel-chapter-040.jpg)
 
 ## 一
 

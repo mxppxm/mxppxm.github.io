@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![杨树叶](/images/novel-chapter-079.png)
+![杨树叶](/images/novel-chapter-079.jpg)
 
 ## 一
 

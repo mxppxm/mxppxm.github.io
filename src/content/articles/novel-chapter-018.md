@@ -163,7 +163,7 @@ tags:
 
 ---
 
-![暑假](/images/novel-chapter-018.png)
+![暑假](/images/novel-chapter-018.jpg)
 
 *第十八章完*
 

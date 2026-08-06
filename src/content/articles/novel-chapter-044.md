@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![什么是最小的](/images/novel-chapter-044.png)
+![什么是最小的](/images/novel-chapter-044.jpg)
 
 ## 一
 

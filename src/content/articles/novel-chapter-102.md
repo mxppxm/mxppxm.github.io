@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![校服](/images/novel-chapter-102.png)
+![校服](/images/novel-chapter-102.jpg)
 
 ## 一
 

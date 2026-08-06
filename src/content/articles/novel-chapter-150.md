@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![老马的信](/images/novel-chapter-150.png)
+![老马的信](/images/novel-chapter-150.jpg)
 
 ## 一
 

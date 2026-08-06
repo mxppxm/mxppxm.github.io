@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![铁盒的答案](/images/novel-chapter-128.png)
+![铁盒的答案](/images/novel-chapter-128.jpg)
 
 ## 一
 

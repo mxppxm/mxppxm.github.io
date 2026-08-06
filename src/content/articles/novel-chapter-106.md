@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![夜跑](/images/novel-chapter-106.png)
+![夜跑](/images/novel-chapter-106.jpg)
 
 ## 一
 

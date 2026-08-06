@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![雪地上的字](/images/novel-chapter-063.png)
+![雪地上的字](/images/novel-chapter-063.jpg)
 
 ## 一
 

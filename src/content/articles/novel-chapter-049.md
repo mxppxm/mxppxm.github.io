@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![冬至](/images/novel-chapter-049.png)
+![冬至](/images/novel-chapter-049.jpg)
 
 ## 一
 

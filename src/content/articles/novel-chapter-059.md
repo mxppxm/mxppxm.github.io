@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![一个人的槐树下](/images/novel-chapter-059.png)
+![一个人的槐树下](/images/novel-chapter-059.jpg)
 
 ## 一
 
