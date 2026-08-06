@@ -133,6 +133,38 @@ tags:
     font-size: 13px; color: var(--text-secondary, #544f49); line-height: 1.55;
   }
 
+  /* ▸ Sleep tips — numbered advice cards */
+  .sleep-report .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 28px 0 36px;
+  }
+  .sleep-report .tip-card {
+    display: flex; gap: 16px;
+    padding: 22px 20px;
+    background: var(--surface, #fff);
+    border-radius: 10px;
+    border: 1px solid var(--border-light, #f0ebe3);
+    transition: border-color 0.2s ease;
+  }
+  .sleep-report .tip-card:hover { border-color: var(--accent, #07c160); }
+  .sleep-report .tip-card .tip-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    background: var(--accent, #07c160); color: #fff;
+    border-radius: 50%;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sleep-report .tip-card .tip-content strong {
+    display: block; font-size: 14.5px; font-weight: 650;
+    color: var(--text, #1b1816); margin-bottom: 4px;
+  }
+  .sleep-report .tip-card .tip-content span {
+    font-size: 13px; color: var(--text-secondary, #544f49); line-height: 1.55;
+  }
+
   /* ▸ Verdict box — light editorial conclusion */
   .sleep-report .verdict-box {
     background: var(--surface, #fff);
@@ -170,37 +202,23 @@ tags:
     color: var(--accent-dark, #048c48); line-height: 1.6;
   }
 
-  /* ▸ References */
+  /* ▸ References — simple numbered list */
   .sleep-report .refs-box {
-    background: var(--bg, #fcfaf7);
-    border: 1px solid var(--border, #e6e0d6);
-    border-radius: 12px;
-    padding: 26px 28px 20px;
     margin: 48px 0 0;
   }
   .sleep-report .refs-box .refs-title {
-    font-size: 12px; font-weight: 680; color: var(--text-muted, #8a8278);
-    letter-spacing: 0.06em; margin-bottom: 16px; text-align: center;
+    font-size: 13px; font-weight: 700; color: var(--text-muted, #8a8278);
+    margin-bottom: 14px;
   }
   .sleep-report .refs-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 6px 24px;
+    list-style: decimal;
+    padding-left: 22px;
   }
   .sleep-report .refs-list .ref-item {
-    display: flex; align-items: baseline; gap: 10px;
-    font-size: 13px; line-height: 1.65; color: var(--text-secondary, #544f49);
-    padding: 5px 0;
+    font-size: 13.5px; line-height: 1.75; color: var(--text-secondary, #544f49);
+    padding: 3px 0;
   }
-  .sleep-report .refs-list .ref-num {
-    flex-shrink: 0;
-    width: 18px; height: 18px;
-    background: var(--accent-light, #e8f8ee); color: var(--accent-dark, #048c48);
-    border-radius: 50%;
-    font-size: 10.5px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .sleep-report .refs-list .ref-item em { font-style: italic; color: var(--text-secondary, #544f49); }
+  .sleep-report .refs-list .ref-item em { font-style: italic; }
 
   /* ▸ Tables — centered, clean */
   .sleep-report table {
@@ -373,6 +391,74 @@ tags:
 
 <hr>
 
+<h2 class="section-heading">如何睡个好觉？—— 循证行动指南</h2>
+
+<div class="section-intro" style="margin-bottom:28px;">
+知道"为什么睡"很重要，但更重要的是知道"怎么睡好"。以下是基于美国睡眠医学会（AASM）、NSF 及 2024-2025 年最新研究的七条循证建议。
+</div>
+
+<div class="tips-grid">
+
+<div class="tip-card">
+  <span class="tip-num">1</span>
+  <div class="tip-content">
+    <strong>固定作息，周末也不例外</strong>
+    <span>每天同一时间上床、同一时间起床。规律的昼夜节律是高质量睡眠的基石。即使是周末，也别让起床时间偏差超过 1 小时。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">2</span>
+  <div class="tip-content">
+    <strong>早上见光，晚上避光</strong>
+    <span>起床后 30 分钟内接触自然光 15-30 分钟，锚定生物钟。睡前 1 小时远离手机/电脑屏幕，蓝光会抑制褪黑素分泌达 50% 以上。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">3</span>
+  <div class="tip-content">
+    <strong>保持卧室凉爽</strong>
+    <span>最佳睡眠温度 18-20°C。核心体温下降是入睡的生理信号，过热环境会减少深度睡眠和 REM 睡眠的比例。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">4</span>
+  <div class="tip-content">
+    <strong>午后不碰咖啡因</strong>
+    <span>咖啡因半衰期 5-7 小时。下午 2 点后摄入咖啡因，到晚上 10 点仍有一半残留在体内，显著减少深度睡眠时长。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">5</span>
+  <div class="tip-content">
+    <strong>规律运动，但别太晚</strong>
+    <span>每周 150 分钟中等强度运动可显著改善入睡速度和睡眠深度。但睡前 2-3 小时内避免剧烈运动，否则核心体温过高反而难以入睡。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">6</span>
+  <div class="tip-content">
+    <strong>睡前一小时建立"缓冲带"</strong>
+    <span>用阅读、冥想、温水澡、轻柔音乐替代刷手机。温水澡尤其有效——水温升高后身体会启动降温反应，恰好触发睡意。</span>
+  </div>
+</div>
+
+<div class="tip-card">
+  <span class="tip-num">7</span>
+  <div class="tip-content">
+    <strong>床只用来睡觉</strong>
+    <span>不要在床上工作、吃饭或刷手机。让大脑建立"床 = 睡眠"的强关联。如果躺下 20 分钟睡不着，起来去另一个房间做放松活动，困了再回床。</span>
+  </div>
+</div>
+
+</div>
+
+<hr>
+
 <h2 class="section-heading">其他前沿发现（2024-2025）</h2>
 
 | 方向 | 关键结论 | 出处 |
@@ -416,13 +502,13 @@ tags:
 
 <div class="refs-box">
   <div class="refs-title">📚 参考文献</div>
-  <div class="refs-list">
-    <div class="ref-item"><span class="ref-num">1</span> Sarnataro et al. <em>Mitochondrial origins of the pressure to sleep.</em> <strong>Nature</strong>, 2025.7</div>
-    <div class="ref-item"><span class="ref-num">2</span> Xu, Schneider, Wessel, Hengen et al. <em>Sleep restores the brain's operating system to a critical state.</em> <strong>Nature Neuroscience</strong>, 2024.1</div>
-    <div class="ref-item"><span class="ref-num">3</span> Nedergaard et al. <em>Norepinephrine-mediated slow vasomotion drives glymphatic clearance during sleep.</em> <strong>Cell</strong>, 2025.1</div>
-    <div class="ref-item"><span class="ref-num">4</span> <em>Advances in sleep research in 2024.</em> <strong>The Lancet Neurology</strong>, 2024</div>
-    <div class="ref-item"><span class="ref-num">5</span> Arora & Moreno. <em>Sleep and sleep disorders.</em> <strong>Nature Scientific Reports</strong>, 2025.10</div>
-  </div>
+  <ol class="refs-list">
+    <li class="ref-item">Sarnataro et al. <em>Mitochondrial origins of the pressure to sleep.</em> <strong>Nature</strong>, 2025.7</li>
+    <li class="ref-item">Xu, Schneider, Wessel, Hengen et al. <em>Sleep restores the brain's operating system to a critical state.</em> <strong>Nature Neuroscience</strong>, 2024.1</li>
+    <li class="ref-item">Nedergaard et al. <em>Norepinephrine-mediated slow vasomotion drives glymphatic clearance during sleep.</em> <strong>Cell</strong>, 2025.1</li>
+    <li class="ref-item"><em>Advances in sleep research in 2024.</em> <strong>The Lancet Neurology</strong>, 2024</li>
+    <li class="ref-item">Arora & Moreno. <em>Sleep and sleep disorders.</em> <strong>Nature Scientific Reports</strong>, 2025.10</li>
+  </ol>
 </div>
 
 </div>
