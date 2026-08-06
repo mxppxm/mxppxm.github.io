@@ -39,6 +39,8 @@ tags:
   .sleep-report .hero-banner .hero-sub {
     font-size: 15px; color: rgba(255,255,255,0.65);
     position: relative; z-index: 1;
+    text-align: center; margin: 0;
+    max-width: 100%;
   }
 
   .sleep-report .theory-grid {
@@ -190,6 +192,15 @@ tags:
     display: flex; align-items: center; justify-content: center;
   }
   .sleep-report .refs-list .ref-item em { font-style: italic; color: #555; }
+
+  /* 表格居中 */
+  .sleep-report table {
+    margin: 0 auto 24px;
+  }
+  .sleep-report blockquote {
+    margin: 0 auto 24px;
+    max-width: 600px;
+  }
 </style>
 
 <div class="sleep-report">
@@ -255,7 +266,7 @@ tags:
 
 ---
 
-## 睡眠到底干了什么？
+<h2 style="text-align:center;border:none;padding:0;margin:48px 0 24px;">睡眠到底干了什么？</h2>
 
 <div class="func-grid">
 
