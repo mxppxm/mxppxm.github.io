@@ -751,14 +751,15 @@ main { flex: 1; position: relative; z-index: 1; }
    ARTICLE CONTENT — the reading experience
    ═══════════════════════════════════════════════════════════ */
 .article-content {
-  font-size: 17px; line-height: 2;
+  font-size: 18px; line-height: 1.82;
   color: var(--ink);
   letter-spacing: 0.01em;
+  word-break: break-word;
 }
 
 .article-content h2 {
   font-size: 26px; font-weight: 720;
-  margin: 64px 0 22px;
+  margin: 56px 0 20px;
   padding-bottom: 10px;
   color: var(--text);
   letter-spacing: -0.5px;
@@ -767,20 +768,20 @@ main { flex: 1; position: relative; z-index: 1; }
 }
 .article-content h3 {
   font-size: 20px; font-weight: 660;
-  margin: 44px 0 16px;
+  margin: 40px 0 14px;
   padding-left: 14px;
   border-left: 4px solid var(--accent);
   color: var(--text);
   scroll-margin-top: 84px;
 }
 .article-content h4 {
-  font-size: 17px; font-weight: 650;
-  margin: 32px 0 12px;
+  font-size: 18px; font-weight: 650;
+  margin: 30px 0 10px;
   color: var(--text-secondary);
 }
 
-.article-content p { margin: 0 0 22px; }
-.article-content strong { color: var(--text); font-weight: 660; }
+.article-content p { margin: 0 0 20px; }
+.article-content strong { color: var(--text); font-weight: 680; }
 
 .article-content a {
   color: var(--accent-dark);
@@ -792,17 +793,17 @@ main { flex: 1; position: relative; z-index: 1; }
 
 /* Blockquote — editorial pull-quote style */
 .article-content blockquote {
-  margin: 32px 0;
-  padding: 24px 28px;
+  margin: 28px 0;
+  padding: 22px 26px;
   border-left: 4px solid var(--accent);
   background: var(--accent-light);
   border-radius: 0 var(--radius) var(--radius) 0;
   color: var(--text-secondary);
-  font-style: italic;
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.8;
 }
-.article-content blockquote p { margin: 6px 0; }
+.article-content blockquote p { margin: 4px 0; }
+.article-content blockquote strong { color: var(--accent-dark); }
 
 /* Code */
 .article-content code {
@@ -820,11 +821,11 @@ main { flex: 1; position: relative; z-index: 1; }
   background: #F9F7F2 !important;
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  padding: 26px;
+  padding: 24px 28px;
   margin: 28px 0;
   overflow-x: auto;
   font-size: 14.5px;
-  line-height: 1.85;
+  line-height: 1.75;
   box-shadow: var(--shadow-xs);
 }
 .article-content pre code,
@@ -861,17 +862,27 @@ main { flex: 1; position: relative; z-index: 1; }
 
 .article-content table {
   width: 100%; border-collapse: collapse; margin: 28px 0;
-  font-size: 14.5px;
+  font-size: 15px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: var(--shadow-xs);
 }
-.article-content th {
+.article-content thead th {
   background: var(--accent-light);
-  font-weight: 650; padding: 14px 18px;
-  border: 1px solid var(--border); text-align: left;
+  font-weight: 680; padding: 14px 18px;
+  border-bottom: 2px solid var(--border-strong); text-align: left;
+  font-size: 14px;
+  color: var(--accent-dark);
+}
+.article-content tbody th {
+  background: var(--accent-light);
+  font-weight: 650; padding: 12px 18px;
+  border: 1px solid var(--border-light); text-align: left;
 }
 .article-content td { padding: 12px 18px; border: 1px solid var(--border-light); }
+.article-content tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+.article-content tbody tr:hover { background: rgba(7,193,96,0.04); }
 
 /* Audio player */
 .audio-player {
