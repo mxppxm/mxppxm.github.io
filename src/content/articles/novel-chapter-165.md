@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![晒干的雨](/images/novel-chapter-165.png)
+![晒干的雨](/images/novel-chapter-165.jpg)
 
 ## 一
 
