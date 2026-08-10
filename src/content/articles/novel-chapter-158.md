@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![寒假中间](/images/novel-chapter-158.jpg)
+
 ## 一
 
 一月十五号。下午。

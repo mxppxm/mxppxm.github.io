@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![过年](/images/novel-chapter-159.jpg)
+
 ## 一
 
 2009年2月8日。除夕。

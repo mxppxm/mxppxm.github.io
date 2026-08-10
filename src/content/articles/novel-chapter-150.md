@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![第一次月考](/images/novel-chapter-150.jpg)
+
 ## 一
 
 九月十五号。月考。

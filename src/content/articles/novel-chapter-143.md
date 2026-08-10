@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![四月的风](/images/novel-chapter-143.jpg)
+
 ## 一
 
 五月初。天气变暖了。

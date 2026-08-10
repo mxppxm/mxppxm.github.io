@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![缝衣针](/images/novel-chapter-147.jpg)
+
 ## 一
 
 七月十四号。缝纫铺。

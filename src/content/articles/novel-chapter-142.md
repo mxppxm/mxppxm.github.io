@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![问一件事](/images/novel-chapter-142.jpg)
+
 ## 一
 
 四月十七号。下午。

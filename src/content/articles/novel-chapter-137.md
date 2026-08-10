@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![冬至](/images/novel-chapter-137.jpg)
+
 ## 一
 
 十二月二二号。冬至。

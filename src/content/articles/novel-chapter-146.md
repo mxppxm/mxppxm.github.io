@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![暑假开头](/images/novel-chapter-146.jpg)
+
 ## 一
 
 七月一号。暑假开始。

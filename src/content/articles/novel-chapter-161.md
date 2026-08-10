@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![第三次去北京](/images/novel-chapter-161.jpg)
+
 ## 一
 
 三月二号。出发。

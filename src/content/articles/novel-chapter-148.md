@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![关于针](/images/novel-chapter-148.jpg)
+
 ## 一
 
 七月二十八号。

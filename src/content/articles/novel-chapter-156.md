@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![三行字](/images/novel-chapter-156.jpg)
+
 ## 一
 
 十一月十八号。下午。

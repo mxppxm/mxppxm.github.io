@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![归途](/images/novel-chapter-133.jpg)
+
 ## 一
 
 回程是九月二十三日。

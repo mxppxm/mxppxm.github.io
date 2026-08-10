@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![立冬的雪](/images/novel-chapter-155.jpg)
+
 ## 一
 
 十一月七日。立冬。

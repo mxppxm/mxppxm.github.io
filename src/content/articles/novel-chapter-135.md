@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![国庆](/images/novel-chapter-135.png)
+
 ## 一
 
 十月一日，天刚亮。

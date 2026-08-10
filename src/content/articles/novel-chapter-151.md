@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![三次数据](/images/novel-chapter-151.jpg)
+
 ## 一
 
 九月二十四号。实验室。

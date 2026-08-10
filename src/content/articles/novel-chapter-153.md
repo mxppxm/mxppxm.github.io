@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![国庆节](/images/novel-chapter-153.jpg)
+
 ## 一
 
 九月三十号。国庆放假。

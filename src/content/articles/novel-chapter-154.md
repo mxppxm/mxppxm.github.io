@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![缝纫铺的灯](/images/novel-chapter-154.jpg)
+
 ## 一
 
 十月二十号。

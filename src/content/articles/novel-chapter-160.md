@@ -8,6 +8,8 @@ tags:
   - "🌾 现实主义"
 ---
 
+![开学](/images/novel-chapter-160.jpg)
+
 ## 一
 
 三月一号。开学。
