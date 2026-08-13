@@ -96,7 +96,7 @@ if (isPoetry) {
   description={article.data.description}
 >
   <div class="article-page">
-    <div class="article-layout">
+    <div class={`article-layout${isComic ? " comic-layout" : ""}`}>
       <div class="article-main">
         <a href={backUrl} class="article-back">{backLabel}</a>
         {article.data.image && (

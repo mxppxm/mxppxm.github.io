@@ -11,19 +11,19 @@ tags:
 第 12 号星球议会最近吵架吵得厉害，下单了一盆「能闻出谎言的盆栽」。
 
 <style>
-.comic-page { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0 36px; }
-.comic-panel { position: relative; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 2px 12px rgba(0,0,0,.45); aspect-ratio: 1 / 1; }
-.comic-panel img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; }
-.comic-caption { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.78); color: #fff; padding: 6px 14px; font-size: 14px; border-radius: 5px; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; }
-.comic-bubble { position: absolute; max-width: 74%; background: #fff; border: 2px solid #111; border-radius: 14px; padding: 6px 12px; font-size: 14px; line-height: 1.45; color: #111; box-shadow: 2px 2px 0 rgba(0,0,0,.25); }
-.comic-bubble .speaker { display: block; font-weight: 700; font-size: 11px; color: #777; margin-bottom: 1px; }
-.comic-bubble.tl { top: 30px; left: 12px; }
-.comic-bubble.tr { top: 30px; right: 12px; }
+.comic-page { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 36px; }
+.comic-panel { position: relative; border-radius: 10px; overflow: hidden; background: #000; box-shadow: 0 2px 14px rgba(0,0,0,.35); aspect-ratio: 1 / 1; }
+.comic-panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.comic-caption { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.55); color: #fff; padding: 5px 12px; font-size: 13px; border-radius: 6px; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; }
+.comic-bubble { position: absolute; max-width: 58%; background: rgba(255,255,255,.92); border: 2px solid #111; border-radius: 12px; padding: 5px 10px; font-size: 13px; line-height: 1.4; color: #111; box-shadow: 1px 2px 0 rgba(0,0,0,.2); }
+.comic-bubble .speaker { display: block; font-weight: 700; font-size: 10.5px; color: #777; margin-bottom: 1px; }
+.comic-bubble.tl { top: 28px; left: 12px; }
+.comic-bubble.tr { top: 28px; right: 12px; }
 .comic-bubble.bl { bottom: 12px; left: 12px; }
 .comic-bubble.br { bottom: 12px; right: 12px; }
-.comic-bubble.thought { border-radius: 50% / 46%; border-style: dashed; background: #fdf6e3; }
-.comic-bubble.shout { border-radius: 4px; background: #ffe9a8; font-weight: 700; }
-@media (max-width: 700px) { .comic-page { grid-template-columns: repeat(2, 1fr); } }
+.comic-bubble.thought { border-radius: 50% / 46%; border-style: dashed; background: rgba(253,246,227,.94); }
+.comic-bubble.shout { border-radius: 4px; background: rgba(255,233,168,.94); font-weight: 700; }
+@media (max-width: 700px) { .comic-page { grid-template-columns: repeat(2, 1fr); gap: 8px; } .article-layout.comic-layout { padding-left: 14px; padding-right: 14px; } }
 </style>
 
 <div class="comic-page">

@@ -698,6 +698,16 @@ main { flex: 1; position: relative; z-index: 1; }
   padding: 56px 28px 96px;
 }
 
+/* Comic pages — wider reading area so panels render larger */
+.article-layout.comic-layout {
+  max-width: 1120px;
+}
+.article-layout.comic-layout .article-content > p:first-child {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .article-main { /* single column, full width */ }
 
 .article-sidebar { display: none; } /* REMOVED TOC sidebar */
