@@ -18,14 +18,23 @@ const novelChapters = allArticles
     return numB - numA;
   });
 const latestNovel = novelChapters[0];
+// Same for comic series
+const comicChapters = allArticles
+  .filter((a) => a.id.includes("comic-chapter"))
+  .sort((a, b) => {
+    const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
+    const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
+    return numB - numA;
+  });
+const latestComic = comicChapters[0];
 const latestGold = allArticles.find((a) => a.id.includes("gold-daily"));
-const seriesIds = new Set([latestNovel?.id, latestGold?.id].filter(Boolean));
+const seriesIds = new Set([latestNovel?.id, latestComic?.id, latestGold?.id].filter(Boolean));
 
 const latestArticles = [
   // Always-pinned latest from each series + all standalone articles
   ...allArticles.filter((a) => {
     if (seriesIds.has(a.id)) return true;
-    if (a.id.includes("novel-chapter") || a.id.includes("gold-daily")) return false;
+    if (a.id.includes("novel-chapter") || a.id.includes("comic-chapter") || a.id.includes("gold-daily")) return false;
     return true;
   }),
 ].sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 8);

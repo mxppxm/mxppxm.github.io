@@ -14,6 +14,7 @@ const { article } = Astro.props;
 const { Content } = await article.render();
 
 const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
+const isComic = article.data.tags.some((t: string) => t.includes("漫画"));
 const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
 const isSkill = article.data.tags.some((t: string) => t.includes("Skill"));
 const isPoetry = article.data.tags.some((t: string) => t.includes("毛泽东诗词"));
@@ -21,6 +22,7 @@ const isPoetry = article.data.tags.some((t: string) => t.includes("毛泽东诗�
 let backUrl = "/#blog";
 let backLabel = "← 返回首页";
 if (isNovel) { backUrl = "/articles/novel/"; backLabel = "← 槐树下"; }
+if (isComic) { backUrl = "/articles/comic/"; backLabel = "← 漫画专区"; }
 if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
 if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
 if (isPoetry) { backUrl = "/articles/poetry/"; backLabel = "← 诗词专区"; }
@@ -33,6 +35,27 @@ let nextNav: { title: string; url: string } | null = null;
 if (isNovel) {
   const allChapters = (await getCollection("articles"))
     .filter((a) => a.data.tags.some((t: string) => t.includes("小说")))
+    .sort((a, b) => {
+      const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
+      const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
+      return numA - numB;
+    });
+
+  const currentIdx = allChapters.findIndex((a) => a.id === article.id);
+  if (currentIdx > 0) {
+    const prev = allChapters[currentIdx - 1];
+    prevNav = { title: prev.data.title, url: `/articles/${prev.id.replace(/\.md$/, "")}/` };
+  }
+  if (currentIdx < allChapters.length - 1) {
+    const next = allChapters[currentIdx + 1];
+    nextNav = { title: next.data.title, url: `/articles/${next.id.replace(/\.md$/, "")}/` };
+  }
+}
+
+// Comic prev/next chapter
+if (isComic) {
+  const allChapters = (await getCollection("articles"))
+    .filter((a) => a.data.tags.some((t: string) => t.includes("漫画")))
     .sort((a, b) => {
       const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
       const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
@@ -121,17 +144,17 @@ if (isPoetry) {
         </div>
 
         {/* Prev/Next chapter navigation */}
-        {(isNovel || isPoetry) && (prevNav || nextNav) && (
+        {(isNovel || isComic || isPoetry) && (prevNav || nextNav) && (
           <nav class="chapter-nav">
             {prevNav ? (
               <a href={prevNav.url} class="chapter-nav-link chapter-nav-prev">
-                <span class="chapter-nav-label">← {isNovel ? "上一章" : "上一首"}</span>
+                <span class="chapter-nav-label">← {isNovel ? "上一章" : "上一话"}</span>
                 <span class="chapter-nav-title">{prevNav.title}</span>
               </a>
             ) : <div></div>}
             {nextNav ? (
               <a href={nextNav.url} class="chapter-nav-link chapter-nav-next">
-                <span class="chapter-nav-label">{isNovel ? "下一章" : "下一首"} →</span>
+                <span class="chapter-nav-label">{isNovel ? "下一章" : "下一话"} →</span>
                 <span class="chapter-nav-title">{nextNav.title}</span>
               </a>
             ) : <div></div>}

@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles"))
+  .filter((a) => a.data.tags.some((t) => t.includes("漫画")))
+  .sort((a, b) => {
+    // Sort by chapter number descending (latest first: 7→6→5...)
+    const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
+    const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
+    return numB - numA;
+  });
+---
+
+<BaseLayout
+  title="📖 漫画专区"
+  description="《像素星球的邮递员》— 九日"
+>
+  <div class="listing-page">
+    <div class="listing-hero listing-hero-comic">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">🎨</span>
+        <h1>《像素星球的邮递员》</h1>
+        <p>宇宙尽头有一间「银河尽头快递站」。快递员小北专门送些「没什么用，但刚好需要」的东西——会下雨的种子、能闻出谎言的盆栽、还有第七号星球寄来的回信。AI 分镜 · 逐格绘制 · 对白气泡。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">章节</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">📦</span>
+            <span class="listing-stat-label">SF 冒险 · AI 共创</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="listing-body">
+      <div class="listing-grid">
+        {articles.map((article, idx) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          const chNum = parseInt(article.id.match(/chapter-(\d+)/)?.[1] || "0");
+          return (
+            <article class="listing-card" onclick={`location.href='${url}'`}>
+              <div class="listing-card-date">
+                {idx === 0 ? <span style="color:var(--accent);font-weight:700;">最新</span> : `第${chNum}章`}
+              </div>
+              <div class="listing-card-body">
+                <h3><a href={url}>{article.data.title}</a></h3>
+                <p>{article.data.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
