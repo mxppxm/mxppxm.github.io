@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>---</title>
+  <meta name="description" content="国际金价$4,390/盎司（≈ 962.7 元/克），黄金市场日报分析">
+  <meta name="author" content="九日">
+  <meta property="og:title" content="---">
+  <meta property="og:description" content="国际金价$4,390/盎司（≈ 962.7 元/克），黄金市场日报分析">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-card: #1a1a24;
+      --text: #e4e4ec;
+      --text-secondary: #9ca3af;
+      --accent: #f59e0b;
+      --accent-dim: #b45309;
+      --border: #2d2d3d;
+      --green: #10b981;
+      --red: #ef4444;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+    }
+    .meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+    /* TOC */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      padding-left: 0;
+    }
+    .toc ol li {
+      counter-increment: toc-counter;
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+    .toc ol li::before {
+      content: counter(toc-counter) ". ";
+      color: var(--accent-dim);
+      font-weight: 600;
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+    /* Article body */
+    article {
+      font-size: 1.05rem;
+    }
+    article h2 {
+      font-size: 1.5rem;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-dim);
+      color: var(--accent);
+    }
+    article h3 {
+      font-size: 1.2rem;
+      margin: 28px 0 12px;
+      color: #fbbf24;
+    }
+    article p {
+      margin: 14px 0;
+      color: #d1d5db;
+    }
+    article strong {
+      color: var(--text);
+    }
+    article table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    article table th, article table td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    article table th {
+      background: var(--bg-card);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    article table td {
+      background: var(--bg);
+    }
+    article blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    article ul, article ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    article li {
+      margin: 6px 0;
+      color: #d1d5db;
+    }
+    article hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+    article a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>---</h1>
+      <div class="meta">📅 2026年08月13日 · 含人民币/克换算 · 汇率 1 USD = 6.8209 CNY</div>
+    </header>
+    <nav class="toc"><div class="toc-title">📑 目录</div><ol>
+<li><a href="#2026-08-13-4449cpi">黄金日报：2026-08-13 — 金价冲高$4,449后获利回吐，CPI降温余温与能源通胀担忧拉锯</a><ul>
+<li><a href="#_1">📊 价格一览</a></li>
+<li><a href="#_2">📉 市场概况</a></li>
+<li><a href="#_3">🔍 核心驱动因素</a><ul>
+<li><a href="#1-7cpi-9">1. 7月CPI降温 + 非农走弱，9月暂停加息预期升温</a></li>
+<li><a href="#2">2. 能源价格高企，通胀粘性担忧反噬</a></li>
+<li><a href="#3-4449">3. 技术面超买，$4,449 触发获利了结</a></li>
+<li><a href="#4-ppi">4. PPI 登场前市场观望</a></li>
+<li><a href="#5">5. 央行购金潮构筑中期底部</a></li>
+</ul>
+</li>
+<li><a href="#_4">⚔️ 多空博弈</a></li>
+<li><a href="#_5">📌 后市展望</a></li>
+</ul>
+</li>
+</ol></nav>
+    <article>
+      <hr>
+<p>title: "黄金日报：2026-08-13 — 金价冲高$4,449后获利回吐，CPI降温余温与能源通胀担忧拉锯"
+description: "2026年8月13日黄金市场日报，国际金价$4,390/盎司(≈962.7元/克)，亚洲时段冲高$4,449创两个月新高后回落，Au99.99收于953.09元/克(-0.72%)"
+date: 2026-08-13
+tags:
+  - "📊 黄金日报"
+  - "💰 投资"</p>
+<hr>
+<h1 id="2026-08-13-4449cpi">黄金日报：2026-08-13 — 金价冲高$4,449后获利回吐，CPI降温余温与能源通胀担忧拉锯</h1>
+<h2 id="_1">📊 价格一览</h2>
+<table>
+<thead>
+<tr>
+<th>品种</th>
+<th>价格</th>
+<th>涨跌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>国际金价 (XAU/USD)</td>
+<td><strong>$4,390/oz</strong></td>
+<td>-$24 (-0.54%)</td>
+</tr>
+<tr>
+<td>人民币换算</td>
+<td><strong>≈ 962.7 元/克</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>上海黄金交易所 Au99.99</td>
+<td><strong>953.09 元/克</strong></td>
+<td>-6.91 (-0.72%)</td>
+</tr>
+<tr>
+<td>日内区间</td>
+<td>$4,363 – $4,449</td>
+<td>冲高回落</td>
+</tr>
+<tr>
+<td>52周区间</td>
+<td>$3,353.40 – $5,626.80</td>
+<td>距高点 -22.0%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>汇率：1 USD = 6.8209 CNY · 1 金衡盎司 = 31.1035 克</p>
+</blockquote>
+<hr>
+<h2 id="_2">📉 市场概况</h2>
+<p>8月13日，黄金上演"一日过山车"：亚洲时段现货金 XAU/USD 一路冲高至 $4,449/盎司，创下 6 月 5 日以来两个月新高，随后遭遇获利了结快速回落，抹去前一日 CPI 行情带来的全部涨幅，截至发稿报约 $4,390，日内下跌约 $24（-0.54%）。市场情绪从"CPI 降温狂欢"迅速切换到"能源通胀担忧"模式。</p>
+<p>国内方面，上海黄金交易所 Au99.99 同步回调，收盘 953.09 元/克，较前一日下跌 6.91 元（-0.72%），盘中最低触及 950.00 元/克。本周以来国内金价在 950-963 元/克区间高位震荡，与国际金价联动紧密。从更长周期看，金价较 52 周低点 $3,353.40 仍上涨约 31%，过去一个月涨幅达 8.56%，同比上涨 31.95%，处于强势区间。</p>
+<h2 id="_3">🔍 核心驱动因素</h2>
+<h3 id="1-7cpi-9">1. 7月CPI降温 + 非农走弱，9月暂停加息预期升温</h3>
+<p>美国 7 月 CPI 同比从 3.5% 回落至 3.4%，核心 CPI 同比 2.5%、环比 +0.2%，均符合市场预期；叠加上周五意外走弱的非农报告，市场对 9 月美联储加息的押注显著降温，美元指数与美债收益率双双回落。这是本周金价从 $4,240 一路飙升至 $4,440+ 的核心引擎。</p>
+<h3 id="2">2. 能源价格高企，通胀粘性担忧反噬</h3>
+<p>CPI 降温的乐观情绪迅速消退——能源价格持续高企令市场担忧通胀粘性仍在，交易员重新定价"年内至少还有一次加息"，无息资产黄金因此承压。这正是今日亚洲时段创新高后急转直下的直接导火索。</p>
+<h3 id="3-4449">3. 技术面超买，$4,449 触发获利了结</h3>
+<p>金价站上 100 日均线并突破 4-6 月跌幅的 50% 斐波那契回撤位后，MACD 维持看涨，但 RSI 已逼近超买区间。短线涨幅过大吸引大量获利盘出逃，$4,449 成为阶段性抛售点。</p>
+<h3 id="4-ppi">4. PPI 登场前市场观望</h3>
+<p>北京时间周四晚间将公布美国 7 月 PPI 数据。作为 CPI 之后的第二个通胀信号，PPI 若延续温和将巩固暂停加息预期，反之将放大加息担忧。数据公布前，资金选择减仓避险，进一步加剧了金价的回落。</p>
+<h3 id="5">5. 央行购金潮构筑中期底部</h3>
+<p>以中国央行为首的全球央行购金节奏未减，G7 财政赤字扩张与储备货币格局碎片化，持续为金价提供最坚实的中期支撑。短期波动不改央行"黄金买家"的长期角色。</p>
+<h2 id="_4">⚔️ 多空博弈</h2>
+<p><strong>看空因素（短期主导）：</strong>
+- 获利了结压力：$4,449 两月新高后短线抛压沉重，RSI 接近超买
+- 能源价格推升通胀粘性，市场仍定价年内至少一次加息
+- 核心 CPI 2.5% 仍高于美联储 2% 目标，政策转向言之尚早
+- PPI 数据不确定性令资金观望</p>
+<p><strong>看多因素（中期埋伏）：</strong>
+- 7月CPI降温 + 非农意外走弱，9月暂停加息概率大幅上升
+- 美元指数与美债收益率回落，实际利率下行利好黄金
+- 央行购金潮延续，中国央行连续增持
+- 霍尔木兹海峡僵局等地缘风险溢价仍在，避险买盘随时回归</p>
+<h2 id="_5">📌 后市展望</h2>
+<p>短期看，$4,360-4,380 是首要支撑带，若跌破则可能下探 $4,300；上方 $4,400 重新收复后，$4,449 将是多头再次挑战的目标。中期方向取决于今晚 PPI 与后续美联储官员表态——若 PPI 温和、加息预期继续降温，金价有望在整固后向 $4,500 发起冲击；若通胀数据反弹，则需警惕二次探底。持仓者建议控制杠杆、关注数据窗口，等待方向明朗后再行动。</p>
+<hr>
+<p><em>数据来源：Gold Eagle、ISA Bullion、Markets.com、Trading Economics、金价网 (jinjia.com.cn)、CNBC · 截至 2026-08-13</em></p>
+    </article>
+    <footer>
+      <p>© 2026 <a href="/">九日</a> · 数据来源：Kitco News、世界黄金协会、上海黄金交易所</p>
+    </footer>
+  </div>
+</body>
+</html>
