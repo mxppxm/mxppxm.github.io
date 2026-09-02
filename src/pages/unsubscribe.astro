@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="退订通知 — 九日"
+  description="九日博客邮件订阅退订"
+>
+  <main class="unsub-page">
+    <div class="unsub-card">
+      <div class="unsub-icon" id="unsub-icon">⏳</div>
+      <h1 id="unsub-title">正在处理退订…</h1>
+      <p id="unsub-desc">请稍候，正在从订阅列表移除你的邮箱。</p>
+      <a class="unsub-home" href="/">← 回到九日博客</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  const JSONBIN_API = "https://api.jsonbin.io/v3";
+  const JSONBIN_ACCESS_KEY = "$2a$10$eQrLIb.GEN3ykBi9BNq/leLOUgpAqN4aht62cmruTOJDcnD4T4Kbi";
+
+  const icon = document.getElementById("unsub-icon");
+  const title = document.getElementById("unsub-title");
+  const desc = document.getElementById("unsub-desc");
+
+  (async () => {
+    const id = new URLSearchParams(location.search).get("id");
+    if (!id) {
+      icon.textContent = "🤔";
+      title.textContent = "缺少退订参数";
+      desc.textContent = "退订链接不完整，请直接回复邮件或忽略即可。";
+      return;
+    }
+    try {
+      const res = await fetch(`${JSONBIN_API}/b/${id}`, {
+        method: "DELETE",
+        headers: { "X-Access-Key": JSONBIN_ACCESS_KEY },
+      });
+      if (res.ok) {
+        icon.textContent = "✅";
+        title.textContent = "退订成功";
+        desc.textContent = "已从订阅列表移除，不会再收到邮件通知。后会有期 👋";
+      } else {
+        icon.textContent = "😅";
+        title.textContent = "退订失败";
+        desc.textContent = "可能此前已退订，无需担心。若仍有通知，请稍后再试。";
+      }
+    } catch {
+      icon.textContent = "😅";
+      title.textContent = "网络异常";
+      desc.textContent = "退订请求未送达，请稍后重试。";
+    }
+  })();
+</script>
+
+<style>
+  .unsub-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+  }
+  .unsub-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .unsub-icon {
+    font-size: 44px;
+    margin-bottom: 12px;
+  }
+  .unsub-card h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--text);
+  }
+  .unsub-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+    line-height: 1.7;
+  }
+  .unsub-home {
+    display: inline-block;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .unsub-home:hover {
+    box-shadow: var(--shadow-accent);
+  }
+</style>
