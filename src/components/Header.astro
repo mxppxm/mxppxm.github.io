@@ -62,6 +62,23 @@
       <button class="cooperate-copy-btn" id="cooperate-copy-btn">复制</button>
     </div>
     <span class="cooperate-copied" id="cooperate-copied">已复制 ✓</span>
+
+    <div class="cooperate-subscribe">
+      <p class="cooperate-subscribe-title">💌 或者订阅更新</p>
+      <p class="cooperate-subscribe-desc">留个邮箱，新文章发布后第一时间邮件通知你，随时可退订。</p>
+      <form id="subscribe-form" class="subscribe-form" novalidate>
+        <input
+          type="email"
+          id="subscribe-email"
+          class="subscribe-input"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="subscribe-btn" id="subscribe-btn">订阅</button>
+      </form>
+      <p class="subscribe-msg" id="subscribe-msg"></p>
+    </div>
   </div>
 </div>
 
@@ -219,6 +236,70 @@
   .cooperate-copied.show {
     opacity: 1;
   }
+
+  /* 弹窗内订阅区 */
+  .cooperate-subscribe {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border, rgba(0,0,0,0.08));
+    text-align: left;
+  }
+  .cooperate-subscribe-title {
+    font-size: 15px;
+    font-weight: 650;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+  }
+  .cooperate-subscribe-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 8px;
+  }
+  .subscribe-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border-strong, rgba(0,0,0,0.14));
+    background: var(--bg, #f7f5f0);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .subscribe-input:focus {
+    outline: none;
+    border-color: var(--accent, #07c160);
+    box-shadow: 0 0 0 3px rgba(7,193,96,0.15);
+  }
+  .subscribe-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent, #07c160);
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, opacity 0.2s;
+  }
+  .subscribe-btn:hover { background: #06a050; }
+  .subscribe-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .subscribe-msg {
+    font-size: 12.5px;
+    margin: 10px 0 0;
+    min-height: 1.1rem;
+    line-height: 1.5;
+  }
+  .subscribe-msg.ok { color: var(--accent-dark, #06a050); font-weight: 500; }
+  .subscribe-msg.error { color: #d9534f; }
 </style>
 
 <script is:inline>
@@ -251,4 +332,62 @@ copyBtn.addEventListener('click', function() {
     }, 2000);
   });
 });
+
+/* ---- 邮件订阅（弹窗内） ---- */
+// JSONBin 后端：access key 仅授予「创建订阅」权限（不可读取列表），见 notify_subscribers.rb 使用说明
+const JSONBIN_API = "https://api.jsonbin.io/v3";
+const JSONBIN_ACCESS_KEY = "$2a$10$eQrLIb.GEN3ykBi9BNq/leLOUgpAqN4aht62cmruTOJDcnD4T4Kbi";
+const JSONBIN_COLLECTION_ID = "6a97e523da38895dfe2e8e1e";
+
+const subForm = document.getElementById("subscribe-form");
+const subInput = document.getElementById("subscribe-email");
+const subBtn = document.getElementById("subscribe-btn");
+const subMsg = document.getElementById("subscribe-msg");
+
+subForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = subInput.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showSubMsg("邮箱格式不对，检查一下再试～", "error");
+    return;
+  }
+  subBtn.disabled = true;
+  subBtn.textContent = "提交中…";
+  try {
+    const res = await fetch(`${JSONBIN_API}/b`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Key": JSONBIN_ACCESS_KEY,
+        "X-Collection-Id": JSONBIN_COLLECTION_ID,
+        "X-Bin-Name": email,
+      },
+      body: JSON.stringify({
+        email,
+        subscribedAt: new Date().toISOString(),
+      }),
+    });
+    if (res.ok) {
+      showSubMsg("🎉 订阅成功，新文章发布后会邮件通知你（退订见邮件底部）", "ok");
+      subInput.value = "";
+    } else {
+      let reason = "订阅失败，稍后再试";
+      try {
+        const data = await res.json();
+        if (data && data.message) reason = data.message;
+      } catch {}
+      showSubMsg("😅 " + reason, "error");
+    }
+  } catch {
+    showSubMsg("😅 网络异常，稍后再试", "error");
+  } finally {
+    subBtn.disabled = false;
+    subBtn.textContent = "订阅";
+  }
+});
+
+function showSubMsg(text, kind) {
+  subMsg.textContent = text;
+  subMsg.className = "subscribe-msg " + kind;
+}
 </script>
