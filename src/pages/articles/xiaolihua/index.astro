@@ -1,0 +1,110 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles"))
+  .filter((a) => a.id.includes("xiaolihua"))
+  .sort((a, b) => {
+    // Sort by 季 number descending (latest first)
+    const ja = parseInt(a.id.match(/juan(\d+)/)?.[1] || "1");
+    const jb = parseInt(b.id.match(/juan(\d+)/)?.[1] || "1");
+    return jb - ja;
+  });
+
+const CN = ["壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾"];
+---
+
+<BaseLayout
+  title="🐾 小狸花专区"
+  description="《小狸花 · 程序员家的猫》— 猫咪日记四季连载，从捡回来那夜到统治整个家。"
+>
+  <div class="listing-page">
+    <div class="listing-hero listing-hero-xiaolihua">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">🐾</span>
+        <h1>小狸花 · 程序员家的猫</h1>
+        <p>雨夜捡回来的小狸花，从此整个家都是它的：三百块的猫窝输给纸箱，加班夜它当暖手宝，扫地机成了新坐骑——这只猫用实力证明，谁才是这个家真正的主人。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length} 季</span>
+            <span class="listing-stat-label">连载中</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length * 3}</span>
+            <span class="listing-stat-label">话 · 未完待续</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="listing-body">
+      <div class="listing-grid">
+        {articles.map((article) => {
+          const url = `/articles/${article.id.replace(/\.md$/, "")}/`;
+          const juan = parseInt(article.id.match(/juan(\d+)/)?.[1] || "1");
+          const juanCN = CN[juan - 1] || juan;
+          const isLatest = juan === articles.length;
+          return (
+            <article class="listing-card" onclick={`location.href='${url}'`}>
+              <div class="listing-card-cover">
+                {article.data.image && (
+                  <img src={article.data.image} alt={article.data.title} loading="lazy" />
+                )}
+              </div>
+              <div class="listing-card-body">
+                <div class="juan-tag">
+                  {isLatest ? <span class="juan-latest">最新</span> : null}
+                  <span>第{juanCN}季</span>
+                </div>
+                <h3><a href={url}>{article.data.title}</a></h3>
+                <p>{article.data.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .listing-hero-icon { display: block; font-size: 40px; margin-bottom: 12px; }
+  .listing-hero-xiaolihua .listing-hero-inner {
+    border-bottom-color: rgba(242, 166, 94, 0.35);
+  }
+  .listing-hero-xiaolihua h1 {
+    color: #6b4b34;
+  }
+  .listing-hero-xiaolihua .listing-stat-num { color: #e8892e; }
+
+  /* Cover thumbnail on the left column (110px grid column) */
+  .listing-card .listing-card-cover {
+    width: 110px;
+    min-width: 110px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #eee0cf;
+    aspect-ratio: 6 / 7;
+    position: relative;
+  }
+  .listing-card .listing-card-cover img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s var(--ease-out);
+  }
+  .listing-card:hover .listing-card-cover img { transform: scale(1.06); }
+
+  .juan-tag {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 8px; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.14em; color: #b08d6e;
+  }
+  .juan-latest {
+    background: #f2a65e; color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+</style>
