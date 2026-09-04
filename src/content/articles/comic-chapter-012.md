@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g1.jpg" alt="永恒日光的星球，人们疏离地走着" loading="lazy"><div class="comic-caption">第 8 号星球永远有日光。可是这里的人，好像都不太会拥抱。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g2.jpg" alt="小北把会拥抱的影子贴片交给居民" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>会拥抱的影子？这要怎么用？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g3.jpg" alt="影子小人活过来给了居民一个拥抱" loading="lazy"><div class="comic-bubble bl thought"><span class="speaker">影子</span>（张开双臂，轻轻抱住）</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g4.jpg" alt="黄昏中影子们相拥，居民学着拥抱" loading="lazy"><div class="comic-caption">影子替他们拥抱。可真正需要的，是人的拥抱。</div><div class="comic-bubble bl"><span class="speaker">小北</span>影子拥抱得再暖，也比不上一个真人的拥抱。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g5.jpg" alt="第8号星球的人们终于学会互相拥抱" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>原来拥抱……是这种感觉。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch012-p12g6.jpg" alt="居民们团团围住小北给他一个大拥抱" loading="lazy"><div class="comic-caption">小北离开第 8 号星球时，收到了银河系最结实的拥抱。</div><div class="comic-bubble bl shout"><span class="speaker">居民们</span>小北，谢谢你教会我们拥抱！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g1.jpg" alt="永恒日光的星球，人们疏离地走着" loading="lazy"><div class="comic-caption">第 8 号星球永远有日光。可是这里的人，好像都不太会拥抱。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g2.jpg" alt="小北把会拥抱的影子贴片交给居民" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>会拥抱的影子？这要怎么用？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g3.jpg" alt="影子小人活过来给了居民一个拥抱" loading="lazy"><div class="comic-bubble bl thought"><span class="speaker">影子</span>（张开双臂，轻轻抱住）</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g4.jpg" alt="黄昏中影子们相拥，居民学着拥抱" loading="lazy"><div class="comic-caption">影子替他们拥抱。可真正需要的，是人的拥抱。</div><div class="comic-bubble bl"><span class="speaker">小北</span>影子拥抱得再暖，也比不上一个真人的拥抱。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g5.jpg" alt="第8号星球的人们终于学会互相拥抱" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>原来拥抱……是这种感觉。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch012-p12g6.jpg" alt="居民们团团围住小北给他一个大拥抱" loading="lazy"><div class="comic-caption">小北离开第 8 号星球时，收到了银河系最结实的拥抱。</div><div class="comic-bubble bl shout"><span class="speaker">居民们</span>小北，谢谢你教会我们拥抱！</div></div>
 </div>
 
 *第一卷 · 十二 会拥抱的影子 · 未完待续*

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![林雪的信](/images/novel-chapter-182.jpg)
+![林雪的信](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-182.jpg)
 
 ## 一
 

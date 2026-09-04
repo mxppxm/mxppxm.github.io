@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g1.jpg" alt="第2号星球孩子们仰头盼雪" loading="lazy"><div class="comic-caption">第 2 号星球从来不下雪。孩子们只在绘本里见过。</div><div class="comic-bubble bl"><span class="speaker">小女孩</span>雪……到底是什么样子的呢？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g2.jpg" alt="孩子们把会下雪的云的订单递给小北" loading="lazy"><div class="comic-bubble bl shout"><span class="speaker">孩子们</span>我们要一朵会下雪的云！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g3.jpg" alt="箱子里一朵灰扑扑的小云在哭泣" loading="lazy"><div class="comic-caption">云是汽化的眼泪。这朵云，心里装着很多很多的伤心。</div><div class="comic-bubble bl"><span class="speaker">小北</span>这朵云……怎么在哭？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g4.jpg" alt="云朵阴沉悬空不落雪，孩子们失落，小北着急" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>云云乖，别哭呀，你不是要下雪吗？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g5.jpg" alt="小北逗云朵笑，云朵破涕为笑发金光" loading="lazy"><div class="comic-caption">小北给云讲了半个小时的冷笑话，云终于笑了。</div><div class="comic-bubble bl"><span class="speaker">小北</span>你知道星星为什么眨眼睛吗？因为它想逗你笑！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch010-p10g6.jpg" alt="第2号星球第一次下雪，孩子们在雪地里欢呼" loading="lazy"><div class="comic-caption">第 2 号星球下雪了。孩子们说：原来雪，是笑着落下来的。</div><div class="comic-bubble bl shout"><span class="speaker">孩子们</span>下雪啦——！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g1.jpg" alt="第2号星球孩子们仰头盼雪" loading="lazy"><div class="comic-caption">第 2 号星球从来不下雪。孩子们只在绘本里见过。</div><div class="comic-bubble bl"><span class="speaker">小女孩</span>雪……到底是什么样子的呢？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g2.jpg" alt="孩子们把会下雪的云的订单递给小北" loading="lazy"><div class="comic-bubble bl shout"><span class="speaker">孩子们</span>我们要一朵会下雪的云！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g3.jpg" alt="箱子里一朵灰扑扑的小云在哭泣" loading="lazy"><div class="comic-caption">云是汽化的眼泪。这朵云，心里装着很多很多的伤心。</div><div class="comic-bubble bl"><span class="speaker">小北</span>这朵云……怎么在哭？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g4.jpg" alt="云朵阴沉悬空不落雪，孩子们失落，小北着急" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>云云乖，别哭呀，你不是要下雪吗？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g5.jpg" alt="小北逗云朵笑，云朵破涕为笑发金光" loading="lazy"><div class="comic-caption">小北给云讲了半个小时的冷笑话，云终于笑了。</div><div class="comic-bubble bl"><span class="speaker">小北</span>你知道星星为什么眨眼睛吗？因为它想逗你笑！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch010-p10g6.jpg" alt="第2号星球第一次下雪，孩子们在雪地里欢呼" loading="lazy"><div class="comic-caption">第 2 号星球下雪了。孩子们说：原来雪，是笑着落下来的。</div><div class="comic-bubble bl shout"><span class="speaker">孩子们</span>下雪啦——！</div></div>
 </div>
 
 *第一卷 · 十 会下雪的云 · 未完待续*

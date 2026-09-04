@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g1.jpg" alt="小北拿着画着猫爪印的信封" loading="lazy"><div class="comic-caption">这天早上，小北收到一封特别的信。</div><div class="comic-bubble thought bl"><span class="speaker">站长</span>第七号星球……那只猫寄来的？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g2.jpg" alt="老人写信，白猫按着信纸帮忙" loading="lazy"><div class="comic-bubble tr"><span class="speaker">白猫</span>爪印按这里……写「谢谢」。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g3.jpg" alt="老人在院子里晒太阳撸猫" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老人</span>一个人住了二十年，第一次觉得不孤单。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g4.jpg" alt="小北读信，信纸末尾画着猫和爱心" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>……「谢谢你把猫送来。它很好，我也很好。」</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g5.jpg" alt="小北抱着一叠信望向星空" loading="lazy"><div class="comic-bubble thought bl"><span class="speaker">小北</span>原来做快递员，送的不是包裹。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch004-p4g6.jpg" alt="银河尽头快递站全景，飞船停靠，星光璀璨" loading="lazy"><div class="comic-caption">银河尽头快递站，每天仍在送一些「没什么用，但刚好需要」的东西。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g1.jpg" alt="小北拿着画着猫爪印的信封" loading="lazy"><div class="comic-caption">这天早上，小北收到一封特别的信。</div><div class="comic-bubble thought bl"><span class="speaker">站长</span>第七号星球……那只猫寄来的？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g2.jpg" alt="老人写信，白猫按着信纸帮忙" loading="lazy"><div class="comic-bubble tr"><span class="speaker">白猫</span>爪印按这里……写「谢谢」。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g3.jpg" alt="老人在院子里晒太阳撸猫" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老人</span>一个人住了二十年，第一次觉得不孤单。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g4.jpg" alt="小北读信，信纸末尾画着猫和爱心" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>……「谢谢你把猫送来。它很好，我也很好。」</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g5.jpg" alt="小北抱着一叠信望向星空" loading="lazy"><div class="comic-bubble thought bl"><span class="speaker">小北</span>原来做快递员，送的不是包裹。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch004-p4g6.jpg" alt="银河尽头快递站全景，飞船停靠，星光璀璨" loading="lazy"><div class="comic-caption">银河尽头快递站，每天仍在送一些「没什么用，但刚好需要」的东西。</div></div>
 </div>
 
 信是第一章那位老人和那只白猫寄来的。信纸末尾画着一只简笔猫和一颗爱心。小北把信贴在胸口，望向窗外的星空——原来做快递员，送的不是包裹，是把孤单和孤单接在一起。

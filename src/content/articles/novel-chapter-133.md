@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![归途](/images/novel-chapter-133.jpg)
+![归途](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-133.jpg)
 
 ## 一
 

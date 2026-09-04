@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![数日子的人](/images/novel-chapter-202.png)
+![数日子的人](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-202.png)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![暑假开头](/images/novel-chapter-146.jpg)
+![暑假开头](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-146.jpg)
 
 ## 一
 

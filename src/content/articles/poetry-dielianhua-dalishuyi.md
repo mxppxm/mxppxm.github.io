@@ -4,7 +4,7 @@ description: "我失骄杨君失柳，杨柳轻飏直上重霄九。问讯吴刚
 date: 1957-05-11
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/dielianhua-dalishuyi.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/dielianhua-dalishuyi.jpg"
 poem_type: "ci"
 cipai: "蝶恋花"
 period: "建国后"

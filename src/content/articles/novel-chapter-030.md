@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![红绳与麻雀](/images/novel-chapter-030.jpg)
+![红绳与麻雀](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-030.jpg)
 
 ## 一
 

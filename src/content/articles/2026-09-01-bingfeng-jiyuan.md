@@ -4,7 +4,7 @@ description: "末日求生漫画《冰封纪元》：凌晨三点整座城市一
 date: 2026-09-01
 tags: ["comic"]
 draft: false
-image: "/img/F1-冰封降临.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/F1-冰封降临.jpg"
 ---
 
 末日求生漫画《冰封纪元》三章连发：
@@ -13,19 +13,19 @@ image: "/img/F1-冰封降临.jpg"
 
 凌晨三点，整座城市一片冰白。
 
-![冰封降临](/img/F1-冰封降临.jpg)
+![冰封降临](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/F1-冰封降临.jpg)
 
 ## 第二章 · 扫货
 
 空间金手指，先人一步囤满。
 
-![扫货](/img/F2-扫货.jpg)
+![扫货](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/F2-扫货.jpg)
 
 ## 第三章 · 取车·打脸
 
 全城唯一的车，谁也别想抢。
 
-![取车打脸](/img/F3-取车打脸.jpg)
+![取车打脸](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/F3-取车打脸.jpg)
 
 > 越野车轰鸣着，驶向风雪深处。
 >

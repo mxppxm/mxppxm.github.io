@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树下的习题](/images/novel-chapter-203.png)
+![槐树下的习题](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-203.png)
 
 ## 一
 

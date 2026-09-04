@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![照片上的槐树](/images/novel-chapter-173.jpg)
+![照片上的槐树](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-173.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![梦见水](/images/novel-chapter-028.jpg)
+![梦见水](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-028.jpg)
 
 ## 一
 

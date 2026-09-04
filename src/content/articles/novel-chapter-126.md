@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![答案的答案](/images/novel-chapter-126.jpg)
+![答案的答案](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-126.jpg)
 
 ## 一
 

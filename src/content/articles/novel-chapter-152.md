@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![跑道上的五圈](/images/novel-chapter-152.jpg)
+![跑道上的五圈](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-152.jpg)
 
 ## 一
 

@@ -10,7 +10,7 @@ tags:
 
 # 第七章：三点水
 
-![三点水](/images/novel-chapter-007.jpg)
+![三点水](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-007.jpg)
 
 ## 一
 

@@ -4,7 +4,7 @@ description: "《小狸花》第贰季：半夜跑酷凌晨三点猫疯了，抢
 date: 2026-09-01
 tags: ["comic"]
 draft: false
-image: "/img/G4-半夜跑酷.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G4-半夜跑酷.jpg"
 ---
 
 《小狸花 · 程序员家的猫》第贰季三章：
@@ -13,19 +13,19 @@ image: "/img/G4-半夜跑酷.jpg"
 
 凌晨三点，猫疯了。
 
-![半夜跑酷](/img/G4-半夜跑酷.jpg)
+![半夜跑酷](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G4-半夜跑酷.jpg)
 
 ## 第五章 · 抢椅子
 
 椅子，终究还是猫的。
 
-![抢椅子](/img/G5-抢椅子.jpg)
+![抢椅子](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G5-抢椅子.jpg)
 
 ## 第六章 · 洗澡大作战
 
 绝交五分钟。
 
-![洗澡大作战](/img/G6-洗澡大作战.jpg)
+![洗澡大作战](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G6-洗澡大作战.jpg)
 
 > 喵。
 >

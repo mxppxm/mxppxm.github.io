@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![文学社](/images/novel-chapter-105.jpg)
+![文学社](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-105.jpg)
 
 ## 一
 

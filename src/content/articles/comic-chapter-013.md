@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g1.jpg" alt="荒芜星球上，老植物学家在给枯苗浇水" loading="lazy"><div class="comic-caption">第 13 号星球曾经开满花。现在只剩一位老人，还在坚持浇水。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g2.jpg" alt="小北把复活的花园种子包交给老植物学家" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老植物学家</span>复活的花园种子包……真的能复活吗？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g3.jpg" alt="种子种下多日却不发芽，老人失落" loading="lazy"><div class="comic-caption">种子种下去了，却怎么也不肯发芽。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>怎么会……连一颗都不发芽……</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g4.jpg" alt="月光下小北发现种子要被记住才发芽" loading="lazy"><div class="comic-caption">种子的说明书上写着：它们要「被记住」，才肯发芽。</div><div class="comic-bubble bl"><span class="speaker">小北</span>被记住……原来种子要的是回忆。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g5.jpg" alt="老人回忆往事，嫩芽破土而出" loading="lazy"><div class="comic-caption">老人想起与妻子一起种花的日子，芽就破土了。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>她说，花是会记得种花人的……</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch013-p13g6.jpg" alt="荒芜星球变成花海，老人在花海中微笑" loading="lazy"><div class="comic-caption">第 13 号星球，重新开满了花。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>花回来了……她也回来了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g1.jpg" alt="荒芜星球上，老植物学家在给枯苗浇水" loading="lazy"><div class="comic-caption">第 13 号星球曾经开满花。现在只剩一位老人，还在坚持浇水。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g2.jpg" alt="小北把复活的花园种子包交给老植物学家" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老植物学家</span>复活的花园种子包……真的能复活吗？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g3.jpg" alt="种子种下多日却不发芽，老人失落" loading="lazy"><div class="comic-caption">种子种下去了，却怎么也不肯发芽。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>怎么会……连一颗都不发芽……</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g4.jpg" alt="月光下小北发现种子要被记住才发芽" loading="lazy"><div class="comic-caption">种子的说明书上写着：它们要「被记住」，才肯发芽。</div><div class="comic-bubble bl"><span class="speaker">小北</span>被记住……原来种子要的是回忆。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g5.jpg" alt="老人回忆往事，嫩芽破土而出" loading="lazy"><div class="comic-caption">老人想起与妻子一起种花的日子，芽就破土了。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>她说，花是会记得种花人的……</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch013-p13g6.jpg" alt="荒芜星球变成花海，老人在花海中微笑" loading="lazy"><div class="comic-caption">第 13 号星球，重新开满了花。</div><div class="comic-bubble bl"><span class="speaker">老植物学家</span>花回来了……她也回来了。</div></div>
 </div>
 
 *第一卷 · 十三 复活的花园 · 未完待续*

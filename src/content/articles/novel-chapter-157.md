@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![冬至的饺子](/images/novel-chapter-157.jpg)
+![冬至的饺子](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-157.jpg)
 
 ## 一
 

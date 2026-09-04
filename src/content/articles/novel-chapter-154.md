@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![缝纫铺的灯](/images/novel-chapter-154.jpg)
+![缝纫铺的灯](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-154.jpg)
 
 ## 一
 

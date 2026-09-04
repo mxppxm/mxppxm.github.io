@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![铁盒里的白石头](/images/novel-chapter-131.png)
+![铁盒里的白石头](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-131.png)
 
 ## 一
 

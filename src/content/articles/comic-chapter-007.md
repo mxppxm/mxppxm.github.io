@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g1.jpg" alt="冰封星球上的空花店，老老板望着窗外" loading="lazy"><div class="comic-caption">第 11 号星球，一年四季都是冬天。花店的玫瑰，早就谢了。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g2.jpg" alt="老花店老板下单不会凋谢的玫瑰，柜台放着旧照片" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老板</span>一朵不会凋谢的玫瑰……就一朵。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g3.jpg" alt="小北捧来冰晶盒里的冰冻玫瑰" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>给您——冰冻玫瑰，永远不会凋谢。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g4.jpg" alt="老板把冰冻玫瑰放在旧照片旁的窗台" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老板</span>她生前最喜欢红玫瑰。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g5.jpg" alt="冰冻玫瑰折射出暖光，老板露出释然微笑" loading="lazy"><div class="comic-caption">冰晶里的光，像极了她的笑。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch007-p7g6.jpg" alt="夕阳下冰冻玫瑰闪光，老板挥手送别小北" loading="lazy"><div class="comic-caption">花店老板说：花谢了没关系，记得的人心里，永远开着。</div><div class="comic-bubble bl"><span class="speaker">老板</span>谢谢你，年轻人。下次再来坐坐。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g1.jpg" alt="冰封星球上的空花店，老老板望着窗外" loading="lazy"><div class="comic-caption">第 11 号星球，一年四季都是冬天。花店的玫瑰，早就谢了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g2.jpg" alt="老花店老板下单不会凋谢的玫瑰，柜台放着旧照片" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老板</span>一朵不会凋谢的玫瑰……就一朵。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g3.jpg" alt="小北捧来冰晶盒里的冰冻玫瑰" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>给您——冰冻玫瑰，永远不会凋谢。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g4.jpg" alt="老板把冰冻玫瑰放在旧照片旁的窗台" loading="lazy"><div class="comic-bubble bl"><span class="speaker">老板</span>她生前最喜欢红玫瑰。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g5.jpg" alt="冰冻玫瑰折射出暖光，老板露出释然微笑" loading="lazy"><div class="comic-caption">冰晶里的光，像极了她的笑。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch007-p7g6.jpg" alt="夕阳下冰冻玫瑰闪光，老板挥手送别小北" loading="lazy"><div class="comic-caption">花店老板说：花谢了没关系，记得的人心里，永远开着。</div><div class="comic-bubble bl"><span class="speaker">老板</span>谢谢你，年轻人。下次再来坐坐。</div></div>
 </div>
 
 *第一卷 · 七 冰冻玫瑰 · 未完待续*

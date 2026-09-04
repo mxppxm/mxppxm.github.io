@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![立冬的雪](/images/novel-chapter-155.jpg)
+![立冬的雪](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-155.jpg)
 
 ## 一
 

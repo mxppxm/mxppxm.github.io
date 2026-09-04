@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![最后一次实验](/images/novel-chapter-145.jpg)
+![最后一次实验](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-145.jpg)
 
 ## 一
 

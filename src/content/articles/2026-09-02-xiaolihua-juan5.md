@@ -4,7 +4,7 @@ description: "《小狸花》第伍季：免费的猫式按摩就是有点疼，
 date: 2026-09-02
 tags: ["comic"]
 draft: false
-image: "/img/G13-踩奶.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G13-踩奶.jpg"
 ---
 
 《小狸花 · 程序员家的猫》第伍季三章：
@@ -13,19 +13,19 @@ image: "/img/G13-踩奶.jpg"
 
 免费的猫式按摩，就是有点疼。
 
-![踩奶](/img/G13-踩奶.jpg)
+![踩奶](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G13-踩奶.jpg)
 
 ## 第十四章 · 激光笔
 
 一个小红点，把它逼疯了。
 
-![激光笔](/img/G14-激光笔.jpg)
+![激光笔](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G14-激光笔.jpg)
 
 ## 第十五章 · 钻被窝
 
 冬天，被窝里有只猫。
 
-![钻被窝](/img/G15-钻被窝.jpg)
+![钻被窝](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G15-钻被窝.jpg)
 
 > 你家猫，也跟你抢被子吗？
 >

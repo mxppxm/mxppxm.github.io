@@ -4,7 +4,7 @@ description: "饮茶粤海未能忘，索句渝州叶正黄。三十一年还旧
 date: 1949-04-29
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/qilu-heliuyazi.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/qilu-heliuyazi.jpg"
 poem_type: "shi"
 period: "革命时期"
 ---

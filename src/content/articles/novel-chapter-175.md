@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![明娟要回来了](/images/novel-chapter-175.jpg)
+![明娟要回来了](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-175.jpg)
 
 ## 一
 

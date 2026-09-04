@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![北偏东](/images/novel-chapter-100.jpg)
+![北偏东](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-100.jpg)
 
 ## 一
 

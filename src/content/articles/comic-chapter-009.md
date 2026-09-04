@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g1.jpg" alt="第5号星球居民们仰头向星星许愿" loading="lazy"><div class="comic-caption">第 5 号星球的居民，每天都在向星星许愿。</div><div class="comic-bubble bl"><span class="speaker">居民们</span>星星啊星星，请让我的愿望实现吧！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g2.jpg" alt="小北看着流星许愿服务的订单挠头" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>流星许愿服务？这单……怎么送啊？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g3.jpg" alt="飞船货舱门开了条缝，包裹坠落像流星雨" loading="lazy"><div class="comic-caption">小北这才发现——所谓的流星雨，是快递站漏发的包裹。</div><div class="comic-bubble bl shout"><span class="speaker">小北</span>哎呀！包裹全掉出去了！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g4.jpg" alt="流星雨下居民们疯狂许愿，小北也合十许愿" loading="lazy"><div class="comic-caption">小北将错就错，没告诉居民那是包裹。反正，愿望成真就好了。</div><div class="comic-bubble bl"><span class="speaker">小北</span>那我也许个愿吧。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g5.jpg" alt="居民们愿望成真，又惊又喜，小北不好意思地笑" loading="lazy"><div class="comic-caption">那些「流星」，恰好就是他们许愿要的东西。</div><div class="comic-bubble bl shout"><span class="speaker">居民</span>愿望真的实现了！流星是真的！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch009-p9g6.jpg" alt="居民们挥手送别小北，星空明亮" loading="lazy"><div class="comic-caption">从此，第 5 号星球的居民相信：对着流星许愿，是真的会实现。</div><div class="comic-bubble bl"><span class="speaker">居民们</span>小北，下次再来送「流星」啊！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g1.jpg" alt="第5号星球居民们仰头向星星许愿" loading="lazy"><div class="comic-caption">第 5 号星球的居民，每天都在向星星许愿。</div><div class="comic-bubble bl"><span class="speaker">居民们</span>星星啊星星，请让我的愿望实现吧！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g2.jpg" alt="小北看着流星许愿服务的订单挠头" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>流星许愿服务？这单……怎么送啊？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g3.jpg" alt="飞船货舱门开了条缝，包裹坠落像流星雨" loading="lazy"><div class="comic-caption">小北这才发现——所谓的流星雨，是快递站漏发的包裹。</div><div class="comic-bubble bl shout"><span class="speaker">小北</span>哎呀！包裹全掉出去了！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g4.jpg" alt="流星雨下居民们疯狂许愿，小北也合十许愿" loading="lazy"><div class="comic-caption">小北将错就错，没告诉居民那是包裹。反正，愿望成真就好了。</div><div class="comic-bubble bl"><span class="speaker">小北</span>那我也许个愿吧。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g5.jpg" alt="居民们愿望成真，又惊又喜，小北不好意思地笑" loading="lazy"><div class="comic-caption">那些「流星」，恰好就是他们许愿要的东西。</div><div class="comic-bubble bl shout"><span class="speaker">居民</span>愿望真的实现了！流星是真的！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch009-p9g6.jpg" alt="居民们挥手送别小北，星空明亮" loading="lazy"><div class="comic-caption">从此，第 5 号星球的居民相信：对着流星许愿，是真的会实现。</div><div class="comic-bubble bl"><span class="speaker">居民们</span>小北，下次再来送「流星」啊！</div></div>
 </div>
 
 *第一卷 · 九 许愿的流星 · 未完待续*

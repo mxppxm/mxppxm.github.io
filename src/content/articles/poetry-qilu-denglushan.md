@@ -4,7 +4,7 @@ description: "一山飞峙大江边，跃上葱茏四百旋。冷眼向洋看世
 date: 1959-07-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/qilu-denglushan.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/qilu-denglushan.jpg"
 poem_type: "shi"
 period: "建国后"
 ---

@@ -4,7 +4,7 @@ description: "宁化、清流、归化，路隘林深苔滑。今日向何方，
 date: 1930-01-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/rumengling-yuandan.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/rumengling-yuandan.jpg"
 poem_type: "ci"
 cipai: "如梦令"
 period: "革命时期"

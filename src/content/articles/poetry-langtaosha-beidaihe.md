@@ -4,7 +4,7 @@ description: "大雨落幽燕，白浪滔天，秦皇岛外打鱼船。一片汪
 date: 1954-07-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/langtaosha-beidaihe.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/langtaosha-beidaihe.jpg"
 poem_type: "ci"
 cipai: "浪淘沙"
 period: "建国后"

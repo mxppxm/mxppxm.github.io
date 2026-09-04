@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![渠边](/images/novel-chapter-190.jpg)
+![渠边](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-190.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![天安门](/images/novel-chapter-206.png)
+![天安门](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-206.png)
 
 ## 一
 

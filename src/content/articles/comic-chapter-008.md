@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g1.jpg" alt="迷路彗星冲向快递站，警报大作" loading="lazy"><div class="comic-caption">有一阵子，快递站上空总有一颗彗星迷路。</div><div class="comic-bubble tr shout"><span class="speaker">站长</span>警报！警报！有彗星要撞上来了！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g2.jpg" alt="站长把彗星导航仪交给小北" loading="lazy"><div class="comic-bubble bl"><span class="speaker">站长</span>彗星导航仪。把它安到那颗彗星上去。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g3.jpg" alt="小北在太空中攀住彗星安装导航仪" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>乖，别怕，给你装个导航就不会迷路了。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g4.jpg" alt="彗星装上导航仪却仍在原地绕圈" loading="lazy"><div class="comic-caption">导航仪没坏。彗星，只是不想走。</div><div class="comic-bubble bl thought"><span class="speaker">小北</span>诶？导航仪明明指着回家的方向啊……</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g5.jpg" alt="小北安静陪在彗星身边，彗星安静下来" loading="lazy"><div class="comic-caption">小北陪着它绕完最后一圈，说：该回家了。</div><div class="comic-bubble bl thought"><span class="speaker">彗星</span>（尾巴轻轻摆了摆，像是在说谢谢）</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch008-p8g6.jpg" alt="彗星拖着长尾远去，小北和站长在窗前目送" loading="lazy"><div class="comic-caption">后来，那颗彗星每年都会从快递站上空路过一次。</div><div class="comic-bubble bl"><span class="speaker">站长</span>它记住路了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g1.jpg" alt="迷路彗星冲向快递站，警报大作" loading="lazy"><div class="comic-caption">有一阵子，快递站上空总有一颗彗星迷路。</div><div class="comic-bubble tr shout"><span class="speaker">站长</span>警报！警报！有彗星要撞上来了！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g2.jpg" alt="站长把彗星导航仪交给小北" loading="lazy"><div class="comic-bubble bl"><span class="speaker">站长</span>彗星导航仪。把它安到那颗彗星上去。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g3.jpg" alt="小北在太空中攀住彗星安装导航仪" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>乖，别怕，给你装个导航就不会迷路了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g4.jpg" alt="彗星装上导航仪却仍在原地绕圈" loading="lazy"><div class="comic-caption">导航仪没坏。彗星，只是不想走。</div><div class="comic-bubble bl thought"><span class="speaker">小北</span>诶？导航仪明明指着回家的方向啊……</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g5.jpg" alt="小北安静陪在彗星身边，彗星安静下来" loading="lazy"><div class="comic-caption">小北陪着它绕完最后一圈，说：该回家了。</div><div class="comic-bubble bl thought"><span class="speaker">彗星</span>（尾巴轻轻摆了摆，像是在说谢谢）</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch008-p8g6.jpg" alt="彗星拖着长尾远去，小北和站长在窗前目送" loading="lazy"><div class="comic-caption">后来，那颗彗星每年都会从快递站上空路过一次。</div><div class="comic-bubble bl"><span class="speaker">站长</span>它记住路了。</div></div>
 </div>
 
 *第一卷 · 八 迷路的彗星 · 未完待续*

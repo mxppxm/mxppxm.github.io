@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![三个人的船](/images/novel-chapter-179.jpg)
+![三个人的船](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-179.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![货郎的镜子](/images/novel-chapter-046.jpg)
+![货郎的镜子](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-046.jpg)
 
 ## 一
 

@@ -189,7 +189,7 @@ tags:
 
 ---
 
-![交换](/images/novel-chapter-014.jpg)
+![交换](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-014.jpg)
 
 *第十四章完*
 

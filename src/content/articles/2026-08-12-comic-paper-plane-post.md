@@ -29,18 +29,18 @@ tags: ["comic", "story"]
 
 <div class="comic-page">
   <div class="comic-panel" style="grid-column: 1 / span 3; grid-row: 1 / span 1;">
-    <img src="/images/comic-paper-plane/p1g1.jpg" alt="树顶木屋邮局全景，晨雾与山丘" loading="lazy">
+    <img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/comic-paper-plane/p1g1.jpg" alt="树顶木屋邮局全景，晨雾与山丘" loading="lazy">
     <div class="comic-caption">阿澄的邮局，开在山谷最高的那棵云杉树顶上。</div>
   </div>
   <div class="comic-panel" style="grid-column: 1 / span 2; grid-row: 2 / span 1;">
-    <img src="/images/comic-paper-plane/p1g2.jpg" alt="女孩在木屋里折纸飞机" loading="lazy">
+    <img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/comic-paper-plane/p1g2.jpg" alt="女孩在木屋里折纸飞机" loading="lazy">
     <div class="comic-bubble bl"><span class="speaker">阿澄</span>今天的风，刚好能飞到北山那头。</div>
   </div>
   <div class="comic-panel" style="grid-column: 3 / span 1; grid-row: 2 / span 2;">
-    <img src="/images/comic-paper-plane/p1g3.jpg" alt="女孩在窗边放飞纸飞机" loading="lazy">
+    <img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/comic-paper-plane/p1g3.jpg" alt="女孩在窗边放飞纸飞机" loading="lazy">
   </div>
   <div class="comic-panel" style="grid-column: 1 / span 2; grid-row: 3 / span 1;">
-    <img src="/images/comic-paper-plane/p1g4.jpg" alt="纸飞机飞过山谷与梯田" loading="lazy">
+    <img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/comic-paper-plane/p1g4.jpg" alt="纸飞机飞过山谷与梯田" loading="lazy">
     <div class="comic-caption">每一封信，都会自己找到收信的人。</div>
   </div>
 </div>

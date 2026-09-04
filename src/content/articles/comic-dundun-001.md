@@ -22,12 +22,12 @@ tags:
 
 <div class="dundun-chapter">
 <h2>第壹章 · 墩墩到家第一天<small>猫怂了一整天，夜里却悄悄挤进被窝</small></h2>
-<img src="/images/dundun/G01-墩墩到家第一天.jpg" alt="墩墩到家第一天" loading="lazy">
+<img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/dundun/G01-墩墩到家第一天.jpg" alt="墩墩到家第一天" loading="lazy">
 </div>
 
 <div class="dundun-chapter">
 <h2>第贰章 · 谁偷吃了零食<small>零食天天少，原来是这只猫在偷吃</small></h2>
-<img src="/images/dundun/G02-谁偷吃了零食.jpg" alt="谁偷吃了零食" loading="lazy">
+<img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/dundun/G02-谁偷吃了零食.jpg" alt="谁偷吃了零食" loading="lazy">
 </div>
 
 <div class="dundun-footer">

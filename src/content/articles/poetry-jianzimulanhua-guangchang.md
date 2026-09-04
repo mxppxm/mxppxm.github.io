@@ -4,7 +4,7 @@ description: "漫天皆白，雪里行军情更迫。头上高山，风卷红旗
 date: 1930-02-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/jianzimulanhua-guangchang.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/jianzimulanhua-guangchang.jpg"
 poem_type: "ci"
 cipai: "减字木兰花"
 period: "革命时期"

@@ -117,7 +117,7 @@ tags:
 
 ---
 
-![报到](/images/novel-chapter-019.jpg)
+![报到](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-019.jpg)
 
 *第十九章完*
 

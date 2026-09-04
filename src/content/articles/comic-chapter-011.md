@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g1.jpg" alt="太空站里孤独的宇航员望着星海" loading="lazy"><div class="comic-caption">银河边缘的太空站，住着一个很久没跟人说话的宇航员。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g2.jpg" alt="小北把红色收音机递给宇航员" loading="lazy"><div class="comic-bubble bl"><span class="speaker">宇航员</span>会说话的收音机……真的会说话吗？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g3.jpg" alt="收音机只会播报坏消息，两人越听越垮" loading="lazy"><div class="comic-caption">这台收音机，只会播坏消息。</div><div class="comic-bubble bl"><span class="speaker">收音机</span>据本台消息：今天又是一个倒霉的日子。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g4.jpg" alt="宇航员关掉收音机后更显孤单" loading="lazy"><div class="comic-caption">关掉收音机，太空站又安静得可怕。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g5.jpg" alt="小北蹲着教收音机讲笑话，宇航员偷听" loading="lazy"><div class="comic-caption">小北说：收音机只会播坏消息，那我就教它讲笑话。</div><div class="comic-bubble bl"><span class="speaker">小北</span>来，跟我念——从前有个迷路的彗星……</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch011-p11g6.jpg" alt="收音机讲笑话，宇航员笑弯了腰，太空站充满笑声" loading="lazy"><div class="comic-caption">后来，太空站每天都会响起同一个笑话。</div><div class="comic-bubble bl shout"><span class="speaker">收音机</span>……然后它下了一场哈哈大笑的雪！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g1.jpg" alt="太空站里孤独的宇航员望着星海" loading="lazy"><div class="comic-caption">银河边缘的太空站，住着一个很久没跟人说话的宇航员。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g2.jpg" alt="小北把红色收音机递给宇航员" loading="lazy"><div class="comic-bubble bl"><span class="speaker">宇航员</span>会说话的收音机……真的会说话吗？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g3.jpg" alt="收音机只会播报坏消息，两人越听越垮" loading="lazy"><div class="comic-caption">这台收音机，只会播坏消息。</div><div class="comic-bubble bl"><span class="speaker">收音机</span>据本台消息：今天又是一个倒霉的日子。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g4.jpg" alt="宇航员关掉收音机后更显孤单" loading="lazy"><div class="comic-caption">关掉收音机，太空站又安静得可怕。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g5.jpg" alt="小北蹲着教收音机讲笑话，宇航员偷听" loading="lazy"><div class="comic-caption">小北说：收音机只会播坏消息，那我就教它讲笑话。</div><div class="comic-bubble bl"><span class="speaker">小北</span>来，跟我念——从前有个迷路的彗星……</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch011-p11g6.jpg" alt="收音机讲笑话，宇航员笑弯了腰，太空站充满笑声" loading="lazy"><div class="comic-caption">后来，太空站每天都会响起同一个笑话。</div><div class="comic-bubble bl shout"><span class="speaker">收音机</span>……然后它下了一场哈哈大笑的雪！</div></div>
 </div>
 
 *第一卷 · 十一 沉默的收音机 · 未完待续*

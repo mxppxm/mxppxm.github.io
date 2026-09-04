@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![盆里的冬天](/images/novel-chapter-194.jpg)
+![盆里的冬天](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-194.jpg)
 
 ## 一
 

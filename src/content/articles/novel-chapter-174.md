@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![陈照相又来了](/images/novel-chapter-174.jpg)
+![陈照相又来了](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-174.jpg)
 
 ## 一
 

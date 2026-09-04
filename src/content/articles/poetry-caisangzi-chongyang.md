@@ -4,7 +4,7 @@ description: "人生易老天难老，岁岁重阳。今又重阳，战地黄花
 date: 1929-10-11
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/caisangzi-chongyang.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/caisangzi-chongyang.jpg"
 poem_type: "ci"
 cipai: "采桑子"
 period: "革命时期"

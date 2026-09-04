@@ -4,7 +4,7 @@ description: "《小狸花》第叁季：花三百买的猫窝输给纸箱，加
 date: 2026-09-02
 tags: ["comic"]
 draft: false
-image: "/img/G7-纸箱.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G7-纸箱.jpg"
 ---
 
 《小狸花 · 程序员家的猫》第叁季三章：
@@ -13,19 +13,19 @@ image: "/img/G7-纸箱.jpg"
 
 花三百买的猫窝，输了。
 
-![纸箱](/img/G7-纸箱.jpg)
+![纸箱](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G7-纸箱.jpg)
 
 ## 第八章 · 暖手宝
 
 加班夜，全靠它暖手。
 
-![暖手宝](/img/G8-暖手宝.jpg)
+![暖手宝](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G8-暖手宝.jpg)
 
 ## 第九章 · 小鱼干
 
 和猫谈判，从没赢过。
 
-![小鱼干](/img/G9-小鱼干.jpg)
+![小鱼干](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/G9-小鱼干.jpg)
 
 > 你家的猫，也这样吗？
 >

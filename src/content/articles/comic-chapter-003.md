@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g1.jpg" alt="议会大厅圆形会议桌，中央一盆紫色盆栽" loading="lazy"><div class="comic-caption">第 12 号星球议会，最近吵架吵得厉害。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g2.jpg" alt="小北把紫色盆栽递给老议长" loading="lazy"><div class="comic-bubble bl"><span class="speaker">议长</span>就是它……能闻出谎言的盆栽。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g3.jpg" alt="盆栽变红喷烟，议员吓得后仰" loading="lazy"><div class="comic-bubble shout tr"><span class="speaker">盆栽</span>滴——检测到谎言！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g4.jpg" alt="议会乱作一团，议员们慌乱掩盖盆栽" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>它……好像拆穿了各位的全部发言。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g5.jpg" alt="盆栽恢复紫色，议员们尴尬地围坐" loading="lazy"><div class="comic-bubble bl"><span class="speaker">议长</span>看来……我们得学着说点真话了。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch003-p3g6.jpg" alt="议员们握手言和，小北站在门口微笑" loading="lazy"><div class="comic-caption">这一单，值了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g1.jpg" alt="议会大厅圆形会议桌，中央一盆紫色盆栽" loading="lazy"><div class="comic-caption">第 12 号星球议会，最近吵架吵得厉害。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g2.jpg" alt="小北把紫色盆栽递给老议长" loading="lazy"><div class="comic-bubble bl"><span class="speaker">议长</span>就是它……能闻出谎言的盆栽。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g3.jpg" alt="盆栽变红喷烟，议员吓得后仰" loading="lazy"><div class="comic-bubble shout tr"><span class="speaker">盆栽</span>滴——检测到谎言！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g4.jpg" alt="议会乱作一团，议员们慌乱掩盖盆栽" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>它……好像拆穿了各位的全部发言。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g5.jpg" alt="盆栽恢复紫色，议员们尴尬地围坐" loading="lazy"><div class="comic-bubble bl"><span class="speaker">议长</span>看来……我们得学着说点真话了。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch003-p3g6.jpg" alt="议员们握手言和，小北站在门口微笑" loading="lazy"><div class="comic-caption">这一单，值了。</div></div>
 </div>
 
 盆栽第一次上场就拆穿了全场——叶子变红、疯狂抖动、喷出一股烟。议员们手忙脚乱地盖毯子、泼水，盆栽却越抖越厉害。直到大家承认：也许该学着说点真话了。散会时，议员们握手言和。

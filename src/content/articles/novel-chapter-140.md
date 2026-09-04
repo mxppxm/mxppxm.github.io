@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![第二次去北京](/images/novel-chapter-140.jpg)
+![第二次去北京](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-140.jpg)
 
 ## 一
 

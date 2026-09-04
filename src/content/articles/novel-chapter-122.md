@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![等待的物理意义](/images/novel-chapter-122.jpg)
+![等待的物理意义](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-122.jpg)
 
 ## 一
 

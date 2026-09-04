@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐树下的作业](/images/novel-chapter-186.jpg)
+![槐树下的作业](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-186.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![信在路上](/images/novel-chapter-163.jpg)
+![信在路上](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-163.jpg)
 
 ## 一
 

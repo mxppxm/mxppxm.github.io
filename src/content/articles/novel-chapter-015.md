@@ -169,7 +169,7 @@ tags:
 
 ---
 
-![五毛钱](/images/novel-chapter-015.jpg)
+![五毛钱](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-015.jpg)
 
 *第十五章完*
 

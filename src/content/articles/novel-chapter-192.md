@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![第一场雪](/images/novel-chapter-192.jpg)
+![第一场雪](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-192.jpg)
 
 ## 一
 

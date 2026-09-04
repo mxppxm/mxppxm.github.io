@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![补课](/images/novel-chapter-070.jpg)
+![补课](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-070.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![缝衣针](/images/novel-chapter-147.jpg)
+![缝衣针](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-147.jpg)
 
 ## 一
 

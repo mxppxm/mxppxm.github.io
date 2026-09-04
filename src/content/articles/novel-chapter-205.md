@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![槐籽落了](/images/novel-chapter-205.png)
+![槐籽落了](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-205.png)
 
 ## 一
 

@@ -4,7 +4,7 @@ description: "别梦依稀咒逝川，故园三十二年前。红旗卷起农奴
 date: 1959-06-25
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/qilu-daoshaoshan.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/qilu-daoshaoshan.jpg"
 poem_type: "shi"
 period: "建国后"
 ---

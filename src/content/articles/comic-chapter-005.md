@@ -27,12 +27,12 @@ tags:
 </style>
 
 <div class="comic-page">
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g1.jpg" alt="永远黑夜的第3号星球，飞船降落" loading="lazy"><div class="comic-caption">第 3 号星球没有白天。它已经黑了三百年。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g2.jpg" alt="小北把发光蘑菇交给透明皮肤的居民" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>会发光的蘑菇……真的能亮起来吗？</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g3.jpg" alt="蘑菇受惊发光照亮整个货舱" loading="lazy"><div class="comic-caption">蘑菇怕黑。越黑，它们就越亮。</div><div class="comic-bubble tl shout"><span class="speaker">小北</span>哇——这亮度，赶上小太阳了！</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g4.jpg" alt="小北和居民一起种发光蘑菇" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>别怕别怕，这里黑，正好。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g5.jpg" alt="发光蘑菇连成光海照亮整颗星球" loading="lazy"><div class="comic-caption">一夜之间，星球亮了起来。</div></div>
-  <div class="comic-panel"><img src="/images/pixel-postman/ch005-p5g6.jpg" alt="居民们在光海里拥抱，第一次看清彼此" loading="lazy"><div class="comic-caption">黑暗里住了三百年，他们第一次看见彼此的笑。</div><div class="comic-bubble bl shout"><span class="speaker">居民</span>原来你们……都长这样啊！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g1.jpg" alt="永远黑夜的第3号星球，飞船降落" loading="lazy"><div class="comic-caption">第 3 号星球没有白天。它已经黑了三百年。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g2.jpg" alt="小北把发光蘑菇交给透明皮肤的居民" loading="lazy"><div class="comic-bubble bl"><span class="speaker">居民</span>会发光的蘑菇……真的能亮起来吗？</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g3.jpg" alt="蘑菇受惊发光照亮整个货舱" loading="lazy"><div class="comic-caption">蘑菇怕黑。越黑，它们就越亮。</div><div class="comic-bubble tl shout"><span class="speaker">小北</span>哇——这亮度，赶上小太阳了！</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g4.jpg" alt="小北和居民一起种发光蘑菇" loading="lazy"><div class="comic-bubble bl"><span class="speaker">小北</span>别怕别怕，这里黑，正好。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g5.jpg" alt="发光蘑菇连成光海照亮整颗星球" loading="lazy"><div class="comic-caption">一夜之间，星球亮了起来。</div></div>
+  <div class="comic-panel"><img src="https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/pixel-postman/ch005-p5g6.jpg" alt="居民们在光海里拥抱，第一次看清彼此" loading="lazy"><div class="comic-caption">黑暗里住了三百年，他们第一次看见彼此的笑。</div><div class="comic-bubble bl shout"><span class="speaker">居民</span>原来你们……都长这样啊！</div></div>
 </div>
 
 *第一卷 · 五 会发光的蘑菇 · 未完待续*

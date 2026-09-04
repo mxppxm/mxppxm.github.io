@@ -4,7 +4,7 @@ description: "山，快马加鞭未下鞍。惊回首，离天三尺三。"
 date: 1935-01-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/shiliuziling-sanshou.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/shiliuziling-sanshou.jpg"
 poem_type: "ci"
 cipai: "十六字令"
 period: "革命时期"

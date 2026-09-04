@@ -4,7 +4,7 @@ description: "绿水青山枉自多，华佗无奈小虫何！千村薜荔人遗
 date: 1958-07-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/qilu-songwenshen.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/qilu-songwenshen.jpg"
 poem_type: "shi"
 period: "建国后"
 ---

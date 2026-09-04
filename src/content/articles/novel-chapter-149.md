@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![西干渠边的路](/images/novel-chapter-149.jpg)
+![西干渠边的路](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-149.jpg)
 
 ## 一
 

@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![雨鞋](/images/novel-chapter-183.jpg)
+![雨鞋](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-183.jpg)
 
 ## 一
 

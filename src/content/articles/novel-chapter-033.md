@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![棉袄还在树上](/images/novel-chapter-033.jpg)
+![棉袄还在树上](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-033.jpg)
 
 ## 一
 

@@ -4,7 +4,7 @@ description: "横空出世，莽昆仑，阅尽人间春色。飞起玉龙三百
 date: 1935-10-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/nianmujiao-kunlun.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/nianmujiao-kunlun.jpg"
 poem_type: "ci"
 cipai: "念奴娇"
 period: "革命时期"

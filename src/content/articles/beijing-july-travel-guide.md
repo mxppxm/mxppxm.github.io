@@ -14,7 +14,7 @@ tags:
 > 
 > 数据来源：北京旅游网官方 (visitbeijing.com.cn)、京通小程序、各景区官方公告、知乎攻略综合整理
 
-![北京旅游封面图](/assets/images/beijing-travel/cover.png)
+![北京旅游封面图](/assetshttps://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/beijing-travel/cover.png)
 
 * * *
 
@@ -181,7 +181,7 @@ tags:
 🦕 **自然博物馆** | 「国家自然博物馆」公众号 | 3天 | 早11:00 | 周一 | —  
 🔭 **天文馆** | 「北京天文馆」小程序 | 3天 | 下午6:30 | 周一 | 18岁以下/60岁以上免票  
   
-![预约攻略图](/assets/images/beijing-travel/booking-guide.png)
+![预约攻略图](/assetshttps://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/beijing-travel/booking-guide.png)
 
 #### 🔥 2026年暑假最新情报
 
@@ -262,7 +262,7 @@ tags:
 
 ## 四、🗺️ 行程路线推荐
 
-![路线规划图](/assets/images/beijing-travel/route-plan.png)
+![路线规划图](/assetshttps://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/beijing-travel/route-plan.png)
 
 ### 🚶 5天经典行程（适合第一次来北京）
 

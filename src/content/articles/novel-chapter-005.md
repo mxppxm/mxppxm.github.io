@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![指南针与银河](/images/novel-chapter-005.jpg)
+![指南针与银河](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-005.jpg)
 
 ## 一
 

@@ -6,7 +6,7 @@ tags:
   - "🧠 认知科学"
   - "🍽️ 饮食营养"
   - "🔬 研究综述"
-image: "/img/diet-brain-hero.png"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/img/diet-brain-hero.png"
 ---
 
 # 饮食如何操控你的大脑

@@ -169,7 +169,7 @@ tags:
 
 ---
 
-![第一百个字](/images/novel-chapter-016.jpg)
+![第一百个字](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-016.jpg)
 
 *第十六章完*
 

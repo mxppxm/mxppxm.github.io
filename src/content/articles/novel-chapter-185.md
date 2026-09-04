@@ -8,7 +8,7 @@ tags:
   - "🌾 现实主义"
 ---
 
-![秋天的颜色](/images/novel-chapter-185.jpg)
+![秋天的颜色](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-185.jpg)
 
 ## 一
 

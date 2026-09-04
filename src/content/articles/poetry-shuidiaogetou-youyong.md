@@ -4,7 +4,7 @@ description: "才饮长沙水，又食武昌鱼。万里长江横渡，极目楚
 date: 1956-06-01
 tags:
   - "📜 毛泽东诗词"
-image: "/images/poetry/shuidiaogetou-youyong.jpg"
+image: "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/poetry/shuidiaogetou-youyong.jpg"
 poem_type: "ci"
 cipai: "水调歌头"
 period: "建国后"
