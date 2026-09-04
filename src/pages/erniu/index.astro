@@ -1,0 +1,77 @@
+---
+import { ERNIU_ITEMS, ERNIU_HASH } from '../../data/erniu-gallery.mjs';
+
+// 按章节分组，保持阅读顺序
+const chapters = [];
+const map = new Map();
+for (const it of ERNIU_ITEMS) {
+  if (!map.has(it.c)) { map.set(it.c, []); chapters.push(it.c); }
+  map.get(it.c).push(it);
+}
+const chapterData = chapters.map(c => ({ id: c, title: map.get(c)[0].t || '', imgs: map.get(c) }));
+const hash = Number(ERNIU_HASH);
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title></title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #0f0e0c; }
+    #gallery { display: none; }
+    .sec { max-width: 560px; margin: 0 auto; padding: 0 0 40px; }
+    .sec h2 {
+      color: #e6d6b6; font: 600 17px/1.4 system-ui, -apple-system, sans-serif;
+      padding: 30px 16px 12px; margin: 0; letter-spacing: .5px;
+    }
+    .frame { padding: 0 12px 12px; }
+    .frame img {
+      width: 100%; height: auto; display: block; border-radius: 10px;
+      background: #000; box-shadow: 0 2px 14px rgba(0,0,0,.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="gallery"></div>
+  <script is:inline define:vars={{ hash, chapterData }}>
+    window.__ERNIU_HASH__ = hash;
+    window.__ERNIU_DATA__ = chapterData;
+  </script>
+  <script is:inline>
+    (function () {
+      var q = new URLSearchParams(location.search).get('q');
+      function djb2(s) { var h = 5381, i; for (i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; }
+      var ok = (q !== null && djb2('lock:' + q) === window.__ERNIU_HASH__);
+      if (!ok) return; // 密码不对/缺失 → 保持空白
+
+      var data = window.__ERNIU_DATA__;
+      var g = document.getElementById('gallery');
+      var i, j, ch, sec, h2, fr, img;
+      for (i = 0; i < data.length; i++) {
+        ch = data[i];
+        sec = document.createElement('section');
+        sec.className = 'sec';
+        h2 = document.createElement('h2');
+        h2.textContent = ch.id + (ch.title ? ' · ' + ch.title : '');
+        sec.appendChild(h2);
+        for (j = 0; j < ch.imgs.length; j++) {
+          fr = document.createElement('div');
+          fr.className = 'frame';
+          img = document.createElement('img');
+          img.src = ch.imgs[j].u;
+          img.loading = 'lazy';
+          img.alt = '';
+          img.referrerPolicy = 'no-referrer';
+          fr.appendChild(img);
+          sec.appendChild(fr);
+        }
+        g.appendChild(sec);
+      }
+      g.style.display = 'block';
+      if (document.title === '') document.title = '📖';
+    })();
+  </script>
+</body>
+</html>
