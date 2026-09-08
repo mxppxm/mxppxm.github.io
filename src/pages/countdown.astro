@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="30 岁生日倒计时"
+  description="倒计时到 2026-11-30，小马的 30 岁生日。"
+>
+  <main class="countdown-page">
+    <section class="countdown-card">
+      <div class="emoji" id="emoji">🎂</div>
+      <h1 class="countdown-title">30 岁生日倒计时</h1>
+      <p class="countdown-sub">
+        目标时刻 <span class="target">2026-11-30 00:00</span>（北京时间）
+      </p>
+
+      <div class="timer" id="timer">
+        <div class="unit">
+          <div class="num" id="days">—</div>
+          <div class="label">天</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="num" id="hours">—</div>
+          <div class="label">小时</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="num" id="mins">—</div>
+          <div class="label">分钟</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit sec">
+          <div class="num" id="secs">—</div>
+          <div class="label">秒</div>
+        </div>
+      </div>
+
+      <p class="hint">这封网页上的秒数，是活的 —— 它正在 1 秒 1 秒地往下掉 ⏳</p>
+      <a class="back-home" href="/">← 回到九日博客</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const TARGET = new Date("2026-11-30T00:00:00+08:00");
+
+  const el = (id) => document.getElementById(id);
+  const pad = (n) => String(n).padStart(2, "0");
+
+  function tick() {
+    const diffMs = TARGET - Date.now();
+    const emoji = el("emoji");
+    const title = document.querySelector(".countdown-title");
+
+    if (diffMs <= 0) {
+      emoji.textContent = "🎉";
+      title.textContent = "30 岁生日快乐！";
+      el("days").textContent = "00";
+      el("hours").textContent = "00";
+      el("mins").textContent = "00";
+      el("secs").textContent = "00";
+      return;
+    }
+
+    const secTotal = Math.floor(diffMs / 1000);
+    const days = Math.floor(secTotal / 86400);
+    const hours = Math.floor((secTotal % 86400) / 3600);
+    const mins = Math.floor((secTotal % 3600) / 60);
+    const secs = secTotal % 60;
+
+    el("days").textContent = pad(days);
+    el("hours").textContent = pad(hours);
+    el("mins").textContent = pad(mins);
+    el("secs").textContent = pad(secs);
+
+    // 秒格每跳一次闪一下
+    el("secs").classList.remove("flash");
+    void el("secs").offsetWidth; // 重排以重新触发动画
+    el("secs").classList.add("flash");
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+<style>
+  .countdown-page {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+  }
+  .countdown-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 48px 40px;
+    max-width: 620px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .emoji {
+    font-size: 56px;
+    margin-bottom: 8px;
+  }
+  .countdown-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 6px;
+  }
+  .countdown-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 28px;
+  }
+  .target {
+    color: var(--accent-dark);
+    font-weight: 700;
+  }
+  .timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .unit {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 10px;
+    min-width: 76px;
+  }
+  .unit.sec {
+    background: var(--accent-light);
+    border-color: var(--accent);
+  }
+  .num {
+    font-size: 40px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .sec .num {
+    color: var(--accent-dark);
+  }
+  .num.flash {
+    animation: pop 0.4s var(--ease-spring);
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+  .label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .sep {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--border-strong);
+  }
+  .hint {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+  }
+  .back-home {
+    display: inline-block;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .back-home:hover {
+    box-shadow: var(--shadow-accent);
+  }
+
+  @media (max-width: 480px) {
+    .countdown-card { padding: 32px 18px; }
+    .timer { gap: 6px; }
+    .unit { min-width: 62px; padding: 10px 6px; }
+    .num { font-size: 30px; }
+    .sep { font-size: 24px; }
+  }
+</style>
