@@ -12,6 +12,11 @@
   --p0:#a33b2d; --p1:#c9a227; --p2:#b97a3e; --p3:#8a8577;
   --green:#4d7c4d;
 }
+/* Icons */
+svg.ic{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic{width:14px;height:14px;display:inline-block;vertical-align:-2.5px;flex-shrink:0}
+.ic.lg{width:19px;height:19px;vertical-align:-3.5px}
+.ic.sm{width:12px;height:12px;vertical-align:-1.5px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:"Songti SC","Noto Serif SC",serif; background:var(--paper); color:var(--ink);
@@ -54,7 +59,7 @@ section{margin:30px 0}
   padding:2px 0 2px 12px;margin-bottom:14px;background:linear-gradient(90deg,#f0e7d3,transparent);
 }
 .sec-head.gold{border-left-color:var(--gold)}
-.sec-head h2{font-size:20px;letter-spacing:2px}
+.sec-head h2{font-size:20px;letter-spacing:2px;display:flex;align-items:center;gap:9px}
 .sec-head .count{font-size:12.5px;color:var(--sub)}
 .sec-head .t{font-size:12.5px;color:var(--accent);margin-left:auto;white-space:nowrap;font-weight:700}
 /* Sub label */
@@ -165,6 +170,15 @@ section{margin:30px 0}
 }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{text-align:center;color:var(--sub);font-size:12px;padding-top:36px;letter-spacing:1px}
+/* ===== 清单式展示（view-list） ===== */
+body.view-list .tdy-grid,body.view-list .grid{display:flex;flex-direction:column;gap:8px}
+body.view-list .tdy,body.view-list .card{width:100%;position:relative}
+body.view-list .tdy .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.view-list .card{flex-direction:row;align-items:center;padding:9px 14px}
+body.view-list .card .card-row{flex:1;align-items:center;min-width:0}
+body.view-list .card .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.view-list .card .actions{border-top:none;padding-top:0;margin-left:auto;flex-shrink:0}
+body.view-list .card .cmt-panel{position:absolute;right:12px;top:42px;width:290px;z-index:30;box-shadow:0 10px 28px rgba(61,58,51,.16)}
 </style>
 </head>
 <body>
@@ -173,7 +187,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding-top:36px;letter
   <h1>🎂 30 岁前 80 天</h1>
   <div class="cd"><em id="cdNum">80</em><span>天</span></div>
   <div class="cd-label">距离我的 30 岁生日</div>
-  <div class="settings" onclick="setBirthday()">⚙️ 设置生日（当前：<span id="bdText">默认 80 天</span>）</div>
+  <div class="settings" onclick="setBirthday()"><svg class="ic" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg> 设置生日（当前：<span id="bdText">默认 80 天</span>）</div>
 </div>
 
 <div class="statbar">
@@ -187,11 +201,12 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding-top:36px;letter
       <div class="bar g"><i id="pbar"></i></div>
     </div>
     <div class="btns">
-      <button class="primary" onclick="openAdd()">➕ 新增</button>
-      <button onclick="backup()">💾 备份</button>
-      <button onclick="resetAll()">重置</button>
-      <button onclick="window.print()">打印</button>
-      <button class="cloud off" id="cloudBtn" onclick="openCloud()">☁️ <span id="cloudState">未配置</span></button>
+      <button title="切换展示样式" onclick="toggleView()" id="viewBtn"><svg class="ic" viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg> <span>清单</span></button>
+      <button class="primary" onclick="openAdd()"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg> 新增</button>
+      <button onclick="backup()"><svg class="ic" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> 备份</button>
+      <button onclick="resetAll()"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> 重置</button>
+      <button onclick="window.print()"><svg class="ic" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg> 打印</button>
+      <button class="cloud off" id="cloudBtn" onclick="openCloud()"><svg class="ic" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg> <span id="cloudState">未配置</span></button>
     </div>
   </div>
 </div>
@@ -199,30 +214,30 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding-top:36px;letter
 <div class="wrap">
 
   <section>
-    <div class="sec-head"><h2>📅 今日打卡</h2>
+    <div class="sec-head"><h2><svg class="ic lg" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg> 今日打卡</h2>
       <span class="count" id="dateText"></span>
       <span style="margin-left:8px"><span class="badge" id="streakBadge"></span></span>
       <span class="t" id="goalText"></span>
     </div>
-    <div class="sub-label">🌅 P0 必做 <em>天天都要 · 雷打不动</em></div>
+    <div class="sub-label"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg> P0 必做 <em>天天都要 · 雷打不动</em></div>
     <div class="tdy-grid" id="todayP0"></div>
-    <div class="sub-label">🔁 P1 轮换 <em>每天至少选 2 项 · 每周留 1 天休息</em></div>
+    <div class="sub-label"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg> P1 轮换 <em>每天至少选 2 项 · 每周留 1 天休息</em></div>
     <div class="tdy-grid" id="todayP1"></div>
     <div id="extraDailyWrap"></div>
   </section>
 
   <section>
-    <div class="sec-head gold"><h2>⏸️ 待定观察区</h2><span class="count">暂不排进度 · 随时可启动</span></div>
+    <div class="sec-head gold"><h2><svg class="ic lg" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg> 待定观察区</h2><span class="count">暂不排进度 · 随时可启动</span></div>
     <div class="grid" id="pending"></div>
   </section>
 
   <section>
-    <div class="sec-head"><h2>🗂️ 挑战清单</h2><span class="count" id="poolHint">一次性 / 阶段性 · 勾一次永久完成</span></div>
+    <div class="sec-head"><h2><svg class="ic lg" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg> 挑战清单</h2><span class="count" id="poolHint">一次性 / 阶段性 · 勾一次永久完成</span></div>
     <div id="pool"></div>
   </section>
 
   <section id="extraSec" class="hide">
-    <div class="sec-head"><h2>✍️ 我的新增</h2><span class="count" id="extraCount"></span></div>
+    <div class="sec-head"><h2><svg class="ic lg" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg> 我的新增</h2><span class="count" id="extraCount"></span></div>
     <div class="grid" id="extraGrid"></div>
   </section>
 
@@ -274,18 +289,22 @@ const CMT_KEY='cd80_cmt_v2';
 const EXTRA_KEY='cd80_extra_v2';
 const DAILY_KEY='cd80_daily_v3'; // 按日期记录：{ '2026-09-10': {标题:true} }
 const CLOUD_KEY='cd80_cloud_cfg';// {url, user}
+const VIEW_KEY='cd80_view';     // card | list
 
-// 历史评论一律不留
-localStorage.removeItem(CMT_KEY);
+// 迁移：v2 历史评论一次性清理（只清这一次，之后评论正常落库持久）
+if(!localStorage.getItem('cd80_migrated')){
+  localStorage.removeItem(CMT_KEY);
+  localStorage.setItem('cd80_migrated','1');
+}
 
 const DAILY=[
- ['P0','12 点睡 / 8 点起','连续 80 天，12 点前放下手机'],
- ['P0','早起水 + 拉伸 6 分钟','先喝 300ml 水，颈/肩/髋/腿后侧各 30 秒'],
- ['P0','晨间 5 分钟：写今日三件事','早上列今天最重要的 3 件事，晚上核对'],
- ['P0','腹肌 20 分钟','卷腹 + 平板，80 天见轮廓'],
- ['P1','阅读 40 分钟','8-10 本书，传记/商业/技术/文学'],
- ['P1','增肌力量训练','每周 3-4 次，体态肉眼可见'],
- ['P1','外语 30 分钟','口语或新语言，捡起来'],
+ ['P0','12 点睡 / 8 点起','连续 80 天，12 点前放下手机','moon'],
+ ['P0','早起水 + 拉伸 6 分钟','先喝 300ml 水，颈/肩/髋/腿后侧各 30 秒','droplet'],
+ ['P0','晨间 5 分钟：写今日三件事','早上列今天最重要的 3 件事，晚上核对','pen'],
+ ['P0','腹肌 20 分钟','卷腹 + 平板，80 天见轮廓','dumbbell'],
+ ['P1','阅读 40 分钟','8-10 本书，传记/商业/技术/文学','book'],
+ ['P1','增肌力量训练','每周 3-4 次，体态肉眼可见','trending'],
+ ['P1','外语 30 分钟','口语或新语言，捡起来','languages'],
 ];
 
 const PENDING=[
@@ -369,6 +388,35 @@ const CATS=[
   ['P3','第 80 天发圈纪念','仪式感收尾'],
  ]],
 ];
+
+//======== 图标库（内联 lucide SVG） ========
+const ICONS={
+check:'<svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>',
+flame:'<svg class="ic" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+sun:'<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
+refresh:'<svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
+sparkles:'<svg class="ic" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>',
+calendar:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>',
+hourglass:'<svg class="ic" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>',
+listChecks:'<svg class="ic" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>',
+plus:'<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
+msg:'<svg class="ic" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
+trash:'<svg class="ic" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>',
+download:'<svg class="ic" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
+reset:'<svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>',
+print:'<svg class="ic" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>',
+cloud:'<svg class="ic" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>',
+viewGrid:'<svg class="ic" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>',
+viewList:'<svg class="ic" viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>',
+moon:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+droplet:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',
+pen:'<svg class="ic" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
+dumbbell:'<svg class="ic" viewBox="0 0 24 24"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></svg>',
+book:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
+trending:'<svg class="ic" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+languages:'<svg class="ic" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>',
+save:'<svg class="ic" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg>',
+};
 
 //======== 状态 ========
 let done={}, cmts={}, extra=[], dailyRec={};
@@ -467,17 +515,17 @@ function renderToday(){
   const extraD=extraDaily();
   const all=[...P0,...P1,...extraD.map(x=>[x.pri==='P0'?'P0':'P1',x.title,`[我的新增] ${x.desc||''}`])];
   function one(x){
-    const [p,t,d]=x; const on=isTodayDone(t);
+    const [p,t,d,ic]=x; const on=isTodayDone(t);
     return `<div class="tdy${on?' done':''}" data-p="${p}" onclick="tglToday('${esc(t)}')">
-      <div class="em">${p==='P0'?'🌅':'🔁'}</div>
+      <div class="em">${ICONS[ic]||ICONS.refresh}</div>
       <div class="info"><div class="t">${esc(t)}</div><div class="d">${esc(d)}</div></div>
-      <div class="tick">✓</div>
+      <div class="tick">${ICONS.check}</div>
     </div>`;
   }
   document.getElementById('todayP0').innerHTML=P0.map(one).join('');
   document.getElementById('todayP1').innerHTML=P1.map(one).join('');
   document.getElementById('extraDailyWrap').innerHTML=extraD.length
-    ? `<div class="sub-label">✨ 我的每日新增 <em>同样计入今日</em></div><div class="tdy-grid">${extraD.map(x=>one([x.pri==='P0'?'P0':'P1',x.title,`[我的新增] ${x.desc||''}`])).join('')}</div>`
+    ? `<div class="sub-label">${ICONS.sparkles} 我的每日新增 <em>同样计入今日</em></div><div class="tdy-grid">${extraD.map(x=>one([x.pri==='P0'?'P0':'P1',x.title,`[我的新增] ${x.desc||''}`,'sparkles'])).join('')}</div>`
     : '';
   const n=all.filter(x=>isTodayDone(x[1])).length;
   document.getElementById('todayNum').textContent=n;
@@ -493,7 +541,7 @@ function renderToday(){
   else goal.textContent=p1n>=2?'🔁 今日达标，P0 还差 '+P0.filter(x=>!isTodayDone(x[1])).length+' 项':'今天还差一口气';
   const st=streak();
   const sb=document.getElementById('streakBadge');
-  sb.textContent='🔥 连续 '+st+' 天';
+  sb.innerHTML=ICONS.flame+' 连续 '+st+' 天';
   sb.className='badge '+(st>0?'ok':'no');
 }
 function streak(){
@@ -528,15 +576,15 @@ function cardHTML(key,t,d,p,hasDel){
       <span class="pri ${priCls(p)}">${esc(p)}</span>
     </div>
     <div class="actions">
-      <button class="cmt${c?' has':''}" onclick="openCmt(event,'${esc(key)}')">💬 ${c?'已评论':'评论'}</button>
-      ${hasDel?`<button class="del" onclick="delExtra(event,'${esc(key)}')">🗑 删除</button>`:''}
+      <button class="cmt${c?' has':''}" onclick="openCmt(event,'${esc(key)}')">${ICONS.msg} ${c?'已评论':'评论'}</button>
+      ${hasDel?`<button class="del" onclick="delExtra(event,'${esc(key)}')">${ICONS.trash} 删除</button>`:''}
     </div>
-    ${c?`<div class="cmt-text">💬 ${esc(c)}</div>`:''}
+    ${c?`<div class="cmt-text">${ICONS.msg} ${esc(c)}</div>`:''}
     <div class="cmt-panel hide" onclick="event.stopPropagation()">
       <textarea placeholder="写点想法 / 灵感 / 顾虑 / 进展...">${esc(c)}</textarea>
       <div class="ca">
-        <button class="save" onclick="saveCmt(event,'${esc(key)}')">保存</button>
-        ${c?`<button class="del" onclick="delCmt(event,'${esc(key)}')">删评</button>`:''}
+        <button class="save" onclick="saveCmt(event,'${esc(key)}')">${ICONS.save} 保存</button>
+        ${c?`<button class="del" onclick="delCmt(event,'${esc(key)}')">${ICONS.trash} 删评</button>`:''}
       </div>
     </div>
   </div>`;
@@ -612,6 +660,19 @@ function delExtra(e,key){
   save(); renderAll(); toast('已删除 🗑');
 }
 
+//======== 视图切换（卡片 / 清单） ========
+let viewMode=localStorage.getItem(VIEW_KEY)==='list'?'list':'card';
+function setView(v){
+  viewMode=v;
+  localStorage.setItem(VIEW_KEY,v);
+  document.body.classList.toggle('view-list',v==='list');
+  const b=document.getElementById('viewBtn');
+  if(b){
+    b.innerHTML=(v==='list'?ICONS.viewGrid:ICONS.viewList)+' <span>'+(v==='list'?'卡片':'清单')+'</span>';
+  }
+}
+function toggleView(){ setView(viewMode==='card'?'list':'card'); }
+
 //======== 新增 todo ========
 function catOptions(){
   const sel=document.getElementById('nc');
@@ -672,7 +733,7 @@ function resetAll(){
 }
 
 //======== 启动 =========
-calcCD(); renderAll();
+setView(viewMode); calcCD(); renderAll();
 if(CLOUD_OK){ setStateTxt('同步中…',true); syncFromCloud(); }
 else setStateTxt('未配置',false);
 </script>
