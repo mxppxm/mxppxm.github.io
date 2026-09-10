@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 30岁前80天 · 我的挑战打卡 v4</title>
+<style>
+:root{
+  --paper:#f7f1e3; --ink:#3d3a33; --sub:#8a8577;
+  --accent:#a33b2d; --accent2:#c97b4a; --gold:#c9a227;
+  --line:#ded6c2; --done:#9a9487; --card:#fffdf6;
+  --p0:#a33b2d; --p1:#c9a227; --p2:#b97a3e; --p3:#8a8577;
+  --green:#4d7c4d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Songti SC","Noto Serif SC",serif; background:var(--paper); color:var(--ink);
+  padding-bottom:80px;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+.hide{display:none!important}
+/* Hero */
+.hero{text-align:center;padding:38px 20px 18px}
+.hero h1{font-size:30px;letter-spacing:6px}
+.hero .cd{font-size:64px;font-weight:900;margin:6px 0 0;color:var(--accent);display:inline-block}
+.hero .cd span{font-size:20px;margin-left:6px}
+.hero .cd-label{font-size:13.5px;color:var(--sub);letter-spacing:3px}
+.hero .settings{font-size:12px;color:var(--sub);margin-top:8px;cursor:pointer;text-decoration:underline dotted}
+/* Stat bar */
+.statbar{
+  position:sticky;top:0;z-index:50;background:rgba(247,241,227,.97);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);padding:9px 0;
+}
+.statbar .brow{display:flex;align-items:center;gap:10px;padding:2px 0}
+.statbar .lbl{width:86px;font-size:13px;color:var(--sub);white-space:nowrap}
+.statbar .lbl b{color:var(--accent);font-size:16px}
+.statbar .lbl.g b{color:var(--gold)}
+.bar{flex:1;height:9px;background:#e5ddc8;border-radius:7px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .4s;border-radius:7px}
+.bar.g i{background:linear-gradient(90deg,#8fb08f,var(--green))}
+.statbar .btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding-top:5px}
+.statbar .btns button{
+  font-family:inherit;font-size:12px;border:1px solid var(--line);background:#fffdf6;color:var(--sub);
+  padding:4px 10px;border-radius:6px;cursor:pointer;white-space:nowrap
+}
+.statbar .btns button.primary{border-color:var(--accent);color:var(--accent);font-weight:700}
+.statbar .btns button:hover{border-color:var(--accent);color:var(--accent)}
+.statbar .btns button.cloud.on{border-color:var(--green);color:var(--green)}
+.statbar .btns button.cloud.off{border-color:var(--line);color:var(--sub)}
+/* Section head */
+section{margin:30px 0}
+.sec-head{
+  display:flex;align-items:baseline;gap:10px;border-left:5px solid var(--accent);
+  padding:2px 0 2px 12px;margin-bottom:14px;background:linear-gradient(90deg,#f0e7d3,transparent);
+}
+.sec-head.gold{border-left-color:var(--gold)}
+.sec-head h2{font-size:20px;letter-spacing:2px}
+.sec-head .count{font-size:12.5px;color:var(--sub)}
+.sec-head .t{font-size:12.5px;color:var(--accent);margin-left:auto;white-space:nowrap;font-weight:700}
+/* Sub label */
+.sub-label{
+  display:flex;align-items:center;gap:8px;margin:14px 0 10px;
+  font-size:14px;font-weight:900;letter-spacing:1px;color:var(--ink);
+}
+.sub-label::after{content:'';flex:1;height:1px;background:var(--line)}
+.sub-label em{font-style:normal;font-size:12px;font-weight:400;color:var(--sub)}
+/* 今日打卡大按钮 */
+.tdy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tdy{
+  background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px 15px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;transition:.15s;user-select:none;position:relative;
+}
+.tdy:hover{border-color:var(--accent2);transform:translateY(-1px)}
+.tdy .em{font-size:22px;flex-shrink:0}
+.tdy .info{flex:1;min-width:0}
+.tdy .t{font-size:14.5px;font-weight:700;line-height:1.35}
+.tdy .d{font-size:11.8px;color:var(--sub);margin-top:3px;line-height:1.45}
+.tdy .tick{
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:14px;color:transparent;transition:.15s;
+}
+.tdy[data-p="P0"] .tick{border-color:var(--p0)}
+.tdy[data-p="P1"] .tick{border-color:var(--p1)}
+.tdy.done{background:#f2f7ee;border-color:var(--green)}
+.tdy.done .t{color:var(--green)}
+.tdy.done .tick{background:var(--green);border-color:var(--green);color:#fff}
+.badge{
+  display:inline-block;font-size:12px;font-weight:900;border-radius:20px;padding:4px 13px;letter-spacing:1px;
+}
+.badge.ok{background:#e7f0e4;color:var(--green);border:1px solid var(--green)}
+.badge.no{background:#faf0ec;color:var(--accent);border:1px solid var(--accent)}
+/* 普通卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:11px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+  display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:.15s;user-select:none;position:relative;
+}
+.card:hover{border-color:var(--accent2)}
+.card-row{display:flex;gap:10px;align-items:flex-start}
+.card input{accent-color:var(--accent);margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer}
+.card .info{flex:1;min-width:0}
+.card .t{font-size:15px;font-weight:700;line-height:1.4}
+.card .d{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
+.card .pri{
+  flex-shrink:0;font-size:11px;font-weight:900;border-radius:5px;padding:2px 7px;margin-top:2px;
+  color:#fff;letter-spacing:1px;
+}
+.pri.p0{background:var(--p0)} .pri.p1{background:var(--p1)} .pri.p2{background:var(--p2)}
+.pri.p3{background:var(--p3);color:#f4efe0} .pri.pw{background:transparent;color:var(--gold);border:1px dashed var(--gold)}
+.card.done{border-color:var(--done);background:#f4efe0;opacity:.62}
+.card.done .t{text-decoration:line-through;color:var(--done)}
+.card.done .d{color:var(--done)}
+.actions{display:flex;gap:6px;border-top:1px dashed var(--line);padding-top:7px}
+.actions button{
+  font-family:inherit;font-size:12px;border:1px solid var(--line);background:#fff;color:var(--sub);
+  padding:2px 10px;border-radius:5px;cursor:pointer
+}
+.actions button.cmt.has{color:var(--accent);border-color:var(--accent)}
+.actions button.del{color:#b3563f;border-color:#e0c0b2;margin-left:auto}
+.actions button:hover{border-color:var(--gold);color:var(--gold)}
+.cmt-text{
+  font-size:12px;color:var(--sub);background:#faf3de;border:1px solid #efe3ba;border-radius:6px;
+  padding:6px 9px;line-height:1.5;cursor:default;
+}
+.cmt-panel{border:1px solid var(--gold);border-radius:6px;background:#fffaf0;padding:8px}
+.cmt-panel textarea{
+  width:100%;min-height:52px;font-family:inherit;font-size:12.5px;border:1px solid var(--line);
+  border-radius:5px;padding:6px 8px;background:#fff;color:var(--ink);resize:vertical;
+}
+.cmt-panel textarea:focus{outline:none;border-color:var(--gold)}
+.cmt-panel .ca{display:flex;gap:8px;margin-top:6px;justify-content:flex-end}
+.cmt-panel .ca button{
+  font-family:inherit;font-size:12px;border:1px solid var(--line);background:#fff;color:var(--sub);
+  padding:3px 12px;border-radius:5px;cursor:pointer
+}
+.cmt-panel .ca button.save{border-color:var(--accent);color:var(--accent);font-weight:700}
+.cmt-panel .ca button.del{border-color:#d8b6a8;color:#a33b2d}
+/* Modal */
+.modal{
+  position:fixed;inset:0;z-index:100;background:rgba(61,58,51,.45);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.modal-box{
+  background:var(--card);border-radius:12px;padding:22px;width:100%;max-width:400px;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+.modal-box h3{font-size:18px;letter-spacing:2px;margin-bottom:12px}
+.modal-box input,.modal-box select{
+  width:100%;font-family:inherit;font-size:14px;border:1px solid var(--line);border-radius:6px;
+  padding:8px 10px;margin-bottom:10px;background:#fff;color:var(--ink)
+}
+.modal-box input:focus,.modal-box select:focus{outline:none;border-color:var(--gold)}
+.modal-box .tip{font-size:12px;color:var(--sub);line-height:1.7;margin:4px 0 12px;background:#faf3de;border-radius:6px;padding:8px 10px}
+.modal-box .ma{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+.modal-box .ma button{
+  font-family:inherit;font-size:13px;border:1px solid var(--line);background:#fff;color:var(--sub);
+  padding:6px 18px;border-radius:6px;cursor:pointer
+}
+.modal-box .ma button.ok{border-color:var(--accent);color:var(--accent);font-weight:700}
+.modal-box .ma button.ok:hover{background:var(--accent);color:#fff}
+#toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;font-size:13.5px;padding:10px 20px;border-radius:30px;
+  opacity:0;transition:.3s;pointer-events:none;z-index:99;font-family:inherit;max-width:80vw;text-align:center;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--sub);font-size:12px;padding-top:36px;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🎂 30 岁前 80 天</h1>
+  <div class="cd"><em id="cdNum">80</em><span>天</span></div>
+  <div class="cd-label">距离我的 30 岁生日</div>
+  <div class="settings" onclick="setBirthday()">⚙️ 设置生日（当前：<span id="bdText">默认 80 天</span>）</div>
+</div>
+
+<div class="statbar">
+  <div class="wrap">
+    <div class="brow">
+      <span class="lbl">📅 今日 <b id="todayNum">0</b>/<span id="todayTot">7</span></span>
+      <div class="bar"><i id="pbarToday"></i></div>
+    </div>
+    <div class="brow">
+      <span class="lbl g">🗂️ 总计 <b id="doneNum">0</b>/<span id="totNum">0</span></span>
+      <div class="bar g"><i id="pbar"></i></div>
+    </div>
+    <div class="btns">
+      <button class="primary" onclick="openAdd()">➕ 新增</button>
+      <button onclick="backup()">💾 备份</button>
+      <button onclick="resetAll()">重置</button>
+      <button onclick="window.print()">打印</button>
+      <button class="cloud off" id="cloudBtn" onclick="openCloud()">☁️ <span id="cloudState">未配置</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head"><h2>📅 今日打卡</h2>
+      <span class="count" id="dateText"></span>
+      <span style="margin-left:8px"><span class="badge" id="streakBadge"></span></span>
+      <span class="t" id="goalText"></span>
+    </div>
+    <div class="sub-label">🌅 P0 必做 <em>天天都要 · 雷打不动</em></div>
+    <div class="tdy-grid" id="todayP0"></div>
+    <div class="sub-label">🔁 P1 轮换 <em>每天至少选 2 项 · 每周留 1 天休息</em></div>
+    <div class="tdy-grid" id="todayP1"></div>
+    <div id="extraDailyWrap"></div>
+  </section>
+
+  <section>
+    <div class="sec-head gold"><h2>⏸️ 待定观察区</h2><span class="count">暂不排进度 · 随时可启动</span></div>
+    <div class="grid" id="pending"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>🗂️ 挑战清单</h2><span class="count" id="poolHint">一次性 / 阶段性 · 勾一次永久完成</span></div>
+    <div id="pool"></div>
+  </section>
+
+  <section id="extraSec" class="hide">
+    <div class="sec-head"><h2>✍️ 我的新增</h2><span class="count" id="extraCount"></span></div>
+    <div class="grid" id="extraGrid"></div>
+  </section>
+
+  <footer>Clacky 生成 · 打卡页 v4 · ☁️ Cloudflare KV 云同步</footer>
+</div>
+
+<!-- 新增 todo 弹窗 -->
+<div id="modal" class="modal hide" onclick="closeAdd()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3>➕ 新增 todo</h3>
+    <input id="nt" maxlength="40" placeholder="标题（必填）">
+    <input id="nd" maxlength="80" placeholder="说明（可选）">
+    <select id="nc"></select>
+    <select id="np">
+      <option value="P1">优先级 P1（每日轮换）</option>
+      <option value="P2">优先级 P2（阶段性）</option>
+      <option value="P0">优先级 P0（每日必做）</option>
+      <option value="P3">优先级 P3（一次性大事）</option>
+      <option value="DAY">🌅 每日习惯（进今日打卡区）</option>
+    </select>
+    <div class="ma">
+      <button class="ok" onclick="addTodo()">添加</button>
+      <button onclick="closeAdd()">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- 云同步设置弹窗 -->
+<div id="cModal" class="modal hide" onclick="closeCloud()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3>☁️ 云同步设置</h3>
+    <input id="cu" placeholder="Worker 地址，如 https://checkin.xxx.workers.dev">
+    <input id="cd2" placeholder="我的设备码（自定，如 808080）">
+    <div class="tip">设备码是你的"存档账号"。换电脑时打开这个页面、填同一个 Worker 地址 + 设备码，数据就同步回来了。<br>不填 = 纯本地模式。</div>
+    <div class="ma">
+      <button class="ok" onclick="saveCloud()">保存并同步</button>
+      <button onclick="closeCloud()">取消</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+//======== 数据 key ========
+const BDAY_KEY='cd30_bday';
+const DONE_KEY='cd80_done_v2';   // 一次性挑战
+const CMT_KEY='cd80_cmt_v2';
+const EXTRA_KEY='cd80_extra_v2';
+const DAILY_KEY='cd80_daily_v3'; // 按日期记录：{ '2026-09-10': {标题:true} }
+const CLOUD_KEY='cd80_cloud_cfg';// {url, user}
+
+// 历史评论一律不留
+localStorage.removeItem(CMT_KEY);
+
+const DAILY=[
+ ['P0','12 点睡 / 8 点起','连续 80 天，12 点前放下手机'],
+ ['P0','早起水 + 拉伸 6 分钟','先喝 300ml 水，颈/肩/髋/腿后侧各 30 秒'],
+ ['P0','晨间 5 分钟：写今日三件事','早上列今天最重要的 3 件事，晚上核对'],
+ ['P0','腹肌 20 分钟','卷腹 + 平板，80 天见轮廓'],
+ ['P1','阅读 40 分钟','8-10 本书，传记/商业/技术/文学'],
+ ['P1','增肌力量训练','每周 3-4 次，体态肉眼可见'],
+ ['P1','外语 30 分钟','口语或新语言，捡起来'],
+];
+
+const PENDING=[
+ ['学吉他/一样乐器','「再想想」→ 定了再进 P1'],
+ ['完成一次公开分享','「先这样」→ 随时可启动'],
+];
+
+const CATS=[
+ ['🏃 身体与健康',[
+  ['P0','练出腹肌轮廓','每天 20 分钟卷腹/平板，80 天见轮廓'],
+  ['P1','持续增肌塑形','跟计划训练，体态肉眼可见'],
+  ['P1','体态矫正','改善圆肩驼背，站姿挺拔'],
+  ['P2','完成一次 5 公里跑','第 30 天验收，先 3 公里过渡'],
+  ['P2','戒糖/减糖 30 天','今天就开始'],
+ ]],
+ ['👔 形象与气质',[
+  ['P3','拍一张形象照','30 岁纪念照，最后 20 天拿成片'],
+  ['P2','换一个大胆的新发型','头两周搞定'],
+  ['P3','洗牙+牙齿美白','提前预约，早点完成'],
+  ['P2','学习穿搭，建胶囊衣橱','10 件百搭单品互搭出 30 套'],
+  ['P3','香水入门','找到自己的 signature 味道'],
+ ]],
+ ['💰 财富理财',[
+  ['P1','读完《小狗钱钱》','读完再决定要不要系统学理财课'],
+ ]],
+ ['💼 事业成长',[
+  ['P2','输出 4 篇技术文章','均匀分布在 80 天里'],
+ ]],
+ ['🎓 技能学习',[
+  ['P1','读完 8-10 本书','每天 40 分钟，搭配着读'],
+  ['P1','外语捡起来','每天 30 分钟'],
+  ['P3','学急救（CPR+AED）','抽空报班'],
+  ['P2','学会做 10 道菜','每周固定一道新菜'],
+  ['P0','学会冥想','放睡前，10 分钟'],
+ ]],
+ ['📚 阅读观影',[
+  ['P1','读《毛选》第一卷','每天 30 分钟，写读书笔记'],
+  ['P2','看《人生七年》','BBC 神作'],
+ ]],
+ ['🧳 旅行冒险',[
+  ['P3','独自旅行一次','提前请 2-3 天假'],
+  ['P2','看一次日出/日落','周末安排'],
+  ['P3','完成一次长途徒步','武功山/长城/郊野公园'],
+  ['P3','极限体验','跳伞/蹦极/潜水任选'],
+ ]],
+ ['🤝 社交关系',[
+  ['P2','加入一个兴趣社群','找到同类'],
+ ]],
+ ['👨‍👩‍👦 家庭亲情',[
+  ['P3','给家里做次大扫除/改造','收尾时做'],
+ ]],
+ ['💞 情感恋爱',[
+  ['P2','认真处理感情状态','两个月内定性：推进或断舍离'],
+ ]],
+ ['🌅 生活习惯',[
+  ['P0','连续 80 天早睡早起','12 点睡、8 点起'],
+  ['P0','早起水 + 拉伸','先 300ml 水，全身过一遍'],
+  ['P1','每周整理房间','保持清爽，顺手断舍离'],
+  ['P2','戒掉一个坏习惯','熬夜/烟/奶茶都算'],
+  ['P0','晨间三件事清单','晚上核对'],
+ ]],
+ ['🎨 创意创作',[
+  ['P2','80 天从 0 做一个作品上线','前端人，亲手部署'],
+  ['P2','做一本人生相册（正经项目）','分类 → 精修 → 排版 → 印刷'],
+  ['P2','打造个人 IP','重做头像 + 主页/名片 + 统一 ID'],
+  ['P3','博客写《30 岁前》文章','留作纪念'],
+  ['P3','用 AI 生成 30 岁主题海报','创作+配文发出去'],
+  ['P3','开源一个小项目','给世界留点东西'],
+  ['P3','学会剪一支 vlog','记录 80 天'],
+  ['P2','做一个「无聊但好玩」的项目','周末开心产物'],
+ ]],
+ ['🤝 公益利他',[
+  ['P2','教一个人学会一项技能','教会别人=真会了'],
+  ['P2','彻底断舍离一次','先盘点拍清单，再分类：留/送/捐/扔'],
+ ]],
+ ['🎂 仪式纪念',[
+  ['P3','写《给 30 岁的自己》的信','第 79 天，纸短情长'],
+  ['P3','办一场生日局','第 80 天，拍照留念'],
+  ['P3','时间胶囊：写给 35 岁的自己','现在看不到，无压力'],
+  ['P3','列一份「29 岁成就」清单','原来我也挺棒'],
+  ['P3','第 80 天发圈纪念','仪式感收尾'],
+ ]],
+];
+
+//======== 状态 ========
+let done={}, cmts={}, extra=[], dailyRec={};
+try{done=JSON.parse(localStorage.getItem(DONE_KEY))||{};}catch(e){}
+try{extra=JSON.parse(localStorage.getItem(EXTRA_KEY))||[];}catch(e){}
+try{dailyRec=JSON.parse(localStorage.getItem(DAILY_KEY))||{};}catch(e){}
+
+//======== 云同步 ========
+let cloud={url:'',user:''};
+try{cloud=JSON.parse(localStorage.getItem(CLOUD_KEY))||{};}catch(e){}
+const CLOUD_OK=!!(cloud.url&&cloud.user);
+
+function setStateTxt(txt,on){
+  const el=document.getElementById('cloudState');
+  if(el) el.textContent=txt;
+  const b=document.getElementById('cloudBtn');
+  if(b) b.className='cloud '+(on?'on':'off');
+}
+function openCloud(){
+  document.getElementById('cu').value=cloud.url||'';
+  document.getElementById('cd2').value=cloud.user||'';
+  document.getElementById('cModal').classList.remove('hide');
+}
+function closeCloud(){ document.getElementById('cModal').classList.add('hide'); }
+function saveCloud(){
+  cloud={ url:document.getElementById('cu').value.trim().replace(/\/+$/,''), user:document.getElementById('cd2').value.trim() };
+  localStorage.setItem(CLOUD_KEY,JSON.stringify(cloud));
+  closeCloud();
+  if(CLOUD_OK){ setStateTxt('同步中…',true); syncFromCloud(); }
+  else { setStateTxt('未配置',false); toast('已切换为纯本地模式'); }
+}
+async function syncFromCloud(){
+  if(!CLOUD_OK) return;
+  try{
+    const ctl=new AbortController(); const tm=setTimeout(()=>ctl.abort(),6000);
+    const r=await fetch(cloud.url+'?u='+encodeURIComponent(cloud.user),{signal:ctl.signal});
+    clearTimeout(tm);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const remote=await r.json();
+    if(remote && typeof remote==='object') mergeCloud(remote);
+    saveLocal(); renderAll();
+    const t=new Date();
+    setStateTxt('已同步 '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0'),true);
+  }catch(e){ setStateTxt('离线·本地模式',false); }
+}
+// 合并：只增不减，多设备各打各的互不覆盖
+function mergeCloud(remote){
+  Object.keys(remote.done||{}).forEach(k=>{ if(remote.done[k]) done[k]=true; });
+  Object.keys(remote.dailyRec||{}).forEach(d=>{ dailyRec[d]=Object.assign({},dailyRec[d]||{},remote.dailyRec[d]); });
+  const ids=new Set(extra.map(x=>x.id));
+  (remote.extra||[]).forEach(x=>{ if(!ids.has(x.id)) extra.push(x); });
+  Object.keys(remote.cmts||{}).forEach(k=>{ if(!(k in cmts)) cmts[k]=remote.cmts[k]; });
+}
+let pushT=null;
+function pushToCloud(){
+  if(!CLOUD_OK) return;
+  clearTimeout(pushT);
+  pushT=setTimeout(async()=>{
+    try{
+      const data={done,cmts,extra,dailyRec,updatedAt:new Date().toISOString()};
+      const r=await fetch(cloud.url+'?u='+encodeURIComponent(cloud.user),{
+        method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+      });
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      setStateTxt('已保存 ✓',true);
+    }catch(e){ setStateTxt('离线暂存',false); }
+  },2500);
+}
+
+//======== 本地存储 ========
+function saveLocal(){
+  localStorage.setItem(DONE_KEY,JSON.stringify(done));
+  localStorage.setItem(CMT_KEY,JSON.stringify(cmts));
+  localStorage.setItem(EXTRA_KEY,JSON.stringify(extra));
+  localStorage.setItem(DAILY_KEY,JSON.stringify(dailyRec));
+}
+function save(){ saveLocal(); pushToCloud(); }
+
+//======== 工具 ========
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function priCls(p){
+  if(p==='P0')return 'p0'; if(p==='P1')return 'p1'; if(p==='P2')return 'p2';
+  if(p==='P3')return 'p3'; return 'pw';
+}
+function todayStr(){
+  const d=new Date(); d.setHours(0,0,0,0);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+const TODAY=todayStr();
+function isTodayDone(title){ return !!(dailyRec[TODAY] && dailyRec[TODAY][title]); }
+function extraDaily(){ return extra.filter(x=>/每日|DIYADY/i.test(x.cat||'')); }
+
+//======== 今日打卡渲染 ========
+function renderToday(){
+  const P0=DAILY.filter(x=>x[0]==='P0'), P1=DAILY.filter(x=>x[0]==='P1');
+  const extraD=extraDaily();
+  const all=[...P0,...P1,...extraD.map(x=>[x.pri==='P0'?'P0':'P1',x.title,`[我的新增] ${x.desc||''}`])];
+  function one(x){
+    const [p,t,d]=x; const on=isTodayDone(t);
+    return `<div class="tdy${on?' done':''}" data-p="${p}" onclick="tglToday('${esc(t)}')">
+      <div class="em">${p==='P0'?'🌅':'🔁'}</div>
+      <div class="info"><div class="t">${esc(t)}</div><div class="d">${esc(d)}</div></div>
+      <div class="tick">✓</div>
+    </div>`;
+  }
+  document.getElementById('todayP0').innerHTML=P0.map(one).join('');
+  document.getElementById('todayP1').innerHTML=P1.map(one).join('');
+  document.getElementById('extraDailyWrap').innerHTML=extraD.length
+    ? `<div class="sub-label">✨ 我的每日新增 <em>同样计入今日</em></div><div class="tdy-grid">${extraD.map(x=>one([x.pri==='P0'?'P0':'P1',x.title,`[我的新增] ${x.desc||''}`])).join('')}</div>`
+    : '';
+  const n=all.filter(x=>isTodayDone(x[1])).length;
+  document.getElementById('todayNum').textContent=n;
+  document.getElementById('todayTot').textContent=all.length;
+  document.getElementById('pbarToday').style.width=Math.round(n/(all.length||1)*100)+'%';
+  const wd=['日','一','二','三','四','五','六'][new Date().getDay()];
+  document.getElementById('dateText').textContent=`${TODAY.replace(/-/g,'/')} 周${wd}`;
+  const p0ok=P0.every(x=>isTodayDone(x[1]));
+  const p1n=P1.filter(x=>isTodayDone(x[1])).length;
+  const goal=document.getElementById('goalText');
+  if(p0ok && p1n>=2) goal.textContent='🎉 今日全部达标';
+  else if(p0ok) goal.textContent='🌅 P0 保底达成，还差 P1 '+Math.max(0,2-p1n)+' 项';
+  else goal.textContent=p1n>=2?'🔁 今日达标，P0 还差 '+P0.filter(x=>!isTodayDone(x[1])).length+' 项':'今天还差一口气';
+  const st=streak();
+  const sb=document.getElementById('streakBadge');
+  sb.textContent='🔥 连续 '+st+' 天';
+  sb.className='badge '+(st>0?'ok':'no');
+}
+function streak(){
+  let s=0;
+  const d=new Date(); d.setHours(0,0,0,0);
+  const hasRec=function(k){ return dailyRec[k] && Object.keys(dailyRec[k]).length; };
+  if(!hasRec(TODAY)) d.setDate(d.getDate()-1);
+  while(hasRec(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'))){
+    s++;
+    d.setDate(d.getDate()-1);
+  }
+  return s;
+}
+function tglToday(title){
+  if(!dailyRec[TODAY]) dailyRec[TODAY]={};
+  if(dailyRec[TODAY][title]) delete dailyRec[TODAY][title];
+  else dailyRec[TODAY][title]=true;
+  if(!Object.keys(dailyRec[TODAY]).length) delete dailyRec[TODAY];
+  save(); renderAll();
+}
+
+//======== 一次性挑战卡片 ========
+function cardHTML(key,t,d,p,hasDel){
+  const c=cmts[key]||'';
+  return `<div class="card${done[key]?' done':''}" onclick="toggle('${esc(key)}')">
+    <div class="card-row">
+      <input type="checkbox" ${done[key]?'checked':''} onclick="event.stopPropagation()">
+      <div class="info">
+        <div class="t">${esc(t)}</div>
+        <div class="d">${esc(d)}</div>
+      </div>
+      <span class="pri ${priCls(p)}">${esc(p)}</span>
+    </div>
+    <div class="actions">
+      <button class="cmt${c?' has':''}" onclick="openCmt(event,'${esc(key)}')">💬 ${c?'已评论':'评论'}</button>
+      ${hasDel?`<button class="del" onclick="delExtra(event,'${esc(key)}')">🗑 删除</button>`:''}
+    </div>
+    ${c?`<div class="cmt-text">💬 ${esc(c)}</div>`:''}
+    <div class="cmt-panel hide" onclick="event.stopPropagation()">
+      <textarea placeholder="写点想法 / 灵感 / 顾虑 / 进展...">${esc(c)}</textarea>
+      <div class="ca">
+        <button class="save" onclick="saveCmt(event,'${esc(key)}')">保存</button>
+        ${c?`<button class="del" onclick="delCmt(event,'${esc(key)}')">删评</button>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+//======== 一次性挑战渲染 ========
+function renderPending(){
+  document.getElementById('pending').innerHTML=
+    PENDING.map(x=>cardHTML(x[0],x[0],x[1],'⏸️')).join('');
+}
+function renderPool(){
+  document.getElementById('pool').innerHTML=CATS.map(([cn,items])=>{
+    const n=items.filter(it=>done[it[1]]).length;
+    return `<section style="margin:18px 0">
+      <div class="sec-head gold" style="margin-bottom:12px"><h2 style="font-size:18px">${cn}</h2><span class="count">${n}/${items.length} 完成</span></div>
+      <div class="grid">${items.map(it=>cardHTML(it[1],it[1],it[2],it[0])).join('')}</div>
+    </section>`;
+  }).join('');
+}
+function renderExtra(){
+  const sec=document.getElementById('extraSec');
+  const list=extra.filter(x=>!/每日|DIYADY/i.test(x.cat||''));
+  if(!list.length){ sec.classList.add('hide'); return; }
+  sec.classList.remove('hide');
+  const n=list.filter(x=>done['extra_'+x.id]).length;
+  document.getElementById('extraCount').textContent=`${n}/${list.length} 完成`;
+  document.getElementById('extraGrid').innerHTML=list.map(x=>
+    cardHTML('extra_'+x.id, x.title, `[${x.cat}] ${x.desc||'自己加的目标'}`, x.pri==='DAY'?'P1':x.pri, true)
+  ).join('');
+}
+function updCounts(){
+  const list=extra.filter(x=>!/每日|DIYADY/i.test(x.cat||''));
+  let n=0,tot=PENDING.length+CATS.reduce((s,[,it])=>s+it.length,0)+list.length;
+  Object.keys(done).forEach(k=>{ if(done[k]) n++; });
+  document.getElementById('doneNum').textContent=n;
+  document.getElementById('totNum').textContent=tot;
+  document.getElementById('pbar').style.width=Math.round(n/(tot||1)*100)+'%';
+}
+function renderAll(){ renderToday(); renderPending(); renderPool(); renderExtra(); updCounts(); }
+
+//======== 交互：一次性 ========
+function toggle(key){
+  done[key]=!done[key]; if(!done[key]) delete done[key];
+  save(); renderAll();
+}
+function openCmt(e,key){
+  e.stopPropagation();
+  const card=e.target.closest('.card');
+  const panel=card.querySelector('.cmt-panel');
+  const wasOpen=!panel.classList.contains('hide');
+  document.querySelectorAll('.cmt-panel').forEach(p=>p.classList.add('hide'));
+  if(!wasOpen){ panel.classList.remove('hide'); panel.querySelector('textarea').focus(); }
+}
+function saveCmt(e,key){
+  e.stopPropagation();
+  const panel=e.target.closest('.cmt-panel');
+  const v=panel.querySelector('textarea').value.trim();
+  if(v) cmts[key]=v; else delete cmts[key];
+  save(); renderAll(); toast(v?'评论已保存 💬':'评论已清空');
+}
+function delCmt(e,key){
+  e.stopPropagation();
+  delete cmts[key]; save(); renderAll(); toast('评论已删除');
+}
+function delExtra(e,key){
+  e.stopPropagation();
+  if(!confirm('删除这条新增 todo？')) return;
+  const id=key.replace('extra_','');
+  const it=extra.find(x=>x.id===id);
+  extra=extra.filter(x=>x.id!==id);
+  delete done[key]; delete cmts[key];
+  if(it && dailyRec[TODAY]) delete dailyRec[TODAY][it.title];
+  save(); renderAll(); toast('已删除 🗑');
+}
+
+//======== 新增 todo ========
+function catOptions(){
+  const sel=document.getElementById('nc');
+  if(sel.options.length) return;
+  sel.appendChild(new Option('🌅 每日习惯（进今日打卡）','每日'));
+  CATS.forEach(([cn])=>{ sel.appendChild(new Option(cn,cn)); });
+  sel.appendChild(new Option('其他','其他'));
+}
+function openAdd(){ catOptions(); document.getElementById('modal').classList.remove('hide'); setTimeout(()=>document.getElementById('nt').focus(),30); }
+function closeAdd(){ document.getElementById('modal').classList.add('hide'); }
+function addTodo(){
+  const t=document.getElementById('nt').value.trim();
+  const d=document.getElementById('nd').value.trim();
+  if(!t){ toast('标题不能为空 ✏️'); return; }
+  const cat=document.getElementById('nc').value;
+  const pri=document.getElementById('np').value;
+  extra.push({id:Date.now().toString(36),cat,title:t,desc:d,pri});
+  document.getElementById('nt').value=''; document.getElementById('nd').value='';
+  save(); closeAdd(); renderAll(); toast('已新增 ✨');
+}
+
+//======== 备份 ========
+function backup(){
+  const data={exported:new Date().toISOString(),done,cmts,extra,dailyRec};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='我的30岁80天打卡-备份.json'; a.click();
+  toast('备份已下载 💾');
+}
+
+//======== 倒计时 & 生日 ========
+function calcCD(){
+  const b=localStorage.getItem(BDAY_KEY);
+  if(!b){ document.getElementById('cdNum').textContent='80'; document.getElementById('bdText').textContent='默认 80 天'; return; }
+  const d=Math.ceil((new Date(b)-new Date())/86400000);
+  document.getElementById('cdNum').textContent=d>=0?d:0;
+  document.getElementById('bdText').textContent=b.replace(/-/g,'/');
+}
+function setBirthday(){
+  const b=prompt('请输入你的 30 岁生日（格式：2026-11-29）：', localStorage.getItem(BDAY_KEY)||'2026-11-29');
+  if(b && /^\d{4}-\d{2}-\d{2}$/.test(b)){ localStorage.setItem(BDAY_KEY,b); calcCD(); toast('生日已设置 🎂'); }
+}
+
+//======== Toast / 重置 ========
+let tT=null;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tT); tT=setTimeout(()=>t.classList.remove('show'),1800);
+}
+function resetAll(){
+  if(confirm('重置什么？\n「确定」= 把今日打卡也清掉（这几天的每日记录会没）\n「取消」= 只清挑战清单打卡')) {
+    dailyRec={}; done={};
+  } else {
+    if(!confirm('只清挑战清单打卡？（今日打卡保留）')) return;
+    done={};
+  }
+  save(); renderAll(); toast('已重置，从哪里跌倒就从哪里爬起来 💪');
+}
+
+//======== 启动 =========
+calcCD(); renderAll();
+if(CLOUD_OK){ setStateTxt('同步中…',true); syncFromCloud(); }
+else setStateTxt('未配置',false);
+</script>
+</body>
+</html>
