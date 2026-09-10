@@ -269,8 +269,8 @@ body.view-list .card .cmt-panel{position:absolute;right:12px;top:42px;width:290p
 <div id="cModal" class="modal hide" onclick="closeCloud()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <h3>☁️ 云同步设置</h3>
-    <input id="cu" placeholder="Worker 地址，如 https://checkin.xxx.workers.dev">
-    <input id="cd2" placeholder="我的设备码（自定，如 808080）">
+    <input id="cu" placeholder="Worker 地址（已预填，一般不用改）">
+    <input id="cd2" placeholder="设备码（自定，如 mico-mac）">
     <div class="tip">设备码是你的"存档账号"。换电脑时打开这个页面、填同一个 Worker 地址 + 设备码，数据就同步回来了。<br>不填 = 纯本地模式。</div>
     <div class="ma">
       <button class="ok" onclick="saveCloud()">保存并同步</button>
@@ -425,9 +425,10 @@ try{extra=JSON.parse(localStorage.getItem(EXTRA_KEY))||[];}catch(e){}
 try{dailyRec=JSON.parse(localStorage.getItem(DAILY_KEY))||{};}catch(e){}
 
 //======== 云同步 ========
+const CLOUD_URL='https://checkin-sync.mxp42249-ec7.workers.dev';// 默认 Worker
 let cloud={url:'',user:''};
 try{cloud=JSON.parse(localStorage.getItem(CLOUD_KEY))||{};}catch(e){}
-const CLOUD_OK=!!(cloud.url&&cloud.user);
+function cloudOK(){ return !!(cloud.url&&cloud.user); }
 
 function setStateTxt(txt,on){
   const el=document.getElementById('cloudState');
@@ -436,7 +437,7 @@ function setStateTxt(txt,on){
   if(b) b.className='cloud '+(on?'on':'off');
 }
 function openCloud(){
-  document.getElementById('cu').value=cloud.url||'';
+  document.getElementById('cu').value=cloud.url||CLOUD_URL;
   document.getElementById('cd2').value=cloud.user||'';
   document.getElementById('cModal').classList.remove('hide');
 }
@@ -445,11 +446,11 @@ function saveCloud(){
   cloud={ url:document.getElementById('cu').value.trim().replace(/\/+$/,''), user:document.getElementById('cd2').value.trim() };
   localStorage.setItem(CLOUD_KEY,JSON.stringify(cloud));
   closeCloud();
-  if(CLOUD_OK){ setStateTxt('同步中…',true); syncFromCloud(); }
+  if(cloudOK()){ setStateTxt('同步中…',true); syncFromCloud(); }
   else { setStateTxt('未配置',false); toast('已切换为纯本地模式'); }
 }
 async function syncFromCloud(){
-  if(!CLOUD_OK) return;
+  if(!cloudOK()) return;
   try{
     const ctl=new AbortController(); const tm=setTimeout(()=>ctl.abort(),6000);
     const r=await fetch(cloud.url+'?u='+encodeURIComponent(cloud.user),{signal:ctl.signal});
@@ -472,7 +473,7 @@ function mergeCloud(remote){
 }
 let pushT=null;
 function pushToCloud(){
-  if(!CLOUD_OK) return;
+  if(!cloudOK()) return;
   clearTimeout(pushT);
   pushT=setTimeout(async()=>{
     try{
@@ -734,7 +735,7 @@ function resetAll(){
 
 //======== 启动 =========
 setView(viewMode); calcCD(); renderAll();
-if(CLOUD_OK){ setStateTxt('同步中…',true); syncFromCloud(); }
+if(cloudOK()){ setStateTxt('同步中…',true); syncFromCloud(); }
 else setStateTxt('未配置',false);
 </script>
 </body>
