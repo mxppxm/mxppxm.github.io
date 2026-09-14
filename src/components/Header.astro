@@ -5,7 +5,12 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="site-title">☀️ 九日</a>
-    <span class="header-countdown" id="header-countdown" title="30 岁生日倒计时">——:——:——:——</span>
+    <span class="header-countdown" id="header-countdown" title="30 岁生日倒计时">
+      <span class="hc-unit"><b id="hc-d">--</b><i>天</i></span>
+      <span class="hc-unit"><b id="hc-h">--</b><i>时</i></span>
+      <span class="hc-unit"><b id="hc-m">--</b><i>分</i></span>
+      <span class="hc-unit"><b id="hc-s">--</b><i>秒</i></span>
+    </span>
     <nav class="site-nav">
       <a href="/articles/gold/">黄金</a>
       <a href="/articles/novel/">槐树下</a>
@@ -84,21 +89,40 @@
 </div>
 
 <style is:global>
-  /* 头部倒计时 — 紧跟 logo，纯数字 */
+  /* 头部倒计时 — 紧贴 logo，带单位 */
   .header-countdown {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent-dark, #06a050);
-    background: var(--accent-light, rgba(7,193,96,0.12));
-    border: 1px solid rgba(7,193,96,0.18);
-    padding: 3px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 6px;
+    padding: 4px 12px;
     border-radius: 20px;
-    margin-left: 12px;
-    font-variant-numeric: tabular-nums;
+    background: linear-gradient(135deg, rgba(7,193,96,0.12), rgba(7,193,96,0.05));
+    border: 1px solid rgba(7,193,96,0.22);
     white-space: nowrap;
     user-select: none;
+    line-height: 1;
+  }
+  .header-countdown .hc-unit {
+    display: inline-flex;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+  }
+  .header-countdown b {
+    font-size: 14px;
+    font-weight: 750;
+    color: var(--accent-dark, #06a050);
     letter-spacing: 0.3px;
   }
+  .header-countdown i {
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(6,160,80,0.6);
+    margin-left: 2px;
+    margin-right: 4px;
+  }
+  .header-countdown .hc-unit:last-child i { margin-right: 0; }
   @media (max-width: 900px) {
     .header-countdown { display: none; }
   }
@@ -323,7 +347,7 @@
 </style>
 
 <script is:inline>
-/* 头部倒计时 — 30 岁生日（2026-11-30 00:00 北京时间），纯数字 */
+/* 头部倒计时 — 30 岁生日（2026-11-30 00:00 北京时间），带单位 */
 const HEADER_TARGET = new Date("2026-11-30T00:00:00+08:00");
 const headerTimer = document.getElementById("header-countdown");
 const headerPad = (n) => String(n).padStart(2, "0");
@@ -331,18 +355,20 @@ const headerPad = (n) => String(n).padStart(2, "0");
 function tickHeaderTimer() {
   if (!headerTimer) return;
   const diffMs = HEADER_TARGET - Date.now();
-  let text;
+  let d, h, m, s;
   if (diffMs <= 0) {
-    text = "00:00:00:00";
+    d = h = m = s = "00";
   } else {
     const secTotal = Math.floor(diffMs / 1000);
-    const d = Math.floor(secTotal / 86400);
-    const h = Math.floor((secTotal % 86400) / 3600);
-    const m = Math.floor((secTotal % 3600) / 60);
-    const s = secTotal % 60;
-    text = headerPad(d) + ":" + headerPad(h) + ":" + headerPad(m) + ":" + headerPad(s);
+    d = headerPad(Math.floor(secTotal / 86400));
+    h = headerPad(Math.floor((secTotal % 86400) / 3600));
+    m = headerPad(Math.floor((secTotal % 3600) / 60));
+    s = headerPad(secTotal % 60);
   }
-  if (headerTimer.textContent !== text) headerTimer.textContent = text;
+  document.getElementById("hc-d").textContent = d;
+  document.getElementById("hc-h").textContent = h;
+  document.getElementById("hc-m").textContent = m;
+  document.getElementById("hc-s").textContent = s;
 }
 
 tickHeaderTimer();
