@@ -5,6 +5,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="site-title">☀️ 九日</a>
+    <span class="header-countdown" id="header-countdown" title="30 岁生日倒计时">——:——:——:——</span>
     <nav class="site-nav">
       <a href="/articles/gold/">黄金</a>
       <a href="/articles/novel/">槐树下</a>
@@ -83,6 +84,25 @@
 </div>
 
 <style is:global>
+  /* 头部倒计时 — 紧跟 logo，纯数字 */
+  .header-countdown {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-dark, #06a050);
+    background: var(--accent-light, rgba(7,193,96,0.12));
+    border: 1px solid rgba(7,193,96,0.18);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    user-select: none;
+    letter-spacing: 0.3px;
+  }
+  @media (max-width: 900px) {
+    .header-countdown { display: none; }
+  }
+
   .nav-cooperate-btn {
     display: inline-flex;
     align-items: center;
@@ -303,6 +323,31 @@
 </style>
 
 <script is:inline>
+/* 头部倒计时 — 30 岁生日（2026-11-30 00:00 北京时间），纯数字 */
+const HEADER_TARGET = new Date("2026-11-30T00:00:00+08:00");
+const headerTimer = document.getElementById("header-countdown");
+const headerPad = (n) => String(n).padStart(2, "0");
+
+function tickHeaderTimer() {
+  if (!headerTimer) return;
+  const diffMs = HEADER_TARGET - Date.now();
+  let text;
+  if (diffMs <= 0) {
+    text = "00:00:00:00";
+  } else {
+    const secTotal = Math.floor(diffMs / 1000);
+    const d = Math.floor(secTotal / 86400);
+    const h = Math.floor((secTotal % 86400) / 3600);
+    const m = Math.floor((secTotal % 3600) / 60);
+    const s = secTotal % 60;
+    text = headerPad(d) + ":" + headerPad(h) + ":" + headerPad(m) + ":" + headerPad(s);
+  }
+  if (headerTimer.textContent !== text) headerTimer.textContent = text;
+}
+
+tickHeaderTimer();
+setInterval(tickHeaderTimer, 1000);
+
 const overlay = document.getElementById('cooperate-overlay');
 const emailEl = document.getElementById('cooperate-email');
 const copyBtn = document.getElementById('cooperate-copy-btn');
