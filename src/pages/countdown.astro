@@ -8,7 +8,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 >
   <main class="countdown-page">
     <section class="countdown-card">
-      <div class="emoji" id="emoji">🎂</div>
+      <a href="/checkin.html" class="emoji-link" title="点击进入打卡页">
+        <span class="emoji" id="emoji">🎂</span>
+      </a>
       <h1 class="countdown-title">30 岁生日倒计时</h1>
       <p class="countdown-sub">
         目标时刻 <span class="target">2026-11-30 00:00</span>（北京时间）
@@ -100,9 +102,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     text-align: center;
     box-shadow: var(--shadow-lg);
   }
+  .emoji-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s var(--ease-spring, ease);
+  }
+  .emoji-link:hover .emoji {
+    transform: scale(1.15) rotate(-6deg);
+  }
+  .emoji-link:hover #emoji::after {
+    opacity: 1;
+  }
   .emoji {
+    display: inline-block;
     font-size: 56px;
     margin-bottom: 8px;
+    transition: transform 0.2s var(--ease-spring, ease);
+  }
+  .emoji-link { position: relative; }
+  .emoji-link #emoji::after {
+    content: "去打卡 →";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
   }
   .countdown-title {
     font-size: 28px;
