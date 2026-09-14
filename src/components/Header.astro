@@ -5,12 +5,12 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="site-title">☀️ 九日</a>
-    <span class="header-countdown" id="header-countdown" title="30 岁生日倒计时">
+    <a href="/countdown/" class="header-countdown" id="header-countdown" title="点击查看 30 岁生日倒计时">
       <span class="hc-unit"><b id="hc-d">--</b><i>天</i></span>
       <span class="hc-unit"><b id="hc-h">--</b><i>时</i></span>
       <span class="hc-unit"><b id="hc-m">--</b><i>分</i></span>
       <span class="hc-unit"><b id="hc-s">--</b><i>秒</i></span>
-    </span>
+    </a>
     <nav class="site-nav">
       <a href="/articles/gold/">黄金</a>
       <a href="/articles/novel/">槐树下</a>
@@ -99,9 +99,16 @@
     border-radius: 20px;
     background: linear-gradient(135deg, rgba(7,193,96,0.12), rgba(7,193,96,0.05));
     border: 1px solid rgba(7,193,96,0.22);
+    text-decoration: none;
     white-space: nowrap;
     user-select: none;
     line-height: 1;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+  .header-countdown:hover {
+    background: linear-gradient(135deg, rgba(7,193,96,0.22), rgba(7,193,96,0.1));
+    border-color: rgba(7,193,96,0.4);
+    transform: translateY(-1px);
   }
   .header-countdown .hc-unit {
     display: inline-flex;
