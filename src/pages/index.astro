@@ -70,34 +70,34 @@ const latestArticles = [
     </div>
   </WindowSwap>
 
-  <!-- ====== ABOUT ====== -->
-  <section id="about" class="section section-dark">
+  <!-- ====== BLOG ====== -->
+  <section id="blog" class="section section-dark">
     <div class="section-inner">
-      <h2 class="section-title">关于我</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            我是 <strong>九日</strong>，一名前端工程师，也是一个热爱折腾的创意工作者。
-          </p>
-          <p>
-            从 P2P 聊天到烟花特效，从提示词优化到习惯追踪——每个项目都是我和代码的一次碰撞实验。相信技术应该是好玩的、有温度的，最好的代码往往诞生于好奇心和一点点的强迫症。
-          </p>
-        </div>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">8+</div>
-            <div class="stat-label">开源项目</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">{allArticles.length}</div>
-            <div class="stat-label">篇文章</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">1</div>
-            <div class="stat-label">已部署项目</div>
-          </div>
-        </div>
-      </div>
+      <div class="section-label">Writing</div>
+      <h2 class="section-title">最近文章</h2>
+      <ul class="post-list">
+        {latestArticles.map((article) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          const isNew = (Date.now() - article.data.date.getTime()) < 3 * 24 * 60 * 60 * 1000;
+          return (
+            <li class="post-card" onclick={`location.href='${url}'`}>
+              <div class="post-card-date">
+                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
+              </div>
+              <div class="post-card-body">
+                {isNew && <span class="post-card-badge">NEW</span>}
+                <h2><a href={url}>{article.data.title}</a></h2>
+                <p>{article.data.description}</p>
+                <div class="post-tags">
+                  {article.data.tags.map((tag) => <span class="post-tag">{tag}</span>)}
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <p class="writing-more">更多文章正在路上……</p>
     </div>
   </section>
 
@@ -144,34 +144,34 @@ const latestArticles = [
   <!-- ====== BOOKMARK WALL ====== -->
   <BookmarkWall />
 
-  <!-- ====== BLOG ====== -->
-  <section id="blog" class="section section-dark">
+  <!-- ====== ABOUT ====== -->
+  <section id="about" class="section section-dark">
     <div class="section-inner">
-      <div class="section-label">Writing</div>
-      <h2 class="section-title">最近文章</h2>
-      <ul class="post-list">
-        {latestArticles.map((article) => {
-          const slug = article.id.replace(/\.md$/, "");
-          const url = `/articles/${slug}/`;
-          const isNew = (Date.now() - article.data.date.getTime()) < 3 * 24 * 60 * 60 * 1000;
-          return (
-            <li class="post-card" onclick={`location.href='${url}'`}>
-              <div class="post-card-date">
-                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
-              </div>
-              <div class="post-card-body">
-                {isNew && <span class="post-card-badge">NEW</span>}
-                <h2><a href={url}>{article.data.title}</a></h2>
-                <p>{article.data.description}</p>
-                <div class="post-tags">
-                  {article.data.tags.map((tag) => <span class="post-tag">{tag}</span>)}
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      <p class="writing-more">更多文章正在路上……</p>
+      <h2 class="section-title">关于我</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            我是 <strong>九日</strong>，一名前端工程师，也是一个热爱折腾的创意工作者。
+          </p>
+          <p>
+            从 P2P 聊天到烟花特效，从提示词优化到习惯追踪——每个项目都是我和代码的一次碰撞实验。相信技术应该是好玩的、有温度的，最好的代码往往诞生于好奇心和一点点的强迫症。
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">开源项目</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">{allArticles.length}</div>
+            <div class="stat-label">篇文章</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1</div>
+            <div class="stat-label">已部署项目</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
