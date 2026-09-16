@@ -16,6 +16,7 @@ const { Content } = await article.render();
 const isNovel = article.data.tags.some((t: string) => t.includes("小说"));
 const isComic = article.data.tags.some((t: string) => t.includes("漫画"));
 const isGold = article.data.tags.some((t: string) => t.includes("黄金"));
+const isFinance = article.data.tags.some((t: string) => t.includes("财经"));
 const isSkill = article.data.tags.some((t: string) => t.includes("Skill"));
 const isPoetry = article.data.tags.some((t: string) => t.includes("毛泽东诗词"));
 const isXiaolihua = article.id.includes("xiaolihua");
@@ -25,6 +26,7 @@ let backLabel = "← 返回首页";
 if (isNovel) { backUrl = "/articles/novel/"; backLabel = "← 槐树下"; }
 if (isComic) { backUrl = "/articles/comic/"; backLabel = "← 漫画专区"; }
 if (isGold) { backUrl = "/articles/gold/"; backLabel = "← 黄金专区"; }
+if (isFinance) { backUrl = "/articles/finance/"; backLabel = "← 财经专区"; }
 if (isSkill) { backUrl = "/articles/skills/"; backLabel = "← Skill 工具箱"; }
 if (isPoetry) { backUrl = "/articles/poetry/"; backLabel = "← 诗词专区"; }
 if (isXiaolihua) { backUrl = "/articles/xiaolihua/"; backLabel = "← 小狸花"; }

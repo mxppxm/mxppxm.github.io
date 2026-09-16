@@ -1,0 +1,110 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles"))
+  .filter((a) => !a.data.draft && a.data.tags.some((t) => t.includes("财经")))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout
+  title=" 财经专区"
+  description="九日财经日报 — 每日中国股市、财经要闻、政策动态、市场资金全景汇总"
+>
+  <div class="listing-page">
+    <!-- Hero banner -->
+    <div class="listing-hero listing-hero-finance">
+      <div class="listing-hero-inner">
+        <span class="listing-hero-icon">📈</span>
+        <h1>财经专区</h1>
+        <p>每日中国股市与财经汇总——大盘指数、板块资金、政策要闻、个股异动、外部联动、明日关注。盘前早报 + 盘后晚报，一天两次。</p>
+        <div class="listing-stats">
+          <div class="listing-stat">
+            <span class="listing-stat-num">{articles.length}</span>
+            <span class="listing-stat-label">篇市场汇总</span>
+          </div>
+          <div class="listing-stat">
+            <span class="listing-stat-num">🌅🌆</span>
+            <span class="listing-stat-label">早报 + 晚报</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article list -->
+    <div class="listing-body">
+      <div class="listing-grid">
+        {articles.map((article) => {
+          const slug = article.id.replace(/\.md$/, "");
+          const url = `/articles/${slug}/`;
+          const isMorning = article.data.tags.some((t) => t.includes("早报"));
+          return (
+            <article class="listing-card" onclick={`location.href='${url}'`}>
+              <div class="listing-card-date">
+                <span class={`fin-badge ${isMorning ? "fin-badge-am" : "fin-badge-pm"}`}>
+                  {isMorning ? "早报" : "晚报"}
+                </span>
+                {article.data.date.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
+              </div>
+              <div class="listing-card-body">
+                <h3><a href={url}>{article.data.title}</a></h3>
+                <p>{article.data.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .listing-hero-finance {
+    background: linear-gradient(135deg, #0b1b34 0%, #14213d 45%, #1f3a5f 100%);
+    border-radius: 12px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .listing-hero-finance::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 88% 18%, rgba(192, 57, 43, 0.28), transparent 55%),
+      radial-gradient(circle at 12% 88%, rgba(39, 174, 96, 0.2), transparent 50%);
+    pointer-events: none;
+  }
+  .listing-hero-finance .listing-hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .listing-hero-finance h1 {
+    color: #fff;
+  }
+  .listing-hero-finance p {
+    color: rgba(255, 255, 255, 0.68);
+  }
+  .listing-hero-finance .listing-stat-num,
+  .listing-hero-finance .listing-stat-label {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .fin-badge {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+  }
+  .fin-badge-am {
+    background: rgba(39, 174, 96, 0.14);
+    color: #1e8449;
+  }
+  .fin-badge-pm {
+    background: rgba(192, 57, 43, 0.12);
+    color: #a93226;
+  }
+</style>
