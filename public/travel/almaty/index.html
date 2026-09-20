@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇰🇿 阿拉木图 · 中秋国庆完全攻略（北京出发）</title>
+<style>
+  :root{
+    --ink:#1b1a17; --ink-soft:#4b463e;
+    --paper:#faf7f1; --paper-2:#f2ece1; --line:#e2d9c8;
+    --wine:#8c2f39; --teal:#1f5f5b; --teal-soft:#2f8a83; --gold:#b8892f;
+    --warn-bg:#fdf3e3; --warn-line:#e0b566;
+    --ok-bg:#eef6f2; --radius:14px;
+    --shadow:0 4px 24px rgba(27,26,23,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px;}
+  .hero{position:relative;padding:72px 0 84px;color:#f6f1e7;overflow:hidden;
+    background:
+      radial-gradient(1100px 460px at 12% -10%, rgba(184,137,47,.5), transparent 62%),
+      radial-gradient(900px 420px at 92% 5%, rgba(31,95,91,.55), transparent 60%),
+      linear-gradient(160deg,#15140f 0%,#26221a 55%,#1b2624 100%);}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);background-size:22px 22px;}
+  .hero-inner{position:relative;z-index:2;}
+  .flag{font-size:44px;line-height:1;display:block;margin-bottom:14px;}
+  .hero h1{font-size:clamp(28px,4.6vw,50px);margin:0 0 14px;font-weight:800;letter-spacing:-.02em;line-height:1.2;}
+  .hero h1 span{background:linear-gradient(90deg,#f0c674,#8fd4cb);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.tag{margin:0;max-width:680px;color:#cfc6b6;font-size:clamp(14px,1.6vw,17px);}
+  .hero-meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);
+    padding:6px 14px;border-radius:999px;font-size:13px;color:#e8e0d2;}
+  .toc{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;margin:-42px auto 46px;position:relative;z-index:5;box-shadow:var(--shadow);}
+  .toc h2{margin:0 0 14px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;}
+  .toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:6px 22px;counter-reset:t;}
+  .toc li{counter-increment:t;}
+  .toc a{color:var(--ink);text-decoration:none;font-size:14.5px;display:flex;gap:9px;align-items:baseline;padding:5px 8px;border-radius:8px;transition:.16s;}
+  .toc a::before{content:counter(t,decimal-leading-zero);color:var(--wine);font-weight:700;font-size:12px;}
+  .toc a:hover{background:rgba(140,47,57,.08);color:var(--wine);}
+  section{margin:0 0 52px;scroll-margin-top:20px;}
+  h2.sec{font-size:clamp(20px,2.6vw,27px);margin:0 0 6px;font-weight:750;display:flex;align-items:center;gap:12px;letter-spacing:-.01em;}
+  h2.sec .num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+    border-radius:10px;background:var(--wine);color:#fff;font-size:15px;font-weight:700;}
+  .sec-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 22px 46px;}
+  h3{font-size:17px;margin:30px 0 12px;font-weight:700;color:var(--teal);}
+  h3::before{content:"— ";color:var(--gold);}
+  p{margin:0 0 14px;}
+  a{color:var(--teal-soft);}
+  .tw{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);margin:0 0 20px;background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px;}
+  thead th{background:linear-gradient(180deg,#2a2723,#221f1b);color:#f2ece1;text-align:left;font-weight:650;padding:12px 15px;white-space:nowrap;font-size:13.5px;}
+  tbody td{padding:11px 15px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:#fbf9f5;}
+  tbody tr:hover{background:#f6f1e6;}
+  td strong{color:var(--wine);}
+  .nowrap{white-space:nowrap;}
+  .callout{border-radius:var(--radius);padding:18px 20px 18px 22px;margin:0 0 22px;border-left:5px solid var(--teal-soft);background:var(--ok-bg);}
+  .callout.warn{border-left-color:var(--warn-line);background:var(--warn-bg);}
+  .callout.danger{border-left-color:var(--wine);background:#fbeef0;}
+  .callout .ttl{font-weight:750;margin:0 0 8px;display:flex;align-items:center;gap:8px;font-size:15.5px;}
+  .callout.warn .ttl{color:#8a5a12;}
+  .callout.danger .ttl{color:var(--wine);}
+  .callout p:last-child{margin-bottom:0;}
+  .callout ul{margin:8px 0 0;padding-left:20px;}
+  .callout li{margin-bottom:5px;}
+  .grid{display:grid;gap:16px;}
+  .grid.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr));}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);transition:.2s;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(27,26,23,.11);}
+  .card h4{margin:0 0 8px;font-size:15.5px;font-weight:700;display:flex;gap:8px;align-items:center;}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .card .big{font-size:22px;font-weight:800;color:var(--wine);display:block;margin-bottom:4px;}
+  .itin{border-left:3px solid var(--line);margin-left:16px;padding-left:26px;}
+  .day{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:12px;box-shadow:var(--shadow);}
+  .day::before{content:"";position:absolute;left:-33px;top:20px;width:13px;height:13px;border-radius:50%;background:var(--paper);border:3px solid var(--wine);}
+  .day .dnum{display:inline-block;background:var(--teal);color:#fff;font-size:12px;font-weight:700;border-radius:6px;padding:2px 9px;margin-right:9px;}
+  .day .date{font-size:12.5px;color:var(--ink-soft);margin-left:6px;}
+  .day .desc{display:block;margin-top:7px;font-size:14.5px;color:var(--ink-soft);}
+  .check{list-style:none;padding:0;margin:0;}
+  .check li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;margin-bottom:8px;font-size:14.5px;display:flex;gap:11px;align-items:flex-start;}
+  .check li::before{content:"";flex:none;width:16px;height:16px;margin-top:3px;border:2px solid var(--teal-soft);border-radius:5px;}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:rgba(140,47,57,.1);color:var(--wine);margin-left:6px;}
+  .kbd{background:#efe9dc;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:13px;font-family:ui-monospace,Menlo,monospace;}
+  .qa{border-top:1px solid var(--line);padding:16px 0;}
+  .qa:first-of-type{border-top:none;}
+  .qa .q{font-weight:700;margin:0 0 6px;}
+  .qa .q::before{content:"Q ";color:var(--wine);font-weight:800;}
+  .qa .a{margin:0;color:var(--ink-soft);font-size:14.5px;}
+  .qa .a::before{content:"A ";color:var(--teal);font-weight:800;}
+  .risk{border-left:5px solid var(--wine);background:#fff;border-radius:var(--radius);padding:16px 20px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .risk .lv{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:8px;color:#fff;}
+  .lv.high{background:#a8323f;} .lv.mid{background:#c9852a;} .lv.low{background:#2f8a83;}
+  .risk h4{margin:0 0 6px;font-size:15.5px;}
+  .risk ul{margin:6px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink-soft);}
+  footer{background:#221f1b;color:#a49b8c;padding:38px 0;font-size:13.5px;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;}
+  @media (max-width:640px){.hero{padding:52px 0 64px;}.toc{margin-top:-30px;padding:18px;}.sec-sub{margin-left:0;}}
+  @media print{body{background:#fff;} .hero{background:#fff;color:#000;} .hero h1 span{color:#000;-webkit-text-fill-color:#000;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="flag">🇰🇿</span>
+    <h1>阿拉木图 · <span>中秋 + 国庆</span><br>完全攻略</h1>
+    <p class="tag">苹果之城 · 天山脚下的绿洲 · 峡谷 + 高山湖 + 苏联旧梦<br>从北京出发 · 含「单人旅行安全」专项 ⚠️</p>
+    <div class="hero-meta">
+      <span class="chip">📅 2026-09-20 生成</span>
+      <span class="chip">🛂 中国普通护照免签 30/90</span>
+      <span class="chip">✈️ 北京直飞约 5h40m</span>
+      <span class="chip">🍎 10 月 = 金秋苹果季</span>
+      <span class="chip">🧍 单人友好度：较高</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <h2>目录 · Contents</h2>
+    <ol>
+      <li><a href="#s0">先看结论 TL;DR</a></li>
+      <li><a href="#s1">假期日期 &amp; 拼假</a></li>
+      <li><a href="#s2">签证与入境</a></li>
+      <li><a href="#s3">机票：北京直飞</a></li>
+      <li><a href="#s4">10 月天气与穿衣</a></li>
+      <li><a href="#s5">行程方案 A / B / C</a></li>
+      <li><a href="#s6">市内与周边交通</a></li>
+      <li><a href="#s7">住宿住哪儿</a></li>
+      <li><a href="#s8">吃什么</a></li>
+      <li><a href="#s9">预算表</a></li>
+      <li><a href="#s10">通讯 / 电源 / App</a></li>
+      <li><a href="#s11">🛡️ 单人旅行安全（重点）</a></li>
+      <li><a href="#s12">行前 Checklist</a></li>
+      <li><a href="#s13">常见 Q&amp;A</a></li>
+      <li><a href="#s14">官方信源</a></li>
+    </ol>
+  </nav>
+<section id="s0">
+    <h2 class="sec"><span class="num">0</span>先看结论（TL;DR）</h2>
+    <p class="sec-sub">时间紧就先看这张表。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项目</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>免签？</td><td>✅ 中国普通护照<strong>免签</strong>，单次 ≤ <strong>30 日</strong>，每 180 日累计 ≤ 90 日</td></tr>
+          <tr><td>2026 新规？</td><td>暂无「强制保险」类新规（与格鲁吉亚不同），但<strong>山区徒步强烈建议自购含救援的保险</strong></td></tr>
+          <tr><td>时差</td><td>北京 −3 小时（阿拉木图 UTC+5）</td></tr>
+          <tr><td>直飞</td><td>✅ <strong>北京有直飞</strong>！国航 CA799、阿斯塔纳航空 KC268，约 <strong>5h40m</strong></td></tr>
+          <tr><td>花费</td><td>往返机票 <strong>¥2,800–4,500</strong>；中档自由行 <strong>¥350–600 / 人 / 天</strong></td></tr>
+          <tr><td>货币</td><td>坚戈 KZT，1 元 ≈ <strong>70 坚戈</strong>，1 USD ≈ 490；带<strong>美元现金</strong>换汇最划算</td></tr>
+          <tr><td>单人安全</td><td>整体<strong>较安全</strong>，最大风险是「机场拉客出租车 + 山区独行」，详见第 11 节</td></tr>
+          <tr><td>一句话</td><td>比格鲁吉亚<strong>更近、更便宜、更好落地</strong>；10 月金秋，城市 + 高山湖 + 红峡谷三段式最舒服</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🎯</span>阿拉木图 vs 格鲁吉亚，怎么选？</p>
+      <ul>
+        <li><strong>阿拉木图</strong>：直飞 5h40m、往返 ¥3k 出头、签证免、语言门槛低（俄语区但英语尚可）、自然景观密度极高 —— <strong>适合短假 + 单人 + 预算敏感</strong></li>
+        <li><strong>格鲁吉亚</strong>：需要中转、往返 ¥5k+、文化/美食/葡萄酒更强 —— <strong>适合长假 + 有搭子 + 想「欧洲感」</strong></li>
+        <li>两者都免签、都 10 月最佳、都在中亚/高加索，<strong>13 天硬要连玩也可以</strong>（阿拉木图 → 巴库/第比利斯）</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s1">
+    <h2 class="sec"><span class="num">1</span>假期日期 &amp; 拼假方案</h2>
+    <p class="sec-sub">依据《国务院办公厅关于 2026 年部分节假日安排的通知》。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>假期</th><th>日期</th><th>天数</th></tr></thead>
+        <tbody>
+          <tr><td>中秋节</td><td class="nowrap"><strong>9 月 25 日（周五）– 9 月 27 日（周日）</strong></td><td>3 天，<strong>不调休</strong></td></tr>
+          <tr><td>国庆节</td><td class="nowrap"><strong>10 月 1 日（周四）– 10 月 7 日（周三）</strong></td><td>7 天</td></tr>
+          <tr><td>补班</td><td class="nowrap">9 月 20 日（周日）、10 月 10 日（周六）上班</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🎉</span>请 3 天假（9/28–9/30）→ 9 月 25 日 – 10 月 7 日，共 13 天</p>
+      <p>阿拉木图这条线<strong>不需要 13 天</strong>，7–10 天正好。剩余天数可以拼「阿拉木图 + 阿斯塔纳」或「阿拉木图 + 撒马尔罕」。</p>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>方案</th><th>请假</th><th>天数</th><th>适合</th></tr></thead>
+        <tbody>
+          <tr><td>只玩国庆</td><td>0 天</td><td>7 天</td><td>阿拉木图城市 + 两湖一峡，节奏刚好 ✅</td></tr>
+          <tr><td>国庆 + 请 2 天</td><td>2 天</td><td>10 天</td><td>加阿尔金埃梅尔 / 塔尔加尔 / 伊塞克湖</td></tr>
+          <tr><td><strong>拼假</strong></td><td>3 天</td><td>13 天</td><td>再拉上阿斯塔纳或突厥斯坦，一次到位</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s2">
+    <h2 class="sec"><span class="num">2</span>签证与入境</h2>
+    <p class="sec-sub">比格鲁吉亚还简单 —— 免签，且目前没有强制保险新规。</p>
+    <h3>2.1 免签政策（已核实）</h3>
+    <ul>
+      <li>《中哈政府关于互免签证的协定》已于 <strong>2023 年 11 月 10 日</strong>生效。</li>
+      <li>中国公民持<strong>普通护照</strong>，因<strong>旅游、私人事务、商务、医疗、国际运输、过境</strong>等事由赴哈：
+        自入境之日起<strong>单次停留不超过 30 日</strong>，<strong>每 180 日累计停留不超过 90 日</strong>，免办签证。</li>
+      <li>⚠️ <strong>免签期间不得从事劳动、技术服务、设备安装等工作</strong>，此类活动需提前申请相应签证。</li>
+      <li>⚠️ <strong>免签入境后无法在境内延期</strong>，也不能在境内换成其他种类签证。</li>
+    </ul>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">📌</span>「免签 ≠ 说走就走」</p>
+      <p>中国驻阿拉木图总领馆提醒：免签只是免签证，<strong>边检仍会判断你是否符合事由与时限</strong>。建议随身带返程机票 + 酒店订单 + 现金/银行卡，回答行程要清楚一致。</p>
+    </div>
+    <h3>2.2 入境随身材料</h3>
+    <ul class="check">
+      <li>护照（有效期建议 ≥ 离境后 6 个月）</li>
+      <li>返程 / 续程机票行程单</li>
+      <li>酒店预订单（第一晚即可）</li>
+      <li>现金 / 银行卡（证明有支付能力）</li>
+      <li>境外旅行保险保单（<strong>非强制</strong>，但山区徒步强烈建议）</li>
+    </ul>
+    <h3>2.3 海关、药品与现金</h3>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">💊</span>注意这几条</p>
+      <ul>
+        <li>携带<strong>处方药</strong>建议带英文处方 / 说明；麻醉类、精神类药品管制严格。</li>
+        <li>现金：等值 <strong>≥ $10,000</strong> 需申报，建议不要带太多。</li>
+        <li>肉类、乳制品、种子等农产品有限制；<strong>无人机</strong>入境需申报，市区多处禁飞。</li>
+        <li>哈国近期修订法律，<strong>骑乘电动滑板车有新规（2026 年 8 月 25 日生效）</strong>，想骑请先查规则。</li>
+      </ul>
+    </div>
+    <h3>2.4 需不需要强制保险？</h3>
+    <p>截至 2026 年 9 月核验，哈萨克斯坦<strong>未对免签入境游客设立「强制旅游保险」要求</strong>（这点与格鲁吉亚 2026 年新规不同）。</p>
+    <p>但如果你计划：<strong>大阿拉木图湖徒步 / 科尔赛湖 / 卡因迪湖 / 恰伦峡谷 / 独自进山</strong> —— 强烈建议购买含<strong>直升机救援 + 高原 / 徒步意外</strong>的境外旅行险，几十块钱换一份安心。</p>
+  </section>
+<section id="s3">
+    <h2 class="sec"><span class="num">3</span>机票：北京直飞，这条线很香</h2>
+    <p class="sec-sub">中间亚最方便的目的地之一 —— 有直飞、还便宜。</p>
+    <h3>3.1 直飞（推荐）</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>航司 / 航班</th><th>航线</th><th>班期</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>国航 CA799 / CA800</strong></td><td>北京首都 PEK ⇄ 阿拉木图 ALA</td><td class="nowrap">每周一 / 三 / 五 / 日</td><td>2025-07-30 开航，波音 737 执飞</td></tr>
+          <tr><td><strong>阿斯塔纳航空 KC268</strong></td><td>北京首都 PEK ⇄ 阿拉木图 ALA</td><td class="nowrap">每日</td><td>哈萨克斯坦载旗航空，服务口碑好；2026 年 6 月起中哈航线<strong>全面增班</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>航程约 <strong>5 小时 40 分</strong>，直线距离约 3,300 km，<strong>比飞格鲁吉亚少一半时间</strong>。</p>
+
+    <h3>3.2 其他进法</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>方式</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>乌鲁木齐出发</td><td>直飞阿拉木图，班次密集（阿斯塔纳航空增班后约 <strong>10 班 / 周</strong>），常比北京便宜</td></tr>
+          <tr><td>国际大巴（陆路）</td><td>从新疆<strong>伊宁 / 霍尔果斯</strong>坐国际大巴到阿拉木图，约 <strong>¥400</strong></td></tr>
+          <tr><td>中转</td><td>经阿斯塔纳、迪拜、伊斯坦布尔等，通常<strong>没必要</strong>（直飞已在手）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">🚌</span>走陆路大巴的三条硬规则</p>
+      <ul>
+        <li><strong>只有上午发车</strong>，去程和回程都一样，别下午去车站干等。</li>
+        <li>过境排队 + 边检，全程可能 <strong>6–12 小时</strong>，别接当天的飞机/火车。</li>
+        <li>坐<strong>左侧</strong>风景更好（沿赛里木湖一侧）。</li>
+      </ul>
+    </div>
+
+    <h3>3.3 价格与抢票</h3>
+    <div class="grid g2">
+      <div class="card"><h4>💰 价格区间</h4><p><span class="big">¥2,800–4,500</span>含税往返 / 人（估算）。比价平台曾出现<strong>往返 ¥2,823 起</strong>的报价。</p></div>
+      <div class="card"><h4>📉 便宜时段</h4><p>假期前最后一个工作日（9/24 前后）出行最便宜；节前首日最贵。</p></div>
+      <div class="card"><h4>🎟️ 会员日</h4><p>国航每月 <strong>15 日</strong>放价；阿斯塔纳航空官网常有促销。</p></div>
+      <div class="card"><h4>🔁 回程错峰</h4><p>10/4–10/7 是回程高峰，<strong>提前一两天回更便宜</strong>。</p></div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-soft);">※ 请以携程 / 飞猪 / Skyscanner / 航司官网实时比价为准。</p>
+  </section>
+
+  <section id="s4">
+    <h2 class="sec"><span class="num">4</span>10 月天气与穿衣</h2>
+    <p class="sec-sub">阿拉木图是「城市秋天 + 山上初冬」，务必分层穿。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>区域</th><th>白天</th><th>夜间</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>阿拉木图市区</td><td>13–20℃</td><td>4–8℃</td><td>10 月均温 5–16℃，降水约 59mm、约 11 天有雨</td></tr>
+          <tr><td>麦迪奥 / 琼布拉克（1700–2260m）</td><td>5–12℃</td><td>−3–3℃</td><td>山顶<strong>10 月可能已降雪</strong>，缆车顶上很冷</td></tr>
+          <tr><td>大阿拉木图湖（2511m）</td><td>3–10℃</td><td>−5–0℃</td><td>风大，体感更低</td></tr>
+          <tr><td>科尔赛湖 / 卡因迪湖（1800–1900m）</td><td>5–13℃</td><td>−2–4℃</td><td>海拔高、昼夜温差极大</td></tr>
+          <tr><td>恰伦峡谷（低地）</td><td>15–22℃</td><td>5–10℃</td><td>峡谷内比市区暖</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h4>🧥 上身</h4><p>打底 + 抓绒 + <strong>薄羽绒 / 防风冲锋衣</strong>（上山必备）</p></div>
+      <div class="card"><h4>👖 下身</h4><p>长裤 + <strong>防滑徒步鞋</strong>（湖区泥泞、山上可能有雪）</p></div>
+      <div class="card"><h4>🧤 配件</h4><p>帽子、手套、围巾（琼布拉克 / 大阿拉木图湖必带）</p></div>
+      <div class="card"><h4>🕶️ 其他</h4><p>墨镜、防晒、雨伞、保温杯</p></div>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🍎</span>为什么 10 月值得来</p>
+      <p>阿拉木图在哈萨克语里就是「<strong>苹果之城</strong>」，10 月正是苹果季 + 白杨金黄季，市区行道树一片金红，山上初雪，<strong>色彩最浓的月份</strong>。</p>
+    </div>
+  </section>
+
+  <section id="s5">
+    <h2 class="sec"><span class="num">5</span>行程方案</h2>
+    <p class="sec-sub">核心结构：市区 2 天 + 近郊雪山 1 天 + 两湖一峡 2–3 天。</p>
+
+    <h3>🏆 方案 A：7 天核心版（只玩国庆，最推荐）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1</span><span class="date">10/1</span><span class="desc">抵达阿拉木图 → 潘菲洛夫 28 勇士公园、<strong>津科夫升天大教堂</strong>（世界第二高木结构教堂）、绿巴扎 → 傍晚 <strong>Kok-Tobe</strong> 看城市夜景</span></div>
+      <div class="day"><span class="dnum">D2</span><span class="date">10/2</span><span class="desc">市区深度：共和国广场、独立纪念碑、中央国家博物馆、Kasteyev 美术馆、Abay 歌剧院、地铁站打卡 → <strong>Arasan 温泉浴</strong>解乏</span></div>
+      <div class="day"><span class="dnum">D3</span><span class="date">10/3</span><span class="desc"><strong>麦迪奥溜冰场</strong> → 缆车直上 <strong>琼布拉克</strong>（2260m，看雪山）→ 下山后 Ayusai 游客中心短徒步</span></div>
+      <div class="day"><span class="dnum">D4</span><span class="date">10/4</span><span class="desc"><strong>大阿拉木图湖</strong>（2511m，近郊 28km）+ Butakovka 瀑布 → 返市区</span></div>
+      <div class="day"><span class="dnum">D5</span><span class="date">10/5</span><span class="desc">出发<strong>恰伦峡谷</strong>（约 200km）→ 红色「城堡谷」徒步 → 夜宿 <strong>Saty</strong> 村民宿</span></div>
+      <div class="day"><span class="dnum">D6</span><span class="date">10/6</span><span class="desc">Saty → <strong>科尔赛湖</strong>（三湖，可骑马/划船）→ <strong>卡因迪湖</strong>（水下森林）→ 返回阿拉木图</span></div>
+      <div class="day"><span class="dnum">D7</span><span class="date">10/7</span><span class="desc">市区补漏（绿巴扎买马肠/干果/巧克力）+ 手信 → 返程北京</span></div>
+    </div>
+
+    <h3>🚀 方案 B：10 天进阶版（+请 2 天）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1–3</span><span class="desc">同方案 A 的 D1–D3（市区 + 雪山）</span></div>
+      <div class="day"><span class="dnum">D4</span><span class="desc">大阿拉木图湖 + 伊塞克湖（Esik，山水画廊）</span></div>
+      <div class="day"><span class="dnum">D5</span><span class="desc"><strong>阿尔金埃梅尔国家公园</strong>（歌唱沙丘 + 五彩山，一日往返）</span></div>
+      <div class="day"><span class="dnum">D6–7</span><span class="desc">恰伦峡谷 → Saty → 科尔赛湖 + 卡因迪湖（两湖一峡两日）</span></div>
+      <div class="day"><span class="dnum">D8</span><span class="desc"><strong>塔尔加尔</strong>（Talgar / Oi-Qaragai 度假区，山地缆车 + 秋色）</span></div>
+      <div class="day"><span class="dnum">D9</span><span class="desc">市区自由：美术馆 / 咖啡街 / 温泉 / 购物</span></div>
+      <div class="day"><span class="dnum">D10</span><span class="desc">返程北京</span></div>
+    </div>
+
+    <h3>⚡ 方案 C：13 天缝合版（拼假全用上）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1–8</span><span class="date">9/25–10/2</span><span class="desc">阿拉木图全境 8 天（市区 + 雪山 + 阿尔金埃梅尔 + 两湖一峡）</span></div>
+      <div class="day"><span class="dnum">D9</span><span class="date">10/3</span><span class="desc">夜火车 / 航班前往 <strong>突厥斯坦</strong>（Turkistan）</span></div>
+      <div class="day"><span class="dnum">D10</span><span class="date">10/4</span><span class="desc">突厥斯坦：<strong>霍贾·艾哈迈德·亚萨维陵墓</strong>（UNESCO 世界遗产）</span></div>
+      <div class="day"><span class="dnum">D11</span><span class="date">10/5</span><span class="desc">返回阿拉木图（夜车 / 飞机）</span></div>
+      <div class="day"><span class="dnum">D12–13</span><span class="date">10/6–10/7</span><span class="desc">阿拉木图收尾 + 购物，返程北京</span></div>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">💡</span>单人旅行建议</p>
+      <p>一个人玩这条线，<strong>把「两湖一峡」和「阿尔金埃梅尔」改成中文拼团 / 一日游</strong>最省心 —— 有车有向导有同伴，成本比自己包车低，安全系数还高。市区 + 麦迪奥 / 琼布拉克完全可以独行。</p>
+    </div>
+  </section>
+<section id="s6">
+    <h2 class="sec"><span class="num">6</span>市内与周边交通</h2>
+    <p class="sec-sub">阿拉木图市内便宜到离谱，周边靠包车 / 拼团。</p>
+
+    <h3>6.1 市内</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>方式</th><th>价格</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>公交</td><td class="nowrap"><strong>200 坚戈 / 次</strong>（≈¥2.8）</td><td>覆盖面广，记得拿小票；上车刷卡或用 App 付款</td></tr>
+          <tr><td>地铁</td><td class="nowrap"><strong>120 坚戈 / 次</strong>（≈¥1.7）</td><td>只有 <strong>1 条线</strong>，但车站装修极美，值得专门打卡</td></tr>
+          <tr><td>打车</td><td class="nowrap">市内短途 <strong>800–2000 坚戈</strong></td><td>用 <strong>Yandex Go</strong>，明码标价、可绑卡</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout danger">
+      <p class="ttl"><span class="ico">🚕</span>不要路边拦车</p>
+      <p>阿拉木图的「bombila」（私车拉客）报价可以翻 3–5 倍。请<strong>一律用 Yandex Go</strong>，机场也是如此。</p>
+    </div>
+
+    <h3>6.2 机场到市区</h3>
+    <ul>
+      <li>机场 <strong>ALA</strong> 距市区约 15–20 km，Yandex Go 约 <strong>3,000–5,000 坚戈</strong>（≈¥40–70）。</li>
+      <li>⚠️ <strong>抵达大厅主动搭讪拉你上车的人 = 最经典的骗局</strong>，别理，直接出站叫 App 车。</li>
+      <li>穷游选项：机场公交 92 / 106 路进城，几十坚戈，行李多不建议。</li>
+    </ul>
+
+    <h3>6.3 周边（关键）</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>目的地</th><th>距离 / 车程</th><th>玩法与费用</th></tr></thead>
+        <tbody>
+          <tr><td>麦迪奥 / 琼布拉克</td><td class="nowrap">约 15–25 km / 40 min</td><td>公交 + 缆车即可；缆车分多段，套票约 <strong>5,000–9,000 坚戈</strong></td></tr>
+          <tr><td>大阿拉木图湖 BAO</td><td class="nowrap">约 28 km / 1 h</td><td>山路，建议拼车 / 包车；<strong>部分路段靠近吉尔吉斯边境</strong>，注意管制标识</td></tr>
+          <tr><td>恰伦峡谷 Charyn</td><td class="nowrap">约 200 km / 2.5–3 h</td><td>「城堡谷」徒步约 2 km；包车 / 拼团一日约 <strong>¥250–450 / 人</strong></td></tr>
+          <tr><td>科尔赛湖 Kolsai</td><td class="nowrap">约 288 km / 4–5 h</td><td>Saty 村民宿过夜；可骑马、划船，湖区门票另计</td></tr>
+          <tr><td>卡因迪湖 Kaindy</td><td class="nowrap">Saty 出发约 11 km</td><td><strong>必须四驱 / 高底盘车</strong>，看「水下森林」</td></tr>
+          <tr><td>阿尔金埃梅尔</td><td class="nowrap">约 250 km</td><td>歌唱沙丘 + 五彩山，一日或两日团</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🧭</span>「两湖一峡」怎么排最合理</p>
+      <ul>
+        <li><strong>方案（推荐）</strong>：Day1 阿拉木图 → 恰伦峡谷 → 宿 <strong>Saty</strong>；Day2 科尔赛湖 + 卡因迪湖 → 回阿拉木图。</li>
+        <li>也有「当天两湖一峡来回」的狠人玩法，但单日车程 <strong>600 km+</strong>，非常累，<strong>单人尤其不建议</strong>。</li>
+        <li>哈希（Esik）/ 阿尔金埃梅尔 可作备选替换。</li>
+      </ul>
+    </div>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">🚗</span>自驾要注意</p>
+      <ul>
+        <li>中国驾照在哈国<strong>不能直接用</strong>，需国际驾照 / 当地认证，租车行通常要求国际驾照。</li>
+        <li>10 月山上可能结冰，<strong>不熟悉山路的别自驾上山</strong>。</li>
+        <li>警察路检常见，随身带证件；严禁酒驾。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s7">
+    <h2 class="sec"><span class="num">7</span>住宿住哪儿</h2>
+    <p class="sec-sub">单人选「市中心 + 前台 24 小时 + 有电梯」最稳妥。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>区域</th><th>价格（≈¥/晚）</th><th>适合谁</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Almaly / 市中心（Abay 大道一带）</strong></td><td>200–500</td><td>首次到访、单人、步行逛市区 ✅ 最推荐</td></tr>
+          <tr><td>Zhetysu / 火车站周边</td><td>150–350</td><td>要去机场、火车站，交通方便</td></tr>
+          <tr><td>Medeu 山脚 / 郊区</td><td>250–600</td><td>想住山里、开窗见雪山</td></tr>
+          <tr><td>Saty 村民宿</td><td>120–220</td><td>两湖一峡行程，含晚饭的话体验很好</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🧍</span>单人订房小贴士</p>
+      <ul>
+        <li>优先选<strong>正规酒店 / 带前台的公寓</strong>，而不是无人值守的私人短租 —— 出问题有人管。</li>
+        <li>确认<strong>24 小时前台 + 电梯 + 独立门锁</strong>；到店先看逃生通道。</li>
+        <li>把酒店名、地址、电话存成离线截图（哈语/俄语拼写），打车回程直接给司机看。</li>
+        <li>国庆是高峰，<strong>早订</strong>；Saty 村民宿条件朴素，别期待太高。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s8">
+    <h2 class="sec"><span class="num">8</span>吃什么</h2>
+    <p class="sec-sub">游牧民族的碳水 + 马肉 + 奶制品宇宙。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>必吃</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>别什巴尔马克 Beshbarmak</strong></td><td>国菜「五指面」，手抓面片 + 煮马肉/羊肉 + 洋葱汤，一定要试</td></tr>
+          <tr><td><strong>Kazy / Shuzhuk</strong></td><td>马肠，绿巴扎有卖，配面包和奶茶</td></tr>
+          <tr><td><strong>Baursak</strong></td><td>炸面球，配奶茶（Kymyz 是马奶酒，Shubat 是骆驼奶）</td></tr>
+          <tr><td><strong>Plov / Lagman / Samsa</strong></td><td>中亚三大主食，街头和巴扎里都好吃又便宜</td></tr>
+          <tr><td><strong>Shashlik</strong></td><td>炭烤肉串，配馕和洋葱</td></tr>
+          <tr><td><strong>苹果 &amp; 蜂蜜</strong></td><td>「苹果之城」的招牌，10 月正当季</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>一顿正餐人均 <strong>¥40–100</strong>；街边小吃 <strong>¥10–25</strong>。</li>
+      <li><strong>绿巴扎（Zeleny Bazar）</strong>：干果、马肠、奶酪、蜂蜜、水果一次买齐，记得砍价、看好钱包。</li>
+      <li>奶茶多为咸口，甜党请提前说「сладкий / sweet」。</li>
+      <li>饮水：市区自来水不建议直饮，买瓶装水。</li>
+    </ul>
+  </section>
+<section id="s9">
+    <h2 class="sec"><span class="num">9</span>预算表（估算）</h2>
+    <p class="sec-sub">7 天 / 人均。汇率：1 元 ≈ 70 坚戈，1 USD ≈ 490 坚戈（2026 年参考）。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项目</th><th>金额（¥）</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>往返机票</td><td class="nowrap">2,800 – 4,500</td><td>直飞；陆路大巴可压到 ~800</td></tr>
+          <tr><td>住宿（6 晚）</td><td class="nowrap">1,000 – 2,600</td><td>150–400 / 晚，Saty 更便宜</td></tr>
+          <tr><td>市内交通</td><td class="nowrap">150 – 350</td><td>公交/地铁几乎白菜价，打车也不贵</td></tr>
+          <tr><td>周边一日游 / 拼团</td><td class="nowrap">600 – 1,400</td><td>两湖一峡 + 恰伦 + 阿尔金埃梅尔</td></tr>
+          <tr><td>餐饮</td><td class="nowrap">400 – 800</td><td>¥50–120 / 天</td></tr>
+          <tr><td>门票 &amp; 缆车</td><td class="nowrap">150 – 400</td><td>琼布拉克缆车、温泉、博物馆</td></tr>
+          <tr><td>购物 &amp; 杂项</td><td class="nowrap">300 – 1,000</td><td>巧克力、蜂蜜、马肠、干果</td></tr>
+          <tr style="background:#f6ecec;"><td><strong>合计</strong></td><td class="nowrap"><strong>¥5,400 – 11,050</strong></td><td>不含购物 ≈ ¥5,000–10,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">💸</span>省钱要点</p>
+      <ul>
+        <li>对比格鲁吉亚：<strong>机票便宜一半、物价更低、免签更久</strong>，是性价比更高的短假选择。</li>
+        <li>绿巴扎买手信比机场便宜 3–5 倍。</li>
+        <li>「两湖一峡」拼团比自己包车省一半钱，<strong>单人首选</strong>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s10">
+    <h2 class="sec"><span class="num">10</span>通讯 / 电源 / 实用 App</h2>
+    <p class="sec-sub">落地 10 分钟能搞定的事，别拖到晚上。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项</th><th>情况</th></tr></thead>
+        <tbody>
+          <tr><td>手机卡</td><td><strong>Beeline / Kcell / Tele2(Activ)</strong>，机场与市区营业厅有售，需护照登记；流量便宜</td></tr>
+          <tr><td>eSIM</td><td>Airalo 等有哈萨克斯坦套餐，¥20–150，省去排队</td></tr>
+          <tr><td>覆盖</td><td>市区 4G/5G 很好；<strong>科尔赛湖 / 卡因迪湖 / 峡谷深处信号弱或无</strong></td></tr>
+          <tr><td>电压 / 插座</td><td><strong>220V / 50Hz，欧标 Type C/F（两圆脚）</strong> → 带转换插头</td></tr>
+          <tr><td>必备 App</td><td><strong>Yandex Go</strong>（打车）、Yandex Maps / 2GIS（本地地图比 Google 准）、Google Translate（可下俄语离线包）、Airalo</td></tr>
+          <tr><td>语言</td><td>哈萨克语 + <strong>俄语为主</strong>，英语在旅游区可用但普及度一般；翻译 App 必备</td></tr>
+          <tr><td>紧急电话</td><td><strong>112</strong>（统一）/ 101 消防 / 102 警察 / 103 急救</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">📶</span>离线准备</p>
+      <p>进山前<strong>先下载离线地图</strong>（Yandex Maps / 2GIS 支持离线），并把「住宿地址 + 司机电话 + 使领馆电话」截图存好。山里没信号是常态。</p>
+    </div>
+  </section>
+<section id="s11">
+    <h2 class="sec"><span class="num">11</span>🛡️ 单人旅行安全（重点）</h2>
+    <p class="sec-sub">先说结论：阿拉木图<strong>适合单人旅行</strong>，但风险不在「暴力犯罪」，而在<strong>诈骗、交通、以及山区自然风险</strong>。</p>
+
+    <div class="callout">
+      <p class="ttl"><span class="ico">✅</span>总体判断</p>
+      <ul>
+        <li>哈萨克斯坦整体治安<strong>相对稳定</strong>，阿拉木图是该国最发达、最国际化的城市，市中心白天与傍晚步行<strong>基本安全</strong>。</li>
+        <li>多数欧美独自旅行者的评价：安全度<strong>不亚于、甚至优于部分欧美大城市</strong>。</li>
+        <li>对独行女性而言，哈国属于<strong>中亚地区里相对友好</strong>的一档，但仍有需要防备的场景（见下）。</li>
+        <li>⚠️ 历史提示：2022 年 1 月阿拉木图曾发生大规模骚乱（已平息多年）。若遇<strong>大规模集会/示威</strong>，立刻远离并回酒店，这是通用原则。</li>
+      </ul>
+    </div>
+
+    <h3>按风险等级排列的「单人避坑清单」</h3>
+
+    <div class="risk">
+      <span class="lv high">风险 高</span>
+      <h4>🚕 机场 / 车站的拉客出租车</h4>
+      <ul>
+        <li>这是阿拉木图<strong>最常见、也最容易中招</strong>的坑：刚出抵达大厅就有人凑上来问「Taxi?」，报价可能是正常价的 <strong>3–5 倍</strong>。</li>
+        <li><strong>铁律</strong>：不理、不跟、不还价 —— 直接走到出口外打开 <strong>Yandex Go</strong> 叫车。</li>
+        <li>Yandex Go <strong>建议出发前用国内手机号注册好</strong>，可绑卡或用现金，价格透明可追溯。</li>
+        <li>若必须坐黑车：<strong>先谈死总价、确认是总价不是每人</strong>，并当着司机面拍下车牌发给家人。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv high">风险 高</span>
+      <h4>🏔️ 独自进山 / 独走徒步路线</h4>
+      <ul>
+        <li>科尔赛湖、卡因迪湖、恰伦峡谷、阿尔金埃梅尔等地<strong>信号弱、救援慢</strong>，独行出事最难被发现。</li>
+        <li><strong>建议</strong>：这些路线一律走<strong>中文拼团 / 一日游</strong>（有车、有向导、有同伴），比独自包车更便宜也更安全。</li>
+        <li>若坚持独行：告知民宿老板/酒店前台你的<strong>路线 + 预计返回时间</strong>；天黑前必须出山；不偏离标记路线。</li>
+        <li>卡因迪湖路况差，需<strong>四驱车</strong>；不要自己租普通轿车硬闯。</li>
+        <li>部分山区靠近<strong>吉尔吉斯斯坦边境</strong>，属管制区，注意标识，<strong>不要越界</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>🚗 交通与道路安全</h4>
+      <ul>
+        <li>中国驻阿拉木图总领馆<strong>专门发过交通安全提醒</strong>：当地车流快、部分司机不守规矩，<strong>过马路务必走人行横道并左右看</strong>。</li>
+        <li>10 月山上可能结冰，<strong>不熟悉山路别自驾上山</strong>；包车选正规公司，别省那几十块。</li>
+        <li>严禁酒驾；乘长途车系好安全带。</li>
+        <li>中国驾照<strong>不能直接使用</strong>，自驾需国际驾照。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>👛 扒窃与小微诈骗</h4>
+      <ul>
+        <li>高发地：<strong>绿巴扎、公交与地铁车厢、夜市、火车站</strong>。手机和钱包别放外侧口袋。</li>
+        <li>背包尽量前背；别在人多处翻现金（等于告诉别人钱在哪）。</li>
+        <li>警惕「换汇」搭讪、假警察查证件（真警察不会当街要现金）、假装热情带你「去他朋友店里」。</li>
+        <li>只在<strong>正规换汇点 / 银行</strong>换钱，机场汇率最差。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>🌙 夜间与饮酒</h4>
+      <ul>
+        <li>夜间避免：<strong>偏僻公园、地下通道、工地周边、空旷河岸</strong>；一人别走没路灯的小巷。</li>
+        <li>喝酒要克制，<strong>饮料不要离开视线</strong>；独行女性尤其注意陌生人的「请喝酒」。</li>
+        <li>晚上回酒店尽量用 App 打车到<strong>酒店门口</strong>，而不是提前一个路口下车走路。</li>
+        <li>住宿优先选<strong>正规酒店 / 24 小时前台</strong>，不要无人值守的私人短租。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv low">风险 低</span>
+      <h4>🧍‍♀️ 独行女性专项</h4>
+      <ul>
+        <li>哈国社交氛围偏保守，<strong>着装得体（遮肩、不过短）</strong>能显著减少不必要的搭讪。</li>
+        <li>搭讪多为善意好奇，礼貌而坚定地说「нет, спасибо（不用，谢谢）」即可，不必紧张。</li>
+        <li>坐出租车坐<strong>后排</strong>，行程分享给家人；不要在车里透露你独自旅行、住哪家酒店。</li>
+        <li>被持续纠缠：走向人多处、店铺、警察，或直接进酒店大堂求助。</li>
+        <li>随身带<strong>便携门挡 / 门锁</strong>，住宿加一道保险。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv low">风险 低</span>
+      <h4>🏥 健康与高原</h4>
+      <ul>
+        <li>海拔：市区约 700–900m（无感），麦迪奥 1691m、琼布拉克 2260m、大阿拉木图湖 2511m —— 可能轻微高反，<strong>慢走、多喝水、别剧烈跑跳</strong>。</li>
+        <li>自备常用药：感冒药、肠胃药、止痛药、创可贴、防晒霜、润唇膏。</li>
+        <li>瓶装水为主；生食谨慎。</li>
+        <li><strong>保险建议</strong>：买含<strong>徒步意外 + 医疗转运 / 直升机救援</strong>的境外旅行险，几十元，山区尤其值。</li>
+      </ul>
+    </div>
+
+    <h3>🧰 单人安全「四件套」</h3>
+    <div class="grid g2">
+      <div class="card"><h4>① 位置共享</h4><p>把行程表发给家人，开启微信/地图实时位置共享；每天固定时间报平安。</p></div>
+      <div class="card"><h4>② 离线备份</h4><p>护照、保单、机票、酒店订单拍成图存云端 + 本地相册；原件放保险箱。</p></div>
+      <div class="card"><h4>③ 双份现金</h4><p>钱包只放当天用量，其余分散在行李、贴身腰包；备一张备用卡。</p></div>
+      <div class="card"><h4>④ 应急号码</h4><p>112 统一 / 102 警察 / 103 急救；使领馆电话出发前从官网抄下来。</p></div>
+    </div>
+
+    <div class="callout danger">
+      <p class="ttl"><span class="ico">🆘</span>万一出事</p>
+      <ul>
+        <li>先保人身安全，财物可以放弃。</li>
+        <li>报警 <strong>102</strong>、急救 <strong>103</strong>、统一应急 <strong>112</strong>；语言不通就找酒店前台帮忙翻译。</li>
+        <li>护照丢失：先报警拿<strong>报案证明</strong>，再联系<strong>中国驻哈萨克斯坦使领馆</strong>补办旅行证。</li>
+        <li>把使领馆地址和电话存在离线备忘录里 —— 关键时刻网络可能不可靠。</li>
+      </ul>
+    </div>
+  </section>
+<section id="s12">
+    <h2 class="sec"><span class="num">12</span>行前 Checklist</h2>
+    <p class="sec-sub">照着打勾就行。</p>
+    <h3>证件类</h3>
+    <ul class="check">
+      <li>护照（有效期 ≥ 离境后 6 个月）+ 复印件</li>
+      <li>返程机票行程单、酒店预订单</li>
+      <li>境外旅行保险保单（<strong>进山必买</strong>）</li>
+      <li>国际驾照（如自驾）</li>
+    </ul>
+    <h3>装备类</h3>
+    <ul class="check">
+      <li>欧标转换插头（Type C/F）</li>
+      <li>冲锋衣 + 抓绒 / 薄羽绒 + 帽子手套（山上很冷）</li>
+      <li>防滑徒步鞋、墨镜、防晒、保温杯</li>
+      <li>常用药 + 英文处方说明</li>
+      <li>充电宝、<strong>离线地图</strong>（Yandex Maps / 2GIS）</li>
+      <li>便携门挡（独行加分项）</li>
+    </ul>
+    <h3>财务类</h3>
+    <ul class="check">
+      <li>美元现金（换坚戈最划算）</li>
+      <li>Visa / MasterCard（大额刷卡）</li>
+      <li>银联卡（部分 ATM 可取现，备选）</li>
+    </ul>
+    <h3>出发前 3 天</h3>
+    <ul class="check">
+      <li><strong>用国内手机号注册好 Yandex Go</strong></li>
+      <li>下载俄语离线翻译包 + 阿拉木图离线地图</li>
+      <li>把两湖一峡 / 恰伦的<strong>拼团或包车订好</strong></li>
+      <li>行程表发给家人，开启位置共享</li>
+      <li>抄下使领馆电话与紧急号码（112 / 102 / 103）</li>
+    </ul>
+  </section>
+
+  <section id="s13">
+    <h2 class="sec"><span class="num">13</span>常见 Q&amp;A</h2>
+    <div class="qa"><p class="q">中国护照真的免签吗？能待多久？</p><p class="a">免签。中哈互免签证协定 2023-11-10 生效，单次 ≤ 30 日，每 180 日累计 ≤ 90 日。免签入境<strong>不能在境内延期</strong>。</p></div>
+    <div class="qa"><p class="q">北京有直飞吗？多久？</p><p class="a">有。<strong>国航 CA799</strong>（周一/三/五/日）和<strong>阿斯塔纳航空 KC268</strong>（每日）北京首都 ⇄ 阿拉木图，约 <strong>5 小时 40 分</strong>。</p></div>
+    <div class="qa"><p class="q">需要强制买保险吗？</p><p class="a">截至 2026 年 9 月，<strong>没有强制要求</strong>（不同于格鲁吉亚 2026 新规）。但进山徒步强烈建议买含救援的境外旅行险。</p></div>
+    <div class="qa"><p class="q">一个人去安全吗？</p><p class="a">整体安全，市区独行没问题。真正要防的是<strong>机场拉客出租车</strong>和<strong>独自进山</strong>。把周边自然线路改成拼团，安全系数立刻拉满。</p></div>
+    <div class="qa"><p class="q">不会俄语/哈语怎么办？</p><p class="a">市中心、酒店、景点英语基本够用；备好翻译 App 与离线俄语包，配合肢体语言完全能走通。</p></div>
+    <div class="qa"><p class="q">要带多少现金？</p><p class="a">建议带 $300–500 等值美元换坚戈，其余刷卡。巴扎、乡镇、拼团司机常只收现金。</p></div>
+    <div class="qa"><p class="q">7 天够玩吗？</p><p class="a">够。市区 2 天 + 麦迪奥/琼布拉克 1 天 + 大阿拉木图湖 1 天 + 两湖一峡 2 天 + 机动 1 天，节奏刚好。</p></div>
+    <div class="qa"><p class="q">阿拉木图 vs 格鲁吉亚选哪个？</p><p class="a">短假、单人、预算优先 → <strong>阿拉木图</strong>；长假、有搭子、想要更多文化与美食 → <strong>格鲁吉亚</strong>。</p></div>
+  </section>
+
+  <section id="s14">
+    <h2 class="sec"><span class="num">14</span>官方信源（可自行复核）</h2>
+    <ul>
+      <li>《中哈政府关于互免签证的协定》：中国驻哈萨克斯坦大使馆 / 驻阿拉木图总领馆官网（2023-11-10 生效）</li>
+      <li>中国驻阿拉木图总领馆 · 交通安全提醒、领事提醒（官网「领事服务」栏目）</li>
+      <li>中国驻哈萨克斯坦使领馆 · 电动滑板车新规提醒（2026-08-19）</li>
+      <li>航司官网：国航 <span class="kbd">airchina.com</span> / 阿斯塔纳航空 <span class="kbd">airastana.com</span></li>
+      <li>本地地图与打车：<span class="kbd">Yandex Go</span> / <span class="kbd">2GIS</span></li>
+    </ul>
+    <p style="font-size:14px;color:var(--ink-soft);">使领馆的具体地址与应急电话请以官网最新公布为准，出发前务必自行核对一次。</p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>🇰🇿 阿拉木图 · 中秋国庆完全攻略 · 生成于 2026-09-20</span>
+    <span>机票价格与班期为动态数据，出行前请以航司与官方最新公告为准。</span>
+  </div>
+</footer>
+
+</body>
+</html>

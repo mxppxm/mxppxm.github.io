@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇬🇪 格鲁吉亚 · 中秋国庆完全攻略（北京出发）</title>
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-soft:#4a453d;
+    --paper:#faf7f1;
+    --paper-2:#f2ece1;
+    --line:#e2d9c8;
+    --wine:#8c2f39;
+    --wine-soft:#b4485a;
+    --teal:#1f5f5b;
+    --teal-soft:#2f8a83;
+    --gold:#b8892f;
+    --warn-bg:#fdf3e3;
+    --warn-line:#e0b566;
+    --ok-bg:#eef6f2;
+    --ok-line:#7fb8a4;
+    --radius:14px;
+    --shadow:0 4px 24px rgba(28,26,23,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1100px 460px at 12% -10%, rgba(47,138,131,.55), transparent 62%),
+      radial-gradient(900px 420px at 92% 5%, rgba(140,47,57,.55), transparent 60%),
+      linear-gradient(160deg,#171512 0%,#26211a 55%,#1d2b2a 100%);
+    color:#f6f1e7;
+    padding:72px 0 84px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size:22px 22px;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .flag{font-size:44px;line-height:1;display:block;margin-bottom:14px;}
+  .hero h1{
+    font-size:clamp(28px,4.6vw,50px);
+    margin:0 0 14px;
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:1.2;
+  }
+  .hero h1 span{
+    background:linear-gradient(90deg,#f0c674,#e79aa6);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.tag{
+    margin:0;
+    max-width:660px;
+    color:#cfc6b6;
+    font-size:clamp(14px,1.6vw,17px);
+  }
+  .hero-meta{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .chip{
+    border:1px solid rgba(255,255,255,.22);
+    background:rgba(255,255,255,.06);
+    padding:6px 14px;border-radius:999px;
+    font-size:13px;color:#e8e0d2;backdrop-filter:blur(4px);
+  }
+
+  /* ---------- TOC ---------- */
+  .toc{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    margin:-42px auto 46px;
+    position:relative;z-index:5;
+    box-shadow:var(--shadow);
+  }
+  .toc h2{
+    margin:0 0 14px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:700;
+  }
+  .toc ol{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px 22px;
+    counter-reset:t;
+  }
+  .toc li{counter-increment:t;}
+  .toc a{
+    color:var(--ink);text-decoration:none;font-size:14.5px;
+    display:flex;gap:9px;align-items:baseline;
+    padding:5px 8px;border-radius:8px;transition:.16s;
+  }
+  .toc a::before{
+    content:counter(t,decimal-leading-zero);
+    color:var(--wine);font-weight:700;font-size:12px;
+    font-variant-numeric:tabular-nums;
+  }
+  .toc a:hover{background:rgba(140,47,57,.08);color:var(--wine);}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin:0 0 52px;scroll-margin-top:20px;}
+  h2.sec{
+    font-size:clamp(20px,2.6vw,27px);
+    margin:0 0 6px;letter-spacing:-.01em;font-weight:750;
+    display:flex;align-items:center;gap:12px;
+  }
+  h2.sec .num{
+    flex:none;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:10px;
+    background:var(--wine);color:#fff;font-size:15px;font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .sec-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 22px 46px;}
+  h3{font-size:17px;margin:30px 0 12px;font-weight:700;color:var(--teal);}
+  h3::before{content:"— ";color:var(--gold);}
+  p{margin:0 0 14px;}
+  a{color:var(--teal-soft);}
+
+  /* ---------- TABLES ---------- */
+  .tw{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);margin:0 0 20px;background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px;}
+  thead th{
+    background:linear-gradient(180deg,#2a2723,#221f1b);
+    color:#f2ece1;text-align:left;font-weight:650;
+    padding:12px 15px;white-space:nowrap;font-size:13.5px;letter-spacing:.02em;
+  }
+  tbody td{padding:11px 15px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:#fbf9f5;}
+  tbody tr:hover{background:#f6f1e6;}
+  td strong{color:var(--wine);}
+  .nowrap{white-space:nowrap;}
+
+  /* ---------- CALLOUTS ---------- */
+  .callout{
+    border-radius:var(--radius);padding:18px 20px 18px 22px;margin:0 0 22px;
+    border-left:5px solid var(--teal-soft);
+    background:var(--ok-bg);
+  }
+  .callout.warn{border-left-color:var(--warn-line);background:var(--warn-bg);}
+  .callout.danger{border-left-color:var(--wine);background:#fbeef0;}
+  .callout .ttl{font-weight:750;margin:0 0 8px;display:flex;align-items:center;gap:8px;font-size:15.5px;}
+  .callout.warn .ttl{color:#8a5a12;}
+  .callout.danger .ttl{color:var(--wine);}
+  .callout .ttl .ico{font-size:18px;}
+  .callout p:last-child{margin-bottom:0;}
+  .callout ul{margin:8px 0 0;padding-left:20px;}
+  .callout li{margin-bottom:5px;}
+
+  /* ---------- CARDS ---------- */
+  .grid{display:grid;gap:16px;}
+  .grid.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .grid.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr));}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;box-shadow:var(--shadow);transition:.2s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(28,26,23,.11);}
+  .card h4{margin:0 0 8px;font-size:15.5px;font-weight:700;display:flex;gap:8px;align-items:center;}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .card .big{font-size:22px;font-weight:800;color:var(--wine);display:block;margin-bottom:4px;font-variant-numeric:tabular-nums;}
+
+  /* ---------- ITINERARY ---------- */
+  .itin{border-left:3px solid var(--line);margin-left:16px;padding-left:26px;position:relative;}
+  .day{
+    position:relative;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:13px 18px;margin-bottom:12px;box-shadow:var(--shadow);
+  }
+  .day::before{
+    content:"";position:absolute;left:-33px;top:20px;
+    width:13px;height:13px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--wine-soft);
+  }
+  .day .dnum{
+    display:inline-block;background:var(--teal);color:#fff;
+    font-size:12px;font-weight:700;border-radius:6px;padding:2px 9px;margin-right:9px;
+    font-variant-numeric:tabular-nums;
+  }
+  .day .date{font-size:12.5px;color:var(--ink-soft);margin-left:6px;}
+  .day .desc{display:block;margin-top:7px;font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- MISC ---------- */
+  .check{list-style:none;padding:0;margin:0;}
+  .check li{
+    background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:9px 14px;margin-bottom:8px;font-size:14.5px;
+    display:flex;gap:11px;align-items:flex-start;
+  }
+  .check li::before{
+    content:"";flex:none;width:16px;height:16px;margin-top:3px;
+    border:2px solid var(--teal-soft);border-radius:5px;
+  }
+  .pill{
+    display:inline-block;font-size:12px;font-weight:700;
+    padding:2px 9px;border-radius:999px;background:rgba(140,47,57,.1);color:var(--wine);
+    margin-left:6px;vertical-align:middle;
+  }
+  .pill.ok{background:rgba(47,138,131,.13);color:var(--teal);}
+  .kbd{
+    background:#efe9dc;border:1px solid var(--line);border-radius:6px;
+    padding:1px 7px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  .qa{border-top:1px solid var(--line);padding:16px 0;}
+  .qa:first-of-type{border-top:none;}
+  .qa .q{font-weight:700;margin:0 0 6px;color:var(--ink);}
+  .qa .q::before{content:"Q ";color:var(--wine);font-weight:800;}
+  .qa .a{margin:0;color:var(--ink-soft);font-size:14.5px;}
+  .qa .a::before{content:"A ";color:var(--teal);font-weight:800;}
+
+  .risk{border-left:5px solid var(--wine);background:#fff;border-radius:var(--radius);padding:16px 20px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .risk .lv{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:8px;color:#fff;}
+  .lv.high{background:#a8323f;} .lv.mid{background:#c9852a;} .lv.low{background:#2f8a83;}
+  .risk h4{margin:0 0 6px;font-size:15.5px;}
+  .risk ul{margin:6px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink-soft);}
+  .risk li{margin-bottom:5px;}
+
+  footer{
+    background:#221f1b;color:#a49b8c;padding:38px 0;font-size:13.5px;margin-top:20px;
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+  footer a{color:#e0b566;text-decoration:none;}
+
+  @media (max-width:640px){
+    .hero{padding:52px 0 64px;}
+    .toc{margin-top:-30px;padding:18px;}
+    .sec-sub{margin-left:0;}
+    h2.sec .num{width:30px;height:30px;font-size:13.5px;}
+  }
+  @media print{
+    body{background:#fff;font-size:12pt;}
+    .hero{background:#fff;color:#000;padding:20px 0;}
+    .hero h1 span{color:#000;-webkit-text-fill-color:#000;}
+    .toc,.card,.day,.tw{box-shadow:none;}
+    section{page-break-inside:avoid;}
+    footer{background:#fff;color:#666;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="flag">🇬🇪</span>
+    <h1>格鲁吉亚 · <span>中秋 + 国庆</span><br>完全攻略</h1>
+    <p class="tag">上帝的后花园 · 高加索葡萄酒发源地 · 雪山 + 黑海 + 老城<br>从北京出发 · 一份能直接拎包走的作战手册</p>
+    <div class="hero-meta">
+      <span class="chip">📅 2026-09-20 生成</span>
+      <span class="chip">🛂 中国普通护照免签</span>
+      <span class="chip">🍷 10 月 = 全年黄金窗口</span>
+      <span class="chip">⏱ 13 天环线 / 9 天精华 / 7 天极限</span>
+      <span class="chip">🧍 单人友好度：较高</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <h2>目录 · Contents</h2>
+    <ol>
+      <li><a href="#s0">先看结论 TL;DR</a></li>
+      <li><a href="#s1">假期日期 &amp; 拼假</a></li>
+      <li><a href="#s2">签证与入境（含 2026 新规）</a></li>
+      <li><a href="#s3">机票：北京怎么飞</a></li>
+      <li><a href="#s4">10 月天气与穿衣</a></li>
+      <li><a href="#s5">行程方案 A / B / C</a></li>
+      <li><a href="#s6">境内交通</a></li>
+      <li><a href="#s7">住宿住哪儿</a></li>
+      <li><a href="#s8">吃什么</a></li>
+      <li><a href="#s9">预算表</a></li>
+      <li><a href="#s10">通讯 / 电源 / App</a></li>
+      <li><a href="#s11">安全与避坑</a></li>
+      <li><a href="#s11b">🛡️ 单人旅行安全（重点）</a></li>
+      <li><a href="#s12">行前 Checklist</a></li>
+      <li><a href="#s13">常见 Q&amp;A</a></li>
+      <li><a href="#s14">官方信源</a></li>
+    </ol>
+  </nav>
+
+  <!-- 0 -->
+  <section id="s0">
+    <h2 class="sec"><span class="num">0</span>先看结论（TL;DR）</h2>
+    <p class="sec-sub">时间紧就先看这张表，其余都是展开说明。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项目</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>免签？</td><td>✅ 中国普通护照<strong>免签</strong>，单次停留 ≤ <strong>30 天</strong>，任意 180 天累计 ≤ 90 天</td></tr>
+          <tr><td>⚠️ 2026 新规</td><td><strong>强制旅游医疗保险</strong>，保额 ≥ <strong>30,000 拉里</strong>（≈¥7–8 万），未买罚 300 GEL 或拒入境</td></tr>
+          <tr><td>时差</td><td>北京 −4 小时（第比利斯 UTC+4）</td></tr>
+          <tr><td>花费</td><td>中档自由行 <strong>¥600–900 / 人 / 天</strong>（不含机票）；机票往返 <strong>¥4,500–8,000</strong></td></tr>
+          <tr><td>货币</td><td>拉里 GEL，1 GEL ≈ <strong>2.6–2.7 元</strong>；带<strong>美元 / 欧元现金</strong>去换最划算</td></tr>
+          <tr><td>最佳时长</td><td>8–13 天（假期够，这条线本身也适合 9–10 天环线）</td></tr>
+          <tr><td>一句话</td><td>10 月初是格鲁吉亚<strong>全年最黄金的窗口</strong>：天气好、葡萄丰收、还不太冷。机票酒店要现在就抢</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2 class="sec"><span class="num">1</span>假期日期 &amp; 拼假方案</h2>
+    <p class="sec-sub">依据《国务院办公厅关于 2026 年部分节假日安排的通知》。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>假期</th><th>日期</th><th>天数</th></tr></thead>
+        <tbody>
+          <tr><td>中秋节</td><td class="nowrap"><strong>9 月 25 日（周五）– 9 月 27 日（周日）</strong></td><td>3 天，<strong>不调休</strong></td></tr>
+          <tr><td>国庆节</td><td class="nowrap"><strong>10 月 1 日（周四）– 10 月 7 日（周三）</strong></td><td>7 天</td></tr>
+          <tr><td>补班</td><td class="nowrap">9 月 20 日（周日）、10 月 10 日（周六）上班</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>拼假公式</h3>
+    <p>中间只隔 <strong>9/28、9/29、9/30</strong> 三个工作日：</p>
+    <div class="callout">
+      <p class="ttl"><span class="ico">🎉</span>请 3 天假（9/28–9/30）→ 直接拿下 9 月 25 日 – 10 月 7 日，共 13 天</p>
+      <p>这是今年性价比最高的一次「请假套利」。</p>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>方案</th><th>请假成本</th><th>可用天数</th><th>适合</th></tr></thead>
+        <tbody>
+          <tr><td>只玩国庆</td><td>0 天</td><td>7 天</td><td>打卡核心三城（第比利斯 + 卡兹别克 + 巴统）</td></tr>
+          <tr><td>中秋 + 国庆不请假</td><td>0 天</td><td>3 + 7 天（两段）</td><td>不合适，来回一趟不划算</td></tr>
+          <tr><td><strong>拼假（推荐）</strong></td><td><strong>3 天</strong></td><td><strong>13 天</strong></td><td>经典大环线 + 斯瓦涅季雪山，一次玩透</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2 class="sec"><span class="num">2</span>签证与入境</h2>
+    <p class="sec-sub">这一节决定你能不能上飞机。</p>
+
+    <h3>2.1 免签</h3>
+    <ul>
+      <li>中格<strong>普通护照互免签证协定</strong>自 <strong>2024 年 5 月 28 日</strong>生效。</li>
+      <li>中国普通护照持有人：<strong>单次入境最长停留 30 天</strong>；<strong>任意 180 天内累计不超过 90 天</strong>。</li>
+      <li>无需申请、无需缴费，入境时边检决定实际停留期。</li>
+    </ul>
+
+    <h3>2.2 ⚠️ 2026 年 1 月 1 日起：强制旅游保险</h3>
+    <div class="callout danger">
+      <p class="ttl"><span class="ico">🚨</span>最新变化 —— 网上 90% 的老攻略均已失效</p>
+      <p>据 <strong>中国驻格鲁吉亚大使馆 2025-12-29 通知</strong>，根据格鲁吉亚《旅游法》最新规定：从 <strong>2026 年 1 月 1 日</strong>起，入境格鲁吉亚游客<strong>均须购买旅游医疗和意外保险</strong>。</p>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项</th><th>要求</th></tr></thead>
+        <tbody>
+          <tr><td>保额</td><td><strong>不得低于 30,000 拉里（GEL）</strong> ≈ ¥7–8 万</td></tr>
+          <tr><td>保障范围</td><td>紧急门诊 ≥ $5,000；住院 / 意外 / 突发疾病 / 医疗转运 ≥ $30,000</td></tr>
+          <tr><td>有效期</td><td>必须<strong>完全覆盖在格停留时间</strong>（入境日 → 离境日）</td></tr>
+          <tr><td>承保方</td><td>任意格鲁吉亚或国际保险公司均可</td></tr>
+          <tr><td>文件语言</td><td><strong>英文或格鲁吉亚文</strong>，须载明：被保险人、适用国家地区、险种、有效期、保额、保费金额及支付时间 / 地点 / 方式</td></tr>
+          <tr><td>未购买后果</td><td><strong>罚款 300 拉里（≈$110）</strong>，并可能<strong>被拒绝入境</strong></td></tr>
+          <tr><td>查验地点</td><td>机场及<strong>所有陆路口岸</strong>，电子或纸质均可</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>实操建议</h3>
+    <div class="grid g3">
+      <div class="card"><h4>① 提前买好</h4><p>打印一份 + 手机存 PDF 备份，口岸可能两种都要看。</p></div>
+      <div class="card"><h4>② 核对保额</h4><p>国内「境外旅行险」通常涵盖，但普通申根险只有 €30,000，<strong>按拉里折算不一定达标</strong>，务必让客服出<strong>英文保单</strong>并确认 ≥ 30,000 GEL。</p></div>
+      <div class="card"><h4>③ 图省事</h4><p>直接买格鲁吉亚本地产品，如 <span class="kbd">cover.ge</span>，2 分钟出单，明确符合第 602 号法令。</p></div>
+    </div>
+
+    <h3>2.3 入境随身材料</h3>
+    <ul class="check">
+      <li>护照（有效期建议 ≥ 离境后 6 个月）</li>
+      <li><strong>旅游保险英文保单</strong>（2026 强制项）</li>
+      <li>返程 / 续程机票行程单</li>
+      <li>住宿预订单（第一晚即可）</li>
+      <li>足够现金（边检偶尔会问）</li>
+    </ul>
+
+    <h3>2.4 药品与海关</h3>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">💊</span>容易被忽略的坑</p>
+      <ul>
+        <li>格鲁吉亚对<strong>含可待因、麻醉类、精神类</strong>药品管制<strong>极严</strong>，携带处方药务必带<strong>处方 + 英文说明</strong>，数量以个人合理疗程为限。</li>
+        <li>现金携带无严格上限，但建议单次 ≤ $10,000 以免申报麻烦。</li>
+        <li>肉类、乳制品、种子等农产品有限制。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2 class="sec"><span class="num">3</span>机票：北京怎么飞过去</h2>
+    <p class="sec-sub">2026 年 9 月核验。北京目前没有稳定每日直飞第比利斯的航班。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>方案</th><th>航班</th><th>班期</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>① 国航</td><td><strong>CA781</strong> 北京首都 PEK → 第比利斯 TBS</td><td class="nowrap">周二 / 周四 / 周六</td><td>12:50 起飞、21:05 抵达（当地），<strong>含 1 次经停</strong>，全程约 <strong>12h15m</strong>；有效期至 2026-10-24</td></tr>
+          <tr><td>② 东航直飞（上海）</td><td><strong>MU285 / 286</strong> 上海浦东 ⇄ 第比利斯</td><td class="nowrap">周三 / 周五 / 周日</td><td>A330 宽体<strong>真直飞</strong>，去程 12:50→19:00（约 10h10m）；回程 21:00→次日 10:00。北京需先飞 / 高铁到上海</td></tr>
+          <tr><td>③ 中东中转</td><td>卡塔尔（多哈）、阿联酋（迪拜）、阿提哈德（阿布扎比）</td><td class="nowrap">每日</td><td><strong>最主流</strong>。总时长 13–17h，服务好，常出特价</td></tr>
+          <tr><td>④ 土耳其中转</td><td>土耳其航空（伊斯坦布尔 IST）</td><td class="nowrap">每日</td><td>顺路可玩伊斯坦布尔，行李可直挂</td></tr>
+          <tr><td>⑤ 中亚中转</td><td>阿斯塔纳航空（阿拉木图）、阿塞拜疆航空（巴库）</td><td class="nowrap">多数每日</td><td>价格常最低，但中转时间较长</td></tr>
+          <tr><td>⑥ 南航</td><td>广州 / 乌鲁木齐经停</td><td class="nowrap">视班期</td><td>价格竞争激烈，可捡漏</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">🚫</span>不要走莫斯科中转</p>
+      <p>涉及制裁，保险与签证风险都高，直接排除。</p>
+    </div>
+
+    <h3>抢票策略（现在就是最佳窗口）</h3>
+    <div class="grid g2">
+      <div class="card"><h4>📉 价格规律</h4><p>2026 中秋国庆：假期前最后一个工作日（9/24 前后）出行最便宜；节前首日最贵。今年国际机票价格同比走低，是难得的「出行红利」。</p></div>
+      <div class="card"><h4>🎟️ 会员日放价</h4><p>南航每月 <strong>28 日</strong>、东航每月 <strong>18 日</strong>、国航每月 <strong>15 日</strong>。</p></div>
+      <div class="card"><h4>✈️ 双机场比价</h4><p>首都 PEK 与大兴 PKX 都要查，PKX 常有低价国际线。</p></div>
+      <div class="card"><h4>⏳ 中转别太长</h4><p>优先选总时长 ≤ 16h，否则 13 天假期会被吃掉两天。</p></div>
+      <div class="card"><h4>🔁 回程错峰</h4><p>今年回程热度分散在 10/4–10/7，<strong>10/4 回比 10/7 回便宜不少</strong>。</p></div>
+      <div class="card"><h4>💰 预算参考</h4><p><span class="big">¥4,500–8,000</span>含税往返 / 人（估算）。中转 ¥4,500–6,500；直飞 / 旺季 ¥6,000–8,000。</p></div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-soft);margin-top:14px;">※ 请以携程 / 飞猪 / Trip.com / Skyscanner 实时比价为准，以上仅为区间。</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2 class="sec"><span class="num">4</span>10 月天气与穿衣</h2>
+    <p class="sec-sub">穿衣公式：分层穿（Layering）。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>地区</th><th>白天</th><th>夜间</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>第比利斯</td><td>20–25℃</td><td>10–13℃</td><td>秋季舒适，偶有阵雨</td></tr>
+          <tr><td>卡兹别克 / 山区</td><td>10–15℃</td><td>0–5℃</td><td><strong>10 月起可能降雪</strong>，早晚很冷</td></tr>
+          <tr><td>巴统（黑海）</td><td>20–24℃</td><td>13–16℃</td><td>温暖湿润，雨水多</td></tr>
+          <tr><td>梅斯蒂亚 / 乌树故里</td><td>8–15℃</td><td>0–5℃</td><td>海拔高，温差巨大，10 月中后逐渐封路</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h4>🧥 上身</h4><p>打底速干 + 抓绒 / 薄羽绒 + <strong>防风防水冲锋衣</strong></p></div>
+      <div class="card"><h4>👖 下身</h4><p>长裤 + <strong>徒步鞋</strong>（老城石板路 + 山路都要）</p></div>
+      <div class="card"><h4>🧢 配件</h4><p>帽子、手套（卡兹别克 / 斯瓦涅季清晨必备）</p></div>
+      <div class="card"><h4>🕶️ 其他</h4><p>墨镜 + 防晒（高原紫外线强）、小折叠伞</p></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <h2 class="sec"><span class="num">5</span>行程方案</h2>
+    <p class="sec-sub">三套方案，按你的假期长度挑。</p>
+
+    <h3>🏆 方案 A：13 天经典大环线（拼假版，最推荐）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1</span><span class="date">9/25</span><span class="desc">北京出发，飞往第比利斯</span></div>
+      <div class="day"><span class="dnum">D2</span><span class="date">9/26</span><span class="desc">抵达第比利斯，老城漫步：自由广场、和平桥、硫磺浴区、纳里卡拉要塞、圣三一大教堂</span></div>
+      <div class="day"><span class="dnum">D3</span><span class="date">9/27</span><span class="desc">第比利斯 → <strong>姆茨赫塔</strong>（季瓦里修道院 / 生命之柱大教堂，世界遗产）→ 返程</span></div>
+      <div class="day"><span class="dnum">D4</span><span class="date">9/28</span><span class="desc">第比利斯 → 军事公路 → <strong>阿纳努里要塞</strong> → 俄格友谊纪念碑（古多里）→ <strong>卡兹别克</strong></span></div>
+      <div class="day"><span class="dnum">D5</span><span class="date">9/29</span><span class="desc">卡兹别克：<strong>Gergeti 圣三一教堂</strong>（徒步或包车上山）、Truso 山谷</span></div>
+      <div class="day"><span class="dnum">D6</span><span class="date">9/30</span><span class="desc">卡兹别克 → 第比利斯</span></div>
+      <div class="day"><span class="dnum">D7</span><span class="date">10/1</span><span class="desc">第比利斯 → <strong>西格纳吉</strong>（爱情之城、古城墙）+ 卡赫季<strong>酒庄品酒</strong></span></div>
+      <div class="day"><span class="dnum">D8</span><span class="date">10/2</span><span class="desc">西格纳吉 → 第比利斯 → <strong>夜车 / 火车前往巴统</strong></span></div>
+      <div class="day"><span class="dnum">D9</span><span class="date">10/3</span><span class="desc">巴统：Boulevard 海滨大道、Ali &amp; Nino 雕像、欧洲广场、植物园</span></div>
+      <div class="day"><span class="dnum">D10</span><span class="date">10/4</span><span class="desc">巴统 → 祖格迪迪 → <strong>梅斯蒂亚</strong>（斯瓦涅季雪山）</span></div>
+      <div class="day"><span class="dnum">D11</span><span class="date">10/5</span><span class="desc">梅斯蒂亚 → <strong>乌树故里</strong>（欧洲最高村落，一日往返或住一晚）</span></div>
+      <div class="day"><span class="dnum">D12</span><span class="date">10/6</span><span class="desc">梅斯蒂亚 → 第比利斯（或从库塔伊西飞 / 包车）</span></div>
+      <div class="day"><span class="dnum">D13</span><span class="date">10/7</span><span class="desc">第比利斯购物（干邑 / 葡萄酒 / Churchkhela）→ 返程北京</span></div>
+    </div>
+    <div class="callout">
+      <p class="ttl"><span class="ico">💡</span>时间紧就砍 D10–D11</p>
+      <p>斯瓦涅季是全格鲁吉亚最耗时的部分，砍掉即变 10 天版，其余体验几乎不打折。</p>
+    </div>
+
+    <h3>🚀 方案 B：9 天精华版（国庆 7 天 + 请 2 天）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1</span><span class="desc">北京 → 第比利斯</span></div>
+      <div class="day"><span class="dnum">D2</span><span class="desc">第比利斯老城 + 硫磺浴</span></div>
+      <div class="day"><span class="dnum">D3</span><span class="desc">姆茨赫塔半日 + 第比利斯市区</span></div>
+      <div class="day"><span class="dnum">D4</span><span class="desc">军事公路 → 阿纳努里 → 卡兹别克</span></div>
+      <div class="day"><span class="dnum">D5</span><span class="desc">卡兹别克 Gergeti 教堂 + Truso 谷</span></div>
+      <div class="day"><span class="dnum">D6</span><span class="desc">卡兹别克 → 第比利斯 → 西格纳吉</span></div>
+      <div class="day"><span class="dnum">D7</span><span class="desc">西格纳吉 + 卡赫季酒庄 → 第比利斯</span></div>
+      <div class="day"><span class="dnum">D8</span><span class="desc">巴统（往返火车 or 直接飞回）</span></div>
+      <div class="day"><span class="dnum">D9</span><span class="desc">第比利斯返程北京</span></div>
+    </div>
+
+    <h3>⚡ 方案 C：7 天极限版（只玩国庆）</h3>
+    <div class="itin">
+      <div class="day"><span class="dnum">D1</span><span class="desc">抵达第比利斯（夜里到，直接睡）</span></div>
+      <div class="day"><span class="dnum">D2</span><span class="desc">第比利斯老城一日</span></div>
+      <div class="day"><span class="dnum">D3</span><span class="desc">姆茨赫塔 + 卡兹别克（当日往返，包车）</span></div>
+      <div class="day"><span class="dnum">D4</span><span class="desc">第比利斯 → 西格纳吉（一日游）</span></div>
+      <div class="day"><span class="dnum">D5</span><span class="desc">第比利斯 → 巴统（火车）</span></div>
+      <div class="day"><span class="dnum">D6</span><span class="desc">巴统海滨一日</span></div>
+      <div class="day"><span class="dnum">D7</span><span class="desc">巴统 → 第比利斯 → 返程</span></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <h2 class="sec"><span class="num">6</span>境内交通</h2>
+    <p class="sec-sub">格鲁吉亚境内几乎以第比利斯为辐射中心。</p>
+
+    <h3>6.1 小巴 Marshrutka（最便宜）</h3>
+    <ul>
+      <li>出发站：第比利斯 <strong>Didube</strong> 车站（去卡兹别克、姆茨赫塔方向）／ <strong>Ortachala</strong>（去东南方向）</li>
+      <li>第比利斯 → 卡兹别克（Stepantsminda）：约 <strong>15–20 GEL</strong>，车程 3–3.5h，<strong>不停景点</strong></li>
+      <li>第比利斯 → 姆茨赫塔：约 <strong>1–2 GEL</strong>，20 分钟</li>
+      <li>第比利斯 → 西格纳吉：约 <strong>6–10 GEL</strong></li>
+      <li>上车给钱、无票，人满即走，旺季要早去排队</li>
+    </ul>
+
+    <h3>6.2 拼车 / 包车（去卡兹别克首选）</h3>
+    <ul>
+      <li>Didube 车站拼车 <strong>20–25 GEL / 人</strong>，会停 <strong>阿纳努里要塞</strong> 和 <strong>俄格友谊纪念碑</strong>，每处约 20 分钟 —— 强烈推荐</li>
+      <li>包车一日（4–6 人）约 <strong>100–180 GEL / 车</strong>，可谈</li>
+    </ul>
+
+    <h3>6.3 火车（长途舒服）</h3>
+    <ul>
+      <li>官网订票：<span class="kbd">railway.ge</span>，也可用 <span class="kbd">tkt.ge</span></li>
+      <li>第比利斯 ⇄ 巴统：约 <strong>25–35 GEL</strong>（分座席），车程 <strong>5–5.5h</strong>；有白天车也有<strong>夜车</strong></li>
+      <li>第比利斯 ⇄ 祖格迪迪（去梅斯蒂亚的跳板）：夜车舒适</li>
+      <li>旺季 / 节假日<strong>务必提前订</strong>，当天窗口常常无票</li>
+    </ul>
+
+    <h3>6.4 市内 &amp; 打车</h3>
+    <ul>
+      <li>第比利斯地铁：单程 <strong>1 GEL</strong>（苏联式超深扶梯，打卡体验）</li>
+      <li><strong>Bolt</strong> 和 <strong>Yandex Go</strong> 是主流打车 App，市内短途 <strong>5–15 GEL</strong></li>
+      <li>⚠️ <strong>Bolt 注册需要手机号 —— 建议出发前用国内号先注册好</strong>，别到机场才发现注册不了</li>
+      <li>机场到市区：正规出租 / Bolt 约 <strong>20–40 GEL</strong>；司机喊价 80–100 GEL 的直接走人</li>
+    </ul>
+
+    <h3>6.5 自驾（谨慎）</h3>
+    <div class="callout warn">
+      <p class="ttl"><span class="ico">🚗</span>中国驻格鲁吉亚使馆 2025-07 提醒</p>
+      <ul>
+        <li>中国驾照<strong>必须做格鲁吉亚语翻译并公证</strong>才能在格境内使用，否则罚款扣车</li>
+        <li>部分景点路况差、当地人车速快，<strong>事故理赔困难</strong></li>
+        <li>如坚持自驾，务必买<strong>全险 + 人身险</strong>，选正规租车公司</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <h2 class="sec"><span class="num">7</span>住宿住哪儿</h2>
+    <p class="sec-sub">中秋 + 国庆是出境高峰，热门房源请尽快锁定。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>城市</th><th>推荐区域</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>第比利斯</td><td><strong>Sololaki</strong>、<strong>Avlabari</strong>、老城</td><td>步行可达景点，民宿多，¥150–400 / 晚</td></tr>
+          <tr><td>卡兹别克</td><td>Stepantsminda 村内</td><td>要选<strong>能看圣三一教堂</strong>的房间，房源少，<strong>务必早订</strong></td></tr>
+          <tr><td>西格纳吉</td><td>老城内</td><td>小而美，性价比高</td></tr>
+          <tr><td>巴统</td><td>Boulevard 沿线</td><td>海景房便宜，¥200–500 / 晚</td></tr>
+          <tr><td>梅斯蒂亚</td><td>村中心</td><td>斯瓦涅季塔楼民宿，供暖要确认</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout danger">
+      <p class="ttl"><span class="ico">📌</span>现在就该订</p>
+      <p>格鲁吉亚中国游客量正在激增（2026 Q1 长途客源中<strong>中国增速居首</strong>），<strong>卡兹别克和梅斯蒂亚的房间现在就该订</strong>。</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <h2 class="sec"><span class="num">8</span>吃什么</h2>
+    <p class="sec-sub">格鲁吉亚 = 8000 年酿酒史 + 高加索碳水天堂。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>必吃</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Khinkali 大汤包</strong></td><td>格鲁吉亚国菜，捏着顶部褶子先吸汤，别用叉子</td></tr>
+          <tr><td><strong>Khachapuri 奶酪饼</strong></td><td>分 Imeruli / Adjarian（船形带生蛋黄）等</td></tr>
+          <tr><td><strong>Mtsvadi 炭烤肉串</strong></td><td>配石榴籽和洋葱</td></tr>
+          <tr><td><strong>Badrijani 茄子卷核桃</strong></td><td>冷盘，超下饭</td></tr>
+          <tr><td><strong>Churchkhela</strong></td><td>葡萄汁裹坚果的「格鲁吉亚士力架」，伴手礼</td></tr>
+          <tr><td><strong>葡萄酒</strong></td><td>8000 年酿酒史，陶罐 Qvevri 工艺是 UNESCO 非遗</td></tr>
+          <tr><td><strong>Chacha</strong></td><td>葡萄渣蒸馏烈酒，饭后一杯</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>一顿正餐人均 <strong>¥30–80</strong>（含酒水）</li>
+      <li>餐厅账单里常已含 <strong>10% 服务费</strong>，可再留 5–10% 小费</li>
+      <li>饮用水：<strong>别直饮自来水</strong>，买瓶装水</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <h2 class="sec"><span class="num">9</span>预算表（估算）</h2>
+    <p class="sec-sub">13 天 / 人均。汇率：1 GEL ≈ 2.6–2.7 元；1 USD ≈ 2.70 GEL。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项目</th><th>金额（¥）</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>往返机票</td><td class="nowrap">4,500 – 8,000</td><td>中转便宜，直飞 / 旺季贵</td></tr>
+          <tr><td>旅游保险</td><td class="nowrap">150 – 400</td><td>2026 强制项，保额要够</td></tr>
+          <tr><td>住宿（12 晚）</td><td class="nowrap">2,400 – 5,000</td><td>中档民宿 ¥200–400 / 晚</td></tr>
+          <tr><td>境内交通</td><td class="nowrap">800 – 1,500</td><td>包车 / 拼车 / 火车 / 打车</td></tr>
+          <tr><td>餐饮</td><td class="nowrap">1,200 – 2,000</td><td>¥100–150 / 天</td></tr>
+          <tr><td>门票 &amp; 活动</td><td class="nowrap">400 – 800</td><td>缆车、硫磺浴、酒庄品酒</td></tr>
+          <tr><td>购物 &amp; 杂项</td><td class="nowrap">500 – 1,500</td><td>葡萄酒 / 干邑 / 伴手礼</td></tr>
+          <tr style="background:#f6ecec;"><td><strong>合计</strong></td><td class="nowrap"><strong>¥9,950 – 19,200</strong></td><td>不含购物 ≈ ¥9,000–17,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2 class="sec"><span class="num">10</span>通讯 / 电源 / 实用 App</h2>
+    <p class="sec-sub">落地前 10 分钟能搞定的东西，别留到落地后。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>项</th><th>情况</th></tr></thead>
+        <tbody>
+          <tr><td>手机卡</td><td>当地运营商 <strong>Magti / Silknet / Cellfie</strong>，机场有柜台，需护照</td></tr>
+          <tr><td>eSIM</td><td>更省事，Airalo / Simology 等有格鲁吉亚套餐，¥20–200</td></tr>
+          <tr><td>覆盖</td><td>城市 4G/5G 很好；<strong>卡兹别克山上、乌树故里信号弱或无</strong></td></tr>
+          <tr><td>电压 / 插座</td><td><strong>220V / 50Hz，欧标 Type C/F（两圆脚）</strong> → 带<strong>转换插头</strong></td></tr>
+          <tr><td>必备 App</td><td><strong>Bolt、Yandex Go</strong>（打车）、Google Maps（先下离线地图）、Translate、railway.ge</td></tr>
+          <tr><td>语言</td><td>格鲁吉亚语为主，旅游区英语可用，俄语也通用</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <h2 class="sec"><span class="num">11</span>安全与避坑</h2>
+    <p class="sec-sub">整体治安良好，是欧洲犯罪率较低的国家之一。</p>
+    <div class="callout">
+      <p class="ttl"><span class="ico">✅</span>总体评价</p>
+      <p>格鲁吉亚整体治安<strong>良好</strong>，暴力犯罪少见，适合自由行。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h4>🚧 边境区</h4><p>⚠️ <strong>不要前往阿布哈兹、南奥塞梯及靠近俄边境的区域</strong>（官方安全提醒）。</p></div>
+      <div class="card"><h4>🛣️ 山路</h4><p>弯多、海拔落差大、当地车速快 —— <strong>夜间别开山路</strong>。</p></div>
+      <div class="card"><h4>🍷 酒驾</h4><p><strong>查处严格</strong>，喝了酒千万别开车。</p></div>
+      <div class="card"><h4>👛 扒窃</h4><p>老城 / 自由广场一带注意<strong>小偷扒窃</strong>。</p></div>
+      <div class="card"><h4>🚕 打车</h4><p>出租车<strong>不打表</strong>：优先 Bolt / Yandex Go，路边揽客的基本要议价。</p></div>
+      <div class="card"><h4>🎭 账单陷阱</h4><p>餐厅 / 酒吧注意「<strong>天价账单</strong>」，先看菜单价格。</p></div>
+      <div class="card"><h4>🏔️ 徒步</h4><p>走正规路线，乌树故里一线<strong>结伴而行</strong>，告知住宿老板行程。</p></div>
+      <div class="card"><h4>📄 证件</h4><p>随身带<strong>护照复印件 + 保险单</strong>。</p></div>
+    </div>
+  </section>
+
+  <!-- 11b -->
+  <section id="s11b">
+    <h2 class="sec"><span class="num">12</span>🛡️ 单人旅行安全（重点）</h2>
+    <p class="sec-sub">先说结论：格鲁吉亚<strong>对独行旅者相当友好</strong>，风险不在暴力犯罪，而在<strong>出租车议价、山区独行、烈酒文化、以及边境管制区</strong>。</p>
+
+    <div class="callout">
+      <p class="ttl"><span class="ico">✅</span>总体判断</p>
+      <ul>
+        <li>格鲁吉亚是欧洲犯罪率较低的国家之一，<strong>暴力犯罪少见</strong>，独行在各大城市与旅游区<strong>基本安全</strong>。</li>
+        <li>人民热情好客，英语在旅游区够用；独行女性评价普遍正面。</li>
+        <li>⚠️ 但有几个「格鲁吉亚特色」风险，单人行前一定要看：<strong>出租车不打表、山区散养狗、烈酒文化、边境区</strong>。</li>
+      </ul>
+    </div>
+
+    <h3>按风险等级排列的「单人避坑清单」</h3>
+
+    <div class="risk">
+      <span class="lv high">风险 高</span>
+      <h4>🚧 边境管制区 —— 绝对不要去</h4>
+      <ul>
+        <li><strong>阿布哈兹（Abkhazia）、南奥塞梯（South Ossetia）及靠近俄罗斯边境的地带，一律不要进入</strong>，这属于官方安全提醒的红线。</li>
+        <li>这些地区不受格鲁吉亚政府实际控制，无有效领事保护，一旦出事极难救援。</li>
+        <li>军事公路往卡兹别克方向属正常旅游区，但<strong>不要继续往北越界</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv high">风险 高</span>
+      <h4>🏔️ 独自进山 / 独走徒步路线</h4>
+      <ul>
+        <li>卡兹别克 Gergeti 三一教堂、Truso 谷、梅斯蒂亚 Chalaadi 冰川、<strong>乌树故里</strong>一线：<strong>信号差、救援慢、天黑后极度危险</strong>。</li>
+        <li><strong>建议</strong>：徒步走正规标记路线，<strong>结伴或跟一日团</strong>；出发前把路线 + 预计返回时间告诉住宿老板。</li>
+        <li><strong>天黑前必须回到住处</strong>；山区夜间气温接近 0℃，失温比迷路更致命。</li>
+        <li>⚠️ <strong>格鲁吉亚山村散养狗很多</strong>（牧羊犬看家），徒步建议带<strong>登山杖</strong>防狗，别靠近牧羊点。</li>
+        <li>10 月卡兹别克已可能降雪，山顶湿滑，<strong>别独自硬闯</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv high">风险 高</span>
+      <h4>🚕 出租车议价与「热心向导」</h4>
+      <ul>
+        <li>格鲁吉亚出租车<strong>普遍不打表</strong>，机场 / 火车站最容易挨宰：报价能翻 <strong>3–5 倍</strong>。</li>
+        <li><strong>铁律</strong>：一律用 <strong>Bolt</strong> 或 <strong>Yandex Go</strong>；<strong>出发前用国内手机号先注册好 Bolt</strong>，别到机场才抓瞎。</li>
+        <li>Didube 车站会有司机凑上来兜售「一日游」，谈价前先问清：<strong>总价还是每人、含不含阿纳努里和友谊纪念碑</strong>。</li>
+        <li>司机喊价离谱就直接走人 —— 下一辆车有的是。</li>
+      </ul>
+    </div>
+<div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>🍷 烈酒文化 &amp; 夜间街头</h4>
+      <ul>
+        <li>格鲁吉亚是葡萄酒之乡，<strong>Chacha（葡萄渣烈酒）度数很高</strong>，本地人劝酒热情。单人行请<strong>克制</strong>，别在陌生场合喝到断片。</li>
+        <li>晚上街头醉汉不少（尤其老城、自由广场一带），<strong>礼貌避开即可</strong>，不必对视或争执。</li>
+        <li>夜间避免走老城后街、Avlabari 一带的小巷与地下通道。</li>
+        <li>晚上回住处尽量用 Bolt / Yandex Go 到<strong>门口</strong>下车。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>🛣️ 交通与山路</h4>
+      <ul>
+        <li>小巴（marshrutka）<strong>常超载、司机开得猛</strong>，尽量坐前排并系好安全带。</li>
+        <li>军事公路弯多、海拔落差大；<strong>夜间绝对不要走山路</strong>。</li>
+        <li>🚫 <strong>严禁酒驾</strong>，格鲁吉亚查得很严。</li>
+        <li>中国驾照<strong>必须做格鲁吉亚语翻译并公证</strong>才能用车；单人不熟悉路况<strong>不建议自驾</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv mid">风险 中</span>
+      <h4>👛 扒窃与账单陷阱</h4>
+      <ul>
+        <li>高发地：<strong>老城、自由广场、地铁、巴扎</strong>。手机钱包别放外侧口袋，背包前背。</li>
+        <li>个别酒吧 / 餐吧针对游客抬价，<strong>先看菜单价格</strong>，结账核对明细。</li>
+        <li>换汇走正规兑换点或银行，街头「私下换汇」别碰。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv low">风险 低</span>
+      <h4>🧍‍♀️ 独行女性专项</h4>
+      <ul>
+        <li>格鲁吉亚对独行女性整体友好，搭讪多为好奇而非恶意，<strong>明确而礼貌地拒绝</strong>即可。</li>
+        <li>山区村庄观念较传统，<strong>着装得体（遮肩、不过短）</strong>能减少不必要注意。</li>
+        <li>住<strong>正规青旅 / 酒店</strong>比无人管理的私人民宿更安全 —— 有人照应、有前台、有同伴。</li>
+        <li>把每日行程与位置分享给家人，固定时间报平安。</li>
+      </ul>
+    </div>
+
+    <div class="risk">
+      <span class="lv low">风险 低</span>
+      <h4>🏥 健康、高原与保险</h4>
+      <ul>
+        <li>海拔：第比利斯约 450m（无感），卡兹别克 1740m、Gergeti 2170m、梅斯蒂亚 1500m、乌树故里 2100m —— 一般人无高反，但<strong>别剧烈奔跑</strong>。</li>
+        <li>带感冒药、肠胃药、创可贴、防晒、润唇膏。</li>
+        <li><strong>保险一举两得</strong>：格鲁吉亚 2026 年起<strong>强制旅游保险（≥30,000 拉里）</strong>，买的时候顺便确认含<strong>徒步意外 + 医疗转运 / 直升机救援</strong>，山区行程才有底气。</li>
+      </ul>
+    </div>
+
+    <h3>🧰 单人安全「四件套」</h3>
+    <div class="grid g2">
+      <div class="card"><h4>① 位置共享</h4><p>行程表发家人，开启实时位置共享，每天固定报平安。</p></div>
+      <div class="card"><h4>② 离线备份</h4><p>护照、<strong>保险单</strong>、机票、住宿订单存云端 + 本地；原件放保险箱。</p></div>
+      <div class="card"><h4>③ 双份现金</h4><p>钱包只放当天用量，其余分散；备一张备用卡。</p></div>
+      <div class="card"><h4>④ 应急号码</h4><p>格鲁吉亚统一应急电话 <strong>112</strong>；使领馆电话出发前从官网抄好。</p></div>
+    </div>
+
+    <div class="callout danger">
+      <p class="ttl"><span class="ico">🆘</span>万一出事</p>
+      <ul>
+        <li>先保人身安全，财物可以放弃。</li>
+        <li>拨打 <strong>112</strong>（警察 / 急救 / 消防统一号码）；语言不通就找酒店前台帮忙。</li>
+        <li>护照丢失：先报警拿<strong>报案证明</strong>，再联系<strong>中国驻格鲁吉亚大使馆</strong>补办旅行证。</li>
+        <li>把使领馆地址电话存离线备忘录 —— 山里没网是常态。</li>
+      </ul>
+    </div>
+  </section>
+  <section id="s12">
+    <h2 class="sec"><span class="num">13</span>行前 Checklist</h2>
+    <p class="sec-sub">照着打勾就行。</p>
+
+    <h3>证件类</h3>
+    <ul class="check">
+      <li>护照（有效期 ≥ 离境后 6 个月）</li>
+      <li><strong>旅游保险英文保单</strong>（保额 ≥ 30,000 GEL，覆盖全程）— <span class="pill">2026 强制</span></li>
+      <li>往返机票行程单</li>
+      <li>住宿预订单</li>
+      <li>驾照 + 格鲁吉亚语翻译公证（如自驾）</li>
+    </ul>
+
+    <h3>装备类</h3>
+    <ul class="check">
+      <li>欧标转换插头（Type C/F）</li>
+      <li>冲锋衣 + 抓绒 + 薄羽绒（卡兹别克 / 斯瓦涅季必备）</li>
+      <li>徒步鞋、墨镜、帽子、手套</li>
+      <li>常用药 + 英文处方说明（管制药尤其注意）</li>
+      <li>充电宝、离线地图</li>
+    </ul>
+
+    <h3>财务类</h3>
+    <ul class="check">
+      <li>美元 / 欧元现金（换拉里最划算）</li>
+      <li>Visa / MasterCard（大额可刷卡）</li>
+      <li>银联卡（部分 ATM 可取现，备选）</li>
+    </ul>
+
+    <h3>出发前 3 天</h3>
+    <ul class="check">
+      <li>提前用国内手机号注册 <strong>Bolt</strong></li>
+      <li>下载离线地图（卡兹别克、梅斯蒂亚区域）</li>
+      <li>订好<strong>卡兹别克住宿</strong>和<strong>第比利斯–巴统火车票</strong></li>
+      <li>打印所有保单 / 行程，手机存 PDF 备份</li>
+    </ul>
+  </section>
+
+  <!-- 13 -->
+  <section id="s13">
+    <h2 class="sec"><span class="num">14</span>常见 Q&amp;A</h2>
+    <div class="qa"><p class="q">中国护照真的免签吗？能待多久？</p><p class="a">免签。单次 ≤ 30 天，任意 180 天累计 ≤ 90 天。（网上说「365 天」的信息已过时 / 不准确）</p></div>
+    <div class="qa"><p class="q">2026 年最新变化是什么？</p><p class="a"><strong>强制旅游保险</strong>（≥30,000 GEL，覆盖全程，英文保单）。这是今年最大的新规，很多老攻略没写。</p></div>
+    <div class="qa"><p class="q">北京有直飞吗？</p><p class="a">目前<strong>没有稳定每日直飞</strong>。国航 CA781 每周二 / 四 / 六（含 1 次经停，约 12h15m）；上海有东航 MU285 真直飞（周三 / 五 / 日）；北京最常见是经多哈 / 迪拜 / 伊斯坦布尔 / 阿拉木图中转。</p></div>
+    <div class="qa"><p class="q">13 天够玩哪里？</p><p class="a">够走完<strong>第比利斯 + 姆茨赫塔 + 卡兹别克 + 西格纳吉 + 巴统 + 梅斯蒂亚 / 乌树故里</strong>大环线。若只玩国庆 7 天，建议砍掉斯瓦涅季。</p></div>
+    <div class="qa"><p class="q">带多少现金？</p><p class="a">建议带 $300–500 等值美元 / 欧元换拉里，其余刷卡。格鲁吉亚<strong>不是所有地方都能刷卡</strong>，乡镇和市场基本只收现金。</p></div>
+    <div class="qa"><p class="q">一个人去安全吗？</p><p class="a">整体安全，是欧洲犯罪率较低的国家之一。真正要防的是<strong>出租车议价、山区独行、烈酒场合</strong>；另外<strong>阿布哈兹 / 南奥塞梯边境区绝对不要去</strong>。详见第 12 节「单人旅行安全」。</p></div>
+  </section>
+
+  <!-- 14 -->
+  <section id="s14">
+    <h2 class="sec"><span class="num">15</span>官方信源（可自行复核）</h2>
+    <ul>
+      <li>中国政府网 · 2026 年节假日安排：<span class="kbd">gov.cn</span>（国办发明电〔2025〕7 号）</li>
+      <li>中国驻格鲁吉亚大使馆 · 入境须购旅游保险通知（2025-12-29）</li>
+      <li>中国驻格鲁吉亚大使馆 · 关于在格自驾旅行的安全提醒（2025-07-17）</li>
+      <li>格鲁吉亚铁路订票：<span class="kbd">railway.ge</span> / <span class="kbd">tkt.ge</span></li>
+      <li>保险：格鲁吉亚本地 <span class="kbd">cover.ge</span>（符合第 602 号法令）</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>🇬🇪 格鲁吉亚 · 中秋国庆完全攻略 · 生成于 2026-09-20</span>
+    <span>机票价格与班期为动态数据，出行前请以航司与官方最新公告为准。</span>
+  </div>
+</footer>
+
+</body>
+</html>
