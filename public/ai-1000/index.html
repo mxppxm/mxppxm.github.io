@@ -88,11 +88,6 @@
   .card.rec .t::after{content:" ⭐"; font-size:13px}
   .card.flash{animation:flash 1.1s ease}
   @keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(180,69,31,0)}40%{box-shadow:0 0 0 5px rgba(180,69,31,.35)}}
-  .more{
-    margin:14px 0 0; font-size:15px; color:var(--accent);
-    background:transparent; border:1px dashed var(--line); border-radius:10px;
-    padding:9px 16px; width:100%;
-  }
   .pick{
     display:none; margin-bottom:22px; padding:22px 24px; border-radius:14px;
     background:var(--paper); border:2px solid var(--accent); text-align:center;
@@ -149,7 +144,6 @@
     .card{ padding:13px 14px 14px; }
     .card .t{ font-size:16px; }
     .card .d{ font-size:13.5px; }
-    .more{ font-size:14px; padding:11px 14px; }
     .pick{ padding:18px 16px; }
     .customrow input[type=text]{ flex:1 1 100%; }
     .customrow select,.customrow button{ flex:1 1 auto; }
@@ -1263,9 +1257,8 @@
 ["c25","写一份给十年后家人的信","十年后再打开",0]
   ];
 
-  var STORE_KEY = "ai_ideas_pick_1000_v1";
+  var STORE_KEY = "ai_ideas_pick_1000_v2";
   var store = { checked:{}, custom:[], theme:"" };
-  var PAGE_SIZE = 24;
 
   function load(){
     try{
@@ -1284,23 +1277,14 @@
   function keyOf(cat, title){ return cat + "|" + title; }
   function isOn(k){ return store.checked[k] === true; }
 
-  function seedDefaults(){
-    for(var i=0;i<ITEMS.length;i++){
-      var k = keyOf(ITEMS[i][0], ITEMS[i][1]);
-      if(store.checked[k] === undefined){ store.checked[k] = (ITEMS[i][3] === 1); }
-    }
-    for(var j=0;j<store.custom.length;j++){
-      var ck = keyOf("custom", store.custom[j].title);
-      if(store.checked[ck] === undefined){ store.checked[ck] = true; }
-    }
-  }
+  /* 默认全空：打开页面时不做任何预勾选。⭐ 只是视觉提示，不代表已选。 */
+  function seedDefaults(){}
 
   var catName = {};
   for(var ci=0;ci<CATS.length;ci++){ catName[CATS[ci][0]] = CATS[ci][1]; }
 
   var curCat = "all";
   var curQuery = "";
-  var expanded = {};
 
   var listEl = document.getElementById("list");
   var customGrid = document.getElementById("customGrid");
@@ -1379,7 +1363,7 @@
 
   function render(){
     listEl.innerHTML = "";
-    var shown = 0, hiddenTotal = 0;
+    var shown = 0;
     for(var c=0;c<CATS.length;c++){
       var catId = CATS[c][0];
       var rows = [];
@@ -1388,10 +1372,8 @@
       }
       if(!rows.length) continue;
 
-      var limit = (expanded[catId] || curQuery) ? rows.length : Math.min(PAGE_SIZE, rows.length);
-      var visible = rows.slice(0, limit);
+      var visible = rows;
       shown += visible.length;
-      hiddenTotal += (rows.length - visible.length);
 
       var sec = document.createElement("div");
       sec.className = "sec";
@@ -1406,19 +1388,6 @@
       }
       listEl.appendChild(grid);
 
-      if(rows.length > visible.length){
-        (function(id, rest){
-          var more = document.createElement("button");
-          more.type = "button";
-          more.className = "more";
-          more.textContent = "展开这一类其余的 " + rest + " 条 ↓";
-          more.addEventListener("click", function(){
-            expanded[id] = true;
-            render();
-          });
-          listEl.appendChild(more);
-        })(catId, rows.length - visible.length);
-      }
     }
     if(!shown){
       var empty = document.createElement("div");
@@ -1427,12 +1396,6 @@
         ? "还没勾选任何条目 —— 先去随便勾几条吧。"
         : "没匹配到，换个词试试 —— 或者直接在下面自定义一条。";
       listEl.appendChild(empty);
-    }
-    if(hiddenTotal){
-      var note = document.createElement("div");
-      note.className = "empty";
-      note.textContent = "还有 " + hiddenTotal + " 条被折叠起来了，点各类下面的按钮展开；也可以直接搜索。";
-      listEl.appendChild(note);
     }
     refreshCatCounts();
   }
@@ -1539,7 +1502,6 @@
     if(curCat === "selected"){
       curCat = "all"; renderChips();
     }
-    expanded[pick[0]] = true;
     render(); refreshStats();
     var node = listEl.querySelector('.card[data-k="' + kk.replace(/"/g,'\\"') + '"]');
     if(node){
