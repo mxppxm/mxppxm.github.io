@@ -1,0 +1,118 @@
+{
+  "slug": "renxiang",
+  "prefix": "renxiang-ec41b7",
+  "pass": "726130",
+  "sources": [
+    "/Users/mico/clacky_workspace/mflux-out",
+    "/Users/mico/clacky_workspace/mflux-out/ortho"
+  ],
+  "chapters": [
+    {
+      "id": "G01",
+      "title": "学姐 · 宿舍室长",
+      "files": [
+        "qwen21-0929-111448.png",
+        "qwen21-0929-114840-s42.png",
+        "qwen21-0929-114840-s43.png",
+        "qwen21-0929-134320.png",
+        "qwen21-0929-134722.png",
+        "qwen21-0929-135059.png",
+        "qwen21-0929-141835.png",
+        "qwen21-0929-142302.png"
+      ]
+    },
+    {
+      "id": "G02",
+      "title": "韩系女大 · 日常",
+      "files": [
+        "qwen21-0929-142841.png",
+        "qwen21-0929-143716.png",
+        "qwen21-0929-150903.png",
+        "qwen21-0929-151316.png",
+        "qwen21-0929-152356.png",
+        "qwen21-0929-153148.png",
+        "qwen21-0929-153359.png",
+        "qwen21-0929-153733.png",
+        "qwen21-0929-154218.png",
+        "qwen21-0929-154424.png",
+        "qwen21-0929-155219.png",
+        "qwen21-0929-155947.png",
+        "qwen21-0929-171733.png",
+        "qwen21-0929-171930.png"
+      ]
+    },
+    {
+      "id": "G03",
+      "title": "白皮少妇 · 居家",
+      "files": [
+        "qwen21-0929-160959-01.png",
+        "qwen21-0929-160959-02.png",
+        "qwen21-0929-160959-03.png",
+        "qwen21-0929-160959-04.png",
+        "qwen21-0929-160959-05.png",
+        "qwen21-0929-160959-06.png",
+        "qwen21-0929-162328-01.png",
+        "qwen21-0929-162328-02.png",
+        "qwen21-0929-162328-03.png",
+        "qwen21-0929-162328-04.png",
+        "qwen21-0929-162328-05.png",
+        "qwen21-0929-163443-01.png",
+        "qwen21-0929-163443-02.png",
+        "qwen21-0929-163443-03.png",
+        "qwen21-0929-163443-04.png",
+        "qwen21-0929-163443-05.png",
+        "qwen21-0929-164706-01.png",
+        "qwen21-0929-164706-02.png",
+        "qwen21-0929-164706-03.png",
+        "qwen21-0929-164706-04.png",
+        "qwen21-0929-164706-05.png",
+        "qwen21-0929-164706-06.png"
+      ]
+    },
+    {
+      "id": "G04",
+      "title": "玄关 · 下班回家",
+      "files": [
+        "qwen21-0929-170438.png",
+        "qwen21-0929-170857.png",
+        "qwen21-0929-171017.png"
+      ]
+    },
+    {
+      "id": "G05",
+      "title": "参数对比 · steps × seed",
+      "files": [
+        "st20-s101_seed_101.png",
+        "st20-s102_seed_102.png",
+        "st8-s101_seed_101.png",
+        "st8-s102_seed_102.png"
+      ]
+    },
+    {
+      "id": "G06",
+      "title": "自检与实验",
+      "files": [
+        "api-selftest.png",
+        "ctrl-txt2img.png",
+        "edge01.png",
+        "edge03.png",
+        "edge04.png",
+        "edge05.png"
+      ]
+    }
+  ],
+  "prompt_overrides": {
+    "st20-s101_seed_101.png": "成年女性身着松散的日式浴衣，背光站在温泉蒸汽中形成完整剪影，蒸汽与雾气勾出柔和轮廓，灯笼光在边缘形成轻微光溢，室内几近全暗，只保留明暗交界，极简构图，大量留白，静谧氛围。（steps×seed 正交性实证：同 prompt 换参数）",
+    "st20-s102_seed_102.png": "成年女性身着松散的日式浴衣，背光站在温泉蒸汽中形成完整剪影，蒸汽与雾气勾出柔和轮廓，灯笼光在边缘形成轻微光溢，室内几近全暗，只保留明暗交界，极简构图，大量留白，静谧氛围。（steps×seed 正交性实证：同 prompt 换参数）",
+    "st8-s101_seed_101.png": "成年女性身着松散的日式浴衣，背光站在温泉蒸汽中形成完整剪影，蒸汽与雾气勾出柔和轮廓，灯笼光在边缘形成轻微光溢，室内几近全暗，只保留明暗交界，极简构图，大量留白，静谧氛围。（steps×seed 正交性实证：同 prompt 换参数）",
+    "st8-s102_seed_102.png": "成年女性身着松散的日式浴衣，背光站在温泉蒸汽中形成完整剪影，蒸汽与雾气勾出柔和轮廓，灯笼光在边缘形成轻微光溢，室内几近全暗，只保留明暗交界，极简构图，大量留白，静谧氛围。（steps×seed 正交性实证：同 prompt 换参数）",
+    "ctrl-txt2img.png": "a watercolor painting of a tiger's face, loose wet brush strokes, soft paper texture（img2img 锁脸对照实验的纯文生图对照组）"
+  },
+  "meta_overrides": {
+    "st8-s101_seed_101.png": "768×1024 · 8 步 · seed 101",
+    "st8-s102_seed_102.png": "768×1024 · 8 步 · seed 102",
+    "st20-s101_seed_101.png": "768×1024 · 20 步 · seed 101",
+    "st20-s102_seed_102.png": "768×1024 · 20 步 · seed 102",
+    "ctrl-txt2img.png": "768×768 · 20 步 · seed 100 · 纯文生图对照"
+  }
+}

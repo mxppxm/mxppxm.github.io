@@ -149,6 +149,35 @@ const total = chapters.length;
       }
     }
 
+    /* 提示词卡片 —— 图下注解 */
+    .frame .cap {
+      margin-top: 10px;
+      padding: 12px 15px 13px;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xs);
+    }
+    .frame .cap .lab {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 680; letter-spacing: 0.4px;
+      color: var(--accent-dark); background: var(--accent-light);
+      padding: 2px 8px; border-radius: 6px; margin-bottom: 7px;
+    }
+    .frame .cap .p {
+      font-size: 13.5px; line-height: 1.75;
+      color: var(--text-secondary);
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .frame .cap .p.none { color: var(--text-muted); font-style: italic; }
+    .frame .cap .m {
+      margin-top: 7px; padding-top: 7px;
+      border-top: 1px dashed var(--border-light);
+      font-size: 11.5px; color: var(--text-muted);
+      font-variant-numeric: tabular-nums; letter-spacing: 0.2px;
+    }
+    body.nocap .frame .cap { display: none; }
+
     /* ── 上/下一集切换条 ── */
     .pager {
       display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -277,6 +306,31 @@ const total = chapters.length;
           img.alt = ch.id + ' ' + (j + 1);
           img.referrerPolicy = 'no-referrer';
           fr.appendChild(img);
+
+          // 图下注解：提示词 + 参数
+          var cap = document.createElement('div');
+          cap.className = 'cap';
+          var lab = document.createElement('span');
+          lab.className = 'lab';
+          lab.textContent = '提示词 · ' + (j + 1) + '/' + ch.imgs.length;
+          cap.appendChild(lab);
+          var pt = document.createElement('div');
+          pt.className = 'p';
+          if (ch.imgs[j].p) {
+            pt.textContent = ch.imgs[j].p;
+          } else {
+            pt.className = 'p none';
+            pt.textContent = '（这张没有留下提示词旁车记录）';
+          }
+          cap.appendChild(pt);
+          if (ch.imgs[j].m) {
+            var mt = document.createElement('div');
+            mt.className = 'm';
+            mt.textContent = ch.imgs[j].m;
+            cap.appendChild(mt);
+          }
+          fr.appendChild(cap);
+
           g.appendChild(fr);
         }
 
@@ -316,7 +370,9 @@ const total = chapters.length;
         // 高亮导航 chip
         var chips = nav.querySelectorAll('.chip');
         for (var k = 0; k < chips.length; k++) {
-          chips[k].classList.toggle('active', Number(chips[k].getAttribute('data-i')) === i);
+          var di = chips[k].getAttribute('data-i');
+          if (di === null) continue; // 跳过「提示词开关」这类非章节 chip
+          chips[k].classList.toggle('active', Number(di) === i);
         }
         var active = nav.querySelector('.chip.active');
         if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
@@ -343,6 +399,21 @@ const total = chapters.length;
         })(i);
         nav.appendChild(chip);
       }
+
+      // 提示词显示/隐藏
+      var capBtn = document.createElement('span');
+      capBtn.className = 'chip';
+      capBtn.style.marginLeft = '10px';
+      var capsOn = true;
+      capBtn.textContent = '📝 提示词 开';
+      capBtn.onclick = function () {
+        capsOn = !capsOn;
+        document.body.classList.toggle('nocap', !capsOn);
+        capBtn.textContent = capsOn ? '📝 提示词 开' : '📝 提示词 关';
+        capBtn.classList.toggle('active', capsOn);
+      };
+      capBtn.classList.add('active');
+      nav.appendChild(capBtn);
 
       // 回到顶部按钮
       document.getElementById('toTop').addEventListener('click', goTop);
