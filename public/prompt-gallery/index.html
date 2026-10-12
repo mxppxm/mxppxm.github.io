@@ -62,8 +62,617 @@
   footer a { color: var(--sub); }
   @media (max-width: 640px) { h1 { font-size: 26px; } nav .legend { display: none; } footer ul { columns: 1; } }
 </style>
+<!-- blog-header:start -->
+<style>
+/* ===== 九日博客 Header（从 public/css/style.css + Header.astro 抽取） ===== */
+:root {
+    --border-light: #F0EBE3;
+    --text: #1B1816;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --accent: #07C160;
+    --text-secondary: #544F49;
+    --accent-light: #E8F8EE;
+    --surface: #FFFFFF;
+    --text-muted: #8A8278;
+    --accent-dark: #048C48;
+    --border: #E6E0D6;
+    --border-strong: #D5CEC2;
+}
+   HEADER — clean, minimal, stays out of the way
+   ═══════════════════════════════════════════════════════════ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(252,250,247,0.88);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--border-light);
+  transition: transform 0.6s ease;
+}
+.site-header.header-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1300px; margin: 0 auto;
+  padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-title {
+  font-size: 18px; font-weight: 750; color: var(--text);
+  text-decoration: none; letter-spacing: -0.4px;
+  transition: color 0.25s var(--ease-out);
+}
+.site-title:hover { color: var(--accent); }
+
+.site-nav { display: flex; gap: 4px; align-items: center; }
+.site-nav a {
+  font-size: 14px; font-weight: 520; color: var(--text-secondary);
+  text-decoration: none; padding: 7px 16px; border-radius: 8px;
+  transition: all 0.25s var(--ease-out);
+}
+.site-nav a:hover { color: var(--accent); background: var(--accent-light); }
+
+/* --- Nav dropdown --- */
+.nav-dropdown { position: relative; display: flex; }
+.nav-dropdown-trigger {
+  font-size: 14px; font-weight: 520; color: var(--text-secondary);
+  padding: 7px 16px; border-radius: 8px;
+  transition: all 0.25s var(--ease-out);
+  cursor: pointer; user-select: none;
+}
+.nav-dropdown:hover .nav-dropdown-trigger { color: var(--accent); background: var(--accent-light); }
+.nav-dropdown-menu {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute; top: 100%; right: 0;
+  min-width: 300px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  padding: 8px;
+  z-index: 200;
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  transform: translateY(-6px);
+}
+/* 透明桥接 — 填补 trigger 和 menu 之间的空隙，防止 hover 断开 */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: 0; right: 0;
+  height: 12px;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1; pointer-events: auto; transform: translateY(0);
+}
+
+.dropdown-project {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none; color: inherit;
+  transition: background 0.2s;
+}
+.dropdown-project:hover { background: var(--accent-light); }
+.dropdown-project-icon {
+  flex-shrink: 0; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(7,193,96,0.12), rgba(7,193,96,0.04));
+  color: var(--accent);
+}
+.dropdown-project-info { flex: 1; min-width: 0; }
+.dropdown-project-name {
+  font-size: 14px; font-weight: 650; line-height: 1.3;
+}
+.dropdown-project-desc {
+  font-size: 12px; color: var(--text-muted); margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dropdown-project-arrow {
+  flex-shrink: 0; font-size: 14px; color: var(--text-muted);
+  opacity: 0.5; transition: opacity 0.2s;
+}
+.dropdown-project:hover .dropdown-project-arrow { opacity: 1; color: var(--accent); }
+
+.mobile-menu-btn { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text); padding: 4px 8px; }
+
+.mobile-nav {
+  display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 99;
+  background: rgba(252,250,247,0.98); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light); padding: 6px 14px 14px;
+  transform: translateY(-120%); opacity: 0;
+  transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+}
+.mobile-nav.active { transform: translateY(0); opacity: 1; }
+.mobile-nav a { display: block; padding: 12px 18px; font-size: 16px; font-weight: 520; color: var(--text); text-decoration: none; border-radius: 8px; }
+.mobile-nav a:hover { background: var(--accent-light); color: var(--accent); }
+
+
+  /* 头部倒计时 — 紧贴 logo，带单位 */
+  .header-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(7,193,96,0.12), rgba(7,193,96,0.05));
+    border: 1px solid rgba(7,193,96,0.22);
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+  .header-countdown:hover {
+    background: linear-gradient(135deg, rgba(7,193,96,0.22), rgba(7,193,96,0.1));
+    border-color: rgba(7,193,96,0.4);
+    transform: translateY(-1px);
+  }
+  .header-countdown .hc-unit {
+    display: inline-flex;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+  }
+  .header-countdown b {
+    font-size: 14px;
+    font-weight: 750;
+    color: var(--accent-dark, #06a050);
+    letter-spacing: 0.3px;
+  }
+  .header-countdown i {
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(6,160,80,0.6);
+    margin-left: 2px;
+    margin-right: 4px;
+  }
+  .header-countdown .hc-unit:last-child i { margin-right: 0; }
+  @media (max-width: 900px) {
+    .header-countdown { display: none; }
+  }
+
+  .nav-cooperate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 620;
+    color: var(--accent-dark);
+    background: var(--accent-light);
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(7,193,96,0.14);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cooperate-btn:hover {
+    background: rgba(7,193,96,0.18);
+    transform: translateY(-1px);
+  }
+
+  .nav-cooperate-btn.mobile {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+  .mobile-nav .nav-cooperate-btn.mobile {
+    background: var(--accent-light);
+    border: 1px solid rgba(7,193,96,0.14);
+    color: var(--accent-dark);
+  }
+
+  .cooperate-dot {
+    width: 6px; height: 6px;
+    background: var(--accent, #07c160);
+    border-radius: 50%;
+    animation: cooperateDotPulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .cooperate-dot.large {
+    width: 10px; height: 10px;
+    margin-bottom: 12px;
+  }
+  @keyframes cooperateDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+  }
+
+  /* Modal */
+  .cooperate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .cooperate-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cooperate-modal {
+    background: var(--surface, #fff);
+    border-radius: 20px;
+    padding: 40px 36px 32px;
+    text-align: center;
+    max-width: 380px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    transform: translateY(12px);
+    transition: transform 0.25s ease;
+  }
+  .cooperate-overlay.open .cooperate-modal {
+    transform: translateY(0);
+  }
+
+  .cooperate-close {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none; border: none;
+    font-size: 24px; color: var(--text-secondary);
+    cursor: pointer; line-height: 1;
+    padding: 4px 8px; border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .cooperate-close:hover { background: var(--accent-light); }
+
+  .cooperate-modal h3 {
+    font-size: 20px; font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+  }
+  .cooperate-modal p {
+    font-size: 14px; color: var(--text-secondary);
+    margin: 0 0 20px;
+  }
+
+  .cooperate-email-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg, #f7f5f0);
+    border-radius: 12px;
+    padding: 6px 6px 6px 16px;
+  }
+  .cooperate-email-row code {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-family: 'SF Mono', 'Menlo', monospace;
+    word-break: break-all;
+    flex: 1;
+    background: none;
+    padding: 0;
+  }
+
+  .cooperate-copy-btn {
+    flex-shrink: 0;
+    background: var(--accent, #07c160);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .cooperate-copy-btn:hover {
+    background: #06a050;
+  }
+  .cooperate-copy-btn:active {
+    transform: scale(0.96);
+  }
+
+  .cooperate-copied {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cooperate-copied.show {
+    opacity: 1;
+  }
+
+  /* 弹窗内订阅区 */
+  .cooperate-subscribe {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border, rgba(0,0,0,0.08));
+    text-align: left;
+  }
+  .cooperate-subscribe-title {
+    font-size: 15px;
+    font-weight: 650;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+  }
+  .cooperate-subscribe-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 8px;
+  }
+  .subscribe-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border-strong, rgba(0,0,0,0.14));
+    background: var(--bg, #f7f5f0);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .subscribe-input:focus {
+    outline: none;
+    border-color: var(--accent, #07c160);
+    box-shadow: 0 0 0 3px rgba(7,193,96,0.15);
+  }
+  .subscribe-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent, #07c160);
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, opacity 0.2s;
+  }
+  .subscribe-btn:hover { background: #06a050; }
+  .subscribe-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .subscribe-msg {
+    font-size: 12.5px;
+    margin: 10px 0 0;
+    min-height: 1.1rem;
+    line-height: 1.5;
+  }
+  .subscribe-msg.ok { color: var(--accent-dark, #06a050); font-weight: 500; }
+  .subscribe-msg.error { color: #d9534f; }
+
+/* ── 隔离层：图鉴页的 header / nav 元素选择器会误伤博客 header，这里逐个顶回来 ── */
+body { padding-top: 56px; }                        /* 给 fixed header 让位 */
+header.site-header { max-width: none; margin: 0; padding: 0; }
+nav { top: 56px; }                                 /* 页面自己的吸顶子导航下移到 header 之下 */
+nav.site-nav a, nav.mobile-nav a { background: transparent; border: none; }
+/* 响应式：复刻 style.css 里 HEADER 段在 @media(max-width:768px) 下的折叠行为 */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 20px; }
+  .site-nav { display: none; }
+  .mobile-menu-btn { display: block; }
+  .mobile-nav { display: block; }
+}
+
+</style>
 </head>
 <body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-title">☀️ 九日</a>
+    <a href="/countdown/" class="header-countdown" id="header-countdown" title="点击查看 30 岁生日倒计时">
+      <span class="hc-unit"><b id="hc-d">--</b><i>天</i></span>
+      <span class="hc-unit"><b id="hc-h">--</b><i>时</i></span>
+      <span class="hc-unit"><b id="hc-m">--</b><i>分</i></span>
+      <span class="hc-unit"><b id="hc-s">--</b><i>秒</i></span>
+    </a>
+    <nav class="site-nav">
+      <a href="/articles/gold/">黄金</a>
+      <a href="/articles/novel/">槐树下</a>
+      <a href="/articles/comic/">漫画</a>
+      <a href="/articles/essays/">杂文</a>
+      <a href="/articles/skills/">Skill</a>
+      <a href="/articles/poetry/">诗词</a>
+      <a href="/travel/">旅行</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-trigger">项目 ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="https://skin-doctor.netlify.app/" target="_blank" rel="noopener" class="dropdown-project">
+            <span class="dropdown-project-icon">
+              <img src="/logo.png" alt="皮肤检测器" width="22" height="22" style="border-radius:5px;" />
+            </span>
+            <div class="dropdown-project-info">
+              <div class="dropdown-project-name">皮肤检测器</div>
+              <div class="dropdown-project-desc">AI 肤质分析 · skin-doctor.netlify.app</div>
+            </div>
+            <span class="dropdown-project-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+      <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+      <button class="nav-cooperate-btn" id="cooperate-btn">
+        <span class="cooperate-dot"></span> 开放合作
+      </button>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">☰</button>
+  </div>
+</header>
+
+<nav class="mobile-nav">
+  <a href="/articles/gold/">🏆 黄金</a>
+  <a href="/articles/novel/">🌳 槐树下</a>
+  <a href="/articles/comic/">🎨 漫画</a>
+  <a href="/articles/essays/">📝 杂文</a>
+  <a href="/articles/skills/">🧰 Skill</a>
+  <a href="/articles/poetry/">📜 诗词</a>
+  <a href="/travel/">🧭 旅行</a>
+  <a href="https://skin-doctor.netlify.app/" target="_blank" rel="noopener">🔬 皮肤检测器</a>
+  <a href="https://github.com/mxppxm" target="_blank" rel="noopener">GitHub</a>
+  <button class="nav-cooperate-btn mobile" id="cooperate-btn-mobile">
+    <span class="cooperate-dot"></span> 开放合作
+  </button>
+</nav>
+
+<!-- 合作弹窗 -->
+<div class="cooperate-overlay" id="cooperate-overlay">
+  <div class="cooperate-modal">
+    <button class="cooperate-close" id="cooperate-close">&times;</button>
+    <span class="cooperate-dot large"></span>
+    <h3>开放合作中</h3>
+    <p>有想法就聊聊，别客气 👋</p>
+    <div class="cooperate-email-row">
+      <code id="cooperate-email">2695409102@qq.com</code>
+      <button class="cooperate-copy-btn" id="cooperate-copy-btn">复制</button>
+    </div>
+    <span class="cooperate-copied" id="cooperate-copied">已复制 ✓</span>
+
+    <div class="cooperate-subscribe">
+      <p class="cooperate-subscribe-title">💌 或者订阅更新</p>
+      <p class="cooperate-subscribe-desc">留个邮箱，新文章发布后第一时间邮件通知你，随时可退订。</p>
+      <form id="subscribe-form" class="subscribe-form" novalidate>
+        <input
+          type="email"
+          id="subscribe-email"
+          class="subscribe-input"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="subscribe-btn" id="subscribe-btn">订阅</button>
+      </form>
+      <p class="subscribe-msg" id="subscribe-msg"></p>
+    </div>
+  </div>
+</div>
+<script>
+/* 头部倒计时 — 30 岁生日（2026-11-30 00:00 北京时间），带单位 */
+const HEADER_TARGET = new Date("2026-11-30T00:00:00+08:00");
+const headerTimer = document.getElementById("header-countdown");
+const headerPad = (n) => String(n).padStart(2, "0");
+
+function tickHeaderTimer() {
+  if (!headerTimer) return;
+  const diffMs = HEADER_TARGET - Date.now();
+  let d, h, m, s;
+  if (diffMs <= 0) {
+    d = h = m = s = "00";
+  } else {
+    const secTotal = Math.floor(diffMs / 1000);
+    d = headerPad(Math.floor(secTotal / 86400));
+    h = headerPad(Math.floor((secTotal % 86400) / 3600));
+    m = headerPad(Math.floor((secTotal % 3600) / 60));
+    s = headerPad(secTotal % 60);
+  }
+  document.getElementById("hc-d").textContent = d;
+  document.getElementById("hc-h").textContent = h;
+  document.getElementById("hc-m").textContent = m;
+  document.getElementById("hc-s").textContent = s;
+}
+
+tickHeaderTimer();
+setInterval(tickHeaderTimer, 1000);
+
+const overlay = document.getElementById('cooperate-overlay');
+const emailEl = document.getElementById('cooperate-email');
+const copyBtn = document.getElementById('cooperate-copy-btn');
+const copiedHint = document.getElementById('cooperate-copied');
+
+function openCooperate() {
+  overlay.classList.add('open');
+}
+function closeCooperate() {
+  overlay.classList.remove('open');
+}
+
+document.getElementById('cooperate-btn').addEventListener('click', openCooperate);
+document.getElementById('cooperate-btn-mobile').addEventListener('click', openCooperate);
+document.getElementById('cooperate-close').addEventListener('click', closeCooperate);
+overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) closeCooperate();
+});
+
+copyBtn.addEventListener('click', function() {
+  navigator.clipboard.writeText(emailEl.textContent).then(function() {
+    copiedHint.classList.add('show');
+    copyBtn.textContent = '已复制';
+    setTimeout(function() {
+      copiedHint.classList.remove('show');
+      copyBtn.textContent = '复制';
+    }, 2000);
+  });
+});
+
+/* ---- 邮件订阅（弹窗内） ---- */
+// JSONBin 后端：access key 仅授予「创建订阅」权限（不可读取列表），见 notify_subscribers.rb 使用说明
+const JSONBIN_API = "https://api.jsonbin.io/v3";
+const JSONBIN_ACCESS_KEY = "$2a$10$eQrLIb.GEN3ykBi9BNq/leLOUgpAqN4aht62cmruTOJDcnD4T4Kbi";
+const JSONBIN_COLLECTION_ID = "6a97e523da38895dfe2e8e1e";
+
+const subForm = document.getElementById("subscribe-form");
+const subInput = document.getElementById("subscribe-email");
+const subBtn = document.getElementById("subscribe-btn");
+const subMsg = document.getElementById("subscribe-msg");
+
+subForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = subInput.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showSubMsg("邮箱格式不对，检查一下再试～", "error");
+    return;
+  }
+  subBtn.disabled = true;
+  subBtn.textContent = "提交中…";
+  try {
+    const res = await fetch(`${JSONBIN_API}/b`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Key": JSONBIN_ACCESS_KEY,
+        "X-Collection-Id": JSONBIN_COLLECTION_ID,
+        "X-Bin-Name": email,
+      },
+      body: JSON.stringify({
+        email,
+        subscribedAt: new Date().toISOString(),
+      }),
+    });
+    if (res.ok) {
+      showSubMsg("🎉 订阅成功，新文章发布后会邮件通知你（退订见邮件底部）", "ok");
+      subInput.value = "";
+    } else {
+      let reason = "订阅失败，稍后再试";
+      try {
+        const data = await res.json();
+        if (data && data.message) reason = data.message;
+      } catch {}
+      showSubMsg("😅 " + reason, "error");
+    }
+  } catch {
+    showSubMsg("😅 网络异常，稍后再试", "error");
+  } finally {
+    subBtn.disabled = false;
+    subBtn.textContent = "订阅";
+  }
+});
+
+function showSubMsg(text, kind) {
+  subMsg.textContent = text;
+  subMsg.className = "subscribe-msg " + kind;
+}
+</script>
+<!-- blog-header:end -->
+
 <header>
   <h1>AI 修图提示词图鉴</h1>
   <p class="lead">从网上（FlowPix、知乎、头条、即梦/豆包教程、Nano Banana / GPT-4o 社区）收集的修图、调色、转画、老照片修复、手绘风提示词，按「帮你 P 图」现有规则标了能不能直接用。每张图可左右拖动对比。</p>
