@@ -36,21 +36,36 @@ const seriesIds = new Set(
   [latestNovel?.id, latestComic?.id, latestGold?.id, latestFinance?.id].filter(Boolean)
 );
 
-const latestArticles = [
-  // Always-pinned latest from each series + all standalone articles
-  ...allArticles.filter((a) => {
-    if (seriesIds.has(a.id)) return true;
-    if (
-      a.id.includes("novel-chapter") ||
-      a.id.includes("comic-chapter") ||
-      a.id.includes("gold-daily") ||
-      a.id.includes("finance-morning") ||
-      a.id.includes("finance-evening")
-    )
-      return false;
-    return true;
-  }),
-].sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 8);
+// 首页策略（2026-10-12 起）：
+//   1) 每个系列常驻最新 1 篇（小说 / 漫画 / 黄金 / 财经）
+//   2) 所有"单篇"文章常驻
+//   3) 最近 3 天内发布的新文章（不论属于哪个系列）一律上首页 —— 与 NEW 徽章同一时间窗，
+//      即"首页列表里凡带 NEW 徽章的文章，必须全部在列"，新内容默认不被规则挤掉
+const RECENT_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
+const SERIES_PREFIXES = [
+  "novel-chapter",
+  "comic-chapter",
+  "gold-daily",
+  "finance-morning",
+  "finance-evening",
+];
+const isSeriesArticle = (a) => SERIES_PREFIXES.some((p) => a.id.includes(p));
+
+const isFresh = (a) => Date.now() - a.data.date.getTime() < RECENT_WINDOW_MS;
+
+// 必须常驻的：每系列最新 1 篇 + 最近 3 天内发布的新文章
+const mustKeep = allArticles.filter((a) => seriesIds.has(a.id) || isFresh(a));
+
+// 剩余席位用最新的"单篇"文章补足（保证杂文 / 诗词 / 技能等非连载内容一直有曝光位）
+const SINGLE_SLOTS = 6;
+const mustKeepIds = new Set(mustKeep.map((a) => a.id));
+const singles = allArticles
+  .filter((a) => !isSeriesArticle(a) && !mustKeepIds.has(a.id))
+  .slice(0, SINGLE_SLOTS);
+
+const latestArticles = [...mustKeep, ...singles].sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
 ---
 
 <BaseLayout
