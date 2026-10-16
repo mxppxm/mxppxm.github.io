@@ -7,6 +7,7 @@ tags:
   - "💻 工程实践"
   - "🌐 翻译"
 draft: false
+audio: true
 ---
 
 <div style="margin:0 0 28px;padding:14px 18px;background:#FCFAF7;border:1px solid #E6E0D6;border-left:3px solid #07C160;border-radius:10px;font-size:14px;line-height:1.7;color:#5a5a52">

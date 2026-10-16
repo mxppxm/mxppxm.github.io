@@ -14,10 +14,10 @@ import edge_tts
 import edge_tts.communicate as comm
 from edge_tts.communicate import Communicate, remove_incompatible_characters
 
-VOICE = "zh-CN-YunjianNeural"  # Male, Passion
+VOICE = "zh-CN-XiaoxiaoNeural"  # Female, Warm（博客选定的配音音色）
 OUTPUT_DIR = Path(__file__).parent.parent / "public" / "audio"
-PITCH = "-8%"
-RATE = "-5%"
+PITCH = "+2Hz"
+RATE = "+5%"
 
 # ===== MONKEY PATCHES =====
 _original_escape = comm.escape
@@ -82,10 +82,68 @@ comm.escape = _patched_escape
 comm.mkssml = _patched_mkssml
 
 
+def _strip_html(content: str) -> str:
+    """Handle inline HTML the way a listener needs it:
+    drop link-bearing blocks (署名/来源/元信息框), keep the spoken text of
+    content callouts, then strip any remaining tags."""
+    content = re.sub(r"<(style|script)[^>]*>.*?</\1>", "", content,
+                     flags=re.DOTALL | re.IGNORECASE)
+
+    def _block_sub(m):
+        block = m.group(0)
+        if re.search(r"href\s*=", block, re.IGNORECASE):
+            return "\n\n"  # 署名框 / 文末版权 —— 不朗读
+        inner = re.sub(r"<[^>]+>", " ", block)
+        return "\n\n" + re.sub(r"\s+", " ", inner).strip() + "\n\n"
+
+    content = re.sub(r"<div\b[^>]*>.*?</div>", _block_sub, content,
+                     flags=re.DOTALL | re.IGNORECASE)
+    content = re.sub(r"<p\b[^>]*>.*?</p>", _block_sub, content,
+                     flags=re.DOTALL | re.IGNORECASE)
+    content = re.sub(r"<br\s*/?>", "\n", content, flags=re.IGNORECASE)
+    content = re.sub(r"<[^>]+>", "", content)
+    for a, b in (("&nbsp;", " "), ("&amp;", "&"), ("&lt;", "<"), ("&gt;", ">")):
+        content = content.replace(a, b)
+    return content
+
+
+def _convert_tables(content: str) -> str:
+    """读完 markdown 表格：跳过表头/分隔行，把数据行拼成可朗读的句子。"""
+    lines = content.split("\n")
+    out: list[str] = []
+    i = 0
+    while i < len(lines):
+        s = lines[i].strip()
+        if s.startswith("|") and s.endswith("|") and s.count("|") >= 2:
+            block = []
+            while (i < len(lines) and lines[i].strip().startswith("|")
+                   and lines[i].strip().endswith("|")):
+                block.append(lines[i].strip())
+                i += 1
+            spoken = []
+            for idx, row in enumerate(block):
+                cells = [c.strip() for c in row.strip("|").split("|")]
+                if all(c == "" or re.fullmatch(r":?-{3,}:?", c) for c in cells):
+                    continue  # 分隔行
+                if idx == 0:
+                    continue  # 表头
+                text = "，".join(c for c in cells if c).rstrip("。")
+                if text:
+                    spoken.append(text + "。")
+            if spoken:
+                out.extend(["", *spoken, ""])
+            continue
+        out.append(lines[i])
+        i += 1
+    return "\n".join(out)
+
+
 def extract_text(md_path: Path) -> str:
     """Strip frontmatter and markdown formatting, return plain text."""
     content = md_path.read_text(encoding="utf-8")
     content = re.sub(r"^---\n.*?\n---\n", "", content, flags=re.DOTALL)
+    content = _strip_html(content)
+    content = _convert_tables(content)
     content = re.sub(r"!\[.*?\]\(.*?\)", "", content)
     content = re.sub(r"\*\*(.+?)\*\*", r"\1", content)
     content = re.sub(r"\*(.+?)\*", r"\1", content)
@@ -128,18 +186,24 @@ def split_paragraphs(text: str) -> list[str]:
 PP = '<prosody rate="-95%">。。</prosody>'  # paragraph pause (~600ms)
 
 
+def _xml_escape(s: str) -> str:
+    """SSML 里裸 & < > 会让请求非法（微软直接不返回音频）。"""
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def build_ssml_for_paragraph(para: str) -> str:
     """Build SSML for a single paragraph (at most one slow prosody)."""
     is_header = (
         (len(para) < 6 and re.match(r"^[一二三四五六七八九十百千万]+$", para.strip("。")))
         or (para.endswith("。") and len(para) < 20)
     )
+    para = _xml_escape(para)
 
     if is_header:
         return (
             '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">'
             f'<voice name="{VOICE}">'
-            f'<prosody rate="-12%" pitch="+3%">{para}</prosody>{PP}'
+            f'<prosody rate="-8%" pitch="+2Hz">{para}</prosody>{PP}'
             '</voice></speak>'
         )
 
@@ -153,11 +217,20 @@ def build_ssml_for_paragraph(para: str) -> str:
     )
 
 
-async def generate_chunk(ssml: str, output_path: str) -> int:
-    """Generate one audio chunk. Returns byte count."""
-    communicate = edge_tts.Communicate(ssml, VOICE)
-    await communicate.save(output_path)
-    return Path(output_path).stat().st_size
+async def generate_chunk(ssml: str, output_path: str, attempts: int = 4) -> int:
+    """Generate one audio chunk (with retry). Returns byte count."""
+    last_err = None
+    for k in range(attempts):
+        try:
+            communicate = edge_tts.Communicate(ssml, VOICE)
+            await communicate.save(output_path)
+            return Path(output_path).stat().st_size
+        except Exception as e:  # noqa: BLE001 — 网络抖动/限流都值得重试
+            last_err = e
+            wait = 2 ** k
+            print(f"       ⚠️ 第 {k + 1} 次失败（{type(e).__name__}），{wait}s 后重试")
+            await asyncio.sleep(wait)
+    raise last_err
 
 
 async def generate_all_chunks(paragraphs: list[str], tmpdir: str) -> list[str]:
@@ -170,6 +243,7 @@ async def generate_all_chunks(paragraphs: list[str], tmpdir: str) -> list[str]:
         size = await generate_chunk(ssml, str(chunk_path))
         print(f"       {size}B audio ({para[:40]}...)")
         chunk_files.append(str(chunk_path))
+        await asyncio.sleep(0.35)  # 别把接口打太急
     return chunk_files
 
 
