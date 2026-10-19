@@ -1447,3 +1447,178 @@ blockquote.mantra {
   .section { padding: 56px 16px; }
   .article-content.poem-content { padding: 28px 14px 32px; }
 }
+/* ═══════════════════════════════════════════════════════════
+   LIGHTBOX — 正文图片点击预览大图
+   ═══════════════════════════════════════════════════════════ */
+.article-content img.lightboxable,
+.post-content img.lightboxable,
+.lightbox-scope img.lightboxable {
+  cursor: zoom-in;
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+.article-content img.lightboxable:hover,
+.post-content img.lightboxable:hover,
+.lightbox-scope img.lightboxable:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.article-content img.lightboxable:focus-visible,
+.post-content img.lightboxable:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+html.lightbox-open { overflow: hidden; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 12, 10, 0.92);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  opacity: 0;
+  transition: opacity 0.22s var(--ease-out);
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+.lightbox.is-open { display: flex; }
+.lightbox.is-visible { opacity: 1; }
+
+/* ── 舞台 ── */
+.lightbox-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 64px 84px 92px;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(0, 0, 0, 0.4);
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-drag: none;
+  opacity: 0;
+  transform: scale(0.965);
+  transition: opacity 0.26s var(--ease-out), transform 0.32s var(--ease-spring);
+  will-change: transform, opacity;
+}
+.lightbox-img.is-loaded { opacity: 1; transform: scale(1); }
+
+/* 放大到原始尺寸后可以拖动 */
+.lightbox-img.is-zoomed {
+  max-width: none;
+  max-height: none;
+  cursor: grab;
+  border-radius: 4px;
+  transition: opacity 0.2s var(--ease-out);
+}
+.lightbox-img.is-zoomed.is-dragging { cursor: grabbing; transition: none; }
+
+/* ── 载入指示 ── */
+.lightbox-spinner {
+  position: absolute;
+  width: 34px; height: 34px;
+  border: 2.5px solid rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  animation: lb-spin 0.8s linear infinite;
+  pointer-events: none;
+}
+.lightbox-img.is-loaded ~ .lightbox-spinner { display: none; }
+@keyframes lb-spin { to { transform: rotate(360deg); } }
+
+/* ── 按钮 ── */
+.lightbox-btn {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, transform 0.18s var(--ease-spring), border-color 0.2s, opacity 0.2s;
+}
+.lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: scale(1.08);
+}
+.lightbox-btn:active { transform: scale(0.94); }
+.lightbox-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.lightbox-close { top: 20px; right: 20px; }
+.lightbox-arrow { top: 50%; margin-top: -23px; width: 52px; height: 52px; }
+.lightbox-prev { left: 22px; }
+.lightbox-next { right: 22px; }
+
+/* ── 底部说明条 ── */
+.lightbox-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(820px, calc(100vw - 48px));
+  padding: 9px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lightbox-caption {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lightbox-counter {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  padding-left: 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+@media (max-width: 700px) {
+  .lightbox-stage { padding: 56px 12px 96px; }
+  .lightbox-arrow { width: 42px; height: 42px; margin-top: -21px; opacity: 0.75; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
+  .lightbox-bar { bottom: 14px; font-size: 12px; padding: 8px 14px; }
+  .lightbox-caption { max-width: 60vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lightbox-img, .lightbox-btn { transition: none !important; }
+  .lightbox-img { opacity: 1; transform: none; }
+  .lightbox-spinner { display: none; }
+}

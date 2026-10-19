@@ -49,6 +49,9 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
     <!-- Custom CSS (single source, no framework conflict) -->
     <link rel="stylesheet" href="/css/style.css" />
 
+    <!-- 图片灯箱：正文图片点击预览大图 -->
+    <script is:inline src="/js/lightbox.js" defer></script>
+
     <!-- 百度统计 -->
     <script>
       var _hmt = _hmt || [];
