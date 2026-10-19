@@ -7,16 +7,14 @@
   if (window.__jiuriLightbox) return;
   window.__jiuriLightbox = true;
 
-  var IMG_SELECTOR = ".article-content img, .post-content img, .lightbox-scope img";
+  var IMG_SELECTOR = ".article-content img, .post-content img, .lightbox-scope img, .article-hero-image img";
   var MIN_SIZE = 120; // 小于这个尺寸的图（icon 等）不作为可预览项
 
   var overlay = null;
-  var imgEl, capEl, counterEl, prevBtn, nextBtn;
+  var imgEl, capEl, counterEl, prevBtn, nextBtn, stageEl;
   var items = [];
   var current = 0;
   var isZoomed = false;
-  var panX = 0, panY = 0;
-  var dragging = false, startX = 0, startY = 0, startPanX = 0;
   var reduceMotion = false;
 
   try {
@@ -78,9 +76,9 @@
       '<button class="lightbox-btn lightbox-arrow lightbox-next" type="button" aria-label="下一张">' +
         '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>' +
       "</button>" +
+      '<div class="lightbox-spinner" aria-hidden="true"></div>' +
       '<div class="lightbox-stage">' +
         '<img class="lightbox-img" alt="" draggable="false" />' +
-        '<div class="lightbox-spinner" aria-hidden="true"></div>' +
       "</div>" +
       '<div class="lightbox-bar">' +
         '<span class="lightbox-caption"></span>' +
@@ -95,6 +93,7 @@
     prevBtn = overlay.querySelector(".lightbox-prev");
     nextBtn = overlay.querySelector(".lightbox-next");
     var stage = overlay.querySelector(".lightbox-stage");
+    stageEl = stage;
 
     overlay.querySelector(".lightbox-close").addEventListener("click", close);
     prevBtn.addEventListener("click", function () { go(-1); });
@@ -108,35 +107,10 @@
     // 点击图片：切换 适应屏幕 / 原始尺寸
     imgEl.addEventListener("click", function (e) {
       e.stopPropagation();
-      if (Math.abs(panX) > 4 || Math.abs(panY) > 4) return; // 刚拖动过，忽略
       toggleZoom();
     });
 
-    // 拖动平移（放大后可用）
-    imgEl.addEventListener("pointerdown", function (e) {
-      if (!isZoomed) return;
-      dragging = true;
-      startX = e.clientX; startY = e.clientY;
-      startPanX = panX; startPanY = panY;
-      imgEl.classList.add("is-dragging");
-      imgEl.setPointerCapture && imgEl.setPointerCapture(e.pointerId);
-    });
-    imgEl.addEventListener("pointermove", function (e) {
-      if (!dragging) return;
-      panX = startPanX + (e.clientX - startX);
-      panY = startPanY + (e.clientY - startY);
-      applyPan();
-    });
-    function endDrag() {
-      if (!dragging) return;
-      dragging = false;
-      imgEl.classList.remove("is-dragging");
-    }
-    imgEl.addEventListener("pointerup", endDrag);
-    imgEl.addEventListener("pointercancel", endDrag);
-    imgEl.addEventListener("pointerleave", endDrag);
-
-    // 触屏左右滑动切换
+    // 触屏左右滑动切换（放大到原始尺寸时可自由滚动，不再切换）
     var tX = 0, tY = 0, tracking = false;
     stage.addEventListener("touchstart", function (e) {
       if (e.touches.length !== 1) return;
@@ -147,21 +121,32 @@
     stage.addEventListener("touchend", function (e) {
       if (!tracking) return;
       tracking = false;
+      if (isZoomed) return;
       var t = e.changedTouches[0];
       var dx = t.clientX - tX;
       var dy = t.clientY - tY;
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.6) go(dx < 0 ? 1 : -1);
     }, { passive: true });
 
-    // 点击空白条区域关闭
     overlay.querySelector(".lightbox-bar").addEventListener("click", function (e) {
       e.stopPropagation();
     });
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) close();
-    });
 
     document.addEventListener("keydown", onKey);
+  }
+
+  /* ── 智能适配：超长图（条漫/长截图）按宽度铺满并纵向滚动 ── */
+  function fitMode() {
+    if (!imgEl || !stageEl || !imgEl.naturalWidth || !imgEl.naturalHeight) return;
+    imgEl.classList.remove("is-tall");
+    if (isZoomed) return; // 放大模式由用户决定，不做自动适配
+    var sw = stageEl.clientWidth - 48;
+    var sh = stageEl.clientHeight - 48;
+    if (sw <= 0 || sh <= 0) return;
+    var scaleFitHeight = sh / imgEl.naturalHeight; // 按高度适配后的缩放
+    var renderedW = imgEl.naturalWidth * scaleFitHeight;
+    // 按高度适配后宽度不足屏幕 45% → 说明图极长，改成按宽度铺满
+    if (renderedW < sw * 0.45) imgEl.classList.add("is-tall");
   }
 
   function onKey(e) {
@@ -196,7 +181,7 @@
     if (!overlay) return;
     overlay.classList.remove("is-visible");
     var done = function () {
-      overlay.classList.remove("is-open");
+      overlay.classList.remove("is-open", "is-loading");
       imgEl.removeAttribute("src");
       resetZoom();
       if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
@@ -214,8 +199,10 @@
     var src = items[index].currentSrc || items[index].src;
     resetZoom();
     imgEl.classList.remove("is-loaded");
+    overlay.classList.add("is-loading");
     imgEl.alt = items[index].alt || "";
     imgEl.src = src;
+    fitMode(); // 图片已缓存时立刻判定适配方式
 
     var fig = items[index].closest("figure");
     var capNode = fig ? fig.querySelector("figcaption") : null;
@@ -243,28 +230,19 @@
     show(current + step);
   }
 
-  /* ── 缩放 ── */
+  /* ── 缩放：适应屏幕 ↔ 原始尺寸（原始尺寸下由舞台原生滚动查看）── */
   function toggleZoom() {
-    if (isZoomed) resetZoom();
-    else {
-      isZoomed = true;
-      imgEl.classList.add("is-zoomed");
-      panX = panY = 0;
-      applyPan();
-    }
+    isZoomed = !isZoomed;
+    imgEl.classList.toggle("is-zoomed", isZoomed);
+    imgEl.classList.remove("is-tall");
+    if (!isZoomed) fitMode();
+    if (stageEl) { stageEl.scrollTop = 0; stageEl.scrollLeft = 0; }
   }
 
   function resetZoom() {
     isZoomed = false;
-    panX = panY = 0;
-    if (imgEl) {
-      imgEl.classList.remove("is-zoomed", "is-dragging");
-      applyPan();
-    }
-  }
-
-  function applyPan() {
-    imgEl.style.transform = panX || panY ? "translate(" + panX + "px," + panY + "px)" : "";
+    if (imgEl) imgEl.classList.remove("is-zoomed", "is-dragging");
+    if (stageEl) { stageEl.scrollTop = 0; stageEl.scrollLeft = 0; }
   }
 
   /* ── 图片加载完成 ── */
@@ -273,13 +251,19 @@
     document.addEventListener("load", function (e) {
       if (e.target && e.target.classList && e.target.classList.contains("lightbox-img")) {
         e.target.classList.add("is-loaded");
+        if (overlay) overlay.classList.remove("is-loading");
+        fitMode();
       }
     }, true);
     document.addEventListener("error", function (e) {
       if (e.target && e.target.classList && e.target.classList.contains("lightbox-img")) {
         e.target.classList.add("is-loaded");
+        if (overlay) overlay.classList.remove("is-loading");
       }
     }, true);
+    window.addEventListener("resize", function () {
+      if (overlay && overlay.classList.contains("is-open")) fitMode();
+    });
   }
 
   function init() {

@@ -1469,6 +1469,13 @@ blockquote.mantra {
   outline-offset: 3px;
 }
 
+/* 文章封面（hero）同样可点击预览大图 */
+.article-hero-image img.lightboxable {
+  cursor: zoom-in;
+  transition: transform 0.45s var(--ease-out);
+}
+.article-hero-image img.lightboxable:hover { transform: scale(1.03); }
+
 html.lightbox-open { overflow: hidden; }
 
 .lightbox {
@@ -1489,19 +1496,29 @@ html.lightbox-open { overflow: hidden; }
 .lightbox.is-open { display: flex; }
 .lightbox.is-visible { opacity: 1; }
 
-/* ── 舞台 ── */
+/* ── 舞台（可滚动：原始尺寸 / 超长图时用滚轮或触摸查看）── */
 .lightbox-stage {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 64px 84px 92px;
+  touch-action: pan-x pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
 }
+.lightbox-stage::-webkit-scrollbar { width: 10px; height: 10px; }
+.lightbox-stage::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 5px;
+}
+.lightbox-stage::-webkit-scrollbar-track { background: transparent; }
 
 .lightbox-img {
+  margin: auto; /* 居中且可滚动（比 flex 居中更稳） */
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -1515,31 +1532,41 @@ html.lightbox-open { overflow: hidden; }
   opacity: 0;
   transform: scale(0.965);
   transition: opacity 0.26s var(--ease-out), transform 0.32s var(--ease-spring);
-  will-change: transform, opacity;
 }
 .lightbox-img.is-loaded { opacity: 1; transform: scale(1); }
 
-/* 放大到原始尺寸后可以拖动 */
+/* 原始尺寸（点击图片切换）：可滚动查看细节 */
 .lightbox-img.is-zoomed {
   max-width: none;
   max-height: none;
-  cursor: grab;
+  cursor: zoom-out;
   border-radius: 4px;
-  transition: opacity 0.2s var(--ease-out);
 }
-.lightbox-img.is-zoomed.is-dragging { cursor: grabbing; transition: none; }
 
-/* ── 载入指示 ── */
+/* 超长图（条漫 / 长截图）：按宽度铺满，纵向滚动着看 */
+.lightbox-img.is-tall {
+  max-height: none;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  cursor: zoom-out;
+}
+
+/* ── 载入指示（覆盖层直系子元素，永不随图片滚动）── */
 .lightbox-spinner {
   position: absolute;
+  top: 50%; left: 50%;
+  z-index: 3;
+  display: none;
   width: 34px; height: 34px;
+  margin: -17px 0 0 -17px;
   border: 2.5px solid rgba(255, 255, 255, 0.22);
   border-top-color: rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   animation: lb-spin 0.8s linear infinite;
   pointer-events: none;
 }
-.lightbox-img.is-loaded ~ .lightbox-spinner { display: none; }
+.lightbox.is-loading .lightbox-spinner { display: block; }
 @keyframes lb-spin { to { transform: rotate(360deg); } }
 
 /* ── 按钮 ── */
