@@ -44,7 +44,7 @@ const articles = (await getCollection("articles"))
           return (
             <article class="listing-card" onclick={`location.href='${url}'`}>
               <div class="listing-card-date">
-                {idx === 0 ? <span style="color:var(--accent);font-weight:700;">最新</span> : `第${chNum}章`}
+                {idx === 0 ? <span style="color:var(--accent);font-weight:700;">最新</span> : chNum > 0 ? `第${chNum}章` : `总纲`}
               </div>
               <div class="listing-card-body">
                 <h3><a href={url}>{article.data.title}</a></h3>
