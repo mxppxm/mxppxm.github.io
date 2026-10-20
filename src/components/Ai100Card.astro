@@ -1,0 +1,66 @@
+---
+// 九日的 100 个 AI 产品 —— 单张产品卡
+// 首页模块与 /ai-products/ 专区页共用，保证两处长得一模一样。
+type ProductProp = {
+  no: number;
+  name: string;
+  tagline: string;
+  desc: string;
+  url: string;
+  external?: boolean;
+  icon: string;
+  iconImage?: boolean;
+  tags: string[];
+  status?: "live" | "beta";
+};
+
+type Props = {
+  product?: ProductProp;
+  soonNo?: number;
+};
+
+const { product, soonNo } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+{
+  product ? (
+    <a
+      href={product.url}
+      class="ai100-card"
+      {...product.external ? { target: "_blank", rel: "noopener" } : {}}
+    >
+      <div class="ai100-top">
+        <span class="ai100-no">{pad(product.no)}</span>
+        <span class="ai100-icon">
+          {product.iconImage ? (
+            <img
+              src={product.icon}
+              alt={product.name}
+              width="30"
+              height="30"
+              style="border-radius:8px;display:block;"
+            />
+          ) : (
+            <span style="font-size:22px;line-height:1">{product.icon}</span>
+          )}
+        </span>
+        <span class="ai100-status">{product.status === "beta" ? "测试中" : "已上线"}</span>
+      </div>
+      <h3 class="ai100-name">{product.name}</h3>
+      <p class="ai100-tagline">{product.tagline}</p>
+      <p class="ai100-desc">{product.desc}</p>
+      <div class="ai100-tags">
+        {product.tags.map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+    </a>
+  ) : (
+    <div class="ai100-card ai100-card--soon">
+      <span class="ai100-no">{pad(soonNo)}</span>
+      <p class="ai100-soon-title">虚位以待</p>
+      <p class="ai100-soon-text">这个位置留给下一个 AI 产品</p>
+    </div>
+  )
+}

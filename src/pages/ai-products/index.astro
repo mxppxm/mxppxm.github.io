@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Ai100Card from "../../components/Ai100Card.astro";
+import {
+  AI_PRODUCT_TOTAL,
+  liveProducts,
+  liveCount,
+  nextSlot,
+} from "../../data/ai-products";
+
+// 专区页展示：已上线产品 + 紧邻的 5 个空位（让人看见"还在长"）
+const SOON_SLOTS = 5;
+const soonNos: number[] = [];
+for (let n = nextSlot; n < nextSlot + SOON_SLOTS && n <= AI_PRODUCT_TOTAL; n++) {
+  soonNos.push(n);
+}
+// 剩余待填数量（含占位后仍未满的部分）
+const remaining = AI_PRODUCT_TOTAL - liveCount - soonNos.length;
+const percent = Math.round((liveCount / AI_PRODUCT_TOTAL) * 100);
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+<BaseLayout
+  title="九日的 100 个 AI 产品"
+  description="一个长期计划：做 100 个能真正用起来的 AI 产品。每个都尽量做成打开就能用的网页版，不用注册、不用安装。第 01 号：皮肤检测器。"
+>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">AI Products</div>
+      <h1 class="section-title">九日的 100 个 AI 产品</h1>
+
+      <p class="ai100-lead">
+        一个长期计划：做 <strong>100 个</strong>能真正用起来的 AI 产品。
+        标准只有一条 —— <strong>打开就能用</strong>：不用注册、不用安装、不用看说明书，
+        一个链接丢过去，对面的人就能上手。这里会一个一个往下填，编号从 01 排到 100。
+      </p>
+
+      <div class="ai100-progress-wrap">
+        <div class="ai100-progress-meta">
+          <span class="ai100-progress-count">
+            <em>{liveCount}</em>/ {AI_PRODUCT_TOTAL} 已上线
+          </span>
+          <span class="ai100-progress-note">
+            完成度 {percent}% · 还剩 {AI_PRODUCT_TOTAL - liveCount} 个空位
+          </span>
+        </div>
+        <div class="ai100-progress">
+          <div class="ai100-progress-fill" style={`width:${percent}%`}></div>
+        </div>
+      </div>
+
+      <div class="ai100-grid">
+        {liveProducts.map((product) => <Ai100Card product={product} />)}
+        {soonNos.map((no) => <Ai100Card soonNo={no} />)}
+        {remaining > 0 && (
+          <div class="ai100-card ai100-card--soon">
+            <span class="ai100-no">{pad(AI_PRODUCT_TOTAL)}</span>
+            <p class="ai100-soon-title">…… 还有 {remaining} 个位置</p>
+            <p class="ai100-soon-text">第 {nextSlot} 号正在路上</p>
+          </div>
+        )}
+      </div>
+
+      <div class="ai100-foot">
+        <span class="ai100-foot-note">
+          收录进度会一直更新，慢工出细活，不凑数。
+        </span>
+        <a href="/" class="btn btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          回到首页
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

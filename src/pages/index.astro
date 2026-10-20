@@ -3,6 +3,13 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BookmarkWall from "../components/BookmarkWall.astro";
 import WindowSwap from "../components/WindowSwap.astro";
+import Ai100Card from "../components/Ai100Card.astro";
+import {
+  AI_PRODUCT_TOTAL,
+  liveProducts,
+  liveCount,
+  nextSlot,
+} from "../data/ai-products";
 
 const allArticles = (await getCollection("articles"))
   .filter((a) => !a.data.draft)
@@ -66,6 +73,20 @@ const singles = allArticles
 const latestArticles = [...mustKeep, ...singles].sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
+
+// ── 九日的 100 个 AI 产品（首页模块）──
+// 首页最多放 3 张卡：优先放已上线的，不足 3 张时用「虚位以待」补齐，让人看出这是"还在填"的清单。
+const HOMEPAGE_SLOTS = 3;
+const homepageProducts = liveProducts.slice(0, HOMEPAGE_SLOTS);
+const homepageSoonNos: number[] = [];
+for (
+  let n = nextSlot;
+  n < nextSlot + (HOMEPAGE_SLOTS - homepageProducts.length) && n <= AI_PRODUCT_TOTAL;
+  n++
+) {
+  homepageSoonNos.push(n);
+}
+const ai100Percent = Math.round((liveCount / AI_PRODUCT_TOTAL) * 100);
 ---
 
 <BaseLayout
@@ -229,6 +250,47 @@ const latestArticles = [...mustKeep, ...singles].sort(
           <span class="live-project-arrow">→</span>
         </a>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== AI 100 —「九日的 100 个 AI 产品」 ====== -->
+  <section id="ai-products" class="section section-dark">
+    <div class="section-inner">
+      <h2 class="section-title">九日的 100 个 AI 产品</h2>
+      <p class="ai100-lead">
+        一个长期计划：做 <strong>100 个</strong>能真正用起来的 AI 产品。
+        标准只有一条 —— <strong>打开就能用</strong>：不用注册、不用安装、不用看说明书。
+        编号从 01 排到 100，一个一个往下填。
+      </p>
+
+      <div class="ai100-progress-wrap">
+        <div class="ai100-progress-meta">
+          <span class="ai100-progress-count">
+            <em>{liveCount}</em>/ {AI_PRODUCT_TOTAL} 已上线
+          </span>
+          <span class="ai100-progress-note">
+            完成度 {ai100Percent}% · 还剩 {AI_PRODUCT_TOTAL - liveCount} 个空位
+          </span>
+        </div>
+        <div class="ai100-progress">
+          <div class="ai100-progress-fill" style={`width:${ai100Percent}%`}></div>
+        </div>
+      </div>
+
+      <div class="ai100-grid">
+        {homepageProducts.map((p) => <Ai100Card product={p} />)}
+        {homepageSoonNos.map((no) => <Ai100Card soonNo={no} />)}
+      </div>
+
+      <div class="ai100-foot">
+        <span class="ai100-foot-note">
+          已收录 {liveCount} 个，还有 {AI_PRODUCT_TOTAL - liveCount} 个在路上。
+        </span>
+        <a href="/ai-products/" class="btn btn-outline">
+          查看全部 {AI_PRODUCT_TOTAL} 个
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
