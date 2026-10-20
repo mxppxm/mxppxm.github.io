@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="帮你 P 图">
+  <defs>
+    <linearGradient id="pf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="44" fill="url(#pf)"/>
+  <path fill="#fff" d="M88 34c4 32 16 44 48 48-32 4-44 16-48 48-4-32-16-44-48-48 32-4 44-16 48-48Z"/>
+  <path fill="#fff" fill-opacity=".9" d="M139 116c2 15 8 21 23 23-15 2-21 8-23 23-2-15-8-21-23-23 15-2 21-8 23-23Z"/>
+</svg>

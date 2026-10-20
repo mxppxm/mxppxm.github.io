@@ -49,6 +49,20 @@ export const aiProducts: AiProduct[] = [
     addedAt: "2026-10-20",
     status: "live",
   },
+  {
+    no: 2,
+    name: "帮你 P 图",
+    tagline: "选几张照片，AI 看一眼就知道该怎么修",
+    desc:
+      "PixForge 出品。把照片丢进去，AI 先看一眼判断该怎么修，然后直接修给你——不用调参数，也不用写提示词。免注册就能免费试用 3 次，登录后继续用。",
+    url: "https://pix.ziqianyijia.cn/",
+    external: true,
+    icon: "/images/ai-products/pixforge.svg",
+    iconImage: true,
+    tags: ["Next.js", "AI 修图", "免注册试用"],
+    addedAt: "2026-10-20",
+    status: "live",
+  },
 ];
 
 /** 已上线的产品，按编号升序 */
