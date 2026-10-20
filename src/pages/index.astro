@@ -15,64 +15,15 @@ const allArticles = (await getCollection("articles"))
   .filter((a) => !a.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-// Always include the latest from each series, plus standalone articles
-// Sort novel by chapter number desc to get real latest
-const novelChapters = allArticles
-  .filter((a) => a.id.includes("novel-chapter"))
-  .sort((a, b) => {
-    const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
-    const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
-    return numB - numA;
-  });
-const latestNovel = novelChapters[0];
-// Same for comic series
-const comicChapters = allArticles
-  .filter((a) => a.id.includes("comic-chapter"))
-  .sort((a, b) => {
-    const numA = parseInt(a.id.match(/chapter-(\d+)/)?.[1] || "0");
-    const numB = parseInt(b.id.match(/chapter-(\d+)/)?.[1] || "0");
-    return numB - numA;
-  });
-const latestComic = comicChapters[0];
-const latestGold = allArticles.find((a) => a.id.includes("gold-daily"));
-// 财经日报：早报 / 晚报 取最新一篇常驻首页
-const latestFinance = allArticles.find(
-  (a) => a.id.includes("finance-morning") || a.id.includes("finance-evening")
-);
-const seriesIds = new Set(
-  [latestNovel?.id, latestComic?.id, latestGold?.id, latestFinance?.id].filter(Boolean)
-);
-
-// 首页策略（2026-10-12 起）：
-//   1) 每个系列常驻最新 1 篇（小说 / 漫画 / 黄金 / 财经）
-//   2) 所有"单篇"文章常驻
-//   3) 最近 3 天内发布的新文章（不论属于哪个系列）一律上首页 —— 与 NEW 徽章同一时间窗，
-//      即"首页列表里凡带 NEW 徽章的文章，必须全部在列"，新内容默认不被规则挤掉
-const RECENT_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
-const SERIES_PREFIXES = [
-  "novel-chapter",
-  "comic-chapter",
-  "gold-daily",
-  "finance-morning",
-  "finance-evening",
-];
-const isSeriesArticle = (a) => SERIES_PREFIXES.some((p) => a.id.includes(p));
-
-const isFresh = (a) => Date.now() - a.data.date.getTime() < RECENT_WINDOW_MS;
-
-// 必须常驻的：每系列最新 1 篇 + 最近 3 天内发布的新文章
-const mustKeep = allArticles.filter((a) => seriesIds.has(a.id) || isFresh(a));
-
-// 剩余席位用最新的"单篇"文章补足（保证杂文 / 诗词 / 技能等非连载内容一直有曝光位）
-const SINGLE_SLOTS = 6;
-const mustKeepIds = new Set(mustKeep.map((a) => a.id));
-const singles = allArticles
-  .filter((a) => !isSeriesArticle(a) && !mustKeepIds.has(a.id))
-  .slice(0, SINGLE_SLOTS);
-
-const latestArticles = [...mustKeep, ...singles].sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+// 首页文章列表（2026-10-20 用户要求简化）：
+//   1) 只留最新的 3 篇，不再按系列铺开
+//   2) 小说（槐树下）连载整体下掉，不再出现在首页列表里
+// 旧规则（每系列常驻 1 篇 + 最近 3 天全留 + 6 篇单篇补足）已作废。
+const HOMEPAGE_ARTICLE_COUNT = 3;
+const HIDDEN_FROM_HOMEPAGE = ["novel"];
+const latestArticles = allArticles
+  .filter((a) => !HIDDEN_FROM_HOMEPAGE.some((p) => a.id.includes(p)))
+  .slice(0, HOMEPAGE_ARTICLE_COUNT);
 
 // ── 九日的 100 个 AI 产品（首页模块）──
 // 首页最多放 3 张卡：优先放已上线的，不足 3 张时用「虚位以待」补齐，让人看出这是"还在填"的清单。
@@ -118,6 +69,42 @@ const ai100Percent = Math.round((liveCount / AI_PRODUCT_TOTAL) * 100);
       </div>
     </div>
   </WindowSwap>
+
+  <!-- ====== AI 100 —「九日的 100 个 AI 产品」（首页第一个内容区块） ====== -->
+  <section id="ai-products" class="section">
+    <div class="section-inner">
+      <h2 class="section-title">九日的 100 个 AI 产品</h2>
+
+      <div class="ai100-progress-wrap">
+        <div class="ai100-progress-meta">
+          <span class="ai100-progress-count">
+            <em>{liveCount}</em>/ {AI_PRODUCT_TOTAL} 已上线
+          </span>
+          <span class="ai100-progress-note">
+            完成度 {ai100Percent}% · 还剩 {AI_PRODUCT_TOTAL - liveCount} 个空位
+          </span>
+        </div>
+        <div class="ai100-progress">
+          <div class="ai100-progress-fill" style={`width:${ai100Percent}%`}></div>
+        </div>
+      </div>
+
+      <div class="ai100-grid">
+        {homepageProducts.map((p) => <Ai100Card product={p} />)}
+        {homepageSoonNos.map((no) => <Ai100Card soonNo={no} />)}
+      </div>
+
+      <div class="ai100-foot">
+        <span class="ai100-foot-note">
+          已收录 {liveCount} 个，还有 {AI_PRODUCT_TOTAL - liveCount} 个在路上。
+        </span>
+        <a href="/ai-products/" class="btn btn-outline">
+          查看全部 {AI_PRODUCT_TOTAL} 个
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ====== BLOG ====== -->
   <section id="blog" class="section section-dark">
@@ -250,47 +237,6 @@ const ai100Percent = Math.round((liveCount / AI_PRODUCT_TOTAL) * 100);
           <span class="live-project-arrow">→</span>
         </a>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== AI 100 —「九日的 100 个 AI 产品」 ====== -->
-  <section id="ai-products" class="section section-dark">
-    <div class="section-inner">
-      <h2 class="section-title">九日的 100 个 AI 产品</h2>
-      <p class="ai100-lead">
-        一个长期计划：做 <strong>100 个</strong>能真正用起来的 AI 产品。
-        标准只有一条 —— <strong>打开就能用</strong>：不用注册、不用安装、不用看说明书。
-        编号从 01 排到 100，一个一个往下填。
-      </p>
-
-      <div class="ai100-progress-wrap">
-        <div class="ai100-progress-meta">
-          <span class="ai100-progress-count">
-            <em>{liveCount}</em>/ {AI_PRODUCT_TOTAL} 已上线
-          </span>
-          <span class="ai100-progress-note">
-            完成度 {ai100Percent}% · 还剩 {AI_PRODUCT_TOTAL - liveCount} 个空位
-          </span>
-        </div>
-        <div class="ai100-progress">
-          <div class="ai100-progress-fill" style={`width:${ai100Percent}%`}></div>
-        </div>
-      </div>
-
-      <div class="ai100-grid">
-        {homepageProducts.map((p) => <Ai100Card product={p} />)}
-        {homepageSoonNos.map((no) => <Ai100Card soonNo={no} />)}
-      </div>
-
-      <div class="ai100-foot">
-        <span class="ai100-foot-note">
-          已收录 {liveCount} 个，还有 {AI_PRODUCT_TOTAL - liveCount} 个在路上。
-        </span>
-        <a href="/ai-products/" class="btn btn-outline">
-          查看全部 {AI_PRODUCT_TOTAL} 个
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </section>

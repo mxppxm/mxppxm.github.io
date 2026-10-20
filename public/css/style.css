@@ -508,13 +508,6 @@ main { flex: 1; position: relative; z-index: 1; }
 /* ═══════════════════════════════════════════════════════════
    AI 100 —「九日的 100 个 AI 产品」编号收藏墙
    ═══════════════════════════════════════════════════════════ */
-.ai100-lead {
-  max-width: 660px;
-  color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.85;
-  margin: -6px 0 26px;
-}
 .ai100-progress-wrap {
   margin: 0 0 30px;
   padding: 18px 22px;
