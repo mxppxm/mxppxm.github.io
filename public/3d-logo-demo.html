@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Logo 方案预演 · 九日博客</title>
+<!-- Google <model-viewer>：一行标签渲染 GLB，自带 auto-rotate / AR -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  :root{
+    --bg:#0f0f14; --card:#1a1a24; --text:#e4e4ec; --dim:#9ca3af;
+    --accent:#f59e0b; --border:#2d2d3d;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.7; min-height:100vh;
+    background-image:radial-gradient(circle at 20% 0%,rgba(245,158,11,.10),transparent 55%);
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 80px}
+  h1{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),#fbbf24);
+     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--dim);margin-top:8px;font-size:.95rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:36px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;overflow:hidden}
+  .card h2{font-size:1rem;font-weight:700;margin-bottom:4px}
+  .card p{color:var(--dim);font-size:.82rem;margin-bottom:12px}
+  model-viewer{
+    width:100%;height:260px;background:transparent;border-radius:10px;
+    --poster-color:transparent;
+    --progress-bar-color:var(--accent);
+  }
+  .tag{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:99px;
+       border:1px solid var(--border);color:var(--dim);margin-left:6px}
+  .tag.hot{border-color:rgba(245,158,11,.5);color:var(--accent)}
+  pre{background:#0b0b10;border:1px solid var(--border);border-radius:10px;padding:16px;
+      overflow-x:auto;font-size:.78rem;color:#c9d1d9;margin-top:14px;line-height:1.6}
+  .note{margin-top:34px;border-left:3px solid var(--accent);padding:10px 16px;color:var(--dim);font-size:.85rem}
+  code{color:#fbbf24}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>3D Logo 预演台</h1>
+  <p class="sub">同一个 <code>astronaut.glb</code>，三种接法 —— 换成你自己的模型就上线。<span class="tag hot">本地 GLB · 零依赖后端</span></p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>① 自转悬浮 Logo <span class="tag">Header 首选</span></h2>
+      <p>auto-rotate + 无交互，鼠标悬停不停。放进 Header 就是会转的 logo。</p>
+      <model-viewer src="models/astronaut.glb" camera-orbit="0deg 75deg 105%"
+        auto-rotate rotation-per-second="18deg" disable-zoom interaction-prompt="none"
+        shadow-intensity="0.9" exposure="1.1" alt="3D logo"></model-viewer>
+    </div>
+
+    <div class="card">
+      <h2>② 可拖拽把玩 <span class="tag">Hero 区</span></h2>
+      <p>camera-controls 打开，用户能拖着转、滚轮缩放。</p>
+      <model-viewer src="models/astronaut.glb" camera-controls touch-action="pan-y"
+        auto-rotate rotation-per-second="12deg" camera-orbit="35deg 70deg 130%"
+        shadow-intensity="1" exposure="1.1" alt="可交互 3D logo"></model-viewer>
+    </div>
+
+    <div class="card">
+      <h2>③ 带 AR / 环境反射 <span class="tag">炫技</span></h2>
+      <p>加 <code>ar</code> 后手机上能把 logo 摆到你桌上；environment-image 给金属材质反射。</p>
+      <model-viewer src="models/astronaut.glb" ar ar-modes="webxr scene-viewer quick-look"
+        auto-rotate camera-orbit="0deg 80deg 95%" environment-image="neutral"
+        shadow-intensity="1.2" exposure="1.2" alt="AR 3D logo"></model-viewer>
+    </div>
+  </div>
+
+  <div class="note">
+    换模型：把 <code>public/models/astronaut.glb</code> 换成你自己的 GLB（角色、立体字、几何图形都行），
+    上面三处 <code>src</code> 一起改路径即可。不需要装 three.js，不需要打包器。
+  </div>
+
+  <h2 style="margin-top:40px;font-size:1.05rem">真·接入代码（Astro / 任意 HTML）</h2>
+<pre>&lt;script type="module"
+  src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"&gt;&lt;/script&gt;
+
+&lt;model-viewer
+  src="/models/jiuri-logo.glb"
+  auto-rotate rotation-per-second="18deg"
+  camera-orbit="0deg 75deg 105%"
+  disable-zoom interaction-prompt="none"
+  shadow-intensity="0.9" exposure="1.1"
+  style="width:64px;height:64px"&gt;
+&lt;/model-viewer&gt;</pre>
+
+  <h2 style="margin-top:28px;font-size:1.05rem">Spline 托管型（不想管模型文件就走这条）</h2>
+<pre>&lt;script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"&gt;&lt;/script&gt;
+&lt;spline-viewer url="https://prod.spline.design/xxxxxxxx/scene.splinecode"&gt;&lt;/spline-viewer&gt;</pre>
+  <p class="sub" style="margin-top:8px">⚠️ Spline 免费版 web 导出带水印，去水印要 Hobby $12/月。</p>
+</div>
+</body>
+</html>
