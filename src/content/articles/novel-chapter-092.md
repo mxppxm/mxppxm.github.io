@@ -5,7 +5,7 @@ date: 2026-07-16
 tags:
   - "📖 小说"
   - "🤖 AI 共创"
-  - "�� 现实主义"
+  - "🌾 现实主义"
 ---
 
 ![初二](https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/novel-chapter-092.jpg)

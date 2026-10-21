@@ -3,7 +3,7 @@ title: "人为什么一定要睡觉？—— 2024-2025 最新科学研究报告"
 description: "基于 Nature、Cell、Nature Neuroscience 三大顶刊的最新突破，从线粒体损伤、大脑临界态和胶状淋巴系统三个角度，揭开睡眠的终极秘密。"
 date: 2026-08-06
 tags:
-  - "🔬 科学研究"
+  - "🔬 研究综述"
 ---
 
 <style>

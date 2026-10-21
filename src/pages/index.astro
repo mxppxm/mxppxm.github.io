@@ -17,15 +17,11 @@ const allArticles = (await getCollection("articles"))
 
 // 首页文章列表（2026-10-20 用户要求简化）：
 //   1) 只留最新的 5 篇，不再按系列铺开
-//   2) 连载类整体下掉：小说（槐树下）与漫画，都不再出现在首页列表里
-// 旧规则（每系列常驻 1 篇 + 最近 3 天全留 + 6 篇单篇补足）已作废。
+//   2) 连载类整体下掉：小说（槐树下）不再出现在首页列表里
+// 2026-10-21：漫画（含小狸花）已全站删除，相关下架规则一并移除。
 const HOMEPAGE_ARTICLE_COUNT = 5;
-// 下架判定：既看 id 前缀（novel-* / comic-*），也看 tags ——
-// 有些漫画改编作品（如 冰封纪元、崂山道士）文件名里并不带 comic，只靠 id 会漏。
-const HIDDEN_FROM_HOMEPAGE = ["novel", "comic"];
-const isOffHomepage = (a) =>
-  HIDDEN_FROM_HOMEPAGE.some((p) => a.id.includes(p)) ||
-  (a.data.tags ?? []).some((t) => /comic|漫画/i.test(t));
+const HIDDEN_FROM_HOMEPAGE = ["novel"];
+const isOffHomepage = (a) => HIDDEN_FROM_HOMEPAGE.some((p) => a.id.includes(p));
 const latestArticles = allArticles
   .filter((a) => !isOffHomepage(a))
   .slice(0, HOMEPAGE_ARTICLE_COUNT);
