@@ -12,6 +12,9 @@ type ProductProp = {
   iconImage?: boolean;
   tags: string[];
   status?: "live" | "beta";
+  previewVideo?: string;
+  previewPoster?: string;
+  previewLabel?: string;
 };
 
 type Props = {
@@ -29,6 +32,13 @@ const pad = (n: number) => String(n).padStart(2, "0");
       href={product.url}
       class="ai100-card"
       {...product.external ? { target: "_blank", rel: "noopener" } : {}}
+      {...product.previewVideo
+        ? {
+            "data-preview-video": product.previewVideo,
+            "data-preview-poster": product.previewPoster ?? "",
+            "data-preview-label": product.previewLabel ?? `${product.name} · 宣传片`,
+          }
+        : {}}
     >
       <div class="ai100-top">
         <span class="ai100-no">{pad(product.no)}</span>
@@ -43,6 +53,13 @@ const pad = (n: number) => String(n).padStart(2, "0");
             />
           ) : (
             <span style="font-size:22px;line-height:1">{product.icon}</span>
+          )}
+          {product.previewVideo && (
+            <span class="ai100-play" title="鼠标移上来，看宣传片" aria-hidden="true">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 3.5 20.5 12 6 20.5z" />
+              </svg>
+            </span>
           )}
         </span>
         <span class="ai100-status">{product.status === "beta" ? "测试中" : "已上线"}</span>

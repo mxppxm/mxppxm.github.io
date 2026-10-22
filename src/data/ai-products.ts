@@ -16,6 +16,10 @@
  *   tags        标签，2-4 个
  *   addedAt     收录日期 YYYY-MM-DD
  *   status      "live" 已上线 / "beta" 测试中
+ *   previewVideo 宣传片预览（R2 上的 mp4 直链）。填了就会在卡片上加播放角标，
+ *                鼠标悬停自动弹出浮窗静音循环播放；手机端（无 hover）不触发。
+ *   previewPoster 预览视频的封面图（同一目录的 jpg），必填，避免弹出时闪白框。
+ *   previewLabel  浮窗上的小标题，缺省用「产品名 · 宣传片」
  */
 
 export const AI_PRODUCT_TOTAL = 100;
@@ -32,6 +36,9 @@ export type AiProduct = {
   tags: string[];
   addedAt: string;
   status?: "live" | "beta";
+  previewVideo?: string;
+  previewPoster?: string;
+  previewLabel?: string;
 };
 
 export const aiProducts: AiProduct[] = [
@@ -62,6 +69,11 @@ export const aiProducts: AiProduct[] = [
     tags: ["Next.js", "AI 修图", "免注册试用"],
     addedAt: "2026-10-20",
     status: "live",
+    previewVideo:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/pixforge-promo-preview.mp4",
+    previewPoster:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/pixforge-promo-poster.jpg",
+    previewLabel: "帮你 P 图 · 宣传片",
   },
   {
     no: 3,

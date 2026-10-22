@@ -52,6 +52,9 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
     <!-- 图片灯箱：正文图片点击预览大图 -->
     <script is:inline src="/js/lightbox.js" defer></script>
 
+    <!-- 卡片宣传片浮窗：鼠标移到卡片上自动弹出播放（静态卡只有媒体，零开销） -->
+    <script is:inline src="/js/card-video-preview.js" defer></script>
+
     <!-- 百度统计 -->
     <script>
       var _hmt = _hmt || [];

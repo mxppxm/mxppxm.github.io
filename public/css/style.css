@@ -1855,3 +1855,88 @@ html.lightbox-open { overflow: hidden; }
   .lightbox-img { opacity: 1; transform: none; }
   .lightbox-spinner { display: none; }
 }
+/* ============================================================
+   CARD VIDEO PREVIEW — 产品卡悬停弹出宣传片浮窗
+   2026-10-22：第 02 号「帮你 P 图」宣传片
+   逻辑在 /js/card-video-preview.js，这里只负责长相
+   ============================================================ */
+
+/* 卡片图标上的小播放角标（提示「这张卡有片子」） */
+.ai100-icon { position: relative; }
+.ai100-play {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 17px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(7, 193, 96, 0.45);
+  opacity: 0.9;
+  transition: transform 0.25s var(--ease-spring), opacity 0.25s var(--ease-out);
+}
+.ai100-card:hover .ai100-play { transform: scale(1.12); opacity: 1; }
+
+/* 浮窗本体：全站唯一一个，跟着鼠标所在的卡片走 */
+.card-video-pop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90000; /* 高于纸纹噪点层(9999)，低于灯箱(100000) */
+  pointer-events: none; /* 永不挡鼠标 */
+  will-change: transform;
+}
+.card-video-pop-box {
+  width: 224px;
+  padding: 8px 8px 10px;
+  border-radius: 16px;
+  background: rgba(19, 21, 20, 0.92);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 26px 60px -20px rgba(0, 0, 0, 0.55),
+    0 8px 20px -10px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.28s var(--ease-spring);
+}
+.card-video-pop.is-open .card-video-pop-box {
+  opacity: 1;
+  transform: none;
+}
+.card-video-pop-label {
+  display: block;
+  padding: 3px 6px 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.74);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-video-pop video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: #000;
+  object-fit: cover;
+}
+
+/* 没 hover 能力的设备（手机/平板）：角标也别露出来 */
+@media (hover: none), (pointer: coarse) {
+  .ai100-play { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-video-pop-box { transition: opacity 0.12s linear; transform: none; }
+  .card-video-pop.is-open .card-video-pop-box { transform: none; }
+}
