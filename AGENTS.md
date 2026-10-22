@@ -62,3 +62,26 @@ npm run build && (cd dist && python3 -m http.server 4399)
 ```
 
 浏览器验收：打开文章 → 点正文图与封面图 → 确认能开、能切换、图注正确、超长图能滚动。
+
+---
+
+## 5. 卡片宣传片（AI 100 产品卡，2026-10-22 起）
+
+产品卡上可以挂一段「宣传片」，点按钮 → 居中弹窗播放（**带声音**，浏览器原生控制条）。
+
+| 项 | 约定 |
+| --- | --- |
+| 媒体存放 | R2（`r2-blog:mxppxm-blog-images/images/videos/`），禁止放 `public/images` |
+| 片源要求 | **必须带音轨**（弹窗要出声），720p / CRF27 / aac 96k / `+faststart`，单条控制在 3MB 内 |
+| 封面 | 同目录 `*-poster.jpg`，`promoPoster` 必填，避免开窗闪白 |
+| 数据字段 | `src/data/ai-products.ts`：`promoVideo` / `promoPoster` / `promoLabel` |
+| 卡片结构 | 底部 `.ai100-actions`（左标签、右按钮），按钮 `.ai100-play-btn` 带 `data-promo-*` |
+| 逻辑 | `public/js/card-video-modal.js`（零依赖 IIFE，全站一个弹窗节点，懒创建） |
+| 样式 | `public/css/style.css` 末尾 `CARD VIDEO MODAL` 段（`z-index: 100000`，与灯箱同级） |
+
+**踩过的坑，别再踩：**
+1. 按钮在卡片的 `<a>` 里 → 事件必须走**捕获阶段** + `preventDefault()`，否则一点就跳站外。
+2. 卡片内的类名别用 `.ai100-foot`／`.ai100-foot-note`，那是页面级页脚行占用的（卡片内用 `.ai100-actions`）。
+3. 手机端没有 hover，交互一律用「点击」，不要做悬停触发。
+
+给别的卡加片：转好 mp4 传 R2 → 在该产品的字段里填 `promoVideo` / `promoPoster`，不用改代码。

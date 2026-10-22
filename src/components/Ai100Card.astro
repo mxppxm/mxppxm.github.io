@@ -12,9 +12,9 @@ type ProductProp = {
   iconImage?: boolean;
   tags: string[];
   status?: "live" | "beta";
-  previewVideo?: string;
-  previewPoster?: string;
-  previewLabel?: string;
+  promoVideo?: string;
+  promoPoster?: string;
+  promoLabel?: string;
 };
 
 type Props = {
@@ -32,13 +32,6 @@ const pad = (n: number) => String(n).padStart(2, "0");
       href={product.url}
       class="ai100-card"
       {...product.external ? { target: "_blank", rel: "noopener" } : {}}
-      {...product.previewVideo
-        ? {
-            "data-preview-video": product.previewVideo,
-            "data-preview-poster": product.previewPoster ?? "",
-            "data-preview-label": product.previewLabel ?? `${product.name} · 宣传片`,
-          }
-        : {}}
     >
       <div class="ai100-top">
         <span class="ai100-no">{pad(product.no)}</span>
@@ -54,23 +47,35 @@ const pad = (n: number) => String(n).padStart(2, "0");
           ) : (
             <span style="font-size:22px;line-height:1">{product.icon}</span>
           )}
-          {product.previewVideo && (
-            <span class="ai100-play" title="鼠标移上来，看宣传片" aria-hidden="true">
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6 3.5 20.5 12 6 20.5z" />
-              </svg>
-            </span>
-          )}
         </span>
         <span class="ai100-status">{product.status === "beta" ? "测试中" : "已上线"}</span>
       </div>
       <h3 class="ai100-name">{product.name}</h3>
       <p class="ai100-tagline">{product.tagline}</p>
       <p class="ai100-desc">{product.desc}</p>
-      <div class="ai100-tags">
-        {product.tags.map((tag) => (
-          <span>{tag}</span>
-        ))}
+      <div class="ai100-actions">
+        <div class="ai100-tags">
+          {product.tags.map((tag) => (
+            <span>{tag}</span>
+          ))}
+        </div>
+        {product.promoVideo && (
+          <span
+            class="ai100-play-btn"
+            role="button"
+            tabindex="0"
+            aria-label={`播放 ${product.name} 宣传片`}
+            title="点开看宣传片（有声音）"
+            data-promo-video={product.promoVideo}
+            data-promo-poster={product.promoPoster ?? ""}
+            data-promo-title={product.name}
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6 3.5 20.5 12 6 20.5z" />
+            </svg>
+            {product.promoLabel ?? "看宣传片"}
+          </span>
+        )}
       </div>
     </a>
   ) : (
