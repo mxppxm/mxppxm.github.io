@@ -63,6 +63,20 @@ export const aiProducts: AiProduct[] = [
     addedAt: "2026-10-20",
     status: "live",
   },
+  {
+    no: 3,
+    name: "四级搭子",
+    tagline: "四级单词，找个搭子一起背",
+    desc:
+      "按考试倒计时自动排好每天该背多少，从历年真题高频词背起，每天十几分钟就能完成当天的量。可以和朋友互相当搭子，互相监督、PK 进度，也能用邀请码拉人组队，一个人背不下去的时候有人盯着。",
+    url: "https://cet4.ziqianyijia.cn/",
+    external: true,
+    icon: "/images/ai-products/cet4-dazi.svg",
+    iconImage: true,
+    tags: ["英语四级", "背单词", "学习搭子"],
+    addedAt: "2026-10-22",
+    status: "live",
+  },
 ];
 
 /** 已上线的产品，按编号升序 */
