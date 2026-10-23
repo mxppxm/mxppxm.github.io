@@ -48,13 +48,18 @@ export const aiProducts: AiProduct[] = [
     tagline: "拍张照，AI 给你的皮肤做一次全面体检",
     desc:
       "上传自拍或当场拍摄，AI 自动定位面部，给出水分、油脂、敏感、衰老、痘痘、色素六个维度的评分与雷达图，再配一套早晚护肤流程和个性化建议。报告可保存、可分享，不用注册。",
-    url: "https://skin-doctor.netlify.app/",
+    url: "https://skin.ziqianyijia.cn/",
     external: true,
     icon: "/logo.png",
     iconImage: true,
-    tags: ["React", "TypeScript", "多模型 AI", "Netlify"],
+    tags: ["React", "TypeScript", "多模型 AI", "腾讯云"],
     addedAt: "2026-10-20",
     status: "live",
+    promoVideo:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/skin-detector-promo-720p.mp4",
+    promoPoster:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/skin-detector-promo-poster.jpg",
+    promoLabel: "看宣传片",
   },
   {
     no: 2,
