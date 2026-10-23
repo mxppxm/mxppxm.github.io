@@ -1858,7 +1858,9 @@ html.lightbox-open { overflow: hidden; }
 
 /* ============================================================
    CARD VIDEO MODAL — 产品卡「看宣传片」按钮 · 点击弹窗带声播放
-   2026-10-22：第 02 号「帮你 P 图」宣传片
+   2026-10-22 首版；2026-10-23 改版：
+     按钮改实心绿(原来浅绿胶囊跟标签撞脸)，
+     弹窗改浅色轻遮罩(原来 92% 黑幕太吓人)，去掉标题条与转圈
    逻辑在 /js/card-video-modal.js，这里只负责长相
    （注意：卡片内的 .ai100-actions 与页面级的 .ai100-foot 是两码事）
    ============================================================ */
@@ -1866,50 +1868,55 @@ html.lightbox-open { overflow: hidden; }
 /* ── 卡片底部一行：左边标签，右边播放按钮 ── */
 .ai100-actions {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: auto;
-  padding-top: 4px;
+  padding-top: 8px;
 }
 /* 标签不再自己顶到底（改由 .ai100-actions 负责） */
 .ai100-actions .ai100-tags { margin-top: 0; padding-top: 0; }
 
-/* ── 播放按钮：卡片上的独立按钮，不再压在图标上 ── */
+/* ── 播放按钮：实心绿 + 白字 + 播放三角，一眼是「按钮」不是「标签」──
+      对比参照：标签 = #E8F8EE 浅底 + #048C48 绿字 + 6px 圆角
+                按钮 = #07C160 实底 + 白字 + 10px 圆角 + 投影 */
 .ai100-play-btn {
   flex: 0 0 auto;
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px 6px 10px;
-  border: 1px solid rgba(7, 193, 96, 0.34);
-  border-radius: 999px;
-  background: var(--accent-light);
-  color: var(--accent-dark);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
+  gap: 7px;
+  padding: 8px 15px 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s,
-              transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  box-shadow: 0 3px 12px rgba(7, 193, 96, 0.34);
+  transition: background 0.2s, transform 0.2s var(--ease-spring), box-shadow 0.2s;
 }
-.ai100-play-btn svg { flex-shrink: 0; }
+.ai100-play-btn svg {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+}
 .ai100-play-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--accent-dark);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-accent);
+  box-shadow: 0 7px 18px rgba(7, 193, 96, 0.42);
 }
-.ai100-play-btn:active { transform: scale(0.96); }
-.ai100-play-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ai100-play-btn:active { transform: translateY(0) scale(0.97); }
+.ai100-play-btn:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
 
-/* ── 弹窗本体 ── */
+/* ── 弹窗本体：浅色轻遮罩，页面还看得见（不再是一整屏黑幕） ── */
 .card-video-modal {
   position: fixed;
   inset: 0;
@@ -1918,11 +1925,9 @@ html.lightbox-open { overflow: hidden; }
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(14, 12, 10, 0.92);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  backdrop-filter: blur(16px) saturate(120%);
+  background: rgba(252, 251, 249, 0.86);
   opacity: 0;
-  transition: opacity 0.22s var(--ease-out);
+  transition: opacity 0.2s var(--ease-out);
   overscroll-behavior: contain;
 }
 .card-video-modal.is-open { display: flex; }
@@ -1930,26 +1935,23 @@ html.lightbox-open { overflow: hidden; }
 
 .card-video-modal-stage {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
   max-width: 100%;
 }
 
-/* 视频框：竖版片子按高度收敛，横版按宽度收敛 */
+/* 视频框：竖版按高度收敛，横版按宽度收敛 */
 .card-video-modal-box {
   position: relative;
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
   background: #000;
   box-shadow:
-    0 40px 90px -30px rgba(0, 0, 0, 0.7),
-    0 8px 24px -10px rgba(0, 0, 0, 0.5);
+    0 22px 55px -20px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
   opacity: 0;
-  transform: translateY(14px) scale(0.96);
+  transform: translateY(10px) scale(0.97);
   transition:
-    opacity 0.24s var(--ease-out),
-    transform 0.32s var(--ease-spring);
+    opacity 0.2s var(--ease-out),
+    transform 0.28s var(--ease-spring);
 }
 .card-video-modal.is-visible .card-video-modal-box {
   opacity: 1;
@@ -1959,80 +1961,44 @@ html.lightbox-open { overflow: hidden; }
   display: block;
   width: auto;
   height: auto;
-  max-width: min(94vw, 560px);
-  max-height: min(72vh, 680px);
+  max-width: min(88vw, 380px);
+  max-height: min(66vh, 620px);
   background: #000;
 }
 
-/* 载入中转圈（poster 顶着，通常一闪而过） */
-.card-video-modal-spinner {
-  position: absolute;
-  top: 50%; left: 50%;
-  z-index: 2;
-  display: none;
-  width: 30px; height: 30px;
-  margin: -15px 0 0 -15px;
-  border: 2.5px solid rgba(255, 255, 255, 0.22);
-  border-top-color: rgba(255, 255, 255, 0.85);
-  border-radius: 50%;
-  animation: cvm-spin 0.8s linear infinite;
-  pointer-events: none;
-}
-.card-video-modal.is-loading .card-video-modal-spinner { display: block; }
-@keyframes cvm-spin { to { transform: rotate(360deg); } }
-
-/* 底部标题条 */
-.card-video-modal-caption {
-  padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 13px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-/* 关闭按钮（贴视口右上角，跟灯箱一致） */
+/* 关闭按钮：贴在视频框右上角里（不再飘在屏幕角落） */
 .card-video-modal-close {
   position: absolute;
-  top: 20px; right: 20px;
+  top: 10px; right: 10px;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px; height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 32px; height: 32px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.92);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
   cursor: pointer;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  transition: background 0.2s, transform 0.18s var(--ease-spring), border-color 0.2s;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: background 0.18s, transform 0.18s var(--ease-spring);
 }
-.card-video-modal-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.32);
-  transform: scale(1.08);
-}
+.card-video-modal-close:hover { background: rgba(0, 0, 0, 0.72); transform: scale(1.06); }
 .card-video-modal-close:active { transform: scale(0.94); }
-.card-video-modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.card-video-modal-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* 弹窗开着的时候不许页面跟着滚 */
 html.cvm-lock, html.cvm-lock body { overflow: hidden; }
 
 @media (max-width: 700px) {
   .card-video-modal { padding: 16px; }
-  .card-video-modal-close { top: 12px; right: 12px; width: 42px; height: 42px; }
-  .card-video-modal-box video { max-height: 66vh; }
-  .ai100-actions { align-items: flex-start; }
+  .card-video-modal-box video { max-width: 88vw; max-height: 62vh; }
+  .ai100-play-btn { margin-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-video-modal { transition: none; }
-  .card-video-modal-box { transition: none; opacity: 1; transform: none; }
-  .card-video-modal-spinner { animation-duration: 1.6s; }
+  .card-video-modal, .card-video-modal-box { transition: none; }
+  .card-video-modal-box { opacity: 1; transform: none; }
 }

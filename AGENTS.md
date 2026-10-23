@@ -79,9 +79,15 @@ npm run build && (cd dist && python3 -m http.server 4399)
 | 逻辑 | `public/js/card-video-modal.js`（零依赖 IIFE，全站一个弹窗节点，懒创建） |
 | 样式 | `public/css/style.css` 末尾 `CARD VIDEO MODAL` 段（`z-index: 100000`，与灯箱同级） |
 
+**长相约定（2026-10-23 定，别再往回改）：**
+- 按钮＝**实心主题绿 `var(--accent)` + 白字 + 10px 圆角 + 投影**，刻意跟标签拉开距离（标签＝`--accent-light` 浅底 + `--accent-dark` 绿字 + 6px 圆角）。
+- 弹窗＝**浅色轻遮罩**（`rgba(252,251,249,0.86)`，不加 `backdrop-filter`）+ 居中**小窗**（`max-width: 380px` / `max-height: 66vh`），✕ 用 32px 圆钮贴在**视频框右上角里**（`position: absolute` 于 `.card-video-modal-box`）。
+- 弹窗里**没有**标题条、没有转圈、没有 caption —— 保持极简，别再往里加东西。
+
 **踩过的坑，别再踩：**
 1. 按钮在卡片的 `<a>` 里 → 事件必须走**捕获阶段** + `preventDefault()`，否则一点就跳站外。
 2. 卡片内的类名别用 `.ai100-foot`／`.ai100-foot-note`，那是页面级页脚行占用的（卡片内用 `.ai100-actions`）。
 3. 手机端没有 hover，交互一律用「点击」，不要做悬停触发。
+4. 按钮别做成**浅绿胶囊**（＝标签配方，用户直接说"和标签长得一样"）；弹窗遮罩别用**深色满屏**（用户原话"怎么是全屏的黑弹窗"）。
 
 给别的卡加片：转好 mp4 传 R2 → 在该产品的字段里填 `promoVideo` / `promoPoster`，不用改代码。
