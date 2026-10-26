@@ -94,6 +94,20 @@ export const aiProducts: AiProduct[] = [
     addedAt: "2026-10-22",
     status: "live",
   },
+  {
+    no: 4,
+    name: "黑白小人",
+    tagline: "把纠结的事说出来，看心里两个小人吵一架",
+    desc:
+      "要不要跳槽、要不要借钱给人、要不要去同学聚会？把处境说清楚，心里的白小人和黑小人就上场了——一个拼命劝你干，一个拼命劝你算了，来回吵十轮把话说透，最后裁判登场不站队，只给你一句公道话和一个能落地的建议。不知道写什么，可以点个示例开局。",
+    url: "https://battle.ziqianyijia.cn/",
+    external: true,
+    icon: "/images/ai-products/battle-argue.svg",
+    iconImage: true,
+    tags: ["Next.js", "AI 对话", "决策参考"],
+    addedAt: "2026-10-26",
+    status: "live",
+  },
 ];
 
 /** 已上线的产品，按编号升序 */
