@@ -107,6 +107,11 @@ export const aiProducts: AiProduct[] = [
     tags: ["Next.js", "AI 对话", "决策参考"],
     addedAt: "2026-10-26",
     status: "live",
+    promoVideo:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/battle-argue-promo-720p.mp4",
+    promoPoster:
+      "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/battle-argue-promo-poster.jpg",
+    promoLabel: "看宣传片",
   },
 ];
 
