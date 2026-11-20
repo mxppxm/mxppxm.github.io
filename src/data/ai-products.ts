@@ -113,6 +113,19 @@ export const aiProducts: AiProduct[] = [
       "https://pub-62a0367d331f458a973799ce72761c28.r2.dev/images/videos/battle-argue-promo-poster.jpg",
     promoLabel: "看宣传片",
   },
+  {
+    no: 5,
+    name: "3D 元素周期表",
+    tagline: "118 个元素，点开就能看原子长什么样",
+    desc:
+      "一张立体的元素周期表，鼠标停在哪个元素上就显示它的名字和原子量。点进去能看到原子模型：质子、中子按真实数量排好，电子一圈圈绕着转，旁边列着电子排布、熔点沸点、常见化合物和发射光谱。左右方向键可以挨个往下翻，也能直接搜「铁」「Fe」或「26」。",
+    url: "/element-atlas-118/",
+    icon: "/images/ai-products/element-atlas.svg",
+    iconImage: true,
+    tags: ["Three.js", "化学", "离线可用"],
+    addedAt: "2026-11-20",
+    status: "live",
+  },
 ];
 
 /** 已上线的产品，按编号升序 */
